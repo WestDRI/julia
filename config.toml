@@ -33,7 +33,7 @@ canonifyurls = true
   author = "Training Material on"
   # info = "Helping researchers with high-performance computing tools"
   wgavatar = "/img/wg_white_removed_medium.png"
-  avatarurl = "/img/julia-logo-color.png"
+  avatarurl = "/img/julia.png"
 
   favicon_32 = "/img/favicon.png"
 
