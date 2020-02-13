@@ -1,0 +1,24 @@
+#+title: Machine learning in Julia with Flux
+#+slug: ml_flux
+#+tags[]: machinelearning julia programming flux hpc
+#+categories[]: webinar
+#+date: 2020-05-13
+
+#+OPTIONS: toc:1
+
+* Abstract
+
+#+BEGIN_definition
+
+#+END_definition
+
+* Slides
+
+#+BEGIN_center
+#+CAPTION: [[https://westgrid-webinars.netlify.com/ml_flux#/][Machine learning with Julia and the flux package]]
+#+ATTR_HTML: :title Machine learning with Julia and the flux package
+#+ATTR_HTML: :width 700 :style border:2px solid black;
+[[/img/ml_flux_slides.png]]
+#+END_center
+
+* Video
