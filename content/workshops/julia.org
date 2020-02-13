@@ -1,0 +1,104 @@
+#+title: Introduction to Julia
+#+slug: julia
+#+description = 3h workshop intro to Julia at SFU
+#+tags[]: julia hpc programming
+#+categories[]: workshop
+#+date: 2020-03-03
+
+#+OPTIONS: toc:1
+
+* Abstract
+
+#+BEGIN_definition
+#+BEGIN_quote
+Why would I want to learn a new language? I already know R/python.
+#+END_quote
+
+R and python are interpreted languages: the code is executed directly, without prior-compilation. This is extremely convenient: it is what allows you to run code in an interactive shell. The price to pay is low performance: R and python are simply not good at handling large amounts of data. To overcome this limitation, users often turn to C or C++ for the most computation-intensive parts of their analyses. These are compiled—and extremely efficient—languages, but the need to use multiple languages and the non-interactive nature of compiled languages make this approach tedious.
+
+Julia uses just-in-time (JIT) compilation: the code is compiled at run time. This combines the interactive advantage of interpreted languages with the efficiency of compiled ones. Basically, it feels like running R or python, while it is almost as fast as C. This makes Julia particularly well suited for big data analyses, machine learning, or heavy modelling.
+
+In addition, multiple dispatch (generic functions with multiple methods depending on the types of all the arguments) is at the very core of Julia. This is extremly convenient, cutting on conditionals and repetitions, and allowing for easy extensibility without having to rewrite code.
+
+Finally, Julia shines by its extremely clean and concise syntax. This last feature makes it easy to learn and really enjoyable to use.
+
+In this workshop, which does not require any prior experience in Julia (experience in another language—e.g. R or python—would be best), we will go over the basics of Julia's syntax and package system; then we will push the performance aspect further by looking at how Julia can make use of clusters for large scale parallel computing.
+#+END_definition
+
+* Background
+
+** Brief history
+
+A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in which [[https://www.rust-lang.org/][Rust]] developer Graydon Hoare places Julia in a historical context of programming languages.
+
+** Why another language?
+
+*** Just-in-time (JIT) compilation
+
+[[https://en.wikipedia.org/wiki/Just-in-time_compilation][Just-in-time compilation]] 
+
+**** Compiled languages
+
+[[/img/compiled_language.png]]
+
+Source code is human-readable, usually in plain text. That's the highest level.\\
+Machine code is the lowest level.
+
+**** Interpreted languages
+
+[[/img/interpreted_language.png]]
+
+The source code can facultatively be bytecompiled into non human-readable, more compact, lower level bytecode which is read by the interpreter more efficiently.
+
+*** Multiple dispatch
+
+opt-in type checking
+
+* Practical considerations
+
+** Where to find resources
+
+[[https://julialang.org/][Julia's website]]
+
+*** Documentation
+
+- The official Julia [[https://docs.julialang.org/en/v1/][manual]]
+
+- Online [[https://julialang.org/learning/][training]] material
+
+- [[https://www.youtube.com/user/JuliaLanguage][YouTube]] channel
+
+*** Getting help
+
+- Discourse [[https://discourse.julialang.org/][forum]]
+
+- [[https://stackoverflow.com/tags/julia][[julia] ]]tag on Stack Overflow
+
+- [[https://app.slack.com/client/T68168MUP/C67910KEH][Slack]] team (you need to agree to the community code of conduct at slackinvite.julialang.org to receive an invitation)
+
+- [[https://twitter.com/search?q=%23julialang][#julialang]] hashtag on Twitter
+
+- [[https://www.reddit.com/r/Julia/][Subreddit]]
+
+- [[https://gitter.im/JuliaLang/julia][Gitter]] channel
+
+- [[https://webchat.freenode.net/#julia][#julia]] IRC channel on Freenode
+
+** How to run Julia
+
+- [[https://jupyter.org/][Jupyter notebooks]]
+
+- Emacs through the Emacs [[https://ess.r-project.org/][ESS]] or [[https://github.com/JuliaEditorSupport/julia-emacs][julia-emacs]] packages. You can also run Jupyter notebooks through the [[http://millejoh.github.io/emacs-ipython-notebook/][Emacs IPython Notebook (EIN)]] package
+
+- The [[https://junolab.org/][Juno]] IDE
+
+* Syntax
+
+* Packages
+
+Conveniently, all packages are on GitHub and they can easily be searched in a [[https://pkg.julialang.org/docs/][listing]].
+
+* Parallel computing
+
+
+
