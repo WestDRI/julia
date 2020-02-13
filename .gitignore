@@ -1,0 +1,9 @@
+public/
+resources/
+!compiled_language.png
+!favicon.png
+!hpc_julia_slides.png
+!interpreted_language.png
+!julia.png
+!ml_flux_slides.png
+!wg_white_removed_medium.png
