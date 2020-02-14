@@ -34,14 +34,10 @@ canonifyurls = true
   # info = "Helping researchers with high-performance computing tools"
   wgavatar = "/img/wg_white_removed_medium.png"
   avatarurl = "/img/julia.png"
-
   favicon_32 = "/img/favicon.png"
-
   hidecredits = false
   hidecopyright = false
-
   rtl = false
-
   math = true
 
 [taxonomies]
