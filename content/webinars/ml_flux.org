@@ -1,8 +1,7 @@
 #+title: Machine learning in Julia with Flux
 #+slug: ml_flux
-#+tags[]: machinelearning julia programming flux hpc
-#+categories[]: webinar
 #+date: 2020-05-13
+#+place: 45 min live webinar
 
 #+OPTIONS: toc:1
 
