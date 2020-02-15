@@ -5,6 +5,10 @@
 
 #+OPTIONS: toc:1
 
+#+BEGIN_sticker
+[[https://www.eventbrite.ca/e/machine-learning-in-julia-with-flux-registration-88600704091][Register]]
+#+END_sticker
+
 * Abstract
 
 #+BEGIN_definition

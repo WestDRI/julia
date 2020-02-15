@@ -5,6 +5,10 @@
 
 #+OPTIONS: toc:1
 
+#+BEGIN_sticker
+[[https://www.eventbrite.ca/e/high-performance-research-computing-with-julia-registration-88573629109][Register]]
+#+END_sticker
+
 * Abstract
 
 #+BEGIN_definition
