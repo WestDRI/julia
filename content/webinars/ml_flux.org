@@ -6,7 +6,7 @@
 #+OPTIONS: toc:1
 
 #+BEGIN_sticker
-[[https://www.eventbrite.ca/e/machine-learning-in-julia-with-flux-registration-88600704091][Register]]
+[[https://www.eventbrite.ca/e/machine-learning-in-julia-with-flux-registration-88600704091][Register for free webinar]]
 #+END_sticker
 
 * Abstract

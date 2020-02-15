@@ -6,7 +6,7 @@
 #+OPTIONS: toc:1
 
 #+BEGIN_sticker
-[[https://www.eventbrite.ca/e/high-performance-research-computing-with-julia-registration-88573629109][Register]]
+[[https://www.eventbrite.ca/e/high-performance-research-computing-with-julia-registration-88573629109][Register for free webinar]]
 #+END_sticker
 
 * Abstract
