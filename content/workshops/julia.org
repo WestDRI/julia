@@ -5,6 +5,13 @@
 
 #+OPTIONS: toc:1
 
+This workshop is part of Simon Fraser University spring school:
+[[/img/sfu2020poster.png]]
+
+#+BEGIN_sticker
+[[https://www.eventbrite.ca/e/research-computing-workshops-simon-fraser-university-registration-88799572913][Register for free workshop]]
+#+END_sticker
+
 * Abstract
 
 #+BEGIN_definition
