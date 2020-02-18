@@ -12,12 +12,11 @@
 * Abstract
 
 #+BEGIN_definition
-Julia is fast. Just-in-time (JIT) compilation and multiple dispatch bring efficiency to interactivity. People often say that using Julia feels like running R or python with a speed /almost/ comparable to that of C.
+Julia is fast: just-in-time (JIT) compilation and multiple dispatch bring efficiency to interactivity. People often say that using Julia feels like running R or python with a speed /almost/ comparable to that of C.
 
-But Julia also comes with parallel computing capabilities
- when it comes to parallel computing, locally, or on clusters.
+But Julia also comes with parallel computing and multi-threading capabilities.
 
-In this webinar, after a quickly presentation of some of the key features of Julia's beautifully concise syntax, I will dive into Julia's HPC abilities.
+In this webinar, after a quickly presentation of some of the key features of Julia's beautifully concise syntax, I will dive into using Julia for HPC.
 #+END_definition
 
 * Useful links
