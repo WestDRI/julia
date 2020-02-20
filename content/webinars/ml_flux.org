@@ -5,6 +5,11 @@
 
 #+OPTIONS: toc:1
 
+#+BEGIN_center
+#+ATTR_HTML: :width 200
+[[/img/workinprogress.svg]]
+#+END_center
+
 #+BEGIN_sticker
 [[https://www.eventbrite.ca/e/machine-learning-in-julia-with-flux-registration-88600704091][Register for free webinar]]
 #+END_sticker
@@ -17,11 +22,22 @@
 
 * Slides
 
-#+BEGIN_center
-#+CAPTION: [[https://westgrid-webinars.netlify.com/ml_flux#/][Machine learning with Julia and the flux package]]
-#+ATTR_HTML: :title Machine learning with Julia and the flux package
-#+ATTR_HTML: :width 700 :style border:2px solid black;
-[[/img/ml_flux_slides.png]]
-#+END_center
+#+BEGIN_export html
+<a href="https://westgrid-webinars.netlify.com/ml_flux#/"><p align="center"><img src="/img/ml_flux_slides.png" title="Link to slides" width="700" style="border:2px solid black"/></p></a>
+#+END_export
 
 * Video
+
+Coming on May 13.
+
+* Comments and questions
+
+#+BEGIN_export html
+<script src="https://utteranc.es/client.js"
+        repo="WestGrid/machine-learning"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_export
