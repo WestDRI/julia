@@ -62,3 +62,14 @@ A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in whi
 
 Coming on March 4.
 
+* Comments and questions
+
+#+BEGIN_export html
+<script src="https://utteranc.es/client.js"
+        repo="WestGrid/julia"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+#+END_export
