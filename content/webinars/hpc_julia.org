@@ -54,12 +54,9 @@ A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in whi
 
 * Slides
 
-#+BEGIN_center
-#+CAPTION: [[https://westgrid-webinars.netlify.com/hpc_julia#/][High-Performance Computing with Julia]]
-#+ATTR_HTML: :title High-Performance Computing with Julia
-#+ATTR_HTML: :width 700 :style border:2px solid black;
-[[/img/hpc_julia_slides.png]]
-#+END_center
+#+BEGIN_export html
+<a href="https://westgrid-webinars.netlify.com/hpc_julia#/"><p align="center"><img src="/img/hpc_julia_slides.png" title="Link to slides" width="700" style="border:2px solid black"/></p></a>
+#+END_export
 
 * Video
 
