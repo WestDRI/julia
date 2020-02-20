@@ -5,6 +5,11 @@
 
 #+OPTIONS: toc:1
 
+#+BEGIN_center
+#+ATTR_HTML: :width 200
+[[/img/workinprogress.svg]]
+#+END_center
+
 This workshop is part of Simon Fraser University spring school:
 [[/img/sfu2020poster.png]]
 
