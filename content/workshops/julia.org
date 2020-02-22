@@ -11,8 +11,12 @@
 #+END_center
 
 This workshop is part of Simon Fraser University spring school:
-[[/img/sfu2020poster.png]]
+#+BEGIN_center
+#+ATTR_HTML: :alt radius
+[[/img/sfu2020poster_no_padding.png]]
+#+END_center
 
+#+HTML: <br>
 #+BEGIN_sticker
 [[https://www.eventbrite.ca/e/research-computing-workshops-simon-fraser-university-registration-88799572913][Register for free workshop]]
 #+END_sticker
