@@ -29,15 +29,3 @@
 * Video
 
 Coming on May 13.
-
-* Comments and questions
-
-#+BEGIN_export html
-<script src="https://utteranc.es/client.js"
-        repo="WestGrid/machine-learning"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-#+END_export

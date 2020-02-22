@@ -110,16 +110,3 @@ Conveniently, all packages are on GitHub and they can easily be searched in a [[
 
 * Parallel computing
 
-
-
-* Comments and questions
-
-#+BEGIN_export html
-<script src="https://utteranc.es/client.js"
-        repo="WestGrid/cli_git_etal"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-#+END_export
