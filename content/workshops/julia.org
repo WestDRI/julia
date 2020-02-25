@@ -39,42 +39,44 @@ Finally, Julia shines by its extremely clean and concise syntax. This last featu
 In this workshop, which does not require any prior experience in Julia (experience in another language—e.g. R or python—would be best), we will go over the basics of Julia's syntax and package system; then we will push the performance aspect further by looking at how Julia can make use of clusters for large scale parallel computing.
 #+END_definition
 
-* Background
+* Intro to Julia
 
-** Brief history
+** Background
+
+*** Brief history
 
 A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in which [[https://www.rust-lang.org/][Rust]] developer Graydon Hoare places Julia in a historical context of programming languages.
 
-** Why another language?
+*** Why another language?
 
-*** Just-in-time (JIT) compilation
+**** Just-in-time (JIT) compilation
 
 [[https://en.wikipedia.org/wiki/Just-in-time_compilation][Just-in-time compilation]] 
 
-**** Compiled languages
+***** Compiled languages
 
 [[/img/compiled_language.png]]
 
 Source code is human-readable, usually in plain text. That's the highest level.\\
 Machine code is the lowest level.
 
-**** Interpreted languages
+***** Interpreted languages
 
 [[/img/interpreted_language.png]]
 
 The source code can facultatively be bytecompiled into non human-readable, more compact, lower level bytecode which is read by the interpreter more efficiently.
 
-*** Multiple dispatch
+**** Multiple dispatch
 
 opt-in type checking
 
-* Practical considerations
+** Practical considerations
 
-** Where to find resources
+*** Where to find resources
 
 [[https://julialang.org/][Julia's website]]
 
-*** Documentation
+**** Documentation
 
 - The official Julia [[https://docs.julialang.org/en/v1/][manual]]
 
@@ -82,7 +84,7 @@ opt-in type checking
 
 - [[https://www.youtube.com/user/JuliaLanguage][YouTube]] channel
 
-*** Getting help
+**** Getting help
 
 - Discourse [[https://discourse.julialang.org/][forum]]
 
@@ -98,7 +100,7 @@ opt-in type checking
 
 - [[https://webchat.freenode.net/#julia][#julia]] IRC channel on Freenode
 
-** How to run Julia
+*** How to run Julia
 
 - [[https://jupyter.org/][Jupyter notebooks]]
 
@@ -106,9 +108,9 @@ opt-in type checking
 
 - The [[https://junolab.org/][Juno]] IDE
 
-* Syntax
+** Syntax
 
-* Packages
+** Packages
 
 Conveniently, all packages are on GitHub and they can easily be searched in a [[https://pkg.julialang.org/docs/][listing]].
 
