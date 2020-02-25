@@ -19,7 +19,10 @@ canonifyurls = true
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    style = "friendly"
+    # style = "friendly"
+    # style = "tango"
+    # style = "emacs"
+    style = "manni"
   [markup.tableOfContents]
     endLevel = 1
     ordered = false
