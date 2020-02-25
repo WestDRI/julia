@@ -70,7 +70,7 @@ The source code can facultatively be bytecompiled into non human-readable, more 
 
 opt-in type checking
 
-** Practical considerations
+** Getting started
 
 *** Where to find resources
 
