@@ -60,13 +60,15 @@ If SSH does not come bundled with your distribution, install [[https://www.opens
 You will need a capable text editor (e.g. Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++).\\
 If you would rather play in the Julia IDE, you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].
 
-* Intro to Julia
+* Introducing Julia
 
 ** Background
 
 *** Brief history
 
-A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in which [[https://www.rust-lang.org/][Rust]] developer Graydon Hoare places Julia in a historical context of programming languages.
+Started in 2009 by Jeff Bezanson, [[https://en.wikipedia.org/wiki/Stefan_Karpinski][Stefan Karpinski]], [[https://en.wikipedia.org/wiki/Viral_B._Shah][Viral B. Shah]], and [[https://en.wikipedia.org/wiki/Alan_Edelman][Alan Edelman]], Julia was launched in 2012 as free and open source software. The 1.0 version was released in 2018.
+
+[[https://www.rust-lang.org/][Rust]] developer Graydon Hoare wrote an interesting [[https://graydon2.dreamwidth.org/189377.html][post]] which places Julia in a historical context of programming languages.
 
 *** Why another language?
 
