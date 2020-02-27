@@ -3,7 +3,7 @@
 #+date: 2020-03-03
 #+place: 3h workshop at Simon Fraser University
 
-#+OPTIONS: toc:1
+#+OPTIONS: toc:2
 
 #+BEGIN_center
 #+ATTR_HTML: :width 200
@@ -38,6 +38,15 @@ Finally, Julia shines by its extremely clean and concise syntax. This last featu
 
 In this workshop, which does not require any prior experience in Julia (experience in another language—e.g. R or python—would be best), we will go over the basics of Julia's syntax and package system; then we will push the performance aspect further by looking at how Julia can make use of clusters for large scale parallel computing.
 #+END_definition
+
+* Requirements
+
+** A terminal emulator and an SSH client for remote access to clusters
+
+Windows: install the free Home Edition of [[https://mobaxterm.mobatek.net/download.html][MobaXTerm]]
+MacOS: Terminal and SSH are pre-installed
+Linux: install [[https://www.openssh.com/][OpenSSH]]
+- The current [[https://julialang.org/downloads/][Julia stable release]]
 
 * Intro to Julia
 
@@ -100,19 +109,138 @@ opt-in type checking
 
 - [[https://webchat.freenode.net/#julia][#julia]] IRC channel on Freenode
 
-*** How to run Julia
-
-- [[https://jupyter.org/][Jupyter notebooks]]
+*** Nice ways to run Julia
 
 - Emacs through the Emacs [[https://ess.r-project.org/][ESS]] or [[https://github.com/JuliaEditorSupport/julia-emacs][julia-emacs]] packages. You can also run Jupyter notebooks through the [[http://millejoh.github.io/emacs-ipython-notebook/][Emacs IPython Notebook (EIN)]] package
 
 - The [[https://junolab.org/][Juno]] IDE
 
+- [[https://jupyter.org/][Jupyter notebooks]]
+
 ** Syntax
+
+*** 3 REPL modes
+
+- Julian
+- Pkg
+- help
 
 ** Packages
 
-Conveniently, all packages are on GitHub and they can easily be searched in a [[https://pkg.julialang.org/docs/][listing]].
+Conveniently, all packages are on GitHub and they can easily be searched [[https://pkg.julialang.org/docs/][here]].
 
-* Parallel computing
+* Hands-on
+
+using Distributed
+nprocs()
+nworkers()
+
+** Working with Julia locally
+
+
+** Working with Julia on the cluster
+
+Now that we have a running script, let's submit a job to the cluster.
+
+*** Log in to the cluster
+
+Open a terminal emulator (also called shell or command line interface).
+
+/Windows users, launch [[https://mobaxterm.mobatek.net/][MobaXTerm]].\\
+MacOS users, launch the program "Terminal"./
+
+#+BEGIN_src sh
+ssh userxxx@cassiopeia.c3.ca
+
+# enter password
+#+END_src
+
+You are now in our training cluster.
+
+*** Access Julia
+
+This is done through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command.
+
+#+BEGIN_src sh
+# get help on the module command
+module help
+module --help
+module -h
+
+# list modules that are already loaded
+module list
+
+# see which modules are available for Julia
+module spider julia
+
+# see how to load julia 1.3
+module spider julia/1.3.0
+
+# load julia 1.3 with the required gcc module first
+# (the order is important)
+module load gcc/7.3.0 julia/1.3.0
+
+# you can see that we now have Julia loaded
+module list
+#+END_src
+
+source /project/shared/syncHPC/startJulia.sh
+julia
+
+
+module load gcc/7.3.0 julia/1.3.0
+export JULIA_DEPOT_PATH="julia:@v#.#:@stdlib:/project/shared/bio"
+export JULIA_LOAD_PATH=$JULIA_LOAD_PATH:/project/shared/bio
+
+
+
+*** Write Julia script which can be run from the command line
+
+#+BEGIN_export html
+Save your script in the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_script.jl</span>.
+#+END_export
+
+#+BEGIN_src julia
+# install necessary packages
+import Pkg
+Pkg.add(["", ""])
+
+
+#+END_src
+
+*** Job script
+
+#+BEGIN_export html
+Save your Slurm job script in the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">job_script.sh</span>.
+#+END_export
+
+#+BEGIN_src sh
+#!/bin/bash
+#SBATCH --job-name=julia		# job name
+#SBATCH --time=00:01:00			# max walltime
+#SBATCH --mem=100M				# max memory
+#SBATCH --output=julia%j.out	# file name for the output
+#SBATCH --error=julia%j.err		# file name for errors
+# %j gets replaced with the job number
+
+# load necessary modules
+module load gcc/7.3.0 julia/1.3.0
+
+# run our Julia script
+julia julia_script.jl
+#+END_src
+
+We submit our job with:
+
+#+BEGIN_src sh
+sbatch job_script.sh
+#+END_src
+
+And we can check its status with:
+
+#+BEGIN_src sh
+sq
+#+END_src
+
+
 
