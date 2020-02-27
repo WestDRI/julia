@@ -39,14 +39,26 @@ Finally, Julia shines by its extremely clean and concise syntax. This last featu
 In this workshop, which does not require any prior experience in Julia (experience in another language—e.g. R or python—would be best), we will go over the basics of Julia's syntax and package system; then we will push the performance aspect further by looking at how Julia can make use of clusters for large scale parallel computing.
 #+END_definition
 
-* Requirements
+* Software requirements
 
-** A terminal emulator and an SSH client for remote access to clusters
+*1_ A terminal emulator and an SSH client for remote access to clusters*
 
-Windows: install the free Home Edition of [[https://mobaxterm.mobatek.net/download.html][MobaXTerm]]
-MacOS: Terminal and SSH are pre-installed
-Linux: install [[https://www.openssh.com/][OpenSSH]]
-- The current [[https://julialang.org/downloads/][Julia stable release]]
+/Windows:/ \\
+Install the free Home Edition of [[https://mobaxterm.mobatek.net/download.html][MobaXTerm]].
+
+/MacOS:/ \\
+Terminal and SSH are pre-installed.
+
+/Linux:/ \\
+You can use xterm or the terminal emulator of your choice.\\
+If SSH does not come bundled with your distribution, install [[https://www.openssh.com/][OpenSSH]].
+
+*2_ The current [[https://julialang.org/downloads/][Julia stable release]]*
+
+*3_ A good text editor or the Julia IDE*
+
+You will need a capable text editor (e.g. Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++).\\
+If you would rather play in the Julia IDE, you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].
 
 * Intro to Julia
 
