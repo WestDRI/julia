@@ -72,22 +72,39 @@ Started in 2009 by Jeff Bezanson, [[https://en.wikipedia.org/wiki/Stefan_Karpins
 
 *** Why another language?
 
-**** Just-in-time (JIT) compilation
+**** JIT
 
-[[https://en.wikipedia.org/wiki/Just-in-time_compilation][Just-in-time compilation]] 
+Computer languages mostly fall into two categories: *compiled languages* and *interpreted languages*.
 
 ***** Compiled languages
 
+Compiled languages require two steps:
+
+- in a first step the code you write in a human-readable format (the source code, usually in plain text) gets compiled into machine code
+
+- it is then this machine code that is used to process your data
+
+So you write a script, compile it, then use it.
+
 [[/img/compiled_language.png]]
 
-Source code is human-readable, usually in plain text. That's the highest level.\\
-Machine code is the lowest level.
+Because machine code is a lot easier to process by computers, compiled languages are fast. But the two step process makes direct interaction with the code impossible.
+
+Examples of compiled languages include C, C++, Fortran, Go, and Haskell.
 
 ***** Interpreted languages
 
+Interpreted languages are executed directly. This has many advantages (direct interaction with the code, dynamic typing, etc.), but it comes at the cost of efficiency. The source code can facultatively be bytecompiled into non human-readable, more compact, lower level bytecode which is read by the interpreter more efficiently.
+
 [[/img/interpreted_language.png]]
 
-The source code can facultatively be bytecompiled into non human-readable, more compact, lower level bytecode which is read by the interpreter more efficiently.
+Examples of interpreted languages include R, Python, Perl, and JavaScript.
+
+***** JIT compiled languages
+
+Julia uses [[https://en.wikipedia.org/wiki/Just-in-time_compilation][just-in-time compilation]] or (JIT): the source code is compiled at run time. This combines the flexibility of interpretation with the speed of compilation, bringing speed to an interactive language. It also allows for dynamic recompilation, continuous weighing of gains and costs of the compilation of parts of the code, and other on the fly optimizations.
+
+Of course, there are costs here too in the form of overhead time to compile code the first time it is run and increased memory usage.
 
 **** Multiple dispatch
 
