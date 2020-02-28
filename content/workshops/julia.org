@@ -41,7 +41,9 @@ In this workshop, which does not require any prior experience in Julia (experien
 
 * Software requirements
 
-*1_ A terminal emulator and an SSH client for remote access to clusters*
+For this workshop, you will need:
+
+*1 - A terminal emulator and an SSH client for remote access to clusters*
 
 /Windows:/ \\
 Install the free Home Edition of [[https://mobaxterm.mobatek.net/download.html][MobaXTerm]].
@@ -53,9 +55,9 @@ Terminal and SSH are pre-installed.
 You can use xterm or the terminal emulator of your choice.\\
 If SSH does not come bundled with your distribution, install [[https://www.openssh.com/][OpenSSH]].
 
-*2_ The current [[https://julialang.org/downloads/][Julia stable release]]*
+*2 - The current [[https://julialang.org/downloads/][Julia stable release]]*
 
-*3_ A good text editor or the Julia IDE*
+*3 - A good text editor or the Julia IDE*
 
 You will need a capable text editor (e.g. Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++).\\
 If you would rather play in the Julia IDE, you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].
@@ -104,7 +106,7 @@ Examples of interpreted languages include R, Python, Perl, and JavaScript.
 
 Julia uses [[https://en.wikipedia.org/wiki/Just-in-time_compilation][just-in-time compilation]] or (JIT): the source code is compiled at run time. This combines the flexibility of interpretation with the speed of compilation, bringing speed to an interactive language. It also allows for dynamic recompilation, continuous weighing of gains and costs of the compilation of parts of the code, and other on the fly optimizations.
 
-Of course, there are costs here too in the form of overhead time to compile code the first time it is run and increased memory usage.
+Of course, there are costs here too. They come in the form of overhead time to compile code the first time it is run and increased memory usage.
 
 **** Multiple dispatch
 
@@ -163,26 +165,29 @@ Here are a few:
 ** Basics
 
 #+BEGIN_export html
-Julia scripts are text files with the extension <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">.jl</span>
+Julia scripts are text files with the extension <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">.jl</span>.
 #+END_export
 
 *** 4 REPL modes
 
 #+BEGIN_export html
-<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The main mode in which you will be running your code.<br><br>
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The main mode in which you will be running your code.<br><br>
 #+END_export
 
 #+BEGIN_export html
-<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #dab314"><b>help?></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mode to easily access documentation.<br><br>
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #dab314"><b>help?></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mode to easily access documentation.<br><br>
 #+END_export
 
 #+BEGIN_export html
-<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #b30000"><b>shell></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mode in which you can run bash commands from within Julia.<br><br>
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #b30000"><b>shell></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mode in which you can run bash commands from within Julia.<br><br>
 #+END_export
 
 #+BEGIN_export html
-<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(env) pkg></b></span> &nbsp;&nbsp; A mode to easily perform actions on packages with Julia package manager.<br><br>
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(env) pkg></b></span> &nbsp;&nbsp; A mode to easily perform actions on packages with Julia package manager.<br><br>
+Enter the various modes with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">?</span>&nbsp; <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">;</span>&nbsp; <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">]</span> and go back to the regular mode with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">Backspace</span> key.
 #+END_export
+
+
 
 ** Packages
 
@@ -190,12 +195,13 @@ All packages are on GitHub and can easily be searched [[https://pkg.julialang.or
 
 * Hands-on
 
-using Distributed
-nprocs()
-nworkers()
-
 ** Working with Julia locally
 
+While we will be interacting with Julia through the REPL to develop and test our code, we want to save it in a script for future use and to submit to the cluster.
+
+#+BEGIN_export html
+Create a folder called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> somewhere in your system and create a file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_script.jl</span> in it.
+#+END_export
 
 ** Working with Julia on the cluster
 
@@ -203,10 +209,11 @@ Now that we have a running script, let's submit a job to the cluster.
 
 *** Log in to the cluster
 
-Open a terminal emulator (also called shell or command line interface).
+Open a terminal emulator.
 
-/Windows users, launch [[https://mobaxterm.mobatek.net/][MobaXTerm]].\\
-MacOS users, launch the program "Terminal"./
+/Windows users, launch [[https://mobaxterm.mobatek.net/][MobaXTerm]]./ \\
+/MacOS users, launch Terminal./ \\
+/Linux users, launch xterm or the terminal emulator of your choice./
 
 #+BEGIN_src sh
 ssh userxxx@cassiopeia.c3.ca
@@ -216,7 +223,25 @@ ssh userxxx@cassiopeia.c3.ca
 
 You are now in our training cluster.
 
-*** Access Julia
+*** Copy your Julia script to the training cluster
+
+#+BEGIN_export html
+We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch</span>, then copy our julia script in it.
+#+END_export
+
+#+BEGIN_src sh
+mkdir ~/scratch/julia_job
+#+END_src
+
+Open a new terminal window and from your own computer run:
+
+#+BEGIN_src sh
+scp /path/to/your/local/julia_script.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+
+# enter password
+#+END_src
+
+*** Access Julia and install packages
 
 This is done through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command.
 
@@ -243,35 +268,44 @@ module load gcc/7.3.0 julia/1.3.0
 module list
 #+END_src
 
-source /project/shared/syncHPC/startJulia.sh
-julia
-
-
+So the normal process to get started with Julia in the cluster would be to run:
+#+BEGIN_src sh
 module load gcc/7.3.0 julia/1.3.0
-export JULIA_DEPOT_PATH="julia:@v#.#:@stdlib:/project/shared/bio"
-export JULIA_LOAD_PATH=$JULIA_LOAD_PATH:/project/shared/bio
+#+END_src
 
-
-
-*** Write Julia script which can be run from the command line
+We would then install the necessary Julia packages.
 
 #+BEGIN_export html
-Save your script in the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_script.jl</span>.
+In order to take a lot of burden out of our training cluster however, since we are all running the same code with the same packages, instead of having each of us install the packages in our home directories, we will all make use of packages which have already been installed in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/bio</span>.
+
+So what we will do instead is run a little script called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/syncHPC/startJulia.sh</span>.
 #+END_export
 
-#+BEGIN_src julia
-# install necessary packages
-import Pkg
-Pkg.add(["", ""])
+Let's see what is in that script:
 
+#+BEGIN_src sh
+cat /project/shared/syncHPC/startJulia.sh
+#+END_src
 
+#+BEGIN_export html
+As you can see, the Julia module is already loaded. The rest sets the path to the packages to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/bio</span>.
+#+END_export
+
+So, for the purpose of this workshop, instead of loading Julia and installing the required packages, we will simply run:
+
+#+BEGIN_src sh
+source /project/shared/syncHPC/startJulia.sh
 #+END_src
 
 *** Job script
 
+We will not run an interactive session with Julia on the cluster: we already have a julia script ready. All we need to do is to write a job script to submit to Slurm, the job scheduler used by the Compute Canada clusters.
+
 #+BEGIN_export html
-Save your Slurm job script in the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">job_script.sh</span>.
+Save your Slurm job script in the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch/julia_job/job_script.sh</span>.
 #+END_export
+
+In this script, we need:
 
 #+BEGIN_src sh
 #!/bin/bash
@@ -282,16 +316,21 @@ Save your Slurm job script in the file <span style="font-family: 'Source Code Pr
 #SBATCH --error=julia%j.err		# file name for errors
 # %j gets replaced with the job number
 
-# load necessary modules
-module load gcc/7.3.0 julia/1.3.0
+# normally we would load the necessary modules with:
+# module load gcc/7.3.0 julia/1.3.0
+# but instead we are here running startJulia.sh
+# which does this and changes the environment variables
+# which tell Julia where to look for packages
+source /project/shared/syncHPC/startJulia.sh
 
 # run our Julia script
 julia julia_script.jl
 #+END_src
 
-We submit our job with:
+Now, we can submit our job to the cluster with:
 
 #+BEGIN_src sh
+cd ~/scratch/julia_job
 sbatch job_script.sh
 #+END_src
 
@@ -300,6 +339,3 @@ And we can check its status with:
 #+BEGIN_src sh
 sq
 #+END_src
-
-
-
