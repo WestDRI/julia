@@ -8,22 +8,22 @@
       margin-top: 6.4rem;
       margin-bottom: 3.2rem;
       h1 {
-        font-size: 3.8rem;
-        line-height: 4.6rem;
-        margin: 0;
-        @media only screen and (max-width : 768px) {
-          font-size: 4.0rem;
-          line-height: 4.4rem;
-        }
+	font-size: 3.8rem;
+	line-height: 4.6rem;
+	margin: 0;
+	@media only screen and (max-width : 768px) {
+	  font-size: 4.0rem;
+	  line-height: 4.4rem;
+	}
       }
     }
     footer {
       margin-top: 4.0rem;
       .see-also {
-        margin: 3.2rem 0;
-        h3 {
-          margin: 3.2rem 0;
-        }
+	margin: 3.2rem 0;
+	h3 {
+	  margin: 3.2rem 0;
+	}
       }
     }
   }
@@ -39,15 +39,15 @@
       i {
 	color: #595959;
 	text-align: center;
-        width: 1.6rem;
-        margin-left: 0;
-        margin-right: 0.5rem;
+	width: 1.6rem;
+	margin-left: 0;
+	margin-right: 0.5rem;
       }
       .date {
-        .posted-on {
-          margin-left: 0;
-          margin-right: 1.5rem;
-        }
+	.posted-on {
+	  margin-left: 0;
+	  margin-right: 1.5rem;
+	}
       }
       .place {
       }
@@ -100,28 +100,28 @@ img[alt=radius] {
     li {
       font-size: 1.8rem;
       @media only screen and (max-width : 768px) {
-        margin: 1.6rem 0 1.6rem 0;
+	margin: 1.6rem 0 1.6rem 0;
       }
       .date {
 	font-size: 1.7rem;
-        display: inline-block;
-        width: 20.0rem;
-        text-align: right;
-        margin-right: 3.0rem;
-        @media only screen and (max-width : 768px) {
+	display: inline-block;
+	width: 20.0rem;
+	text-align: right;
+	margin-right: 3.0rem;
+	@media only screen and (max-width : 768px) {
 	  display: block;
 	  text-align: left;
-        }
+	}
       }
       .title {
-        font-size: 1.8rem;
-        color: $fg-color;
-        font-family: $heading-font-family;
-        font-weight: 700;
-        &:hover,
-        &:focus {
-          color: $link-color
-        }
+	font-size: 1.8rem;
+	color: $fg-color;
+	font-family: $heading-font-family;
+	font-weight: 700;
+	&:hover,
+	&:focus {
+	  color: $link-color
+	}
       }
     }
   }
@@ -142,7 +142,7 @@ img[alt=radius] {
       margin-bottom: 0.5rem;
       font-size: 2.4rem;
       @media only screen and (max-width : 768px) {
-        font-size: 2.0rem;
+	font-size: 2.0rem;
       }
     }
     ul {
@@ -150,25 +150,25 @@ img[alt=radius] {
       margin: 3.0rem 0 1.0rem 0;
       padding: 0;
       li {
-        display: inline-block;
-        position: relative;
-        a {
-          color: $fg-color;
-          text-transform: uppercase;
-          margin-left: 1.0rem;
-          margin-right: 1.0rem;
-          font-size: 1.6rem;
-          &:hover,
-          &:focus {
-            color: $link-color;
-          }
-          @media only screen and (max-width : 768px) {
-            font-size: 1.4rem;
-          }
-          i {
-            font-size: 3.2rem;
-          }
-        }
+	display: inline-block;
+	position: relative;
+	a {
+	  color: $fg-color;
+	  text-transform: uppercase;
+	  margin-left: 1.0rem;
+	  margin-right: 1.0rem;
+	  font-size: 1.6rem;
+	  &:hover,
+	  &:focus {
+	    color: $link-color;
+	  }
+	  @media only screen and (max-width : 768px) {
+	    font-size: 1.4rem;
+	  }
+	  i {
+	    font-size: 3.2rem;
+	  }
+	}
       }
     }
   }
@@ -180,7 +180,7 @@ img[alt=radius] {
       margin-bottom: 0.5rem;
       font-size: 4.6rem;
       @media only screen and (max-width : 768px) {
-        font-size: 3.2rem;
+	font-size: 3.2rem;
       }
     }
     h2 {
@@ -188,7 +188,7 @@ img[alt=radius] {
       margin-bottom: 3.2rem;
       font-size: 3.2rem;
       @media only screen and (max-width : 768px) {
-        font-size: 2.8rem;
+	font-size: 2.8rem;
       }
     }
   }
