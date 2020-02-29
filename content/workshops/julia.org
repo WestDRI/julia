@@ -166,10 +166,6 @@ Here are a few:
 
 [[https://jupyter.org/][Project Jupyter]] allows to create interactive programming documents through its web-based JupyterLab environment and its Jupyter Notebook.
 
-** Packages
-
-All packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]].
-
 * Hands-on
 
 ** Working with Julia locally
@@ -235,6 +231,103 @@ In addition, there are 4 REPL modes:
 #+BEGIN_export html
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(env) pkg></b></span> &nbsp;&nbsp; A mode to easily perform actions on packages with Julia package manager.<br><br>
 Enter the various modes with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">?</span>&nbsp; <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">;</span>&nbsp; <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">]</span> and go back to the regular mode with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">Backspace</span> key.
+#+END_export
+
+#+BEGIN_export html
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">env</span> is the name of your current project environment. Project environments are similar to Python's virtual environments and allow you, for instance, to have different package versions for different projects. By default, it is the current Julia version. So what you will see is <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">(v1.3) Pkg</span>.
+#+END_export
+
+*** Packages
+
+**** Standard library
+
+#+BEGIN_export html
+Julia comes with a collection of packages. In Linux, they are in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/usr/share/julia/stdlib/vx.x</span>.
+#+END_export
+
+Here is the list:
+
+#+BEGIN_example
+Base64
+CRC32c
+Dates
+DelimitedFiles
+Distributed
+FileWatching
+Future
+InteractiveUtils
+Libdl
+LibGit2
+LinearAlgebra
+Logging
+Markdown
+Mmap
+Pkg
+Printf
+Profile
+Random
+REPL
+Serialization
+SHA
+SharedArrays
+Sockets
+SparseArrays
+Statistics
+SuiteSparse
+Test
+Unicode
+UUIDs
+#+END_example
+
+**** Installing additional packages
+
+#+BEGIN_export html
+You can install additional packages.<br>
+These go to your personal library in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/.julia</span> (this is also where your REPL history is saved).
+#+END_export
+
+All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]].\\
+The GitHub star system allows you to easily judge the popularity of a package and to see whether it is under current development.
+
+In addition to these, there are unregistered packages and you can build your own.
+
+#+BEGIN_challenge
+#+BEGIN_export html
+<span style="color: #e10070">Challenge</span><br>
+Try to find a list of popular plotting packages.
+#+END_export
+#+END_challenge
+
+You can manage your personal library easily in package mode with the commands:
+
+#+BEGIN_example
+add &lt;package&gt;		install &lt;package&gt;
+rm &lt;package&gt;		uninstall &lt;package&gt;
+up &lt;package&gt;		upgrade &lt;package&gt;
+
+st			check which packages are installed
+up			upgrade all packages
+ #+END_example
+
+#+BEGIN_challenge
+#+BEGIN_export html
+<span style="color: #e10070">Challenge</span><br>
+Check your list of packages, install the packages xxxxxx, then check that list again.
+#+END_export
+#+END_challenge
+
+#+BEGIN_challenge
+#+BEGIN_export html
+<span style="color: #e10070">Challenge</span><br>
+Now go explore your <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/.julia</span> directory. If you don't find it, make sure that your file explorer allows you to see hidden files.
+#+END_export
+#+END_challenge
+
+**** Loading packages 
+
+#+BEGIN_export html
+Whether a package from the standard library or one you installed, before you can use a package you need to load it. This has to be done at each new Julia session so the code to load packages should be part of your scripts.<br><br>
+This is done with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using</span> command (e.g. <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using Pkg</span>).
 #+END_export
 
 *** First few commands
