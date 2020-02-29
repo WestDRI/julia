@@ -70,7 +70,7 @@ If you would rather play in the Julia IDE, you can find the installation instruc
 
 *** Brief history
 
-Started in 2009 by Jeff Bezanson, [[https://en.wikipedia.org/wiki/Stefan_Karpinski][Stefan Karpinski]], [[https://en.wikipedia.org/wiki/Viral_B._Shah][Viral B. Shah]], and [[https://en.wikipedia.org/wiki/Alan_Edelman][Alan Edelman]], Julia was launched in 2012 as free and open source software. Version 1.0 was released in 2018.
+Started in 2009 by Jeff Bezanson, [[https://en.wikipedia.org/wiki/Stefan_Karpinski][Stefan Karpinski]], [[https://en.wikipedia.org/wiki/Viral_B._Shah][Viral B. Shah]], and [[https://en.wikipedia.org/wiki/Alan_Edelman][Alan Edelman]], the general-purpose programming language Julia was launched in 2012 as free and open source software. Version 1.0 was released in 2018.
 
 [[https://www.rust-lang.org/][Rust]] developer Graydon Hoare wrote an interesting [[https://graydon2.dreamwidth.org/189377.html][post]] which places Julia in a historical context of programming languages.
 
@@ -92,13 +92,13 @@ So you write a script, compile it, then use it.
 
 [[/img/compiled_language.png]]
 
-Because machine code is a lot easier to process by computers, compiled languages are fast. But the two step process makes direct interaction with the code impossible.
+Because machine code is a lot easier to process by computers, compiled languages are fast. The two step process however makes prototyping new code less practical, these languages are hard to learn, and debugging compilation errors can be challenging.
 
 Examples of compiled languages include C, C++, Fortran, Go, and Haskell.
 
 ***** Interpreted languages
 
-Interpreted languages are executed directly. This has many advantages (direct interaction with the code, dynamic typing, etc.), but it comes at the cost of efficiency. The source code can facultatively be bytecompiled into non human-readable, more compact, lower level bytecode which is read by the interpreter more efficiently.
+Interpreted languages are executed directly which has many advantages such as dynamic typing and direct feed-back from the code and they are easy to learn, but this comes at the cost of efficiency. The source code can facultatively be bytecompiled into non human-readable, more compact, lower level bytecode which is read by the interpreter more efficiently.
 
 [[/img/interpreted_language.png]]
 
@@ -106,7 +106,7 @@ Examples of interpreted languages include R, Python, Perl, and JavaScript.
 
 ***** JIT compiled languages
 
-Julia uses [[https://en.wikipedia.org/wiki/Just-in-time_compilation][just-in-time compilation]] or (JIT): the source code is compiled at run time. This combines the flexibility of interpretation with the speed of compilation, bringing speed to an interactive language. It also allows for dynamic recompilation, continuous weighing of gains and costs of the compilation of parts of the code, and other on the fly optimizations.
+Julia uses [[https://en.wikipedia.org/wiki/Just-in-time_compilation][just-in-time compilation]] or JIT based on [[https://en.wikipedia.org/wiki/LLVM][LLVM]]: the source code is compiled at run time. This combines the flexibility of interpretation with the speed of compilation, bringing speed to an interactive language. It also allows for dynamic recompilation, continuous weighing of gains and costs of the compilation of parts of the code, and other on the fly optimizations.
 
 Of course, there are costs here too. They come in the form of overhead time to compile code the first time it is run and increased memory usage.
 
@@ -126,7 +126,9 @@ The main place to look for resources is the Julia [[https://julialang.org/][webs
 
 - Online [[https://julialang.org/learning/][training]] material
 
-- [[https://www.youtube.com/user/JuliaLanguage][YouTube]] channel
+- The Julia [[https://www.youtube.com/user/JuliaLanguage][YouTube]] channel
+
+- A [[https://www.juliabloggers.com/][blog]] aggregator for Julia
 
 **** Getting help
 
@@ -164,13 +166,59 @@ Here are a few:
 
 [[https://jupyter.org/][Project Jupyter]] allows to create interactive programming documents through its web-based JupyterLab environment and its Jupyter Notebook.
 
-** Basics
+** Packages
+
+All packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]].
+
+* Hands-on
+
+** Working with Julia locally
+
+While we will be interacting with Julia through the REPL (read–eval–print loop: the interactive Julia shell) to develop and test our code, we want to save it in a script for future use and to submit to the cluster.
 
 #+BEGIN_export html
 Julia scripts are text files with the extension <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">.jl</span>.
 #+END_export
 
-*** 4 REPL modes
+#+BEGIN_export html
+Create a folder called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> somewhere in your system and create a file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_script.jl</span> in it.
+#+END_export
+
+*** Keybindings
+
+In the REPL, you can use standard command line keybindings:
+
+#+BEGIN_example
+C-c		cancel
+C-d		quit
+C-l		clear console
+
+C-u		kill from the start of line
+C-k		kill until the end of line
+
+C-a		go to start of line
+C-e		go to end of line
+
+C-f		move forward one character
+C-b		move backward one character
+
+M-f		move forward one word
+M-b		move backward one word
+
+C-d		delete forward one character
+C-h		delete backward one character
+
+M-d		delete forward one word
+M-Backspace	delete backward one word
+
+C-p		previous command
+C-n		next command
+
+C-r		backward search
+C-s		forward search
+#+END_example
+
+In addition, there are 4 REPL modes:
 
 #+BEGIN_export html
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The main mode in which you will be running your code.<br><br>
@@ -189,21 +237,27 @@ Julia scripts are text files with the extension <span style="font-family: 'Sourc
 Enter the various modes with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">?</span>&nbsp; <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">;</span>&nbsp; <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">]</span> and go back to the regular mode with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">Backspace</span> key.
 #+END_export
 
+*** First few commands
 
+Run a couple of commands in the REPL:
 
-** Packages
+#+BEGIN_src julia
 
-All packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]].
+#+END_src
 
-* Hands-on
+*** Comments
 
-** Working with Julia locally
+#+BEGIN_src julia
+# Single line comment
 
-While we will be interacting with Julia through the REPL to develop and test our code, we want to save it in a script for future use and to submit to the cluster.
+#=
+Comments can
+also contain
+multiple lines
+=#
 
-#+BEGIN_export html
-Create a folder called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> somewhere in your system and create a file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_script.jl</span> in it.
-#+END_export
+x = 2;    # And they can be added at the end of lines
+#+END_src
 
 ** Working with Julia on the cluster
 
@@ -235,7 +289,7 @@ We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', 
 mkdir ~/scratch/julia_job
 #+END_src
 
-Open a new terminal window and from your own computer run:
+Open a new terminal window and from your local terminal (make sure that you are not on the remote terminal by looking at the bash prompt) run:
 
 #+BEGIN_src sh
 scp /path/to/your/local/julia_script.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
@@ -243,9 +297,9 @@ scp /path/to/your/local/julia_script.jl userxxx@cassiopeia.c3.ca:scratch/julia_j
 # enter password
 #+END_src
 
-*** Access Julia and install packages
+*** Access Julia
 
-This is done through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command.
+This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
 
 #+BEGIN_src sh
 # get help on the module command
@@ -270,17 +324,17 @@ module load gcc/7.3.0 julia/1.3.0
 module list
 #+END_src
 
-So the normal process to get started with Julia in the cluster would be to run:
+So the normal process to gain access to Julia version 1.3.0 in the cluster would be to run:
 #+BEGIN_src sh
 module load gcc/7.3.0 julia/1.3.0
 #+END_src
 
-We would then install the necessary Julia packages.
-
 #+BEGIN_export html
-In order to take a lot of burden out of our training cluster however, since we are all running the same code with the same packages, instead of having each of us install the packages in our home directories, we will all make use of packages which have already been installed in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/bio</span>.
+We would then install the Julia packages we need. By default, Julia packages are installed in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/.julia</span>.
 
-So what we will do instead is run a little script called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/syncHPC/startJulia.sh</span>.
+In order to take a lot of burden out of our training cluster however, since we are all running the same code and using the same packages, instead of each of us installing the packages in our home directories, we will all use packages which have already been installed in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/bio</span>.
+
+So, for the purpose of this workshop, instead of loading Julia and installing the required packages, we will simply run a little script called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/syncHPC/startJulia.sh</span>.
 #+END_export
 
 Let's see what is in that script:
@@ -289,15 +343,14 @@ Let's see what is in that script:
 cat /project/shared/syncHPC/startJulia.sh
 #+END_src
 
+As you can see, the script loads the Julia module. The rest sets environment variables to the packages path.
+
+#+BEGIN_challenge
 #+BEGIN_export html
-As you can see, the Julia module is already loaded. The rest sets the path to the packages to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/bio</span>.
+<span style="color: #e10070">Challenge</span><br>
+Launch Julia, get into the package mode, and make sure the packages we need are installed.
 #+END_export
-
-So, for the purpose of this workshop, instead of loading Julia and installing the required packages, we will simply run:
-
-#+BEGIN_src sh
-source /project/shared/syncHPC/startJulia.sh
-#+END_src
+#+END_challenge
 
 *** Job script
 
@@ -318,14 +371,14 @@ In this script, we need:
 #SBATCH --error=julia%j.err		# file name for errors
 # %j gets replaced with the job number
 
-# normally we would load the necessary modules with:
+# Normally we would load the necessary modules with:
 # module load gcc/7.3.0 julia/1.3.0
-# but instead we are here running startJulia.sh
-# which does this and changes the environment variables
-# which tell Julia where to look for packages
+# But here we will instead execute the script startJulia.sh:
 source /project/shared/syncHPC/startJulia.sh
+# This loads the modules and changes environment variables
+# so that Julia looks for packages in /project/shared/bio
 
-# run our Julia script
+# Run our Julia script
 julia julia_script.jl
 #+END_src
 
