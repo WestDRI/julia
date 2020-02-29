@@ -234,10 +234,18 @@ img[alt=radius] {
 //   transition: max-height 0.2s ease-out;
 // }
 
-// pre[class="example"] {
-//   /*mono font framed by subtle gray border*/
-//   padding: 0em 1.5em;
-// }
+.example-block {
+  padding: 0em 1.5em;
+  width: max-content;
+}
+
+.challenge-block {
+  color: #262626;
+  margin: 45px 50px 45px 20px;
+  border-left: 5px solid #ff3399;
+  padding-left: 1.3rem;
+  line-height: 2.5rem;
+}
 
 .box-block {
   /*mono font framed by subtle gray border*/
@@ -260,16 +268,15 @@ img[alt=radius] {
   border-radius: 3px;
 }
 
-// p[class="verse"] {
-//   /*verse*/
-//   color: #262626;
-//   font-family: 'IM Fell English';
-//   font-size: 110%;
-//   font-style: italic;
-//   margin-left: 30px;
-//   /*keep this line to have the verses indented*/
-//   line-height: 25px;
-// }
+.verse-block {
+  color: #262626;
+  font-family: 'IM Fell English';
+  font-size: 110%;
+  font-style: italic;
+  margin-left: 30px;
+  /*keep this line to have the verses indented*/
+  line-height: 25px;
+}
 
 .org-center-block {
   /*center*/
