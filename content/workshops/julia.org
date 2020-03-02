@@ -301,7 +301,7 @@ In addition to these, there are unregistered packages and you can build your own
 
 #+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Challenge</span><br>
+<span style="color: #e10070">Your turn:</span><br>
 Try to find a list of popular plotting packages.
 #+END_export
 #+END_challenge
@@ -319,14 +319,14 @@ up			upgrade all packages
 
 #+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Challenge</span><br>
-Check your list of packages, install the packages xxxxxx, then check that list again.
+<span style="color: #e10070">Your turn:</span><br>
+Check your list of packages, install the packages Plots, GR, Distributions, StatsPlots, UnicodePlotsxxxxxx, then check that list again.
 #+END_export
 #+END_challenge
 
 #+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Challenge</span><br>
+<span style="color: #e10070">Your turn:</span><br>
 Now go explore your <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/.julia</span> directory. If you don't find it, make sure that your file explorer allows you to see hidden files.
 #+END_export
 #+END_challenge
@@ -677,7 +677,7 @@ As you can see, the script loads the Julia module. The rest sets environment var
 
 #+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Challenge</span><br>
+<span style="color: #e10070">Your turn:</span><br>
 Launch Julia, get into the package mode, and make sure the packages we need are installed.
 #+END_export
 #+END_challenge
