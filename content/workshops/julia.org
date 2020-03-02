@@ -128,6 +128,8 @@ The main place to look for resources is the Julia [[https://julialang.org/][webs
 
 - The Julia [[https://www.youtube.com/user/JuliaLanguage][YouTube]] channel
 
+- The Julia [[https://en.wikibooks.org/wiki/Introducing_Julia][Wikibook]]
+
 - A [[https://www.juliabloggers.com/][blog]] aggregator for Julia
 
 **** Getting help
@@ -320,7 +322,7 @@ up			upgrade all packages
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-Check your list of packages, install the packages Plots, GR, Distributions, StatsPlots, UnicodePlotsxxxxxx, then check that list again.
+Check your list of packages, install the packages <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">Plots</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">GR</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">Distributions</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">StatsPlots</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">UnicodePlot</span>, then check that list again.
 #+END_export
 #+END_challenge
 
@@ -335,7 +337,7 @@ Now go explore your <span style="font-family: 'Source Code Pro', 'Lucida Console
 
 #+BEGIN_export html
 Whether a package from the standard library or one you installed, before you can use a package you need to load it. This has to be done at each new Julia session so the code to load packages should be part of your scripts.<br><br>
-This is done with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using</span> command (e.g. <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using Pkg</span>).
+This is done with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using</span> command (e.g. <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using Plots</span>).
 #+END_export
 
 *** Julia basics
@@ -563,17 +565,23 @@ addSomethingOrTwo(3, 4)
 
 **** Plotting
 
+It can be convenient to plot directly in the REPL (for instance when using SSH).
+
 #+BEGIN_src julia
 using UnicodePlots
 histogram(randn(1000), nbins=40)
 #+END_src
 
+Most of the time however, you will want to make nicer looking graphs. There are many options to plot in Julia, but here is a very quick example:
+
 #+BEGIN_src julia
-using Plots, Distributions, StatsPlots # This will take a while the first time
-gr()                                   # Backend
+# Will take a while when run for the first time as the packages need to compile
+using Plots, Distributions, StatsPlots
+# Using the GR framework as backend
+gr()
 x = 1:10; y = rand(10, 2);
-p1 = plot(Normal(0, 1))
-p2 = histogram(randn(10000), nbins=100)
+p1 = histogram(randn(1000), nbins=40)
+p2 = plot(Normal(0, 1))
 p3 = scatter(x, y)
 p4 = plot(x, y)
 plot(p1, p2, p3, p4)
