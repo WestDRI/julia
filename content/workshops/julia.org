@@ -589,12 +589,125 @@ plot(p1, p2, p3, p4)
 
 *** Parallel programming
 
+Julia, which was built with efficiency in mind, aimed from the start to have parallel programming abilities. These however came gradually: first, there were coroutines, which is not parallel programming, but allows independent executions of elements of code; then there was a macro allowing for loops to run on several cores, but this would not work on nested loops and it did not integrate with the coroutines or I/O. It is only in the current (1.3) version, released a few months ago, that true multi-threading capabilities were born. Now is thus a very exciting time for Julia. This is all very new (this feature is still considered in testing mode) and it is likely that things will get even better in the coming months/years, for instance with the development of multi-threading capabilities for the compiler.
+
+What is great about Julia's new task parallelism is that it is incredibly easy to use: no need to write low-level code as with MPI to set where tasks are run. Everything is automatic.
+
+#+BEGIN_export html
+To use Julia with multiple threads, we need to set the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">JULIA_NUM_THREADS</span> environment variable.
+#+END_export
+
+This can be done by running (in the terminal, not in Julia):
+
 #+BEGIN_src sh
-# To know how many processing units you have on your machine
+export JULIA_NUM_THREADS=n 	# n is the number of threads we want to use
+#+END_src
+
+Or by launching Julia with (again, in the terminal):
+
+#+BEGIN_src sh
+JULIA_NUM_THREADS=n julia
+#+END_src
+
+First, we need to know how many threads we actually have on our machine.\\
+There are many Linux tools for this, but here are two particularly convenient options:
+
+#+BEGIN_src sh
+# To get the total number of available processes
 nproc
 
-# To know what they are made of (# of sockets, cores, and threads)
+# To have more information (# of sockets, cores per socket, and threads per core)
 lscpu | grep -E '(S|s)ocket|Thread|^CPU\(s\)'
+#+END_src
+
+Since I have 4 available processes (2 cores with 2 threads each), I can launch Julia on 4 threads:
+
+#+BEGIN_src sh
+JULIA_NUM_THREADS=4 julia
+#+END_src
+
+This can also be done from within the Juno IDE.
+
+To see how many threads we are using, as well as the ID of the current thread, you can run:
+
+#+BEGIN_src julia
+Threads.nthreads()
+Threads.threadid()
+#+END_src
+
+#+BEGIN_challenge
+#+BEGIN_export html
+<span style="color: #e10070">Your turn:</span><br>
+Launch Julia on 1 thread and run the function below. Then run Julia on the maximum nummber of threads you have on your machine and run the same function.
+#+END_export
+#+END_challenge
+
+#+BEGIN_src julia
+Threads.@threads for i = 1:10
+    println("i = $i on thread $(Threads.threadid())")
+end
+#+END_src
+
+Let's look at the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019:
+
+#+BEGIN_src julia
+import Base.Threads.@spawn
+
+# The function below is exactly the same as the MergeSort algorithm of the sort function (in the standard Julia Base library), with the addition of the @spawn macro on one of the recursive calls:
+
+# Sort the elements of `v` in place, from indices `lo` to `hi` inclusive
+function psort!(v, lo::Int=1, hi::Int=length(v))
+    if lo >= hi                       # 1 or 0 elements; nothing to do
+        return v
+    end
+
+    if hi - lo < 100000               # below some cutoff, run in serial
+        sort!(view(v, lo:hi), alg = MergeSort)
+        return v
+    end
+
+    mid = (lo+hi)>>>1                 # Find the midpoint
+
+    half = @spawn psort!(v, lo, mid)  # Task to sort the lower half; will run
+    psort!(v, mid+1, hi)              # in parallel with the current call sorting
+    # the upper half
+    wait(half)                        # Wait for the lower half to finish
+
+    temp = v[lo:mid]                  # Workspace for merging
+
+    i, k, j = 1, lo, mid+1            # Merge the two sorted sub-arrays
+    @inbounds while k < j <= hi
+        if v[j] < temp[i]
+            v[k] = v[j]
+            j += 1
+        else
+            v[k] = temp[i]
+            i += 1
+        end
+        k += 1
+    end
+    @inbounds while k < j
+        v[k] = temp[i]
+        k += 1
+        i += 1
+    end
+
+    return v
+end
+
+a = rand(20000000);
+
+# Using the MergeSort algorithm of the sort function (in the standard Julia Base library)
+b = copy(a); @time sort!(b, alg = MergeSort);
+
+# Let's run the function a second time to make sure that the initial compilation does not alter our result
+b = copy(a); @time sort!(b, alg = MergeSort); 
+
+# And now using our function
+b = copy(a); @time psort!(b);
+
+# And running it a second time
+b = copy(a); @time psort!(b);
 #+END_src
 
 ** Working with Julia on the cluster
