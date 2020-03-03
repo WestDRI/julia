@@ -791,7 +791,7 @@ JULIA_NUM_THREADS=4 julia /path/to/psort.jl
 
 ** Working with Julia on the cluster
 
-Now that we have a running script, let's submit a job to the cluster.
+Now that we have some running scripts, let's test them out on our cluster.
 
 *** Log in to the cluster
 
@@ -809,7 +809,7 @@ ssh userxxx@cassiopeia.c3.ca
 
 You are now in our training cluster.
 
-*** Copy your Julia script to the training cluster
+*** Copy your Julia scripts to the training cluster
 
 #+BEGIN_export html
 We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch</span>, then copy our julia script in it.
@@ -822,7 +822,8 @@ mkdir ~/scratch/julia_job
 Open a new terminal window and from your local terminal (make sure that you are not on the remote terminal by looking at the bash prompt) run:
 
 #+BEGIN_src sh
-scp /path/to/your/local/julia_script.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+scp /local/path/to/sort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+scp /local/path/to/psort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
 
 # enter password
 #+END_src
