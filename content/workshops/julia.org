@@ -454,17 +454,17 @@ also contain
 multiple lines
 =#
 
-x = 2;    # And they can be added at the end of lines
+x = 2;    	  # And they can be added at the end of lines
 #+END_src
 
 **** A few fun quirks
 
 #+BEGIN_src julia
-\omega		  # press TAB
-\sum          # press TAB
-\sqrt		  # press TAB
-\in           # press TAB
-\: phone:	  # (no space after the colon. I added it to prevent parsing) press TAB
+\omega		  # Press TAB
+\sum          # Press TAB
+\sqrt		  # Press TAB
+\in           # Press TAB
+\: phone:	  # (No space after the colon. I added it to prevent parsing) Press TAB
 
 pi
 Base.MathConstants.golden
