@@ -454,7 +454,7 @@ also contain
 multiple lines
 =#
 
-x = 2;    	  # And they can be added at the end of lines
+x = 2;        # And they can be added at the end of lines
 #+END_src
 
 **** A few fun quirks
@@ -664,7 +664,9 @@ Let's look at the example presented in a [[https://julialang.org/blog/2019/07/mu
 #+BEGIN_src julia
 import Base.Threads.@spawn
 
-# The function below is exactly the same as the MergeSort algorithm of the sort function (in the standard Julia Base library), with the addition of the @spawn macro on one of the recursive calls:
+# The function below is exactly the same as the MergeSort algorithm
+# of the sort function (in the standard Julia Base library),
+# with the addition of the @spawn macro on one of the recursive calls
 
 # Sort the elements of `v` in place, from indices `lo` to `hi` inclusive
 function psort!(v, lo::Int=1, hi::Int=length(v))
