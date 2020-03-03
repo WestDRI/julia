@@ -644,8 +644,6 @@ Threads.nthreads()
 Threads.threadid()
 #+END_src
 
-Utilities such as [[https://github.com/hishamhm/htop][htop]] also allow you to visualize the working threads.
-
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
@@ -659,15 +657,19 @@ Threads.@threads for i = 1:10
 end
 #+END_src
 
+Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visualize the working threads.
+
+**** Preparing scripts for the cluster
+
 Let's save 2 scripts based on the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019.\\
-Both scripts sort a large number, one with parallelism and one without.
+Both scripts sort a one dimensional array of 20,000,000 floats between 0 and 1, one with parallelism and one without.
 
 #+BEGIN_export html
 <b>Script 1, without parallelism:</b> <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">sort.jl</span>.
 #+END_export
 
 #+BEGIN_src julia
-# Create random large number
+# Create one dimensional array of 20,000,000 floats between 0 and 1
 a = rand(20000000);
 
 # Use the MergeSort algorithm of the sort function
@@ -809,25 +811,6 @@ ssh userxxx@cassiopeia.c3.ca
 
 You are now in our training cluster.
 
-*** Copy your Julia scripts to the training cluster
-
-#+BEGIN_export html
-We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch</span>, then copy our julia script in it.
-#+END_export
-
-#+BEGIN_src sh
-mkdir ~/scratch/julia_job
-#+END_src
-
-Open a new terminal window and from your local terminal (make sure that you are not on the remote terminal by looking at the bash prompt) run:
-
-#+BEGIN_src sh
-scp /local/path/to/sort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
-scp /local/path/to/psort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
-
-# enter password
-#+END_src
-
 *** Access Julia
 
 This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
@@ -883,50 +866,30 @@ Launch Julia, get into the package mode, and make sure the packages we need are 
 #+END_export
 #+END_challenge
 
-*** Job script
-
-We will not run an interactive session with Julia on the cluster: we already have a julia script ready. All we need to do is to write a job script to submit to Slurm, the job scheduler used by the Compute Canada clusters.
+*** Copy your Julia scripts to the training cluster
 
 #+BEGIN_export html
-Save your Slurm job script in the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch/julia_job/job_script.sh</span>.
+We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch</span>, then copy our julia script in it.
 #+END_export
 
-In this script, we need:
-
 #+BEGIN_src sh
-#!/bin/bash
-#SBATCH --job-name=julia		# job name
-#SBATCH --time=00:01:00			# max walltime
-#SBATCH --mem=100M				# max memory
-#SBATCH --output=julia%j.out	# file name for the output
-#SBATCH --error=julia%j.err		# file name for errors
-# %j gets replaced with the job number
-
-# Normally we would load the necessary modules with:
-# module load gcc/7.3.0 julia/1.3.0
-# But here we will instead execute the script startJulia.sh:
-source /project/shared/syncHPC/startJulia.sh
-# This loads the modules and changes environment variables
-# so that Julia looks for packages in /project/shared/bio
-
-# Run our Julia script
-julia julia_script.jl
+mkdir ~/scratch/julia_job
 #+END_src
 
-Now, we can submit our job to the cluster with:
+Open a new terminal window and from your local terminal (make sure that you are not on the remote terminal by looking at the bash prompt) run:
 
 #+BEGIN_src sh
-cd ~/scratch/julia_job
-sbatch job_script.sh
+scp /local/path/to/sort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+scp /local/path/to/psort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+
+# enter password
 #+END_src
 
-And we can check its status with:
+*** Job scripts
 
-#+BEGIN_src sh
-sq
-#+END_src
+We will not run an interactive session with Julia on the cluster: we already have julia scripts ready to run. All we need to do is to write job scripts to submit to Slurm, the job scheduler used by the Compute Canada clusters.
 
-*** Parallel programming
+We will create 2 scripts: one to run Julia on one core and one on as many cores as are available.
 
 #+BEGIN_challenge
 #+BEGIN_export html
@@ -938,3 +901,70 @@ How many threads?
 #+END_export
 #+END_challenge
 
+Note that here too, we could run Julia with multiple threads:
+
+#+BEGIN_src sh
+JULIA_NUM_THREADS=2 julia
+#+END_src
+
+#+BEGIN_src julia
+Threads.nthreads()
+#+END_src
+
+#+BEGIN_export html
+Save your job scripts in the files <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/scratch/julia_job/job_julia1c.sh</span> and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">job_julia2c.sh</span> for one and two cores respectively.
+#+END_export
+
+Here is what our single core Slurm script looks like:
+
+#+BEGIN_src sh
+#!/bin/bash
+#SBATCH --job-name=julia1c		# job name
+#SBATCH --time=00:01:00			# max walltime 1 min
+#SBATCH --cpus-per-task=1   		# number of cores
+#SBATCH --mem=1000			# max memory (default unit is megabytes)
+#SBATCH --output=julia1c%j.out		# file name for the output
+#SBATCH --error=julia1c%j.err		# file name for errors
+# %j gets replaced with the job number
+
+# Normally we would load the necessary modules with:
+# module load gcc/7.3.0 julia/1.3.0
+# But here we will instead execute the script startJulia.sh:
+source /project/shared/syncHPC/startJulia.sh
+# This loads the modules and changes environment variables
+# so that Julia looks for packages in /project/shared/bio
+
+echo Running NON parallel script on $SLURM_CPUS_PER_TASK core
+JULIA_NUM_THREADS=$SLURM_CPUS_PER_TASK julia sort.jl
+echo Running parallel script on $SLURM_CPUS_PER_TASK core
+JULIA_NUM_THREADS=$SLURM_CPUS_PER_TASK julia psort.jl
+#+END_src
+
+#+BEGIN_challenge
+#+BEGIN_export html
+<span style="color: #e10070">Your turn:</span><br>
+Write the script for 2 cores.
+#+END_export
+#+END_challenge
+
+Now, we can submit our jobs to the cluster:
+
+#+BEGIN_src sh
+cd ~/scratch/julia_job
+sbatch job_julia1c.sh
+sbatch job_julia2c.sh
+#+END_src
+
+And we can check their status with:
+
+#+BEGIN_src sh
+sq
+#+END_src
+
+#+BEGIN_export html
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">PD</span> stands for a pending status and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">R</span> for running.
+#+END_export
+
+#+BEGIN_export html
+On Cedar, where there are 32 cores of 2 threads each, you could launch Julia with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">JULIA_NUM_THREADS=64 julia</span>.
+#+END_export
