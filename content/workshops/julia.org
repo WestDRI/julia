@@ -669,26 +669,26 @@ import Base.Threads.@spawn
 # with the addition of the @spawn macro on one of the recursive calls
 
 # Sort the elements of `v` in place, from indices `lo` to `hi` inclusive
-function psort!(v, lo::Int=1, hi::Int=length(v))
-    if lo >= hi                       # 1 or 0 elements; nothing to do
+function psort!(v, lo::Int=1, hi::Int = length(v))
+    if lo >= hi                       # 1 or 0 elements: nothing to do
         return v
     end
 
-    if hi - lo < 100000               # below some cutoff, run in serial
+    if hi - lo < 100000               # Below some cutoff, run in serial
         sort!(view(v, lo:hi), alg = MergeSort)
         return v
     end
 
-    mid = (lo+hi)>>>1                 # Find the midpoint
+    mid = (lo + hi) >>> 1             # Find the midpoint
 
-    half = @spawn psort!(v, lo, mid)  # Task to sort the lower half; will run
-    psort!(v, mid+1, hi)              # in parallel with the current call sorting
+    half = @spawn psort!(v, lo, mid)  # Task to sort the lower half: will run
+    psort!(v, mid + 1, hi)            # in parallel with the current call sorting
     # the upper half
     wait(half)                        # Wait for the lower half to finish
 
     temp = v[lo:mid]                  # Workspace for merging
 
-    i, k, j = 1, lo, mid+1            # Merge the two sorted sub-arrays
+    i, k, j = 1, lo, mid + 1          # Merge the two sorted sub-arrays
     @inbounds while k < j <= hi
         if v[j] < temp[i]
             v[k] = v[j]
@@ -712,17 +712,17 @@ a = rand(20000000);
 
 # Using the MergeSort algorithm of the sort function
 # (in the standard Julia Base library)
-b = copy(a); @time sort!(b, alg = MergeSort);
+b = copy(a); @time sort!(b, alg = MergeSort)
 
 # Let's run the function a second time to make sure
 # that the initial compilation does not alter our result
-b = copy(a); @time sort!(b, alg = MergeSort);
+b = copy(a); @time sort!(b, alg = MergeSort)
 
 # And now using our function
-b = copy(a); @time psort!(b);
+b = copy(a); @time psort!(b)
 
 # And running it a second time
-b = copy(a); @time psort!(b);
+b = copy(a); @time psort!(b)
 #+END_src
 
 ** Working with Julia on the cluster
