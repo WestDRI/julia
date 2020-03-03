@@ -659,14 +659,36 @@ Threads.@threads for i = 1:10
 end
 #+END_src
 
-Let's look at the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019:
+Let's save 2 scripts based on the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019.\\
+Both scripts sort a large number, one with parallelism and one without.
+
+#+BEGIN_export html
+<b>Script 1, without parallelism:</b> <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">sort.jl</span>.
+#+END_export
+
+#+BEGIN_src julia
+# Create random large number
+a = rand(20000000);
+
+# Use the MergeSort algorithm of the sort function
+# (in the standard Julia Base library)
+b = copy(a); @time sort!(b, alg = MergeSort);
+
+# Let's run the function a second time to remove the effect
+# of the initial compilation
+b = copy(a); @time sort!(b, alg = MergeSort);
+#+END_src
+
+#+BEGIN_export html
+<b>Script 2, with parallelism:</b> <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">psort.jl</span>.
+#+END_export
 
 #+BEGIN_src julia
 import Base.Threads.@spawn
 
-# The function below is exactly the same as the MergeSort algorithm
-# of the sort function (in the standard Julia Base library),
-# with the addition of the @spawn macro on one of the recursive calls
+# The psort function is the same as the MergeSort algorithm
+# of the Base sort function with the addition of
+# the @spawn macro on one of the recursive calls
 
 # Sort the elements of `v` in place, from indices `lo` to `hi` inclusive
 function psort!(v, lo::Int=1, hi::Int = length(v))
@@ -710,19 +732,61 @@ end
 
 a = rand(20000000);
 
-# Using the MergeSort algorithm of the sort function
-# (in the standard Julia Base library)
-b = copy(a); @time sort!(b, alg = MergeSort)
+# Now, let's use our function
+b = copy(a); @time psort!(b);
 
-# Let's run the function a second time to make sure
-# that the initial compilation does not alter our result
-b = copy(a); @time sort!(b, alg = MergeSort)
+# And running it a second time to remove
+# the effect of the initial compilation
+b = copy(a); @time psort!(b);
+#+END_src
 
-# And now using our function
-b = copy(a); @time psort!(b)
+Now, we can test both scripts with one or multiple threads:
 
-# And running it a second time
-b = copy(a); @time psort!(b)
+#+BEGIN_src sh
+# Single thread, non-parallel script
+julia /path/to/sort.jl
+
+    2.234024 seconds (111.88 k allocations: 82.489 MiB, 0.21% gc time)
+    2.158333 seconds (11 allocations: 76.294 MiB, 0.51% gc time)
+    # Note the lower time for the 2nd run due to pre-compilation
+
+# Single thread, parallel script
+julia /path/to/psort.jl
+
+    2.748138 seconds (336.77 k allocations: 703.200 MiB, 2.24% gc time)
+    2.438032 seconds (3.58 k allocations: 686.932 MiB, 0.27% gc time)
+    # Even longer time: normal, there was more to run (import package, read function)
+
+# 2 threads, non-parallel script
+JULIA_NUM_THREADS=2 julia /path/to/sort.jl
+
+    2.233720 seconds (111.87 k allocations: 82.145 MiB, 0.21% gc time)
+    2.155232 seconds (11 allocations: 76.294 MiB, 0.54% gc time)
+    # Remarkably similar to the single thread:
+    # the addition of a thread did not change anything
+
+# 2 threads, parallel script
+JULIA_NUM_THREADS=2 julia /path/to/psort.jl
+
+    1.773643 seconds (336.99 k allocations: 703.171 MiB, 4.08% gc time)
+    1.460539 seconds (3.79 k allocations: 686.935 MiB, 0.47% gc time)
+    # 33% faster. Not twice as fast as one could have hoped since processes
+    # have to wait for each other. But that's a good improvement.
+
+# 4 threads, non-parallel script
+JULIA_NUM_THREADS=4 julia /path/to/sort.jl
+
+    2.231717 seconds (111.87 k allocations: 82.145 MiB, 0.21% gc time)
+    2.153509 seconds (11 allocations: 76.294 MiB, 0.53% gc time)
+    # Again: same result as the single thread
+
+# 4 threads, parallel script
+JULIA_NUM_THREADS=4 julia /path/to/psort.jl
+
+    1.291714 seconds (336.98 k allocations: 703.171 MiB, 3.48% gc time)
+    1.194282 seconds (3.78 k allocations: 686.935 MiB, 5.19% gc time)
+    # Even though we only split our code in 2 tasks,
+    # there is still an improvement over the 2 thread run
 #+END_src
 
 ** Working with Julia on the cluster
