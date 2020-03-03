@@ -24,7 +24,7 @@ canonifyurls = true
     # style = "emacs"
     style = "manni"
   [markup.tableOfContents]
-    endLevel = 2
+    endLevel = 1
     ordered = false
     startLevel = 1
 
