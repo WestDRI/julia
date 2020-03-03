@@ -461,9 +461,9 @@ x = 2;    # And they can be added at the end of lines
 
 #+BEGIN_src julia
 \omega		  # press TAB
-\sum	 	  # press TAB
+\sum          # press TAB
 \sqrt		  # press TAB
-\in		  	  # press TAB
+\in           # press TAB
 \: phone:	  # (no space after the colon. I added it to prevent parsing) press TAB
 
 pi
@@ -609,7 +609,7 @@ To use Julia with multiple threads, we need to set the <span style="font-family:
 This can be done by running (in the terminal, not in Julia):
 
 #+BEGIN_src sh
-export JULIA_NUM_THREADS=n 	# n is the number of threads we want to use
+export JULIA_NUM_THREADS=n      # n is the number of threads we want to use
 #+END_src
 
 Or by launching Julia with (again, in the terminal):
@@ -708,11 +708,13 @@ end
 
 a = rand(20000000);
 
-# Using the MergeSort algorithm of the sort function (in the standard Julia Base library)
+# Using the MergeSort algorithm of the sort function
+# (in the standard Julia Base library)
 b = copy(a); @time sort!(b, alg = MergeSort);
 
-# Let's run the function a second time to make sure that the initial compilation does not alter our result
-b = copy(a); @time sort!(b, alg = MergeSort); 
+# Let's run the function a second time to make sure
+# that the initial compilation does not alter our result
+b = copy(a); @time sort!(b, alg = MergeSort);
 
 # And now using our function
 b = copy(a); @time psort!(b);
