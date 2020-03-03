@@ -6,20 +6,13 @@
 #+OPTIONS: toc:2
 
 #+BEGIN_center
-#+ATTR_HTML: :width 200
-[[/img/workinprogress.svg]]
+/This workshop is part of Simon Fraser University spring school:/
 #+END_center
-
-This workshop is part of Simon Fraser University spring school:
 #+BEGIN_center
 #+ATTR_HTML: :alt radius
 [[/img/sfu2020poster_no_padding.png]]
 #+END_center
 
-#+HTML: <br>
-#+BEGIN_sticker
-[[https://www.eventbrite.ca/e/research-computing-workshops-simon-fraser-university-registration-88799572913][Register for free workshop]]
-#+END_sticker
 
 * Abstract
 
