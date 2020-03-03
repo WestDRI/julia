@@ -838,34 +838,6 @@ module load gcc/7.3.0 julia/1.3.0
 module list
 #+END_src
 
-So the normal process to gain access to Julia version 1.3.0 in the cluster would be to run:
-#+BEGIN_src sh
-module load gcc/7.3.0 julia/1.3.0
-#+END_src
-
-#+BEGIN_export html
-We would then install the Julia packages we need. By default, Julia packages are installed in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">~/.julia</span>.
-
-In order to take a lot of burden out of our training cluster however, since we are all running the same code and using the same packages, instead of each of us installing the packages in our home directories, we will all use packages which have already been installed in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/bio</span>.
-
-So, for the purpose of this workshop, instead of loading Julia and installing the required packages, we will simply run a little script called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.3rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">/project/shared/syncHPC/startJulia.sh</span>.
-#+END_export
-
-Let's see what is in that script:
-
-#+BEGIN_src sh
-cat /project/shared/syncHPC/startJulia.sh
-#+END_src
-
-As you can see, the script loads the Julia module. The rest sets environment variables to the packages path.
-
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
-Launch Julia, get into the package mode, and make sure the packages we need are installed.
-#+END_export
-#+END_challenge
-
 *** Copy your Julia scripts to the training cluster
 
 #+BEGIN_export html
@@ -926,13 +898,6 @@ Here is what our single core Slurm script looks like:
 #SBATCH --output=julia1c%j.out		# file name for the output
 #SBATCH --error=julia1c%j.err		# file name for errors
 # %j gets replaced with the job number
-
-# Normally we would load the necessary modules with:
-# module load gcc/7.3.0 julia/1.3.0
-# But here we will instead execute the script startJulia.sh:
-source /project/shared/syncHPC/startJulia.sh
-# This loads the modules and changes environment variables
-# so that Julia looks for packages in /project/shared/bio
 
 echo Running NON parallel script on $SLURM_CPUS_PER_TASK core
 JULIA_NUM_THREADS=$SLURM_CPUS_PER_TASK julia sort.jl
