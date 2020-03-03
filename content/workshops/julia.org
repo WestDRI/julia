@@ -3,7 +3,7 @@
 #+date: 2020-03-03
 #+place: 3h workshop at Simon Fraser University
 
-#+OPTIONS: toc:2
+#+OPTIONS: toc:1
 
 #+BEGIN_center
 /This workshop is part of Simon Fraser University spring school:/
