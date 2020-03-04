@@ -870,11 +870,13 @@ How many processors are there on our training cluster?
 #+END_export
 #+END_challenge
 
-Note that here too, we could run Julia with multiple threads:
+Note that here too, we could run Julia with multiple threads by running:
 
 #+BEGIN_src sh
 JULIA_NUM_THREADS=2 julia
 #+END_src
+
+Once in Julia, you can double check that Julia does indeed have access to 2 threads by running:
 
 #+BEGIN_src julia
 Threads.nthreads()
@@ -888,10 +890,10 @@ Here is what our single core Slurm script looks like:
 
 #+BEGIN_src sh
 #!/bin/bash
-#SBATCH --job-name=julia1c		# job name
-#SBATCH --time=00:01:00			# max walltime 1 min
+#SBATCH --job-name=julia1c			# job name
+#SBATCH --time=00:01:00				# max walltime 1 min
 #SBATCH --cpus-per-task=1   		# number of cores
-#SBATCH --mem=1000			# max memory (default unit is megabytes)
+#SBATCH --mem=1000					# max memory (default unit is megabytes)
 #SBATCH --output=julia1c%j.out		# file name for the output
 #SBATCH --error=julia1c%j.err		# file name for errors
 # %j gets replaced with the job number
