@@ -866,10 +866,7 @@ We will create 2 scripts: one to run Julia on one core and one on as many cores 
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-How many processing units are there on our training cluster?<br>
-How many sockets?<br>
-How many cores?<br>
-How many threads?
+How many processors are there on our training cluster?
 #+END_export
 #+END_challenge
 
@@ -928,8 +925,4 @@ sq
 
 #+BEGIN_export html
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">PD</span> stands for a pending status and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">R</span> for running.
-#+END_export
-
-#+BEGIN_export html
-On Cedar, where there are 32 cores of 2 threads each, you could launch Julia with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">JULIA_NUM_THREADS=64 julia</span>.
 #+END_export
