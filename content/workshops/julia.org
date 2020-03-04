@@ -107,7 +107,7 @@ Of course, there are costs here too. They come in the form of overhead time to c
 
 In languages with [[https://en.wikipedia.org/wiki/Multiple_dispatch][multiple dispatch]], functions apply different methods at run time based on the type of the operands. This brings great type stability and improves speed.
 
-Julia is extremely flexible: type checking is not required. Where not necessary, out of convenience, you can forego the feature if you want.
+Julia is extremely flexible: type checking is not required. Out of convenience, you can forego the feature if you want. Specifying types however will greatly optimize your code.
 
 [[http://ucidatascienceinitiative.github.io/IntroToJulia/Html/WhyJulia#Core-Idea:-Multiple-Dispatch-+-Type-Stability-=%3E-Speed-+-Readability][Here]] is a good post on type stability, multiple dispatch, and Julia efficiency.
 
