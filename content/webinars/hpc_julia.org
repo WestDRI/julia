@@ -3,9 +3,9 @@
 #+date: 2020-03-04
 #+place: 45 min live webinar
 
-#+OPTIONS: toc:1
+#+OPTIONS: toc:2
 
-* Abstract
+**** /Abstract/
 
 #+BEGIN_definition
 Julia is fast: just-in-time (JIT) compilation and multiple dispatch bring efficiency to interactivity. People often say that using Julia feels like running R or python with a speed /almost/ comparable to that of C.
@@ -15,7 +15,7 @@ But Julia also comes with parallel computing and multi-threading capabilities.
 In this webinar, after a quickly presentation of some of the key features of Julia's beautifully concise syntax, I will dive into using Julia for HPC.
 #+END_definition
 
-* Useful links
+**** /Useful links/
 
 #+BEGIN_vertbarsmall
 [[https://docs.julialang.org/en/v1/][Documentation]]\\

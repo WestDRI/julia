@@ -3,7 +3,7 @@
 #+date: 2020-03-03
 #+place: 3h workshop at Simon Fraser University
 
-#+OPTIONS: toc:1
+#+OPTIONS: toc:2
 
 #+BEGIN_center
 /This workshop is part of Simon Fraser University spring school:/
@@ -14,7 +14,7 @@
 #+END_center
 
 
-* Abstract
+**** /Abstract/
 
 #+BEGIN_definition
 #+BEGIN_quote
@@ -32,7 +32,7 @@ Finally, Julia shines by its extremely clean and concise syntax. This last featu
 In this workshop, which does not require any prior experience in Julia (experience in another language—e.g. R or python—would be best), we will go over the basics of Julia's syntax and package system; then we will push the performance aspect further by looking at how Julia can make use of clusters for large scale parallel computing.
 #+END_definition
 
-* Software requirements
+**** /Software requirements/
 
 #+BEGIN_box
 For this workshop, you will need:
