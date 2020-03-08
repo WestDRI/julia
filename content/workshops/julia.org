@@ -313,14 +313,14 @@ Try to find a list of popular plotting packages.
 
 You can manage your personal library easily in package mode with the commands:
 
-#+BEGIN_example
-add &lt;package&gt;		install a package
-rm &lt;package&gt;		uninstall a package
-up &lt;package&gt;		upgrade a package
+#+BEGIN_src julia
+(env) pkg> add <package>        # install <package>
+(env) pkg> rm <package>         # uninstall <package>
+(env) pkg> up <package>         # upgrade <package>
 
-st			check which packages are installed
-up			upgrade all packages
- #+END_example
+(env) pkg> st                   # check which packages are installed
+(env) pkg> up                   # upgrade all packages
+#+END_src
 
 #+BEGIN_challenge
 #+BEGIN_export html
@@ -353,61 +353,61 @@ To print the list of functions containing a certain word in their description, y
 #+END_export
 
 #+BEGIN_src julia
-apropos("truncate")
+> apropos("truncate")
 #+END_src
 
 **** Let's try a few commands
 
 #+BEGIN_src julia
-versioninfo()
-VERSION
+> versioninfo()
+> VERSION
 
-x = 10
-x
-x = 2;
-x
-y = x;
-y
-ans
-ans + 3
+> x = 10
+> x
+> x = 2;
+> x
+> y = x;
+> y
+> ans
+> ans + 3
 
-a, b, c = 1, 2, 3
-b
+> a, b, c = 1, 2, 3
+> b
 
-3 + 2
-+(3, 2)
+> 3 + 2
+> +(3, 2)
 
-a = 3
-2a
-a += 7
-a
+> a = 3
+> 2a
+> a += 7
+> a
 
-2\8
+> 2\8
 
-a = [1 2; 3 4]
-b = a
-a[1, 1] = 0
-b
+> a = [1 2; 3 4]
+> b = a
+> a[1, 1] = 0
+> b
 
-[1, 2, 3, 4]
-[1 2; 3 4]
-[1 2 3 4]
-[1 2 3 4]'
-collect(1:4)
-collect(1:1:4)
-1:4
-a = 1:4
-collect(a)
+> [1, 2, 3, 4]
+> [1 2; 3 4]
+> [1 2 3 4]
+> [1 2 3 4]'
+> collect(1:4)
+> collect(1:1:4)
+> 1:4
+> a = 1:4
+> collect(a)
 
-[1, 2, 3] .* [1, 2, 3]
+> [1, 2, 3] .* [1, 2, 3]
 
-4//8
-8//1
-1//2 + 3//4
+> 4//8
+> 8//1
+> 1//2 + 3//4
 
-a = true
-b = false
-a + b
+> a = true
+> b = false
+> a + b
 #+END_src
 
 #+BEGIN_challenge
@@ -421,13 +421,13 @@ What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospa
 #+END_challenge
 
 #+BEGIN_src julia
-a = [3, 1, 2]
+> a = [3, 1, 2]
 
-sort(a)
-println(a)
+> sort(a)
+> println(a)
 
-sort!(a)
-println(a)
+> sort!(a)
+> println(a)
 #+END_src
 
 #+BEGIN_challenge
@@ -444,43 +444,43 @@ To source a Julia script within Julia, use the function <span style="font-family
 #+END_export
 
 #+BEGIN_src julia
-include("/path/to/file.jl")
+> include("/path/to/file.jl")
 #+END_src
 
 **** Comments
 
 #+BEGIN_src julia
-# Single line comment
+> # Single line comment
 
-#=
-Comments can
-also contain
-multiple lines
-=#
+> #=
+  Comments can
+  also contain
+  multiple lines
+  =#
 
-x = 2;        # And they can be added at the end of lines
+> x = 2;          # And they can be added at the end of lines
 #+END_src
 
 **** A few fun quirks
 
 #+BEGIN_src julia
-\omega		  # Press TAB
-\sum          # Press TAB
-\sqrt		  # Press TAB
-\in           # Press TAB
-\: phone:	  # (No space after the colon. I added it to prevent parsing) Press TAB
+> \omega		  # Press TAB
+> \sum            # Press TAB
+> \sqrt		      # Press TAB
+> \in             # Press TAB
+> \: phone:	      # (No space after the colon. I added it to prevent parsing) Press TAB
 
-pi
-Base.MathConstants.golden
+> pi
+> Base.MathConstants.golden
 #+END_src
 
 **** Data types
 
 #+BEGIN_src julia
-typeof(2)
-typeof(2.0)
-typeof("hello")
-typeof(true)
+> typeof(2)
+> typeof(2.0)
+> typeof("hello")
+> typeof(true)
 #+END_src
 
 **** Indexing
@@ -490,9 +490,9 @@ Indexing is done with square brackets. As in R and unlike in C++ or Python, Juli
 #+END_export
 
 #+BEGIN_src julia
-a = [1 2; 3 4]
-a[1, 1]
-a[1, :]
+> a = [1 2; 3 4]
+> a[1, 1]
+> a[1, :]
 #+END_src
 
 #+BEGIN_challenge
@@ -506,37 +506,37 @@ How can I get the tuple <span style="font-family: 'Source Code Pro', 'Lucida Con
 **** For loops
 
 #+BEGIN_src julia
-for i in 1:10
-    println(i)
-end
+> for i in 1:10
+      println(i)
+  end
 
 
-for i in 1:3, j in 1:2
-    println(i * j)
-end
+> for i in 1:3, j in 1:2
+      println(i * j)
+  end
 #+END_src
 
 **** Predicates and conditionals
 
 #+BEGIN_src julia
-a = 2
-b = 2.0
+> a = 2
+> b = 2.0
 
-if a == b
-    println("It's true")
-else
-    println("It's false")
-end
+> if a == b
+      println("It's true")
+  else
+      println("It's false")
+  end
 
 # This can be written in a terse format
 # predicate ? if true : if false
-a == b ? println("It's true") : println("It's false")
+> a == b ? println("It's true") : println("It's false")
 
-if a === b
-    println("It's true")
-else
-    println("It's false")
-end
+> if a === b
+      println("It's true")
+  else
+      println("It's false")
+  end
 #+END_src
 
 #+BEGIN_challenge
@@ -549,33 +549,33 @@ What is the difference between <span style="font-family: 'Source Code Pro', 'Luc
 Predicates can be built with many other operators and functions. For example:
 
 #+BEGIN_src julia
-occursin("that", "this and that")
-4 < 3
-a != b
-2 in 1:3
-3 <= 4 && 4 > 5
-3 <= 4 || 4 > 5
+> occursin("that", "this and that")
+> 4 < 3
+> a != b
+> 2 in 1:3
+> 3 <= 4 && 4 > 5
+> 3 <= 4 || 4 > 5
 #+END_src
 
 **** Functions
 
 #+BEGIN_src julia
-function addTwo(a)
-    a + 2
-end
+> function addTwo(a)
+      a + 2
+  end
 
-addTwo(3)
+> addTwo(3)
 
 # This can be written in a terse format
-addtwo = a -> a + 2
+> addtwo = a -> a + 2
 
 # With default arguments
-function addSomethingOrTwo(a, b = 2)
-    a + b
-end
+> function addSomethingOrTwo(a, b = 2)
+      a + b
+  end
 
-addSomethingOrTwo(3)
-addSomethingOrTwo(3, 4)
+> addSomethingOrTwo(3)
+> addSomethingOrTwo(3, 4)
 #+END_src
 
 **** Plotting
@@ -583,23 +583,25 @@ addSomethingOrTwo(3, 4)
 It can be convenient to plot directly in the REPL (for instance when using SSH).
 
 #+BEGIN_src julia
-using UnicodePlots
-histogram(randn(1000), nbins=40)
+> using UnicodePlots
+> histogram(randn(1000), nbins=40)
 #+END_src
 
 Most of the time however, you will want to make nicer looking graphs. There are many options to plot in Julia, but here is a very quick example:
 
 #+BEGIN_src julia
 # Will take a while when run for the first time as the packages need to compile
-using Plots, Distributions, StatsPlots
+> using Plots, Distributions, StatsPlots
+
 # Using the GR framework as backend
-gr()
-x = 1:10; y = rand(10, 2);
-p1 = histogram(randn(1000), nbins=40)
-p2 = plot(Normal(0, 1))
-p3 = scatter(x, y)
-p4 = plot(x, y)
-plot(p1, p2, p3, p4)
+> gr()
+
+> x = 1:10; y = rand(10, 2);
+> p1 = histogram(randn(1000), nbins=40)
+> p2 = plot(Normal(0, 1))
+> p3 = scatter(x, y)
+> p4 = plot(x, y)
+> plot(p1, p2, p3, p4)
 #+END_src
 
 *** Parallel programming
@@ -638,7 +640,7 @@ $ lscpu | grep -E '(S|s)ocket|Thread|^CPU\(s\)'
 Since I have 4 available processes (2 cores with 2 threads each), I can launch Julia on 4 threads:
 
 #+BEGIN_src sh
-JULIA_NUM_THREADS=4 julia
+$ JULIA_NUM_THREADS=4 julia
 #+END_src
 
 This can also be done from within the Juno IDE.
@@ -646,8 +648,8 @@ This can also be done from within the Juno IDE.
 To see how many threads we are using, as well as the ID of the current thread, you can run:
 
 #+BEGIN_src julia
-Threads.nthreads()
-Threads.threadid()
+> Threads.nthreads()
+> Threads.threadid()
 #+END_src
 
 #+BEGIN_challenge
@@ -658,9 +660,9 @@ Launch Julia on 1 thread and run the function below. Then run Julia on the maxim
 #+END_challenge
 
 #+BEGIN_src julia
-Threads.@threads for i = 1:10
-    println("i = $i on thread $(Threads.threadid())")
-end
+> Threads.@threads for i = 1:10
+      println("i = $i on thread $(Threads.threadid())")
+  end
 #+END_src
 
 Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visualize the working threads.
@@ -676,15 +678,15 @@ Both scripts sort a one dimensional array of 20,000,000 floats between 0 and 1, 
 
 #+BEGIN_src julia
 # Create one dimensional array of 20,000,000 floats between 0 and 1
-a = rand(20000000);
+> a = rand(20000000);
 
 # Use the MergeSort algorithm of the sort function
 # (in the standard Julia Base library)
-b = copy(a); @time sort!(b, alg = MergeSort);
+> b = copy(a); @time sort!(b, alg = MergeSort);
 
 # Let's run the function a second time to remove the effect
 # of the initial compilation
-b = copy(a); @time sort!(b, alg = MergeSort);
+> b = copy(a); @time sort!(b, alg = MergeSort);
 #+END_src
 
 #+BEGIN_export html
@@ -692,81 +694,81 @@ b = copy(a); @time sort!(b, alg = MergeSort);
 #+END_export
 
 #+BEGIN_src julia
-import Base.Threads.@spawn
+> import Base.Threads.@spawn
 
 # The psort function is the same as the MergeSort algorithm
 # of the Base sort function with the addition of
 # the @spawn macro on one of the recursive calls
 
 # Sort the elements of `v` in place, from indices `lo` to `hi` inclusive
-function psort!(v, lo::Int=1, hi::Int = length(v))
-    if lo >= hi                       # 1 or 0 elements: nothing to do
-        return v
-    end
+> function psort!(v, lo::Int=1, hi::Int = length(v))
+      if lo >= hi                       # 1 or 0 elements: nothing to do
+          return v
+      end
 
-    if hi - lo < 100000               # Below some cutoff, run in serial
-        sort!(view(v, lo:hi), alg = MergeSort)
-        return v
-    end
+      if hi - lo < 100000               # Below some cutoff, run in serial
+          sort!(view(v, lo:hi), alg = MergeSort)
+          return v
+      end
 
-    mid = (lo + hi) >>> 1             # Find the midpoint
+      mid = (lo + hi) >>> 1             # Find the midpoint
 
-    half = @spawn psort!(v, lo, mid)  # Task to sort the lower half: will run
-    psort!(v, mid + 1, hi)            # in parallel with the current call sorting
-    # the upper half
-    wait(half)                        # Wait for the lower half to finish
+      half = @spawn psort!(v, lo, mid)  # Task to sort the lower half: will run
+      psort!(v, mid + 1, hi)            # in parallel with the current call sorting
+      # the upper half
+      wait(half)                        # Wait for the lower half to finish
 
-    temp = v[lo:mid]                  # Workspace for merging
+      temp = v[lo:mid]                  # Workspace for merging
 
-    i, k, j = 1, lo, mid + 1          # Merge the two sorted sub-arrays
-    @inbounds while k < j <= hi
-        if v[j] < temp[i]
-            v[k] = v[j]
-            j += 1
-        else
-            v[k] = temp[i]
-            i += 1
-        end
-        k += 1
-    end
-    @inbounds while k < j
-        v[k] = temp[i]
-        k += 1
-        i += 1
-    end
+      i, k, j = 1, lo, mid + 1          # Merge the two sorted sub-arrays
+      @inbounds while k < j <= hi
+          if v[j] < temp[i]
+              v[k] = v[j]
+              j += 1
+          else
+              v[k] = temp[i]
+              i += 1
+          end
+          k += 1
+      end
+      @inbounds while k < j
+          v[k] = temp[i]
+          k += 1
+          i += 1
+      end
 
-    return v
-end
+      return v
+  end
 
-a = rand(20000000);
+> a = rand(20000000);
 
 # Now, let's use our function
-b = copy(a); @time psort!(b);
+> b = copy(a); @time psort!(b);
 
 # And running it a second time to remove
 # the effect of the initial compilation
-b = copy(a); @time psort!(b);
+> b = copy(a); @time psort!(b);
 #+END_src
 
 Now, we can test both scripts with one or multiple threads:
 
 #+BEGIN_src sh
 # Single thread, non-parallel script
-julia /path/to/sort.jl
+$ julia /path/to/sort.jl
 
     2.234024 seconds (111.88 k allocations: 82.489 MiB, 0.21% gc time)
     2.158333 seconds (11 allocations: 76.294 MiB, 0.51% gc time)
     # Note the lower time for the 2nd run due to pre-compilation
 
 # Single thread, parallel script
-julia /path/to/psort.jl
+$ julia /path/to/psort.jl
 
     2.748138 seconds (336.77 k allocations: 703.200 MiB, 2.24% gc time)
     2.438032 seconds (3.58 k allocations: 686.932 MiB, 0.27% gc time)
     # Even longer time: normal, there was more to run (import package, read function)
 
 # 2 threads, non-parallel script
-JULIA_NUM_THREADS=2 julia /path/to/sort.jl
+$ JULIA_NUM_THREADS=2 julia /path/to/sort.jl
 
     2.233720 seconds (111.87 k allocations: 82.145 MiB, 0.21% gc time)
     2.155232 seconds (11 allocations: 76.294 MiB, 0.54% gc time)
@@ -774,7 +776,7 @@ JULIA_NUM_THREADS=2 julia /path/to/sort.jl
     # the addition of a thread did not change anything
 
 # 2 threads, parallel script
-JULIA_NUM_THREADS=2 julia /path/to/psort.jl
+$ JULIA_NUM_THREADS=2 julia /path/to/psort.jl
 
     1.773643 seconds (336.99 k allocations: 703.171 MiB, 4.08% gc time)
     1.460539 seconds (3.79 k allocations: 686.935 MiB, 0.47% gc time)
@@ -782,14 +784,14 @@ JULIA_NUM_THREADS=2 julia /path/to/psort.jl
     # have to wait for each other. But that's a good improvement.
 
 # 4 threads, non-parallel script
-JULIA_NUM_THREADS=4 julia /path/to/sort.jl
+$ JULIA_NUM_THREADS=4 julia /path/to/sort.jl
 
     2.231717 seconds (111.87 k allocations: 82.145 MiB, 0.21% gc time)
     2.153509 seconds (11 allocations: 76.294 MiB, 0.53% gc time)
     # Again: same result as the single thread
 
 # 4 threads, parallel script
-JULIA_NUM_THREADS=4 julia /path/to/psort.jl
+$ JULIA_NUM_THREADS=4 julia /path/to/psort.jl
 
     1.291714 seconds (336.98 k allocations: 703.171 MiB, 3.48% gc time)
     1.194282 seconds (3.78 k allocations: 686.935 MiB, 5.19% gc time)
@@ -810,7 +812,7 @@ Open a terminal emulator.
 /Linux users, launch xterm or the terminal emulator of your choice./
 
 #+BEGIN_src sh
-ssh userxxx@cassiopeia.c3.ca
+$ ssh userxxx@cassiopeia.c3.ca
 
 # enter password
 #+END_src
@@ -823,25 +825,25 @@ This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[
 
 #+BEGIN_src sh
 # get help on the module command
-module help
-module --help
-module -h
+$ module help
+$ module --help
+$ module -h
 
 # list modules that are already loaded
-module list
+$ module list
 
 # see which modules are available for Julia
-module spider julia
+$ module spider julia
 
 # see how to load julia 1.3
-module spider julia/1.3.0
+$ module spider julia/1.3.0
 
 # load julia 1.3 with the required gcc module first
 # (the order is important)
-module load gcc/7.3.0 julia/1.3.0
+$ module load gcc/7.3.0 julia/1.3.0
 
 # you can see that we now have Julia loaded
-module list
+$ module list
 #+END_src
 
 *** Copy your Julia scripts to the training cluster
@@ -851,14 +853,14 @@ We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', 
 #+END_export
 
 #+BEGIN_src sh
-mkdir ~/scratch/julia_job
+$ mkdir ~/scratch/julia_job
 #+END_src
 
 Open a new terminal window and from your local terminal (make sure that you are not on the remote terminal by looking at the bash prompt) run:
 
 #+BEGIN_src sh
-scp /local/path/to/sort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
-scp /local/path/to/psort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+$ scp /local/path/to/sort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
+$ scp /local/path/to/psort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
 
 # enter password
 #+END_src
@@ -879,13 +881,13 @@ How many processors are there on our training cluster?
 Note that here too, we could run Julia with multiple threads by running:
 
 #+BEGIN_src sh
-JULIA_NUM_THREADS=2 julia
+$ JULIA_NUM_THREADS=2 julia
 #+END_src
 
 Once in Julia, you can double check that Julia does indeed have access to 2 threads by running:
 
 #+BEGIN_src julia
-Threads.nthreads()
+> Threads.nthreads()
 #+END_src
 
 #+BEGIN_export html
@@ -898,7 +900,7 @@ Here is what our single core Slurm script looks like:
 #!/bin/bash
 #SBATCH --job-name=julia1c			# job name
 #SBATCH --time=00:01:00				# max walltime 1 min
-#SBATCH --cpus-per-task=1   		# number of cores
+#SBATCH --cpus-per-task=1               # number of cores
 #SBATCH --mem=1000					# max memory (default unit is megabytes)
 #SBATCH --output=julia1c%j.out		# file name for the output
 #SBATCH --error=julia1c%j.err		# file name for errors
@@ -920,15 +922,15 @@ Write the script for 2 cores.
 Now, we can submit our jobs to the cluster:
 
 #+BEGIN_src sh
-cd ~/scratch/julia_job
-sbatch job_julia1c.sh
-sbatch job_julia2c.sh
+$ cd ~/scratch/julia_job
+$ sbatch job_julia1c.sh
+$ sbatch job_julia2c.sh
 #+END_src
 
 And we can check their status with:
 
 #+BEGIN_src sh
-sq
+$ sq
 #+END_src
 
 #+BEGIN_export html
