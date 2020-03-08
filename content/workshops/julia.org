@@ -13,7 +13,6 @@
 [[/img/sfu2020poster_no_padding.png]]
 #+END_center
 
-
 **** /Abstract/
 
 #+BEGIN_definition
