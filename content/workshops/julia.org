@@ -468,7 +468,7 @@ To source a Julia script within Julia, use the function <span style="font-family
 > \sum            # Press TAB
 > \sqrt		      # Press TAB
 > \in             # Press TAB
-> \: phone:	      # (No space after the colon. I added it to prevent parsing) Press TAB
+> \: phone:	      # (No space after colon. I added it to prevent parsing) Press TAB
 
 > pi
 > Base.MathConstants.golden
