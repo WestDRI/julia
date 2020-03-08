@@ -1,5 +1,5 @@
-#+title: Introduction to Julia
-#+slug: julia
+#+title: Introduction to high performance research computing with Julia
+#+slug: intro
 
 #+OPTIONS: toc:2
 
