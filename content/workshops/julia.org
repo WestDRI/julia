@@ -317,9 +317,9 @@ Try to find a list of popular plotting packages.
 You can manage your personal library easily in package mode with the commands:
 
 #+BEGIN_example
-add &lt;package&gt;		install &lt;package&gt;
-rm &lt;package&gt;		uninstall &lt;package&gt;
-up &lt;package&gt;		upgrade &lt;package&gt;
+add &lt;package&gt;		install a package
+rm &lt;package&gt;		uninstall a package
+up &lt;package&gt;		upgrade a package
 
 st			check which packages are installed
 up			upgrade all packages
