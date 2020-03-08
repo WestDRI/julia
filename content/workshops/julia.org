@@ -5,14 +5,6 @@
 
 #+OPTIONS: toc:2
 
-#+BEGIN_center
-/This workshop is part of Simon Fraser University spring school:/
-#+END_center
-#+BEGIN_center
-#+ATTR_HTML: :alt radius
-[[/img/sfu2020poster_no_padding.png]]
-#+END_center
-
 **** /Abstract/
 
 #+BEGIN_definition
