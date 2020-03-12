@@ -1,4 +1,4 @@
-#+title: Machine learning in Julia with Flux
+#+title: Webinar: machine learning in Julia with Flux
 #+slug: flux
 #+date: 2020-05-13
 #+place: 45 min live webinar
