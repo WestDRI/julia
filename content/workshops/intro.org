@@ -1,4 +1,4 @@
-#+title: Introduction to high performance research computing with Julia
+#+title: Workshop: introduction to high performance research computing with Julia
 #+slug: intro
 
 #+OPTIONS: toc:2
