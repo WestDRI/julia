@@ -1,4 +1,4 @@
-#+title: Introduction to high performance research computing with Julia
+#+title: Webinar: introduction to high performance research computing with Julia
 #+slug: intro
 #+date: 2020-03-04
 #+place: 45 min live webinar
