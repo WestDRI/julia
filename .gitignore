@@ -4,7 +4,3 @@ resources/
 !workinprogress.svg
 archetypes/default.md
 static/img/cc_regional_partner_brown_large.png
-
-content/workshops/julia_script.jl
-content/workshops/pi.jl
-content/workshops/pi_parallel.jl
