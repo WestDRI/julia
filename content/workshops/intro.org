@@ -102,15 +102,13 @@ Julia is extremely flexible: type declaration is not required. Out of convenienc
 
 # **** Metaprogramming through macros
 
-** Getting started
+** Resources
 
-*** Where to find resources
+*** Documentation
 
-The main place to look for resources is the Julia [[https://julialang.org/][website]].
+- Official Julia [[https://julialang.org/][website]]
 
-**** Documentation
-
-- The official Julia [[https://docs.julialang.org/en/v1/][manual]]
+- Official Julia [[https://docs.julialang.org/en/v1/][manual]]
 
 - Online [[https://julialang.org/learning/][training]] material
 
@@ -120,7 +118,7 @@ The main place to look for resources is the Julia [[https://julialang.org/][webs
 
 - A [[https://www.juliabloggers.com/][blog]] aggregator for Julia
 
-**** Getting help
+*** Getting help
 
 - Discourse [[https://discourse.julialang.org/][forum]]
 
@@ -136,7 +134,7 @@ The main place to look for resources is the Julia [[https://julialang.org/][webs
 
 - [[https://webchat.freenode.net/#julia][#julia]] IRC channel on Freenode
 
-*** Nice ways to run Julia
+*** Interface
 
 Copying and pasting code from a script to the Julia REPL works, but there are nicer ways to integrate the two.
 
@@ -156,11 +154,9 @@ Here are a few:
 
 [[https://jupyter.org/][Project Jupyter]] allows to create interactive programming documents through its web-based JupyterLab environment and its Jupyter Notebook.
 
-* Hands-on
+* Julia basics
 
-** Working with Julia locally
-
-While we will be interacting with Julia through the REPL (read–eval–print loop: the interactive Julia shell) to develop and test our code, we want to save it in a script for future use and to submit to the cluster.
+While we will be interacting with Julia through the REPL (read–eval–print loop: the interactive Julia shell) to develop and test our code, we want to save it in a script for future use.
 
 #+BEGIN_export html
 Julia scripts are text files with the extension <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2.5px rgba(0,0,0,0.3); color: #000000">.jl</span>.
@@ -333,9 +329,7 @@ Whether a package from the standard library or one you installed, before you can
 This is done with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using</span> command (e.g. <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using Plots</span>).
 #+END_export
 
-*** Julia basics
-
-**** Finding documentation
+*** Finding documentation
 
 #+BEGIN_export html
 As we already saw, you can type <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2.5px rgba(0,0,0,0.3); color: #000000">?</span> to enter the help mode.<br>
@@ -346,7 +340,7 @@ To print the list of functions containing a certain word in their description, y
 > apropos("truncate")
 #+END_src
 
-**** Let's try a few commands
+*** Let's try a few commands
 
 #+BEGIN_src julia
 > versioninfo()
@@ -427,7 +421,7 @@ What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospa
 #+END_export
 #+END_challenge
 
-**** Sourcing a file
+*** Sourcing a file
 
 #+BEGIN_export html
 To source a Julia script within Julia, use the function <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">include()</span>.<br><br>Example:
@@ -437,7 +431,7 @@ To source a Julia script within Julia, use the function <span style="font-family
 > include("/path/to/file.jl")
 #+END_src
 
-**** Comments
+*** Comments
 
 #+BEGIN_src julia
 > # Single line comment
@@ -451,7 +445,7 @@ To source a Julia script within Julia, use the function <span style="font-family
 > x = 2;          # And they can be added at the end of lines
 #+END_src
 
-**** A few fun quirks
+*** A few fun quirks
 
 #+BEGIN_src julia
 > \omega		  # Press TAB
@@ -464,7 +458,7 @@ To source a Julia script within Julia, use the function <span style="font-family
 > Base.MathConstants.golden
 #+END_src
 
-**** Data types
+*** Data types
 
 #+BEGIN_src julia
 > typeof(2)
@@ -473,7 +467,7 @@ To source a Julia script within Julia, use the function <span style="font-family
 > typeof(true)
 #+END_src
 
-**** Indexing
+*** Indexing
 
 #+BEGIN_export html
 Indexing is done with square brackets. As in R and unlike in C++ or Python, Julia starts indexing at <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">1</span>, not at <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; box-shadow: 0px 0px 3px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">0</span>.
@@ -493,7 +487,7 @@ How can I get the tuple <span style="font-family: 'Source Code Pro', 'Lucida Con
 #+END_export
 #+END_challenge
 
-**** For loops
+*** For loops
 
 #+BEGIN_src julia
 > for i in 1:10
@@ -506,7 +500,7 @@ How can I get the tuple <span style="font-family: 'Source Code Pro', 'Lucida Con
   end
 #+END_src
 
-**** Predicates and conditionals
+*** Predicates and conditionals
 
 #+BEGIN_src julia
 > a = 2
@@ -547,7 +541,7 @@ Predicates can be built with many other operators and functions. For example:
 > 3 <= 4 || 4 > 5
 #+END_src
 
-**** Functions
+*** Functions
 
 #+BEGIN_src julia
 > function addTwo(a)
@@ -568,7 +562,7 @@ Predicates can be built with many other operators and functions. For example:
 > addSomethingOrTwo(3, 4)
 #+END_src
 
-**** Plotting
+*** Plotting
 
 It can be convenient to plot directly in the REPL (for instance when using SSH).
 
@@ -594,7 +588,9 @@ Most of the time however, you will want to make nicer looking graphs. There are 
 > plot(p1, p2, p3, p4)
 #+END_src
 
-*** Parallel programming
+* Parallel programming
+
+** Multi-threading
 
 Julia, which was built with efficiency in mind, aimed from the start to have parallel programming abilities. These however came gradually: first, there were coroutines, which is not parallel programming, but allows independent executions of elements of code; then there was a macro allowing for loops to run on several cores, but this would not work on nested loops and it did not integrate with the coroutines or I/O. It is only in the current (1.3) version, released a few months ago, that true multi-threading capabilities were born. Now is thus a very exciting time for Julia. This is all very new (this feature is still considered in testing mode) and it is likely that things will get even better in the coming months/years, for instance with the development of multi-threading capabilities for the compiler.
 
@@ -642,6 +638,8 @@ To see how many threads we are using, as well as the ID of the current thread, y
 > Threads.threadid()
 #+END_src
 
+*** For loops on multiple threads
+
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
@@ -657,9 +655,9 @@ Launch Julia on 1 thread and run the function below. Then run Julia on the maxim
 
 Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visualize the working threads.
 
-**** Preparing scripts for the cluster
+*** Generalization of multi-threading
 
-Let's save 2 scripts based on the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019.\\
+Let's consider the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019.\\
 Both scripts sort a one dimensional array of 20,000,000 floats between 0 and 1, one with parallelism and one without.
 
 #+BEGIN_export html
@@ -789,11 +787,14 @@ $ JULIA_NUM_THREADS=4 julia /path/to/psort.jl
     # there is still an improvement over the 2 thread run
 #+END_src
 
-** Working with Julia on the cluster
+*** Distributed computing
+
+
+* Moving on to the cluster
 
 Now that we have some running scripts, let's test them out on our cluster.
 
-*** Log in to the cluster
+*** Logging in to the cluster
 
 Open a terminal emulator.
 
@@ -809,7 +810,7 @@ $ ssh userxxx@cassiopeia.c3.ca
 
 You are now in our training cluster.
 
-*** Access Julia
+*** Accessing Julia
 
 This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
 
@@ -836,7 +837,7 @@ $ module load gcc/7.3.0 julia/1.3.0
 $ module list
 #+END_src
 
-*** Copy your Julia scripts to the training cluster
+*** Copying files to the cluster
 
 #+BEGIN_export html
 We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2.5px rgba(0,0,0,0.3); color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.4rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2.5px rgba(0,0,0,0.3); color: #000000">~/scratch</span>, then copy our julia script in it.
