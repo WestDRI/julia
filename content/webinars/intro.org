@@ -40,4 +40,4 @@ A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in whi
 
 * Video
 
-{{< youtube id="XQsxn8OUXGA" >}}
+{{< youtube XQsxn8OUXGA >}}
