@@ -15,7 +15,7 @@ But Julia also comes with parallel computing and multi-threading capabilities.
 In this webinar, after a quickly presentation of some of the key features of Julia's beautifully concise syntax, I will dive into using Julia for HPC.
 #+END_definition
 
-**** /Useful links/
+* Useful links
 
 #+BEGIN_vertbarsmall
 [[https://docs.julialang.org/en/v1/][Documentation]]\\
