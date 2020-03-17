@@ -3,4 +3,4 @@
 	url = https://github.com/prosoitos/hugo-coder.git
 [submodule "content/workshops/covid/covid_db"]
 	path = content/workshops/covid/covid_db
-	url = git@github.com:CSSEGISandData/COVID-19.git
+	url = https://github.com/CSSEGISandData/COVID-19.git
