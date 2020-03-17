@@ -5,7 +5,7 @@
 
 #+OPTIONS: toc:2
 
-* Abstract
+**** /Abstract/
 
 #+BEGIN_definition
 Julia is fast: just-in-time (JIT) compilation and multiple dispatch bring efficiency to interactivity. People often say that using Julia feels like running R or python with a speed /almost/ comparable to that of C.
