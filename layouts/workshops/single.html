@@ -9,7 +9,10 @@
       <div class="post-title">
         <h1 class="title">{{ .Title }}</h1>
       </div>
-      <!-- <div class="post-meta"> -->
+      <!-- <span class="updated"> -->
+          <!-- Last updated: {{ now.Format "January 2, 2006" }} -->
+      <!-- </span> -->
+      <div class="post-meta">
       <!--   <\!-- <span class="reading-time"> -\-> -->
       <!--     <\!-- <i class="fas fa-clock"></i> -\-> -->
       <!--     <\!-- {{ i18n "reading_time" .ReadingTime }} -\-> -->
@@ -22,6 +25,7 @@
       <!--     <\!-- </div> -\-> -->
       <!--   <i class="fas fa-calendar"></i> -->
       <!--   {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }} -->
+          Last updated: {{ now.Format "January 2, 2006" }}
       <!--   {{ with .Page.Params.Place }} -->
       <!-- 	<div class="place"> -->
       <!-- 	<i class="fas fa-home"></i> -->
@@ -30,7 +34,7 @@
       <!-- 	{{ end }} -->
       <!--   {{ with .Page.Params.Categories }}{{ partial "taxonomy/categories.html" . }}{{ end }} -->
       <!--   {{ with .Page.Params.Tags }}{{ partial "taxonomy/tags.html" . }}{{ end }} -->
-      <!-- </div> -->
+      </div>
       {{ .TableOfContents }}
     </header>
 
