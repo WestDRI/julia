@@ -15,23 +15,6 @@ But Julia also comes with parallel computing and multi-threading capabilities.
 In this webinar, after a quickly presentation of some of the key features of Julia's beautifully concise syntax, I will dive into using Julia for HPC.
 #+END_definition
 
-* Useful links
-
-#+BEGIN_vertbarsmall
-[[https://docs.julialang.org/en/v1/][Documentation]]\\
-[[https://pkg.julialang.org/docs/][Package repository]]\\
-Julia [[https://julialang.org/learning/][Online training material]]\\
-[[https://discourse.julialang.org/][Forum]]\\
-[[https://stackoverflow.com/tags/julia][julia tag]] on Stack Overflow\\
-[[https://app.slack.com/client/T68168MUP/C67910KEH][Slack team]]. You need to agree to the community code of conduct at slackinvite.julialang.org to receive an invitation.\\
-[[https://www.youtube.com/user/JuliaLanguage][YouTube channel]]\\
-[[https://twitter.com/search?q=%23julialang][#julialang hastag]] on Twitter\\
-[[https://www.reddit.com/r/Julia/][Subreddit]]\\
-[[https://gitter.im/JuliaLang/julia][Gitter channel]]\\
-[[https://webchat.freenode.net/#julia][IRC channel]] on Freenode\\
-A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in which [[https://www.rust-lang.org/][Rust]] developer Graydon Hoare places Julia in a historical context of programming languages
-#+END_vertbarsmall
-
 * Slides
 
 #+BEGIN_export html
