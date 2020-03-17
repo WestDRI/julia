@@ -40,8 +40,4 @@ A very interesting [[https://graydon2.dreamwidth.org/189377.html][post]], in whi
 
 * Video
 
-#+BEGIN_export html
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/XQsxn8OUXGA&feature=youtu.be" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="Webinar: High-performance research computing with Julia"></iframe>
-</div>
-#+END_export
+{{< youtube id="XQsxn8OUXGA" >}}
