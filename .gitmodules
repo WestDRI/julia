@@ -1,3 +1,6 @@
 [submodule "themes/hugo-coder"]
 	path = themes/hugo-coder
 	url = https://github.com/prosoitos/hugo-coder.git
+[submodule "content/workshops/covid/covid_db"]
+	path = content/workshops/covid/covid_db
+	url = git@github.com:CSSEGISandData/COVID-19.git
