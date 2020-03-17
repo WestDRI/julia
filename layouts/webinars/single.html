@@ -38,12 +38,12 @@
       {{ .Content }}
     </div>
 
-    <div class="updated">
-      Last updated: {{ now.Format "January 2, 2006" }}
-    </div>
+    <!-- <div class="updated"> -->
+      <!-- Last updated: {{ now.Format "January 2, 2006" }} -->
+    <!-- </div> -->
 
     <footer>
-      <h5>Comments and questions</h5>
+      <!-- <h3>Comments and questions</h3> -->
       {{ partial "posts/series.html" . }}
       {{ partial "posts/disqus.html" . }}
       {{ partial "posts/commento.html" . }}
@@ -52,6 +52,7 @@
   </article>
 
   {{ partial "posts/math.html" . }}
+
 </section>
 
 {{ end }}
