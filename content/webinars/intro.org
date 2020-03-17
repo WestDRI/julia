@@ -24,3 +24,5 @@ In this webinar, after a quickly presentation of some of the key features of Jul
 * Video
 
 {{< youtube XQsxn8OUXGA >}}
+
+* Comments & questions
