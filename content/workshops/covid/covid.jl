@@ -174,9 +174,9 @@ total.region = string.(total.country, " ", total.province)
 
 total.region = replace.(total.region, r" NA" => "")
 
-select!(total, [8, 3, 4, 5, 6, 7])
+total_rg = select(total, [8, 3, 4, 5, 6, 7])
 
-conf_wide = select(total, [1, 2, 3])
+conf_wide = select(total_rg, [1, 2, 3])
 
 conf_wide = unstack(conf_wide, :region, :conf)
 
@@ -184,3 +184,10 @@ conf_wide = TimeArray(conf_wide, timestamp = :date);
 
 plot(conf_wide)
 
+# * all countries on one graph
+
+# ** total
+
+
+
+# ** one line per country
