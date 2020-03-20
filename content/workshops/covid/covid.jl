@@ -7,6 +7,8 @@ using DataFrames
 using Plots
 using Dates
 using TimeSeries
+plotly()
+Plots.PyPlotBackend()
 
 # ** data
 
@@ -140,19 +142,21 @@ recov_long.province = replace(recov_long.province, missing => "NA")
 
 # * ill
 
+total = copy(conf_long)
+
 conf = conf_long.total
 dead = dead_long.total
 recov = recov_long.total
 ill = conf_long.total .- dead_long.total .- recov_long.total
 
-conf_long.conf = conf
-conf_long.dead = dead
-conf_long.recov = recov
-conf_long.ill = ill
-
-total = conf_long
+total.conf = conf
+total.dead = dead
+total.recov = recov
+total.ill = ill
 
 select!(total, Not(:total))
+
+total_bk = copy(total)
 
 france = total[total[:, :province] .== "France", :]
 
@@ -161,3 +165,22 @@ fr = select(france, Not([:country, :province]))
 fr = TimeArray(fr, timestamp = :date)
 
 plot(fr)
+
+# * all regions on one graph
+
+# transform to wide format keeping date as variable
+
+total.region = string.(total.country, " ", total.province)
+
+total.region = replace.(total.region, r" NA" => "")
+
+select!(total, [8, 3, 4, 5, 6, 7])
+
+conf_wide = select(total, [1, 2, 3])
+
+conf_wide = unstack(conf_wide, :region, :conf)
+
+conf_wide = TimeArray(conf_wide, timestamp = :date);
+
+plot(conf_wide)
+
