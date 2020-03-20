@@ -18,7 +18,7 @@ In this webinar, after a quickly presentation of some of the key features of Jul
 * Slides
 
 #+BEGIN_export html
-<a href="https://westgrid-webinars.netlify.com/julia_intro/"><p align="center"><img src="/img/julia_intro_slides.png" title="Link to slides" width="100%" style="border:2px solid black"/></p></a>
+<a href="https://westgrid-webinars.netlify.com/julia_intro/"><p align="center"><img src="/img/julia_intro_slides.png" title="Link to online slides" width="100%" style="border:2px solid black"/></p></a>
 #+END_export
 
 * Video
