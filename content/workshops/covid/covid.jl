@@ -38,25 +38,25 @@ conf_long.date = Date.(
 
 conf_long.province = replace(conf_long.province, missing => "NA")
 
-conf = groupby(conf_long, [:country, :province])
+# conf = groupby(conf_long, [:country, :province])
 
-france = conf_long[conf_long[:, :province] .== "France", :]
+# france = conf_long[conf_long[:, :province] .== "France", :]
 
-fr = TimeArray(france, timestamp = :date)
+# fr = TimeArray(france, timestamp = :date)
 
-plot(fr.total)
+# plot(fr.total)
 
-britcol = conf_long[(conf_long[:, :country] .== "Canada") .& (conf_long[:, :province] .== "British Columbia"), :]
+# britcol = conf_long[(conf_long[:, :country] .== "Canada") .& (conf_long[:, :province] .== "British Columbia"), :]
 
-bc = TimeArray(britcol, timestamp = :date)
+# bc = TimeArray(britcol, timestamp = :date)
 
-plot(bc.total)
+# plot(bc.total)
 
-india = conf_long[conf_long[:, :country] .== "India", :]
+# india = conf_long[conf_long[:, :country] .== "India", :]
 
-in = TimeArray(india, timestamp = :date)
+# in = TimeArray(india, timestamp = :date)
 
-plot(in.total)
+# plot(in.total)
 
 # ** dead
 
@@ -78,25 +78,25 @@ dead_long.date = Date.(
 
 dead_long.province = replace(dead_long.province, missing => "NA")
 
-deaths = groupby(dead_long, [:country, :province])
+# deaths = groupby(dead_long, [:country, :province])
 
-france = dead_long[dead_long[:, :province] .== "France", :]
+# france = dead_long[dead_long[:, :province] .== "France", :]
 
-fr = TimeArray(france, timestamp = :date)
+# fr = TimeArray(france, timestamp = :date)
 
-plot(fr.total)
+# plot(fr.total)
 
-britcol = dead_long[(dead_long[:, :country] .== "Canada") .& (dead_long[:, :province] .== "British Columbia"), :]
+# britcol = dead_long[(dead_long[:, :country] .== "Canada") .& (dead_long[:, :province] .== "British Columbia"), :]
 
-bc = TimeArray(britcol, timestamp = :date)
+# bc = TimeArray(britcol, timestamp = :date)
 
-plot(bc.total)
+# plot(bc.total)
 
-india = dead_long[dead_long[:, :country] .== "India", :]
+# india = dead_long[dead_long[:, :country] .== "India", :]
 
-in = TimeArray(india, timestamp = :date)
+# in = TimeArray(india, timestamp = :date)
 
-plot(in.total)
+# plot(in.total)
 
 # ** recovered
 
@@ -118,36 +118,46 @@ recov_long.date = Date.(
 
 recov_long.province = replace(recov_long.province, missing => "NA")
 
-recov = groupby(recov_long, [:country, :province])
+# recov = groupby(recov_long, [:country, :province])
 
-france = recov_long[recov_long[:, :province] .== "France", :]
+# france = recov_long[recov_long[:, :province] .== "France", :]
 
-fr = TimeArray(france, timestamp = :date)
+# fr = TimeArray(france, timestamp = :date)
 
-plot(fr.total)
+# plot(fr.total)
 
-britcol = recov_long[(recov_long[:, :country] .== "Canada") .& (recov_long[:, :province] .== "British Columbia"), :]
+# britcol = recov_long[(recov_long[:, :country] .== "Canada") .& (recov_long[:, :province] .== "British Columbia"), :]
 
-bc = TimeArray(britcol, timestamp = :date)
+# bc = TimeArray(britcol, timestamp = :date)
 
-plot(bc.total)
+# plot(bc.total)
 
-india = recov_long[recov_long[:, :country] .== "India", :]
+# india = recov_long[recov_long[:, :country] .== "India", :]
 
-in = TimeArray(india, timestamp = :date)
+# in = TimeArray(india, timestamp = :date)
 
-plot(in.total)
+# plot(in.total)
 
 # * ill
 
+conf = conf_long.total
+dead = dead_long.total
+recov = recov_long.total
 ill = conf_long.total .- dead_long.total .- recov_long.total
 
+conf_long.conf = conf
+conf_long.dead = dead
+conf_long.recov = recov
 conf_long.ill = ill
 
-france = conf_long[conf_long[:, :province] .== "France", :]
+total = conf_long
 
-fr = TimeArray(france, timestamp = :date)
+select!(total, Not(:total))
 
-plot(fr.ill)
+france = total[total[:, :province] .== "France", :]
+
+fr = select(france, Not([:country, :province]))
+
+fr = TimeArray(fr, timestamp = :date)
 
 plot(fr)
