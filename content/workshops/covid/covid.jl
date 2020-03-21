@@ -1,44 +1,102 @@
-# * load
+# * setup
 
-# ** packages
+# ** load packages
 
 using CSV
 using DataFrames
 using Plots
 using Dates
 using TimeSeries
-plotly()
-Plots.PyPlotBackend()
+gr()
 
-# ** data
+# ** read data
 
-confirmed = DataFrame(CSV.File("covid_db/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"))
+list = joinpath.(relpath("covid_db/csse_covid_19_data/csse_covid_19_time_series"),
+                 readdir("covid_db/csse_covid_19_data/csse_covid_19_time_series"))
 
-dead = DataFrame(CSV.File("covid_db/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv"))
+name = lowercase.(replace.(list, r".*-(.*).csv" => s"\1"))
 
-recovered = DataFrame(CSV.File("covid_db/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv"))
+dat = DataFrame.(CSV.File.(list))
 
-# * raw data
+# ** clean data and put in long format
 
-# ** confirmed
+DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
+                               2 => Symbol("country")))
 
-rename!(confirmed, Dict(1 => Symbol("province"),
-                        2 => Symbol("country")))
+conf = stack(dat[1], Not(collect(1:4)),
+             variable_name = Symbol("date"),
+                value_name = Symbol("$(name[1])"))
 
-select!(confirmed, Not([3, 4]))
+dead = stack(dat[2], Not(collect(1:4)),
+             variable_name = Symbol("date"),
+             value_name = Symbol("dead"))
 
-conf_long = stack(confirmed, Not([1, 2]),
-                  variable_name = Symbol("date"),
-                  value_name = Symbol("total"))
+recov = stack(dat[3], Not(collect(1:4)),
+              variable_name = Symbol("date"),
+              value_name = Symbol("$(name[3])"))
 
-select!(conf_long, [4, 3, 1, 2])
+all = join(conf, dead, recov, on = [:date, :country, :province, :Lat, :Long])
 
-conf_long.date = Date.(
-    replace.(string.(conf_long[:, 3]),
-             r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy"
-)
+select!(all, [4, 3, 1, 2, 7, 8])
 
-conf_long.province = replace(conf_long.province, missing => "NA")
+all.date = Date.(replace.(string.(all[:, 3]),
+                          r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy");
+
+replace!(all.province, missing => "NA")
+
+# * currently ill
+
+all.current = all.confirmed .- all.dead .- all.recovered
+
+# * plots
+
+# ** all countries on one graph
+
+# *** world total
+
+
+
+# *** one line per country
+
+
+Sweden
+
+Netherlands
+
+france = total[total[:, :province] .== "France", :]
+
+fr = select(france, Not([:country, :province]))
+
+fr = TimeArray(fr, timestamp = :date)
+
+plot(fr)
+
+# * all regions on one graph
+
+# transform to wide format keeping date as variable
+
+# total.region = string.(total.country, " ", total.province)
+total.region = total.country .* " " .* total.province
+
+total.region = replace.(total.region, r" NA" => "")
+
+total_rg = select(total, [8, 3, 4, 5, 6, 7])
+
+conf_wide = select(total_rg, [1, 2, 3])
+
+conf_wide = unstack(conf_wide, :region, :conf)
+
+conf_wide = TimeArray(conf_wide, timestamp = :date);
+
+plot(conf_wide)
+
+
+
+
+
+
+
+
 
 # conf = groupby(conf_long, [:country, :province])
 
@@ -60,65 +118,10 @@ conf_long.province = replace(conf_long.province, missing => "NA")
 
 # plot(in.total)
 
-# ** dead
 
-rename!(dead, Dict(1 => Symbol("province"),
-                   2 => Symbol("country")))
 
-select!(dead, Not([3, 4]))
 
-dead_long = stack(dead, Not([1, 2]),
-                  variable_name = Symbol("date"),
-                  value_name = Symbol("total"))
 
-select!(dead_long, [4, 3, 1, 2])
-
-dead_long.date = Date.(
-    replace.(string.(dead_long[:, 3]),
-             r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy"
-)
-
-dead_long.province = replace(dead_long.province, missing => "NA")
-
-# deaths = groupby(dead_long, [:country, :province])
-
-# france = dead_long[dead_long[:, :province] .== "France", :]
-
-# fr = TimeArray(france, timestamp = :date)
-
-# plot(fr.total)
-
-# britcol = dead_long[(dead_long[:, :country] .== "Canada") .& (dead_long[:, :province] .== "British Columbia"), :]
-
-# bc = TimeArray(britcol, timestamp = :date)
-
-# plot(bc.total)
-
-# india = dead_long[dead_long[:, :country] .== "India", :]
-
-# in = TimeArray(india, timestamp = :date)
-
-# plot(in.total)
-
-# ** recovered
-
-rename!(recovered, Dict(1 => Symbol("province"),
-                        2 => Symbol("country")))
-
-select!(recovered, Not([3, 4]))
-
-recov_long = stack(recovered, Not([1, 2]),
-                  variable_name = Symbol("date"),
-                  value_name = Symbol("total"))
-
-select!(recov_long, [4, 3, 1, 2])
-
-recov_long.date = Date.(
-    replace.(string.(recov_long[:, 3]),
-             r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy"
-)
-
-recov_long.province = replace(recov_long.province, missing => "NA")
 
 # recov = groupby(recov_long, [:country, :province])
 
@@ -139,55 +142,3 @@ recov_long.province = replace(recov_long.province, missing => "NA")
 # in = TimeArray(india, timestamp = :date)
 
 # plot(in.total)
-
-# * ill
-
-total = copy(conf_long)
-
-conf = conf_long.total
-dead = dead_long.total
-recov = recov_long.total
-ill = conf_long.total .- dead_long.total .- recov_long.total
-
-total.conf = conf
-total.dead = dead
-total.recov = recov
-total.ill = ill
-
-select!(total, Not(:total))
-
-total_bk = copy(total)
-
-france = total[total[:, :province] .== "France", :]
-
-fr = select(france, Not([:country, :province]))
-
-fr = TimeArray(fr, timestamp = :date)
-
-plot(fr)
-
-# * all regions on one graph
-
-# transform to wide format keeping date as variable
-
-total.region = string.(total.country, " ", total.province)
-
-total.region = replace.(total.region, r" NA" => "")
-
-total_rg = select(total, [8, 3, 4, 5, 6, 7])
-
-conf_wide = select(total_rg, [1, 2, 3])
-
-conf_wide = unstack(conf_wide, :region, :conf)
-
-conf_wide = TimeArray(conf_wide, timestamp = :date);
-
-plot(conf_wide)
-
-# * all countries on one graph
-
-# ** total
-
-
-
-# ** one line per country
