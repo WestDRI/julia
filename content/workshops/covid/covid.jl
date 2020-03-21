@@ -23,19 +23,19 @@ dat = DataFrame.(CSV.File.(list))
 DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
                                2 => Symbol("country")))
 
-conf = stack(dat[1], Not(collect(1:4)),
-             variable_name = Symbol("date"),
-                value_name = Symbol("$(name[1])"))
+total = stack(dat[1], Not(collect(1:4)),
+              variable_name = Symbol("date"),
+              value_name = Symbol("total"))
 
 dead = stack(dat[2], Not(collect(1:4)),
              variable_name = Symbol("date"),
              value_name = Symbol("dead"))
 
-recov = stack(dat[3], Not(collect(1:4)),
-              variable_name = Symbol("date"),
-              value_name = Symbol("$(name[3])"))
+recovered = stack(dat[3], Not(collect(1:4)),
+                  variable_name = Symbol("date"),
+              value_name = Symbol("recovered"))
 
-all = join(conf, dead, recov, on = [:date, :country, :province, :Lat, :Long])
+all = join(total, dead, recovered, on = [:date, :country, :province, :Lat, :Long])
 
 select!(all, [4, 3, 1, 2, 7, 8])
 
@@ -46,13 +46,25 @@ replace!(all.province, missing => "NA")
 
 # * currently ill
 
-all.current = all.confirmed .- all.dead .- all.recovered
+all.current = all.total .- all.dead .- all.recovered
 
 # * plots
 
 # ** all countries on one graph
 
-# *** world total
+# *** world totals
+
+world = by(all, :date, total = :total => sum, dead = :dead => sum,
+           recovered = :recovered => sum, current = :current => sum)
+
+savefig(plot(TimeArray(world, timestamp = :date),
+             title = "World total", legend = :outertopright,
+             widen = :false, dpi = :300),
+        "world_totals.png")
+
+savefig(plot(TimeArray(world, timestamp = :date),
+             title = "World total", legend = :outertopright, widen = :false),
+        "world_totals.pdf")
 
 
 
