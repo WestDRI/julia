@@ -7,7 +7,7 @@
   <article>
     <header>
       <div class="post-title">
-        <h1 class="title">{{ .Title }}</h1>
+        <center><h1 class="title">{{ .Title }}</h1></center>
       </div>
       <div class="post-meta">
         <!-- <span class="reading-time"> -->
@@ -20,11 +20,11 @@
 	      <!-- </time> -->
             <!-- </span> -->
           <!-- </div> -->
-        <i class="fas fa-calendar"></i>
+	<i class="fas fa-calendar"></i>
         {{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}
         {{ with .Page.Params.Place }}
 	<div class="place">
-	<i class="fas fa-home"></i>
+	  <i class="fas fa-home"></i>
 	  {{ . }}
 	</div>
 	{{ end }}
@@ -40,7 +40,7 @@
 
     <!-- <div class="updated"> -->
       <!-- Last updated: {{ now.Format "January 2, 2006" }} -->
-    <!-- </div> -->
+      <!-- </div> -->
 
     <footer>
       <!-- <h3>Comments and questions</h3> -->
