@@ -30,3 +30,32 @@ Clone (<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace;
 #+END_export
 #+END_box
 
+* Preliminary steps
+
+**** Load packages
+
+Choose the [[https://gr-framework.org/][GR framework]] as a backend for Plots.
+
+#+BEGIN_src julia
+using CSV
+using DataFrames
+using Dates 			# from the standard Julia library
+using TimeSeries
+using NamedArrays
+using Plots
+gr()
+#+END_src
+
+**** Load the data
+
+/If you did not clone or download and unzip the Covid-19 data repository in your working directory, adapt the path consequently./
+
+#+BEGIN_src julia
+dir = "COVID-19/csse_covid_19_data/csse_covid_19_time_series"
+
+list = joinpath.(relpath(dir), readdir(dir))
+
+# Read in 3 csv files with confirmed, dead, and recovered numbers
+dat = DataFrame.(CSV.File.(list[collect(1:3)]))
+#+END_src
+
