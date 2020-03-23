@@ -66,3 +66,20 @@ scatter(regX, regY)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+myfavoriteanimals = ("penguins", "cats", "sugargliders")
