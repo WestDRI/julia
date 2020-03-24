@@ -109,3 +109,5 @@ plot(TimeArray(world, timestamp = :date),
 #+ATTR_HTML: :alt plot
 [[/plot/workshop/covid/world.png]]
 
+{{< updated >}}
+
