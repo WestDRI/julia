@@ -12,43 +12,37 @@ gr()
 
 # ** read data
 
-list = joinpath.(
-    relpath("covid_db/csse_covid_19_data/csse_covid_19_time_series"),
-    readdir("covid_db/csse_covid_19_data/csse_covid_19_time_series"))
+dir = "covid_db/csse_covid_19_data/csse_covid_19_time_series"
 
-dat = DataFrame.(CSV.File.(list))
+list = joinpath.(relpath(dir), readdir(dir))
+
+dat = DataFrame.(CSV.File.(list[collect(1:3)]))
 
 # ** clean data and put in long format
 
 DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
                                2 => Symbol("country")))
 
-total = stack(dat[1], Not(collect(1:4)),
-              variable_name = Symbol("date"),
-              value_name = Symbol("total"))
+var = ["total", "dead", "recovered"]
 
-dead = stack(dat[2], Not(collect(1:4)),
-             variable_name = Symbol("date"),
-             value_name = Symbol("dead"))
+datlong = map((x, y) -> stack(x, Not(collect(1:4)),
+                              variable_name = Symbol("date"),
+                    value_name = Symbol("$y")),
+     dat, var)
 
-recovered = stack(dat[3], Not(collect(1:4)),
-                  variable_name = Symbol("date"),
-              value_name = Symbol("recovered"))
-
-all = join(
-    total, dead, recovered,
-    on = [:date, :country, :province, :Lat, :Long])
+all = join(datlong[1], datlong[2], datlong[3],
+           on = [:date, :country, :province, :Lat, :Long])
 
 select!(all, [4, 3, 1, 2, 7, 8])
 
 all.date = Date.(replace.(string.(all[:, 3]),
                           r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy");
 
-replace!(all.province, missing => "NA")
+replace!(all.province, missing => "NA");
 
 # * currently ill
 
-all.current = all.total .- all.dead .- all.recovered
+all.current = all.total .- all.dead .- all.recovered;
 
 # * plots
 
@@ -60,7 +54,7 @@ world = by(all, :date, total = :total => sum, dead = :dead => sum,
 savefig(plot(TimeArray(world, timestamp = :date),
              title = "World", legend = :outertopright,
              widen = :false, dpi = :300),
-        "../../../plot/workshop/world.png")
+        "../../../plot/workshop/covid/world.png")
 
 # ** single country summary
 
@@ -177,7 +171,7 @@ savefig.(plot.(TimeArray(select(loclist, Not([:country, :province])),
 
 plot.(TimeArray.(select.(loclist, Not([:country, :province])),
                  timestamp = :date),
-               title = "$locnames", legend = :outertopright,
+      title = "$locnames", legend = :outertopright,
       widen = :false, dpi = :300)
 
 
