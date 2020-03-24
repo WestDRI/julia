@@ -39,7 +39,7 @@ Choose the [[https://gr-framework.org/][GR framework]] as a backend for Plots.
 #+BEGIN_src julia
 using CSV
 using DataFrames
-using Dates                     # from the standard Julia library
+using Dates          # from the standard Julia library
 using TimeSeries
 using NamedArrays
 using Plots
@@ -106,5 +106,5 @@ plot(TimeArray(world, timestamp = :date),
      widen = :false)
            #+END_src
 
-[[/plot/world.png]]
+[[/plot/workshop/covid/world.png]]
 
