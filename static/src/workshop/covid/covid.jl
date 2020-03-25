@@ -10,7 +10,7 @@ using TimeSeries
 using NamedArrays
 gr()
 
-# ** read data
+# * data until March 22, 2020
 
 dir = "covid_db/csse_covid_19_data/csse_covid_19_time_series"
 
@@ -40,15 +40,11 @@ all.date = Date.(replace.(string.(all[:, 3]),
 
 replace!(all.province, missing => "NA");
 
-# * currently ill
+# ** currently ill
 
 all.current = all.total .- all.dead .- all.recovered;
 
-# * plots
-
-# ** data until March 22, 2020
-
-# *** world summary
+# ** world summary
 
 world = by(all, :date,
            total = :total => sum,
@@ -59,13 +55,13 @@ world = by(all, :date,
 savefig(plot(TimeArray(world, timestamp = :date),
              title = "World", legend = :outertopright,
              widen = :false, dpi = :300),
-        "../../../plot/workshop/covid/world.png")
+        "../../../plot/workshop/covid/world1.png")
 
-# *** single country summary
+# ** single country summary
 
 countries = groupby(all, :country)
 
-# countries[findall(x -> "France" in x, keys(countries))]
+countries[findall(x -> "France" in x, keys(countries))]
 # countries[findall(x -> "Canada" in x, keys(countries))]
 # countries[findall(x -> "India" in x, keys(countries))]
 
@@ -123,14 +119,14 @@ locfiles2 = ["france", "bc", "ny", "taiwan", "skorea",
 map((x, y, z) -> savefig(plot(TimeArray(x, timestamp = :date),
                               title = "$y", legend = :outertopright,
                               widen = :false, dpi = :300),
-                         "../../../plot/workshop/covid/$z.png"),
+                         "../../../plot/workshop/covid/$z1.png"),
     loclist1, loctitles1, locfiles1);
 
 map((x, y, z) -> savefig(plot(TimeArray(select(x, Not([:country, :province])),
                                         timestamp = :date),
                               title = "$y", legend = :outertopright,
                               widen = :false, dpi = :300),
-                         "../../../plot/workshop/covid/$z.png"),
+                         "../../../plot/workshop/covid/$z1.png"),
     loclist2, loctitles2, locfiles2);
 
 pcanada, pus, pchina = map((x, y) -> plot(TimeArray(x, timestamp = :date),
@@ -167,6 +163,121 @@ psingapore, pspain, pitaly, puk =
 savefig(plot(pcanada, pbc, pus, pny,
              legend = false, titlefontsize = 7,
              tickfontsize = 6, dpi = :300),
+        "../../../plot/workshop/covid/northamerica1.png")
+
+savefig(plot(pchina, ptaiwan, pskorea, psingapore,
+             legend = false, titlefontsize = 7,
+             tickfontsize = 6, dpi = :300),
+        "../../../plot/workshop/covid/asia1.png")
+
+savefig(plot(pfrance, pspain, pitaly, puk,
+             legend = false, titlefontsize = 7,
+             tickfontsize = 6, dpi = :300),
+        "../../../plot/workshop/covid/europe1.png")
+
+# * data up to the present
+
+dat = DataFrame.(CSV.File.(list[collect(5:6)]))
+
+# ** long format
+
+DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
+                               2 => Symbol("country")))
+
+var = ["total", "dead"]
+
+datlong = map((x, y) -> stack(x, Not(collect(1:4)),
+                              variable_name = Symbol("date"),
+                              value_name = Symbol("$y")),
+               dat2, var)
+
+all = join(datlong[1], datlong[2],
+           on = [:date, :country, :province, :Lat, :Long])
+
+select!(all, [4, 3, 1, 2, 7])
+
+all.date = Date.(replace.(string.(all[:, 3]),
+                          r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy");
+
+replace!(all.province, missing => "");
+
+all.loc = all.country .* all.province;
+
+# ** world summary
+
+world = by(all, :date,
+           total = :total => sum,
+           dead = :dead => sum)
+
+savefig(plot(TimeArray(world, timestamp = :date),
+             title = "World", legend = :outertopright,
+             widen = :false, dpi = :300),
+        "../../../plot/workshop/covid/world.png")
+
+# ** countries summaries
+
+countries = groupby(all, :country)
+
+canada = all[all[:, :country] .== "Canada", :]
+us = all[all[:, :country] .== "US", :]
+china = all[all[:, :country] .== "China", :]
+
+skorea = all[all[:, :country] .== "Korea, South", :]
+taiwan = all[all[:, :country] .== "Taiwan*", :]
+singapore = all[all[:, :country] .== "Singapore", :]
+italy = all[all[:, :country] .== "Italy", :]
+spain = all[all[:, :country] .== "Spain", :]
+
+france = all[all[:, :province] .== "France", :]
+uk = all[all[:, :province] .== "United Kingdom", :]
+
+# *** country totals for Canada, US, and China
+
+canada, us, china = by.([canada, us, china], :date,
+                        total = :total => sum,
+                        dead = :dead => sum,
+                        recovered = :recovered => sum,
+                        current = :current => sum)
+
+loclist1 = [canada, us, china]
+loctitles1 = ["Canada", "US", "China"]
+locfiles1 = ["canada", "us", "china"]
+
+loclist2 = [france, bc, ny, taiwan, skorea, singapore, spain, italy, uk]
+loctitles2 = ["France", "BC", "NY", "Taiwan", "South Korea",
+              "Singapore", "Spain", "Italy", "UK"]
+locfiles2 = ["france", "bc", "ny", "taiwan", "skorea",
+             "singapore", "spain", "italy", "uk"]
+
+map((x, y, z) -> savefig(plot(TimeArray(x, timestamp = :date),
+                              title = "$y", legend = :outertopright,
+                              widen = :false, dpi = :300),
+                         "../../../plot/workshop/covid/$z.png"),
+    loclist1, loctitles1, locfiles1);
+
+map((x, y, z) -> savefig(plot(TimeArray(select(x, Not([:country, :province])),
+                                        timestamp = :date),
+                              title = "$y", legend = :outertopright,
+                              widen = :false, dpi = :300),
+                         "../../../plot/workshop/covid/$z.png"),
+    loclist2, loctitles2, locfiles2);
+
+pcanada, pus, pchina = map((x, y) -> plot(TimeArray(x, timestamp = :date),
+                                          title = "$y", legend = :outertopright,
+                                          widen = :false, dpi = :300),
+                           loclist1, loctitles1)
+
+pfrance, pbc, pny, ptaiwan, pskorea,
+psingapore, pspain, pitaly, puk =
+    map((x, y) -> plot(TimeArray(select(x, Not([:country, :province])),
+                                 timestamp = :date),
+                       title = "$y", legend = :outertopright,
+                       widen = :false, dpi = :300),
+        loclist2, loctitles2)
+
+savefig(plot(pcanada, pus, pfrance, pitaly,
+             legend = false, titlefontsize = 7,
+             tickfontsize = 6, dpi = :300),
         "../../../plot/workshop/covid/northamerica.png")
 
 savefig(plot(pchina, ptaiwan, pskorea, psingapore,
@@ -174,12 +285,7 @@ savefig(plot(pchina, ptaiwan, pskorea, psingapore,
              tickfontsize = 6, dpi = :300),
         "../../../plot/workshop/covid/asia.png")
 
-savefig(plot(pfrance, pspain, pitaly, puk,
-             legend = false, titlefontsize = 7,
-             tickfontsize = 6, dpi = :300),
-        "../../../plot/workshop/covid/europe.png")
-
-# *** countries comparison
+# ** countries comparison
 
 unstack(all[:, [1, 3, 4]], :date, :total)
 
@@ -191,7 +297,7 @@ unstack(all[:, [3, 4, 8]], :date, :total)
 
 # plot(unstack(all[:, [3, 4, 8]], :date, :total)[147, :])
 
-# ** data up to the present
+
 
 
 
