@@ -46,6 +46,22 @@ gr()
 
 * Data until March 22, 2020
 
+The files in the [[https://github.com/CSSEGISandData/COVID-19][Johns Hopkins University CSSE repository]] have changed over time.\\
+In this workshop, we will use 2 sets of files:
+
+- a first set from January 22, 2020 until March 22, 2020
+- a second set from January 22, 2020 to the present
+
+Both sets contain data on confirmed and dead cases for world countries and in some cases their subregions (provinces, states, etc. which I will globally here call "provinces").
+
+The first set also contains numbers of recovered cases which allow to calculate numbers of currently ill persons (of course, keep in mind that all these data represent various degrees of underestimation and are flawed in many ways, amongst which are varying levels of testing efforts both geographically and over time, under-reporting, etc).
+
+The second set does not contain recovered cases (many overwhelmed countries stopped monitoring this at some point).
+
+We will play with the first set together and you will then try to play with the second set on your own.
+
+** Load the data
+
 /If you did not clone or download and unzip the Covid-19 data repository in your working directory, adapt the path consequently./
 
 #+BEGIN_src julia
