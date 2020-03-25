@@ -16,7 +16,7 @@ dir = "covid_db/csse_covid_19_data/csse_covid_19_time_series"
 
 list = joinpath.(relpath(dir), readdir(dir))
 
-dat = DataFrame.(CSV.File.(list[collect(1:3)]))
+dat = DataFrame.(CSV.File.(list[collect(2:4)]))
 
 # ** clean data and put in long format
 
@@ -46,7 +46,7 @@ all.current = all.total .- all.dead .- all.recovered;
 
 # * plots
 
-# ** using initial files
+# ** data until March 22, 2020
 
 # *** world summary
 
@@ -65,9 +65,9 @@ savefig(plot(TimeArray(world, timestamp = :date),
 
 countries = groupby(all, :country)
 
-countries[findall(x -> "France" in x, keys(countries))]
-countries[findall(x -> "Canada" in x, keys(countries))]
-countries[findall(x -> "India" in x, keys(countries))]
+# countries[findall(x -> "France" in x, keys(countries))]
+# countries[findall(x -> "Canada" in x, keys(countries))]
+# countries[findall(x -> "India" in x, keys(countries))]
 
 canada = all[all[:, :country] .== "Canada", :]
 us = all[all[:, :country] .== "US", :]
@@ -77,10 +77,12 @@ skorea = all[all[:, :country] .== "Korea, South", :]
 taiwan = all[all[:, :country] .== "Taiwan*", :]
 singapore = all[all[:, :country] .== "Singapore", :]
 italy = all[all[:, :country] .== "Italy", :]
+spain = all[all[:, :country] .== "Spain", :]
 # india = all[all[:, :country] .== "India", :]
 # sweden = all[all[:, :country] .== "Sweden", :]
 
 france = all[all[:, :province] .== "France", :]
+uk = all[all[:, :province] .== "United Kingdom", :]
 # netherlands = all[all[:, :province] .== "Netherlands", :]
 
 bc = all[all[:, :province] .== "British Columbia", :]
@@ -89,20 +91,7 @@ ny = all[all[:, :province] .== "New York", :]
 # ca = all[all[:, :province] .== "California", :]
 # fl = all[all[:, :province] .== "Florida", :]
 # hubei = all[all[:, :province] .== "Hubei", :]
-hongkong = all[all[:, :province] .== "Hong Kong", :]
-
-loclist1 = [canada, us, china]
-loctitles1 = ["Canada", "US", "China"]
-locfiles1 = ["canada", "us", "china"]
-
-loclist2 = [france, india, bc, wa, ny, ca, fl, sweden, netherlands,
-            hubei, taiwan, skorea, singapore, hongkong, italy]
-loctitles2 = ["France", "India", "BC", "WA", "NY", "CA", "FL",
-              "Sweden", "Netherlands", "Hubei", "Taiwan",
-              "South Korea", "Singapore", "Hong Kong", "Italy"]
-locfiles2 = ["france", "india", "bc", "wa", "ny", "ca", "fl",
-             "sweden", "netherlands", "hubei", "taiwan",
-             "skorea", "singapore", "hongkong", "italy"]
+# hongkong = all[all[:, :province] .== "Hong Kong", :]
 
 # **** country totals for Canada, US, and China
 
@@ -111,6 +100,25 @@ canada, us, china = by.([canada, us, china], :date,
                         dead = :dead => sum,
                         recovered = :recovered => sum,
                         current = :current => sum)
+
+loclist1 = [canada, us, china]
+loctitles1 = ["Canada", "US", "China"]
+locfiles1 = ["canada", "us", "china"]
+
+# loclist2 = [france, india, bc, wa, ny, ca, fl, sweden, netherlands,
+#             hubei, taiwan, skorea, singapore, hongkong, italy]
+# loctitles2 = ["France", "India", "BC", "WA", "NY", "CA", "FL",
+#               "Sweden", "Netherlands", "Hubei", "Taiwan",
+#               "South Korea", "Singapore", "Hong Kong", "Italy"]
+# locfiles2 = ["france", "india", "bc", "wa", "ny", "ca", "fl",
+#              "sweden", "netherlands", "hubei", "taiwan",
+#              "skorea", "singapore", "hongkong", "italy"]
+
+loclist2 = [france, bc, ny, taiwan, skorea, singapore, spain, italy, uk]
+loctitles2 = ["France", "BC", "NY", "Taiwan", "South Korea",
+              "Singapore", "Spain", "Italy", "UK"]
+locfiles2 = ["france", "bc", "ny", "taiwan", "skorea",
+             "singapore", "spain", "italy", "uk"]
 
 map((x, y, z) -> savefig(plot(TimeArray(x, timestamp = :date),
                               title = "$y", legend = :outertopright,
@@ -127,53 +135,49 @@ map((x, y, z) -> savefig(plot(TimeArray(select(x, Not([:country, :province])),
 
 pcanada, pus, pchina = map((x, y) -> plot(TimeArray(x, timestamp = :date),
                                           title = "$y", legend = :outertopright,
-                         widen = :false, dpi = :300),
+                                          widen = :false, dpi = :300),
     loclist1, loctitles1)
 
-pfrance, pindia, pbc, pwa, pny, pca, pfl, psweden, pnetherlands,
-hubei, ptaiwan, pskorea, psingapore, phongkong, pitaly =
+# pfrance, pindia, pbc, pwa, pny, pca, pfl, psweden, pnetherlands,
+# hubei, ptaiwan, pskorea, psingapore, phongkong, pitaly =
+#     map((x, y) -> plot(TimeArray(select(x, Not([:country, :province])),
+#                                  timestamp = :date),
+#                            title = "$y", legend = :outertopright,
+#                            widen = :false, dpi = :300),
+#             loclist2, loctitles2)
+
+pfrance, pbc, pny, ptaiwan, pskorea,
+psingapore, pspain, pitaly, puk =
     map((x, y) -> plot(TimeArray(select(x, Not([:country, :province])),
                                  timestamp = :date),
-                           title = "$y", legend = :outertopright,
-                           widen = :false, dpi = :300),
-            loclist2, loctitles2)
+                       title = "$y", legend = :outertopright,
+                       widen = :false, dpi = :300),
+        loclist2, loctitles2)
 
-plot(pcanada, pus, pchina, pfrance, pindia, pbc, pwa,
-     pny, pca, pfl, psweden, pnetherlands, hubei,
-     ptaiwan, pskorea, psingapore, phongkong, pitaly,
-     legend = false, titlefont = font(6), guidefontsize = font(1),
-     layout = @layout([a b c; d e f; g h i; k l m; n o p; q r s]))
+# plot(pcanada, pus, pchina, pfrance, pindia, pbc, pwa,
+#      pny, pca, pfl, psweden, pnetherlands, hubei,
+#      ptaiwan, pskorea, psingapore, phongkong, pitaly,
+#      legend = false, titlefont = font(6), guidefontsize = font(1),
+#      layout = @layout([a b c; d e f; g h i; k l m; n o p; q r s]))
 
-plot(pcanada, pbc, xrotation = 0, legend = false,
-     titlefontsize = 7, tickfontsize = 6,
-     layout = @layout([a{0.5h} b{0.5h}]))
+# plot(pcanada, pbc, xrotation = 0, legend = false,
+#      titlefontsize = 7, tickfontsize = 6,
+#      layout = @layout([a{0.5h} b{0.5h}]))
 
 savefig(plot(pcanada, pbc, pus, pny,
-             xrotation = 0, legend = false,
-             titlefontsize = 7, tickfontsize = 6,
-             dpi = :300),
-        "../../../plot/workshop/covid/canada_us.png")
+             legend = false, titlefontsize = 7,
+             tickfontsize = 6, dpi = :300),
+        "../../../plot/workshop/covid/northamerica.png")
 
-savefig(plot(pcanada, pbc, xrotation = 0, legend = false,
-             titlefontsize = 7, tickfontsize = 6,
-             layout = @layout([a{0.5h} b{0.5h}]),  dpi = :300),
-        "../../../plot/workshop/covid/canada_bc.png")
+savefig(plot(pchina, ptaiwan, pskorea, psingapore,
+             legend = false, titlefontsize = 7,
+             tickfontsize = 6, dpi = :300),
+        "../../../plot/workshop/covid/asia.png")
 
-
-
-
-
-
-
-
-map((x, y, z) -> plot(TimeArray(select(x, Not([:country, :province])),
-                                timestamp = :date),
-                      title = "$y", legend = :outertopright,
-                      widen = :false, dpi = :300),
-loclist2, loctitles2),
-18)
-
-
+savefig(plot(pfrance, pspain, pitaly, puk,
+             legend = false, titlefontsize = 7,
+             tickfontsize = 6, dpi = :300),
+        "../../../plot/workshop/covid/europe.png")
 
 # *** countries comparison
 
@@ -187,7 +191,7 @@ unstack(all[:, [3, 4, 8]], :date, :total)
 
 # plot(unstack(all[:, [3, 4, 8]], :date, :total)[147, :])
 
-# ** using new files
+# ** data up to the present
 
 
 
