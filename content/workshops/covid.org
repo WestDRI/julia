@@ -65,39 +65,68 @@ We will play with the first set together and you will then try to play with the 
 /If you did not clone or download and unzip the Covid-19 data repository in your working directory, adapt the path consequently./
 
 #+BEGIN_src julia
+#= create a variable with the path we are interested in;
+this makes the code below a bit shorter =#
 dir = "COVID-19/csse_covid_19_data/csse_covid_19_time_series"
 
+# create a list of the full paths of all the files in dir
 list = joinpath.(relpath(dir), readdir(dir))
 
-# Read in 3 csv files with confirmed, dead, and recovered numbers
+#= read in the 3 csv files with confirmed, dead, and recovered numbers
+corresponding to the first set of data (until March 22, 2020) =#
 dat = DataFrame.(CSV.File.(list[collect(2:4)]))
 #+END_src
 
-** Put data in long format
+#+BEGIN_export html
+We now have a one-dimensional array of 3 DataFrames called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">dat</span>.
+#+END_export
+
+** Transform data into long format
 
 #+BEGIN_src julia
+# rename some variables to easier names
 DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
                                2 => Symbol("country")))
 
+# create a one-dimensional array of strings
 var = ["total", "dead", "recovered"]
 
+#= transform the data into long format in a vectorized fashion 
+using both our one-dimensional arrays of 3 elements =#
 datlong = map((x, y) -> stack(x, Not(collect(1:4)),
                               variable_name = Symbol("date"),
                     value_name = Symbol("$y")),
      dat, var)
+#+END_src
 
+#+BEGIN_export html
+We now have a one-dimensional array of 3 DataFrames in long format called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">datlong</span>.
+#+END_export
+
+#+BEGIN_src julia
+# join all elements of this array into a single DataFrame
 all = join(datlong[1], datlong[2], datlong[3],
            on = [:date, :country, :province, :Lat, :Long])
 
+# get rid of "Lat" and "Long" and re-order the columns
 select!(all, [4, 3, 1, 2, 7, 8])
 
+#= turn the year from 2 digits to 4 digits using regular expression
+(in a vectorised fashion by braodcasting with the dot notation);
+then turn these values into strings, and finally into dates =#
 all.date = Date.(replace.(string.(all[:, 3]),
                           r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy");
 
+#= replace the missing values by the string "NA"
+(these are not real missing values, but rather non applicable ones) =#
 replace!(all.province, missing => "NA");
 #+END_src
 
-Calculate the number of currently ill individuals
+#+BEGIN_export html
+We now have a single DataFrame called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">all</span>, in long format, with the variables <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">confirmed</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">dead</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">recovered</span>, and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">ill</span>.
+#+END_export
+
+Calculate the number of currently ill individuals (again, in a vectorized fashion, by broadcasting with the dot notation):
 
 #+BEGIN_src julia
 all.current = all.total .- all.dead .- all.recovered;
@@ -105,18 +134,26 @@ all.current = all.total .- all.dead .- all.recovered;
 
 ** World summary
 
+To make a single plot with world totals of confirmed, dead, recovered, and ill cases, we want the sums of these variables for each day. We do this by grouping the data by date:
+
 #+BEGIN_src julia
 world = by(all, :date,
            total = :total => sum,
            dead = :dead => sum,
            recovered = :recovered => sum,
            current = :current => sum)
+#+END_src
 
+#+BEGIN_export html
+Now we can plot our new variable <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">world</span>:
+#+END_export
+
+#+BEGIN_src julia
 plot(TimeArray(world, timestamp = :date),
      title = "World",
      legend = :outertopright,
      widen = :false)
-           #+END_src
+#+END_src
 
 #+ATTR_HTML: :alt plot
 [[/plot/workshop/covid/world.png]]
