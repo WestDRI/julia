@@ -254,7 +254,7 @@ plot(pcanada, pbc, pus, pny,
 #+END_src
 
 #+ATTR_HTML: :alt plot
-[[/plot/workshop/covid/northamerica.png]]
+[[/plot/workshop/covid/northamerica1.png]]
 
 #+BEGIN_export html
 <div class="figcom">
@@ -270,7 +270,7 @@ plot(pchina, ptaiwan, pskorea, psingapore,
 #+END_src
 
 #+ATTR_HTML: :alt plot
-[[/plot/workshop/covid/asia.png]]
+[[/plot/workshop/covid/asia1.png]]
 
 #+BEGIN_export html
 <div class="figcom">
@@ -286,7 +286,7 @@ plot(pfrance, pspain, pitaly, puk,
 #+END_src
 
 #+ATTR_HTML: :alt plot
-[[/plot/workshop/covid/europe.png]]
+[[/plot/workshop/covid/europe1.png]]
 
 #+BEGIN_export html
 <div class="figcom">
