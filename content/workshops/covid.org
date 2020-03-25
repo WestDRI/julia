@@ -145,7 +145,9 @@ world = by(all, :date,
 #+END_src
 
 #+BEGIN_export html
-Now we can plot our new variable <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">world</span>:
+Now we can plot our new variable <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">world</span>.<br>
+
+As our data is a time series, we need to transform it to a TimeArray thanks to the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">TimeArray()</span> function from the TimeSeries package.
 #+END_export
 
 #+BEGIN_src julia
@@ -296,12 +298,35 @@ plot(pfrance, pspain, pitaly, puk,
 
 * Data up to the present
 
+** World/countries/provinces summary graphs
+
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-Create up-to-date graphs using the files:<br>
+Write the code to create an up-to-date graph for the world using the files:<br>
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">time_series_covid19_confirmed_global.csv</span> and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">time_series_covid19_deaths_global.csv</span>.
 #+END_export
 #+END_challenge
+
+Here is the result:
+
+#+ATTR_HTML: :alt plot
+[[/plot/workshop/covid/world.png]]
+
+{{< updated >}}
+
+#+BEGIN_challenge
+#+BEGIN_export html
+<span style="color: #e10070">Your turn:</span><br>
+Create up-to-date graphs for the countries and/or provinces of your choice.
+#+END_export
+#+END_challenge
+
+Here are a few possible results:
+
+#+ATTR_HTML: :alt plot
+[[/plot/workshop/covid/4countries.png]]
+
+{{< updated >}}
 
 * Comments & questions
