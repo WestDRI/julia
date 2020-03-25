@@ -156,7 +156,7 @@ plot(TimeArray(world, timestamp = :date),
 #+END_src
 
 #+ATTR_HTML: :alt plot
-[[/plot/workshop/covid/world.png]]
+[[/plot/workshop/covid/world1.png]]
 
 #+BEGIN_export html
 <div class="figcom">
