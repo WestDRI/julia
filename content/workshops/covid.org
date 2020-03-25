@@ -164,33 +164,52 @@ plot(TimeArray(world, timestamp = :date),
 </div>
 #+END_export
 
-** Summary of a few countries and provinces
+** Countries/provinces summary
+
+Now, we want to group the data by country:
 
 #+BEGIN_src julia
 countries = groupby(all, :country)
+#+END_src
 
+We also need to know how the authors of the dataset decided to label the various countries and their subregions.
+
+For example, if you want to see what the data looks like for France, Canada, and India, you can run:
+
+#+BEGIN_src julia
 countries[findall(x -> "France" in x, keys(countries))]
 countries[findall(x -> "Canada" in x, keys(countries))]
 countries[findall(x -> "India" in x, keys(countries))]
+#+END_src
 
+Then you need to subset the data for the countries or provinces you are interested in.
+
+Here are some examples:
+
+#+BEGIN_src julia
+# countries for which there are data for several provinces
 canada = all[all[:, :country] .== "Canada", :]
 us = all[all[:, :country] .== "US", :]
 china = all[all[:, :country] .== "China", :]
 
+# countries with no province data
 skorea = all[all[:, :country] .== "Korea, South", :]
 taiwan = all[all[:, :country] .== "Taiwan*", :]
 singapore = all[all[:, :country] .== "Singapore", :]
 italy = all[all[:, :country] .== "Italy", :]
 spain = all[all[:, :country] .== "Spain", :]
 
+#= countries wich have subregions spread widely in the world;
+here, I took the arbitrary decision to only look at the main subregions =#
 france = all[all[:, :province] .== "France", :]
 uk = all[all[:, :province] .== "United Kingdom", :]
 
+# provinces
 bc = all[all[:, :province] .== "British Columbia", :]
 ny = all[all[:, :province] .== "New York", :]
 #+END_src
 
-Calculate the totals for Canada, US, and China
+Calculate the totals for Canada, US, and China which all have data for subregions:
 
 #+BEGIN_src julia
 canada, us, china = by.([canada, us, china], :date,
@@ -204,15 +223,17 @@ canada, us, china = by.([canada, us, china], :date,
 loclist1 = [canada, us, china]
 loctitles1 = ["Canada", "US", "China"]
 
-loclist2 = [france, bc, ny, taiwan, skorea, singapore, spain, italy, uk]
-loctitles2 = ["France", "BC", "NY", "Taiwan", "South Korea",
-              "Singapore", "Spain", "Italy", "UK"]
-
 pcanada, pus, pchina =
     map((x, y) -> plot(TimeArray(x, timestamp = :date),
                        title = "$y", legend = :outertopright,
                        widen = :false, dpi = :300),
         loclist1, loctitles1)
+#+END_src
+
+#+BEGIN_src julia
+loclist2 = [france, bc, ny, taiwan, skorea, singapore, spain, italy, uk]
+loctitles2 = ["France", "BC", "NY", "Taiwan", "South Korea",
+              "Singapore", "Spain", "Italy", "UK"]
 
 pfrance, pbc, pny, ptaiwan, pskorea,
 psingapore, pspain, pitaly, puk =
@@ -222,6 +243,8 @@ psingapore, pspain, pitaly, puk =
                        widen = :false, dpi = :300),
         loclist2, loctitles2)
 #+END_src
+
+Now, let's plot a few countries/provinces:
 
 *** North America
 
@@ -273,3 +296,4 @@ plot(pfrance, pspain, pitaly, puk,
 
 * Data up to the present
 
+* Comments & questions
