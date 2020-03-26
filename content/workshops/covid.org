@@ -329,4 +329,22 @@ Here are a few possible results:
 
 {{< updated >}}
 
+** Countries comparison
+
+Our side by side graphs don't make comparisons very easy since they vary greatly in their axes scales. Of course, we could constrain them to have the same axes, but then, why not plot multiple countries or provinces in the same graph?
+
+#+ATTR_HTML: :alt plot :title Number of confirmed cases in a few countries
+[[/plot/workshop/covid/confirmed.png]]
+
+{{< updated >}}
+
+#+BEGIN_export html
+<br>
+#+END_export
+
+#+ATTR_HTML: :alt plot :title Number of deaths in a few countries
+[[/plot/workshop/covid/dead.png]]
+
+{{< updated >}}
+
 * Comments & questions
