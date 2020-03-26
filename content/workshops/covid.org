@@ -20,7 +20,7 @@ Installation instructions can be found [[https://julialang.org/downloads/platfor
 *2 - The packages: [[https://github.com/JuliaData/CSV.jl][CSV]], [[https://github.com/JuliaData/DataFrames.jl][DataFrames]], [[https://github.com/JuliaStats/TimeSeries.jl][TimeSeries]], [[https://github.com/JuliaPlots/Plots.jl][Plots]]*
 
 #+BEGIN_export html
-Packages can be installed with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">] add &lt;package&gt;</span>
+Packages can be installed with <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">] add &lt;package&gt;</span>.
 #+END_export
 
 *3 - Covid-19 data from the [[https://github.com/CSSEGISandData/COVID-19][Johns Hopkins University CSSE repository]]*
@@ -32,8 +32,6 @@ Clone (<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace;
 
 **** Load packages
 
-Choose the [[https://gr-framework.org/][GR framework]] as a backend for Plots.
-
 #+BEGIN_src julia
 using CSV
 using DataFrames
@@ -41,6 +39,11 @@ using Dates          # from the standard Julia library
 using TimeSeries
 using NamedArrays
 using Plots
+#+END_src
+
+We will use the [[https://gr-framework.org/][GR framework]] as a backend for Plots:
+
+#+BEGIN_src julia
 gr()
 #+END_src
 
@@ -166,7 +169,7 @@ plot(TimeArray(world, timestamp = :date),
 </div>
 #+END_export
 
-** Countries/provinces summary
+** Countries/provinces summaries
 
 Now, we want to group the data by country:
 
@@ -298,7 +301,7 @@ plot(pfrance, pspain, pitaly, puk,
 
 * Data up to the present
 
-** World/countries/provinces summary graphs
+** Summary graphs
 
 #+BEGIN_challenge
 #+BEGIN_export html
@@ -331,7 +334,9 @@ Here are a few possible results:
 
 ** Countries comparison
 
-Our side by side graphs don't make comparisons very easy since they vary greatly in their axes scales. Of course, we could constrain them to have the same axes, but then, why not plot multiple countries or provinces in the same graph?
+Our side by side graphs don't make comparisons very easy since they vary greatly in their axes scales.
+
+Of course, we could constrain them to have the same axes, but then, why not plot multiple countries or provinces in the same graph?
 
 #+ATTR_HTML: :alt plot :title Number of confirmed cases in a few countries
 [[/plot/workshop/covid/confirmed.png]]
