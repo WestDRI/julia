@@ -338,14 +338,37 @@ Our side by side graphs don't make comparisons very easy since they vary greatly
 
 Of course, we could constrain them to have the same axes, but then, why not plot multiple countries or provinces in the same graph?
 
+#+BEGIN_src julia
+canada[!, :loc] .= "Canada";
+china[!, :loc] .= "China";
+
+all = join(all, canada, china, on = [:date, :total, :dead, :loc],
+           kind = :outer)
+
+confirmed = unstack(all[:, collect(3:5)], :loc, :total)
+
+conf_sel = select(confirmed,
+                  [:date, :Italy, :Spain, :China, :Iran,
+                   :France, :US, Symbol("South Korea"), :Canada])
+
+plot(TimeArray(conf_sel, timestamp = :date),
+     title = "Confirmed across a few countries",
+     legend = :outertopright, widen = :false)
+#+END_src
+
 #+ATTR_HTML: :alt plot :title Number of confirmed cases in a few countries
 [[/plot/workshop/covid/confirmed.png]]
 
 {{< updated >}}
 
+#+BEGIN_challenge
 #+BEGIN_export html
-<br>
+<span style="color: #e10070">Your turn:</span><br>
+Write the code to make a similar graph with the number of deaths in a few countries of your choice.
 #+END_export
+#+END_challenge
+
+Here is a possible result:
 
 #+ATTR_HTML: :alt plot :title Number of deaths in a few countries
 [[/plot/workshop/covid/dead.png]]
