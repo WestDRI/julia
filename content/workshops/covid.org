@@ -163,8 +163,13 @@ plot(TimeArray(world, timestamp = :date),
      widen = :false)
 #+END_src
 
-#+ATTR_HTML: :alt plot :title Global confirmed, dead, recovered, and current up to March 22, 2020
-[[/plot/workshop/covid/world1.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/world1.png"
+    title="Global confirmed, dead, recovered, and current up to March 22, 2020"
+    width="860"
+>}}
+#+END_export
 
 #+BEGIN_export html
 <div class="figcom">
@@ -261,8 +266,13 @@ plot(pcanada, pbc, pus, pny,
      legend = false, titlefontsize = 7, tickfontsize = 6)
 #+END_src
 
-#+ATTR_HTML: :alt plot :title Confirmed, dead, recovered, and current in some North American countries/provinces until March 22, 2020
-[[/plot/workshop/covid/northamerica1.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/northamerica1.png"
+    title="Confirmed, dead, recovered, and current in some North American countries/provinces until March 22, 2020"
+    width="860"
+>}}
+#+END_export
 
 #+BEGIN_export html
 <div class="figcom">
@@ -277,8 +287,13 @@ plot(pchina, ptaiwan, pskorea, psingapore,
      legend = false, titlefontsize = 7, tickfontsize = 6)
 #+END_src
 
-#+ATTR_HTML: :alt plot :title Confirmed, dead, recovered, and current in some Asian countries until March 22, 2020
-[[/plot/workshop/covid/asia1.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/asia1.png"
+    title="Confirmed, dead, recovered, and current in some Asian countries until March 22, 2020"
+    width="860"
+>}}
+#+END_export
 
 #+BEGIN_export html
 <div class="figcom">
@@ -293,8 +308,13 @@ plot(pfrance, pspain, pitaly, puk,
      legend = false, titlefontsize = 7, tickfontsize = 6)
 #+END_src
 
-#+ATTR_HTML: :alt plot :title Confirmed, dead, recovered, and current in some European countries until March 22, 2020
-[[/plot/workshop/covid/europe1.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/europe1.png"
+    title="Confirmed, dead, recovered, and current in some European countries until March 22, 2020"
+    width="860"
+>}}
+#+END_export
 
 #+BEGIN_export html
 <div class="figcom">
@@ -306,32 +326,40 @@ plot(pfrance, pspain, pitaly, puk,
 
 ** Summary graphs
 
-#+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
+{{< challenge >}}
 Write the code to create an up-to-date graph for the world using the files:<br>
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">time_series_covid19_confirmed_global.csv</span> and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">time_series_covid19_deaths_global.csv</span>.
+{{< /challenge >}}
 #+END_export
-#+END_challenge
 
 Here is the result:
 
-#+ATTR_HTML: :alt plot :title Global confirmed and dead
-[[/plot/workshop/covid/world.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/world.png"
+    title="Global confirmed and dead"
+    width="860"
+>}}
+#+END_export
 
 {{< updated >}}
 
-#+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
+{{< challenge >}}
 Create up-to-date graphs for the countries and/or provinces of your choice.
+{{< /challenge >}}
 #+END_export
-#+END_challenge
 
 Here are a few possible results:
 
-#+ATTR_HTML: :alt plot :title Confirmed and dead for Italy, Spain, the US, and Canada
-[[/plot/workshop/covid/4countries.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/4countries.png"
+    title="Confirmed and dead for Italy, Spain, the US, and Canada"
+    width="860"
+>}}
+#+END_export
 
 {{< updated >}}
 
@@ -359,22 +387,31 @@ plot(TimeArray(conf_sel, timestamp = :date),
      legend = :outertopright, widen = :false)
 #+END_src
 
-#+ATTR_HTML: :alt plot :title Number of confirmed cases in a few countries
-[[/plot/workshop/covid/confirmed.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/confirmed.png"
+    title="Number of confirmed cases in a few countries"
+    width="860"
+>}}
+#+END_export
 
 {{< updated >}}
 
-#+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
+{{< challenge >}}
 Write the code to make a similar graph with the number of deaths in a few countries of your choice.
+{{< /challenge >}}
 #+END_export
-#+END_challenge
 
 Here is a possible result:
 
-#+ATTR_HTML: :alt plot :title Number of deaths in a few countries
-[[/plot/workshop/covid/dead.png]]
+#+BEGIN_export html
+{{< plot
+    src="/plot/workshop/covid/dead.png"
+    title="Number of deaths in a few countries"
+    width="860"
+>}}
+#+END_export
 
 {{< updated >}}
 
