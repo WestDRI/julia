@@ -97,12 +97,12 @@ DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
 # create a one-dimensional array of strings
 var = ["total", "dead", "recovered"]
 
-#= transform the data into long format in a vectorized fashion 
+#= transform the data into long format in a vectorized fashion
 using both our one-dimensional arrays of 3 elements =#
 datlong = map((x, y) -> stack(x, Not(collect(1:4)),
                               variable_name = Symbol("date"),
-                    value_name = Symbol("$y")),
-     dat, var)
+                              value_name = Symbol("$y")),
+              dat, var)
 #+END_src
 
 #+BEGIN_export html
