@@ -1,0 +1,15 @@
+#+title: Introduction to WestGrid Summer School Julia lesson
+#+description: Video
+#+colordes: #5c8a6f
+#+slug: intro
+
+#+BEGIN_export html
+<br>
+Video coming in May 2020.
+<br>
+<br>
+#+END_export
+
+{{< next urlnext="https://westgrid-cli.netlify.com/school/git.html" >}}
+
+*** Comments & questions
