@@ -1,7 +1,8 @@
 #+title: Introduction to WestGrid Summer School Julia lesson
 #+description: Video
 #+colordes: #5c8a6f
-#+slug: intro
+#+slug: jl-01-intro
+#+weight: 1
 
 #+OPTIONS: toc:nil
 
@@ -10,7 +11,5 @@
 Video coming in May 2020.
 <br>
 #+END_export
-
-{{< next urlnext="https://westgrid-julia.netlify.com/school/xxxxx.html" >}}
 
 *** Comments & questions
