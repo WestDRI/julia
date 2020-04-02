@@ -270,6 +270,15 @@ img[alt=radius] {
   line-height: 2.5rem;
 }
 
+.simplebox-block {
+  font-family: $heading-font-family;
+  line-height: 3.0rem;
+  border-radius: 3px;
+  border: 0.5pt solid #000000;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+  padding: 0.5px 2.0rem 0.5px 2.0rem;
+}
+
 .box-block {
   // mono font framed by subtle gray border
   // padding: 0em 1.0em;
@@ -285,6 +294,14 @@ img[alt=radius] {
   // box-shadow: 0px 0px 6px #6699cc;
   box-shadow: 0px 0px 6px #c6b7c8;
   // box-shadow: 0px 0px 6px #644f67;
+}
+
+.interactivebox-block {
+  padding: 0.7rem 3.5rem;
+  line-height: 22px;
+  border: 0.5pt solid #cc0066;
+  border-radius: 3px;
+  box-shadow: 0px 0px 3px #cc0066;
 }
 
 .definition-block {
@@ -398,4 +415,11 @@ img[alt=radius] {
   font-family: 'Montserrat';
   margin: 30px 100px;
   color: #911808;
+}
+
+.footnote-definition {
+  font-size: 90%;
+  .footnote-body{
+    font-style: italic;
+  }
 }
