@@ -103,6 +103,6 @@ canonifyurls = true
 #   weight = 5
 #   url  = ""
 [[menu.main]]
-  name = "🖅"
+  name = "📬"
   weight = 6
   url  = "mailto:training@westgrid.ca"
