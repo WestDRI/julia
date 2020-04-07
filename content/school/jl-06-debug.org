@@ -8,7 +8,7 @@
 
 /This *debugging session* is not part of the actual lesson./
 
-/Only sign up for this session if you have carefully followed the sessions on installing <a href="https://westgrid-julia.netlify.com/school/jl-03-install.html">Julia</a> and <a href="https://westgrid-julia.netlify.com/school/jl-05-pkg.html">Julia packages</a>./
+/Only sign up for this session if you have carefully followed the sessions on installing [[https://westgrid-julia.netlify.com/school/jl-03-install.html][Julia]] and [[https://westgrid-julia.netlify.com/school/jl-05-pkg.html][Julia packages]]./
 
 #+BEGIN_debugbox
 *This interactive session will be conducted through Zoom.*
