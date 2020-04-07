@@ -1,13 +1,15 @@
 #+title: Introduction to WestGrid Summer School Julia lesson
-#+description: Video
-#+colordes: #5c8a6f
+#+description: Zoom
+#+colordes: #cc0066
 #+slug: jl-01-intro
 #+weight: 1
 
 #+OPTIONS: toc:nil
 
-#+BEGIN_export html
-<br>
-Video coming in May 2020.
-<br>
-#+END_export
+In this session, I will present the schedule for our Julia lesson and we will briefly introduce each other.
+
+#+BEGIN_zoombox
+*This interactive session will be conducted through Zoom.*
+
+*Please join the meeting ID: xxxxx.*
+#+END_zoombox
