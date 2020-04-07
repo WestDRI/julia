@@ -1,0 +1,9 @@
+#+title: Julia packages
+#+description: Practice
+#+colordes: #dc7309
+#+slug: jl-05-pkg
+#+weight: 5
+
+#+OPTIONS: toc:2
+
+

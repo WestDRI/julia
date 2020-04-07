@@ -1,0 +1,13 @@
+#+title: Variables and types
+#+description: Zoom
+#+colordes: #cc0066
+#+slug: jl-07-var
+#+weight: 7
+
+#+OPTIONS: toc:nil
+
+#+BEGIN_zoombox
+*This interactive session will be conducted through Zoom.*
+
+*Please join the meeting ID: xxxxx.*
+#+END_zoombox

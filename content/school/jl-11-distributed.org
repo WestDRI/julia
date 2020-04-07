@@ -1,0 +1,13 @@
+#+title: Distributed computing
+#+description: Zoom
+#+colordes: #cc0066
+#+slug: jl-11-distributed
+#+weight: 11
+
+#+OPTIONS: toc:nil
+
+#+BEGIN_zoombox
+*This interactive session will be conducted through Zoom.*
+
+*Please join the meeting ID: xxxxx.*
+#+END_zoombox

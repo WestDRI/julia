@@ -1,0 +1,9 @@
+#+title: Installing Julia and getting started
+#+description: Practice
+#+colordes: #dc7309
+#+slug: jl-03-install
+#+weight: 3
+
+#+OPTIONS: toc:nil
+
+

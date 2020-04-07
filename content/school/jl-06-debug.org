@@ -1,0 +1,17 @@
+#+title: Issues installing Julia and Julia packages
+#+description: (Debug)
+#+colordes: #800040
+#+slug: jl-06-debug
+#+weight: 6
+
+#+OPTIONS: toc:nil
+
+/This *debugging session* is not part of the actual lesson./
+
+/Only sign up for this session if you have carefully followed the sessions on installing <a href="https://westgrid-julia.netlify.com/school/jl-03-install.html">Julia</a> and <a href="https://westgrid-julia.netlify.com/school/jl-05-pkg.html">Julia packages</a>./
+
+#+BEGIN_debugbox
+*This interactive session will be conducted through Zoom.*
+
+*Please join the meeting ID: xxxxx.*
+#+END_debugbox

@@ -1,0 +1,9 @@
+#+title: Why another programming language?
+#+description: Reading
+#+colordes: #538cc6
+#+slug: jl-02-why
+#+weight: 2
+
+#+OPTIONS: toc:2
+
+
