@@ -25,8 +25,10 @@ width="200"
 
 * Slides
 
+Click to open the slides in a new tab:
+
 #+BEGIN_export html
-<a href="https://westgrid-webinars.netlify.com/flux/"><p align="center"><img src="/img/flux_slides.png" title="Link to slides" width="700" style="border:2px solid black"/></p></a>
+<a href="https://westgrid-webinars.netlify.app/flux/" target="_blank"><p align="center"><img src="/img/flux_slides.png" title="" width="700" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
 #+END_export
 
 * Video
