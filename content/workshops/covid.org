@@ -314,12 +314,10 @@ plot(pfrance, pspain, pitaly, puk,
 
 ** Summary graphs
 
-#+BEGIN_export html
 {{< challenge >}}
 Write the code to create an up-to-date graph for the world using the files:<br>
 {{<b>}}time_series_covid19_confirmed_global.csv{{</b>}} and {{<b>}}time_series_covid19_deaths_global.csv{{</b>}}.
 {{< /challenge >}}
-#+END_export
 
 Here is the result:
 
@@ -333,11 +331,9 @@ Here is the result:
 
 {{< updated >}}
 
-#+BEGIN_export html
 {{< challenge >}}
 Create up-to-date graphs for the countries and/or provinces of your choice.
 {{< /challenge >}}
-#+END_export
 
 Here are a few possible results:
 
@@ -385,11 +381,9 @@ plot(TimeArray(conf_sel, timestamp = :date),
 
 {{< updated >}}
 
-#+BEGIN_export html
 {{< challenge >}}
 Write the code to make a similar graph with the number of deaths in a few countries of your choice.
 {{< /challenge >}}
-#+END_export
 
 Here is a possible result:
 
