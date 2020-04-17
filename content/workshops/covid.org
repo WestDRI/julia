@@ -3,7 +3,7 @@
 
 #+OPTIONS: toc:2
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< pic
 src="/img/workinprogress.svg"
 title="Patience... patience..."
@@ -163,7 +163,7 @@ plot(TimeArray(world, timestamp = :date),
      widen = :false)
 #+END_src
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/world1.png"
     title="Global confirmed, dead, recovered, and current up to March 22, 2020"
@@ -171,7 +171,7 @@ plot(TimeArray(world, timestamp = :date),
 >}}
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <div class="figcom">
   Data until March 22, 2020
 </div>
@@ -266,7 +266,7 @@ plot(pcanada, pbc, pus, pny,
      legend = false, titlefontsize = 7, tickfontsize = 6)
 #+END_src
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/northamerica1.png"
     title="Confirmed, dead, recovered, and current in some North American countries/provinces until March 22, 2020"
@@ -274,7 +274,7 @@ plot(pcanada, pbc, pus, pny,
 >}}
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <div class="figcom">
   Data until March 22, 2020
 </div>
@@ -287,7 +287,7 @@ plot(pchina, ptaiwan, pskorea, psingapore,
      legend = false, titlefontsize = 7, tickfontsize = 6)
 #+END_src
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/asia1.png"
     title="Confirmed, dead, recovered, and current in some Asian countries until March 22, 2020"
@@ -295,7 +295,7 @@ plot(pchina, ptaiwan, pskorea, psingapore,
 >}}
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <div class="figcom">
   Data until March 22, 2020
 </div>
@@ -308,7 +308,7 @@ plot(pfrance, pspain, pitaly, puk,
      legend = false, titlefontsize = 7, tickfontsize = 6)
 #+END_src
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/europe1.png"
     title="Confirmed, dead, recovered, and current in some European countries until March 22, 2020"
@@ -316,7 +316,7 @@ plot(pfrance, pspain, pitaly, puk,
 >}}
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <div class="figcom">
   Data until March 22, 2020
 </div>
@@ -335,7 +335,7 @@ Write the code to create an up-to-date graph for the world using the files:<br>
 
 Here is the result:
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/world.png"
     title="Global confirmed and dead"
@@ -353,7 +353,7 @@ Create up-to-date graphs for the countries and/or provinces of your choice.
 
 Here are a few possible results:
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/4countries.png"
     title="Confirmed and dead for Italy, Spain, the US, and Canada"
@@ -387,7 +387,7 @@ plot(TimeArray(conf_sel, timestamp = :date),
      legend = :outertopright, widen = :false)
 #+END_src
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/confirmed.png"
     title="Number of confirmed cases in a few countries"
@@ -405,7 +405,7 @@ Write the code to make a similar graph with the number of deaths in a few countr
 
 Here is a possible result:
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 {{< plot
     src="/plot/workshop/covid/dead.png"
     title="Number of deaths in a few countries"

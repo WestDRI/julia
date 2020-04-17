@@ -202,23 +202,23 @@ C-s		forward search
 
 In addition, there are 4 REPL modes:
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The main mode in which you will be running your code.<br><br>
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #dab314"><b>help?></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mode to easily access documentation.<br><br>
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #b30000"><b>shell></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A mode in which you can run bash commands from within Julia.<br><br>
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(env) pkg></b></span> &nbsp;&nbsp; A mode to easily perform actions on packages with Julia package manager.<br><br>
 #+END_export
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 (<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>env</b></span> is the name of your current project environment.
 #+END_export
 
@@ -839,7 +839,7 @@ $ module list
 
 *** Copying files to the cluster
 
-#+BEGIN_export html
+#+BEGIN_export mhtml
 We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">~/scratch</span>, then copy our julia script in it.
 #+END_export
 
@@ -904,7 +904,7 @@ JULIA_NUM_THREADS=$SLURM_CPUS_PER_TASK julia psort.jl
 #+END_src
 
 #+BEGIN_challenge
-#+BEGIN_export html
+#+BEGIN_export mhtml
 <span style="color: #e10070">Your turn:</span><br>
 Write the script for 2 cores.
 #+END_export
