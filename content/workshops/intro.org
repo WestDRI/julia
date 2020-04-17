@@ -158,13 +158,9 @@ Here are a few:
 
 While we will be interacting with Julia through the REPL (read–eval–print loop: the interactive Julia shell) to develop and test our code, we want to save it in a script for future use.
 
-#+BEGIN_export html
-Julia scripts are text files with the extension <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">.jl</span>.
-#+END_export
+Julia scripts are text files with the extension {{<b>}}.jl{{</b>}}.
 
-#+BEGIN_export html
-Create a folder called <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">julia_workshop</span> somewhere in your system and create a file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">julia_script.jl</span> in it.
-#+END_export
+Create a folder called {{<b>}}julia_workshop{{</b>}} somewhere in your system and create a file {{<b>}}julia_script.jl{{</b>}} in it.
 
 *** REPL keybindings
 
@@ -222,27 +218,21 @@ In addition, there are 4 REPL modes:
 (<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>env</b></span> is the name of your current project environment.
 #+END_export
 
-#+BEGIN_export html
-Project environments are similar to Python's virtual environments and allow you, for instance, to have different package versions for different projects. By default, it is the current Julia version. So what you will see is <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(v1.3) pkg></b></span>).<br><br>
+#+BEGIN_export mhtml
+Project environments are similar to Python's virtual environments and allow you, for instance, to have different package versions for different projects. By default, it is the current Julia version. So what you will see is <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(v1.3) pkg></b></span>).<br>
 #+END_export
 
-#+BEGIN_export html
-Enter the various modes by typing <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">?</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">;</span>, and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">]</span>. Go back to the regular mode with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">Backspace</span> key.
-#+END_export
+Enter the various modes by typing {{<b>}}?{{</b>}}, {{<b>}};{{</b>}}, and {{<b>}}]{{</b>}}. Go back to the regular mode with the {{<b>}}Backspace{{</b>}} key.
 
 *** Startup options
 
-#+BEGIN_export html
-You can configure Julia by creating the file <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">~/.julia/config/startup.jl</span>.
-#+END_export
+You can configure Julia by creating the file {{<b>}}~/.julia/config/startup.jl{{</b>}}.
 
 *** Packages
 
 **** Standard library
 
-#+BEGIN_export html
-Julia comes with a collection of packages. In Linux, they are in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #b3b3b3; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">/usr/share/julia/stdlib/vx.x</span>.
-#+END_export
+Julia comes with a collection of packages. In Linux, they are in {{<b>}}/usr/share/julia/stdlib/vx.x{{</b>}}.
 
 Here is the list:
 
@@ -280,10 +270,8 @@ UUIDs
 
 **** Installing additional packages
 
-#+BEGIN_export html
-You can install additional packages.<br>
-These go to your personal library in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">~/.julia</span> (this is also where your REPL history is saved).
-#+END_export
+You can install additional packages.\\
+These go to your personal library in {{<b>}}~/.julia{{</b>}} (this is also where your REPL history is saved).
 
 All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]].\\
 The GitHub star system allows you to easily judge the popularity of a package and to see whether it is under current development.
@@ -311,30 +299,29 @@ You can manage your personal library easily in package mode with the commands:
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-Check your list of packages; install the packages <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">Plots</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">GR</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">Distributions</span>, <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">StatsPlots</span>, and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">UnicodePlot</span>; then check that list again.
 #+END_export
 #+END_challenge
+Check your list of packages; install the packages {{<b>}}Plots{{</b>}}, {{<b>}}GR{{</b>}}, {{<b>}}Distributions{{</b>}}, {{<b>}}StatsPlots{{</b>}}, and {{<b>}}UnicodePlot{{</b>}}; then check that list again.
 
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-Now go explore your <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">~/.julia</span> directory. If you don't find it, make sure that your file explorer allows you to see hidden files.
 #+END_export
 #+END_challenge
+Now go explore your {{<b>}}~/.julia{{</b>}}. If you don't find it, make sure that your file explorer allows you to see hidden files.
 
 **** Loading packages
 
-#+BEGIN_export html
-Whether a package from the standard library or one you installed, before you can use a package you need to load it. This has to be done at each new Julia session so the code to load packages should be part of your scripts.<br><br>
-This is done with the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using</span> command (e.g. <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">using Plots</span>).
-#+END_export
+Whether a package from the standard library or one you installed, before you can use a package you need to load it. This has to be done at each new Julia session so the code to load packages should be part of your scripts.
+
+This is done with the {{<c>}}using{{</c>}} command (e.g. {{<c>}}using Plots{{</c>}}).
 
 *** Finding documentation
 
-#+BEGIN_export html
-As we already saw, you can type <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">?</span> to enter the help mode.<br>
-To print the list of functions containing a certain word in their description, you can use <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">apropos()</span>.<br><br> Example:
-#+END_export
+As we already saw, you can type {{<b>}}?{{</b>}} to enter the help mode.\\
+To print the list of functions containing a certain word in their description, you can use {{<c>}}apropos(){{</c>}}.
+
+Example:
 
 #+BEGIN_src julia
 > apropos("truncate")
@@ -397,12 +384,12 @@ To print the list of functions containing a certain word in their description, y
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">;</span> at the end of a command do?<br>
-What is surprising about <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">2a</span>?<br>
-What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">+=</span> do?<br>
-What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">.+</span>do?
 #+END_export
 #+END_challenge
+What does {{<c>}};{{</c>}} at the end of a command do?<br>
+What is surprising about {{<c>}}2a{{</c>}}?<br>
+What does {{<c>}}+={{</c>}} do?<br>
+What does {{<c>}}.+{{</c>}}do?
 
 #+BEGIN_src julia
 > a = [3, 1, 2]
@@ -417,15 +404,15 @@ What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospa
 #+BEGIN_challenge
 #+BEGIN_export html
 <span style="color: #e10070">Your turn:</span><br>
-What does <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">!</span> at the end of a function name do?
 #+END_export
 #+END_challenge
+What does {{<c>}}!{{</c>}} at the end of a function name do?
 
 *** Sourcing a file
 
-#+BEGIN_export html
-To source a Julia script within Julia, use the function <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">include()</span>.<br><br>Example:
-#+END_export
+To source a Julia script within Julia, use the function {{<c>}}include(){{</c>}}.
+
+Example:
 
 #+BEGIN_src julia
 > include("/path/to/file.jl")
@@ -469,9 +456,7 @@ To source a Julia script within Julia, use the function <span style="font-family
 
 *** Indexing
 
-#+BEGIN_export html
-Indexing is done with square brackets. As in R and unlike in C++ or Python, Julia starts indexing at <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">1</span>, not at <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">0</span>.
-#+END_export
+Indexing is done with square brackets. As in R and unlike in C++ or Python, Julia starts indexing at {{<c>}}1{{</c>}}, not at {{<c>}}0{{</c>}}.
 
 #+BEGIN_src julia
 > a = [1 2; 3 4]
@@ -481,11 +466,10 @@ Indexing is done with square brackets. As in R and unlike in C++ or Python, Juli
 
 #+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
 How can I get the second column?<br>
-How can I get the tuple <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">(2, 4)</span>? (a tuple is a list of elements)
 #+END_export
 #+END_challenge
+How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
 
 *** For loops
 
@@ -525,10 +509,9 @@ How can I get the tuple <span style="font-family: 'Source Code Pro', 'Lucida Con
 
 #+BEGIN_challenge
 #+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
-What is the difference between <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">==</span> and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">===</span>?
 #+END_export
 #+END_challenge
+What is the difference between {{<c>}}=={{</c>}} and {{<c>}}==={{</c>}}?
 
 Predicates can be built with many other operators and functions. For example:
 
@@ -596,9 +579,7 @@ Julia, which was built with efficiency in mind, aimed from the start to have par
 
 What is great about Julia's new task parallelism is that it is incredibly easy to use: no need to write low-level code as with MPI to set where tasks are run. Everything is automatic.
 
-#+BEGIN_export html
-To use Julia with multiple threads, we need to set the <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #000000">JULIA_NUM_THREADS</span> environment variable.
-#+END_export
+To use Julia with multiple threads, we need to set the {{<b>}}JULIA_NUM_THREADS{{</b>}} environment variable.
 
 This can be done by running (in the terminal, not in Julia):
 
@@ -660,9 +641,7 @@ Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visual
 Let's consider the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019.\\
 Both scripts sort a one dimensional array of 20,000,000 floats between 0 and 1, one with parallelism and one without.
 
-#+BEGIN_export html
-<b>Script 1, without parallelism:</b> <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">sort.jl</span>.
-#+END_export
+*Script 1, without parallelism:* {{<b>}}sort.jl{{</b>}}.
 
 #+BEGIN_src julia
 # Create one dimensional array of 20,000,000 floats between 0 and 1
@@ -677,9 +656,7 @@ Both scripts sort a one dimensional array of 20,000,000 floats between 0 and 1, 
 > b = copy(a); @time sort!(b, alg = MergeSort);
 #+END_src
 
-#+BEGIN_export html
-<b>Script 2, with parallelism:</b> <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">psort.jl</span>.
-#+END_export
+*Script 2, with parallelism:* {{<b>}}psort.jl{{</b>}}.
 
 #+BEGIN_src julia
 > import Base.Threads.@spawn
@@ -881,9 +858,7 @@ Once in Julia, you can double check that Julia does indeed have access to 2 thre
 > Threads.nthreads()
 #+END_src
 
-#+BEGIN_export html
-Save your job scripts in the files <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">~/scratch/julia_job/job_julia1c.sh</span> and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">job_julia2c.sh</span> for one and two cores respectively.
-#+END_export
+Save your job scripts in the files {{<b>}}~/scratch/julia_job/job_julia1c.sh{{</b>}} and {{<b>}}job_julia2c.sh{{</b>}} for one and two cores respectively.
 
 Here is what our single core Slurm script looks like:
 
@@ -924,8 +899,6 @@ And we can check their status with:
 $ sq
 #+END_src
 
-#+BEGIN_export html
-<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">PD</span> stands for pending and <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">R</span> for running.
-#+END_export
+{{<b>}}PD{{</b>}} stands for pending and {{<b>}}R{{</b>}} for running.
 
 * Comments & questions
