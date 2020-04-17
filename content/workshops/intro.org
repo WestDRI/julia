@@ -278,12 +278,9 @@ The GitHub star system allows you to easily judge the popularity of a package an
 
 In addition to these, there are unregistered packages and you can build your own.
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
+{{< challenge >}}
 Try to find a list of popular plotting packages.
-#+END_export
-#+END_challenge
+{{< /challenge >}}
 
 You can manage your personal library easily in package mode with the commands:
 
@@ -296,19 +293,13 @@ You can manage your personal library easily in package mode with the commands:
 (env) pkg> up                   # upgrade all packages
 #+END_src
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
-#+END_export
-#+END_challenge
+{{< challenge >}}
 Check your list of packages; install the packages {{<b>}}Plots{{</b>}}, {{<b>}}GR{{</b>}}, {{<b>}}Distributions{{</b>}}, {{<b>}}StatsPlots{{</b>}}, and {{<b>}}UnicodePlot{{</b>}}; then check that list again.
+{{< /challenge >}}
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
-#+END_export
-#+END_challenge
+{{< challenge >}}
 Now go explore your {{<b>}}~/.julia{{</b>}}. If you don't find it, make sure that your file explorer allows you to see hidden files.
+{{< /challenge >}}
 
 **** Loading packages
 
@@ -381,15 +372,12 @@ Example:
 > a + b
 #+END_src
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
-#+END_export
-#+END_challenge
+{{< challenge >}}
 What does {{<c>}};{{</c>}} at the end of a command do?<br>
 What is surprising about {{<c>}}2a{{</c>}}?<br>
 What does {{<c>}}+={{</c>}} do?<br>
 What does {{<c>}}.+{{</c>}}do?
+{{< /challenge >}}
 
 #+BEGIN_src julia
 > a = [3, 1, 2]
@@ -401,12 +389,9 @@ What does {{<c>}}.+{{</c>}}do?
 > println(a)
 #+END_src
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
-#+END_export
-#+END_challenge
+{{< challenge >}}
 What does {{<c>}}!{{</c>}} at the end of a function name do?
+{{< /challenge >}}
 
 *** Sourcing a file
 
@@ -464,12 +449,10 @@ Indexing is done with square brackets. As in R and unlike in C++ or Python, Juli
 > a[1, :]
 #+END_src
 
-#+BEGIN_challenge
-#+BEGIN_export html
+{{< challenge >}}
 How can I get the second column?<br>
-#+END_export
-#+END_challenge
 How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
+{{< /challenge >}}
 
 *** For loops
 
@@ -507,11 +490,9 @@ How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
   end
 #+END_src
 
-#+BEGIN_challenge
-#+BEGIN_export html
-#+END_export
-#+END_challenge
+{{< challenge >}}
 What is the difference between {{<c>}}=={{</c>}} and {{<c>}}==={{</c>}}?
+{{< /challenge >}}
 
 Predicates can be built with many other operators and functions. For example:
 
@@ -621,12 +602,10 @@ To see how many threads we are using, as well as the ID of the current thread, y
 
 *** For loops on multiple threads
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
+{{< challenge >}}
 Launch Julia on 1 thread and run the function below. Then run Julia on the maximum nummber of threads you have on your machine and run the same function.
-#+END_export
-#+END_challenge
+{{< /challenge >}}
+
 
 #+BEGIN_src julia
 > Threads.@threads for i = 1:10
@@ -839,12 +818,10 @@ We will not run an interactive session with Julia on the cluster: we already hav
 
 We will create 2 scripts: one to run Julia on one core and one on as many cores as are available.
 
-#+BEGIN_challenge
-#+BEGIN_export html
-<span style="color: #e10070">Your turn:</span><br>
+{{< challenge >}}
 How many processors are there on our training cluster?
-#+END_export
-#+END_challenge
+{{< /challenge >}}
+
 
 Note that here too, we could run Julia with multiple threads by running:
 
