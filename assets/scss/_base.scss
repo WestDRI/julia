@@ -53,6 +53,14 @@ body {
   transition: max-height 0.2s ease-out;
 }
 
+.panelnotoggle {
+  margin: auto;
+  width: max-content;
+  margin-top: 2.0rem;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+}
+
 a {
   font-weight: 300;
   color: $link-color;
