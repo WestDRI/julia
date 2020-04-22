@@ -4,6 +4,6 @@
 #+slug: jl-02-why
 #+weight: 2
 
-#+OPTIONS: toc:2
+#+OPTIONS: toc:5
 
 

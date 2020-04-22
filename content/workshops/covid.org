@@ -1,7 +1,7 @@
 #+title: Covid-19 in Julia
 #+slug: covid
 
-#+OPTIONS: toc:2
+#+OPTIONS: toc:5
 
 #+BEGIN_export mhtml
 {{< pic
