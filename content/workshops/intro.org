@@ -162,7 +162,7 @@ Julia scripts are text files with the extension {{<b>}}.jl{{</b>}}.
 
 Create a folder called {{<b>}}julia_workshop{{</b>}} somewhere in your system and create a file {{<b>}}julia_script.jl{{</b>}} in it.
 
-*** REPL keybindings
+** REPL keybindings
 
 In the REPL, you can use standard command line keybindings:
 
@@ -224,13 +224,13 @@ Project environments are similar to Python's virtual environments and allow you,
 
 Enter the various modes by typing {{<b>}}?{{</b>}}, {{<b>}};{{</b>}}, and {{<b>}}]{{</b>}}. Go back to the regular mode with the {{<b>}}Backspace{{</b>}} key.
 
-*** Startup options
+** Startup options
 
 You can configure Julia by creating the file {{<b>}}~/.julia/config/startup.jl{{</b>}}.
 
-*** Packages
+** Packages
 
-**** Standard library
+*** Standard library
 
 Julia comes with a collection of packages. In Linux, they are in {{<b>}}/usr/share/julia/stdlib/vx.x{{</b>}}.
 
@@ -268,7 +268,7 @@ Unicode
 UUIDs
 #+END_example
 
-**** Installing additional packages
+*** Installing additional packages
 
 You can install additional packages.\\
 These go to your personal library in {{<b>}}~/.julia{{</b>}} (this is also where your REPL history is saved).
@@ -301,13 +301,13 @@ Check your list of packages; install the packages {{<b>}}Plots{{</b>}}, {{<b>}}G
 Now go explore your {{<b>}}~/.julia{{</b>}}. If you don't find it, make sure that your file explorer allows you to see hidden files.
 {{< /challenge >}}
 
-**** Loading packages
+*** Loading packages
 
 Whether a package from the standard library or one you installed, before you can use a package you need to load it. This has to be done at each new Julia session so the code to load packages should be part of your scripts.
 
 This is done with the {{<c>}}using{{</c>}} command (e.g. {{<c>}}using Plots{{</c>}}).
 
-*** Finding documentation
+** Finding documentation
 
 As we already saw, you can type {{<b>}}?{{</b>}} to enter the help mode.\\
 To print the list of functions containing a certain word in their description, you can use {{<c>}}apropos(){{</c>}}.
@@ -318,7 +318,7 @@ Example:
 > apropos("truncate")
 #+END_src
 
-*** Let's try a few commands
+** Let's try a few commands
 
 #+BEGIN_src julia
 > versioninfo()
@@ -393,7 +393,7 @@ What does {{<c>}}.+{{</c>}}do?
 What does {{<c>}}!{{</c>}} at the end of a function name do?
 {{< /challenge >}}
 
-*** Sourcing a file
+** Sourcing a file
 
 To source a Julia script within Julia, use the function {{<c>}}include(){{</c>}}.
 
@@ -403,7 +403,7 @@ Example:
 > include("/path/to/file.jl")
 #+END_src
 
-*** Comments
+** Comments
 
 #+BEGIN_src julia
 > # Single line comment
@@ -417,7 +417,7 @@ Example:
 > x = 2;          # And they can be added at the end of lines
 #+END_src
 
-*** A few fun quirks
+** A few fun quirks
 
 #+BEGIN_src julia
 > \omega		  # Press TAB
@@ -430,7 +430,7 @@ Example:
 > Base.MathConstants.golden
 #+END_src
 
-*** Data types
+** Data types
 
 #+BEGIN_src julia
 > typeof(2)
@@ -439,7 +439,7 @@ Example:
 > typeof(true)
 #+END_src
 
-*** Indexing
+** Indexing
 
 Indexing is done with square brackets. As in R and unlike in C++ or Python, Julia starts indexing at {{<c>}}1{{</c>}}, not at {{<c>}}0{{</c>}}.
 
@@ -454,7 +454,7 @@ How can I get the second column?<br>
 How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
 {{< /challenge >}}
 
-*** For loops
+** For loops
 
 #+BEGIN_src julia
 > for i in 1:10
@@ -467,7 +467,7 @@ How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
   end
 #+END_src
 
-*** Predicates and conditionals
+** Predicates and conditionals
 
 #+BEGIN_src julia
 > a = 2
@@ -505,7 +505,7 @@ Predicates can be built with many other operators and functions. For example:
 > 3 <= 4 || 4 > 5
 #+END_src
 
-*** Functions
+** Functions
 
 #+BEGIN_src julia
 > function addTwo(a)
@@ -526,7 +526,7 @@ Predicates can be built with many other operators and functions. For example:
 > addSomethingOrTwo(3, 4)
 #+END_src
 
-*** Plotting
+** Plotting
 
 It can be convenient to plot directly in the REPL (for instance when using SSH).
 
@@ -600,7 +600,7 @@ To see how many threads we are using, as well as the ID of the current thread, y
 > Threads.threadid()
 #+END_src
 
-*** For loops on multiple threads
+** For loops on multiple threads
 
 {{< challenge >}}
 Launch Julia on 1 thread and run the function below. Then run Julia on the maximum nummber of threads you have on your machine and run the same function.
@@ -615,7 +615,7 @@ Launch Julia on 1 thread and run the function below. Then run Julia on the maxim
 
 Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visualize the working threads.
 
-*** Generalization of multi-threading
+** Generalization of multi-threading
 
 Let's consider the example presented in a [[https://julialang.org/blog/2019/07/multithreading/][Julia blog post]] in July 2019.\\
 Both scripts sort a one dimensional array of 20,000,000 floats between 0 and 1, one with parallelism and one without.
@@ -743,14 +743,14 @@ $ JULIA_NUM_THREADS=4 julia /path/to/psort.jl
     # there is still an improvement over the 2 thread run
 #+END_src
 
-*** Distributed computing
+** Distributed computing
 
 
 * Moving on to the cluster
 
 Now that we have some running scripts, let's test them out on our cluster.
 
-*** Logging in to the cluster
+** Logging in to the cluster
 
 Open a terminal emulator.
 
@@ -766,7 +766,7 @@ $ ssh userxxx@cassiopeia.c3.ca
 
 You are now in our training cluster.
 
-*** Accessing Julia
+** Accessing Julia
 
 This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
 
@@ -793,7 +793,7 @@ $ module load gcc/7.3.0 julia/1.3.0
 $ module list
 #+END_src
 
-*** Copying files to the cluster
+** Copying files to the cluster
 
 #+BEGIN_export mhtml
 We will create a <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">julia_workshop</span> directory in <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; border: 0.5pt solid #d9d9d9; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); color: #000000">~/scratch</span>, then copy our julia script in it.
@@ -812,7 +812,7 @@ $ scp /local/path/to/psort.jl userxxx@cassiopeia.c3.ca:scratch/julia_job
 # enter password
 #+END_src
 
-*** Job scripts
+** Job scripts
 
 We will not run an interactive session with Julia on the cluster: we already have julia scripts ready to run. All we need to do is to write job scripts to submit to Slurm, the job scheduler used by the Compute Canada clusters.
 
