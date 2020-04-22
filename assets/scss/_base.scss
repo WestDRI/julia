@@ -23,46 +23,18 @@ body {
 }
 
 #TableOfContents {
-  // top: 14.0rem;
-  // position: fixed;
   font-size: 1.5rem;
   line-height: 2.5rem;
-  padding-left: 45.0rem;
+  padding: 1.0rem 10.0rem 1.0rem 8.0rem;
   font-family: $heading-font-family;
   ul {
+    padding-left: 3.0rem;
     list-style: none;
   }
 }
 
-#TableOfContents {
-  font-size: 1.5rem;
-  padding-left: 45.0rem;
-  font-family: $heading-font-family;
-  ul {
-     li {
-       line-height: 2.5rem;
-       list-style: none;
-       ul {
-	 display: none;
-       }
-    }
-  }
 }
 
-#TableOfContents:hover {
-  font-size: 1.5rem;
-  padding-left: 45.0rem;
-  font-family: $heading-font-family;
-  ul {
-    li {
-      line-height: 2.5rem;
-      list-style: none;
-      ul {
-	display: block;
-	padding-left: 2.0rem;
-      }
-    }
-  }
 }
 a {
   font-weight: 300;
