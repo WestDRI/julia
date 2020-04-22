@@ -33,9 +33,26 @@ body {
   }
 }
 
+.toggle {
+  cursor: pointer;
+  text-align: center;
+  color: #404040;
+  // padding: 0.1em 0.3em;
+  font-size: 95%;
+  transition: 0.1s;
 }
 
+.panel {
+  margin: auto;
+  width: max-content;
+  margin-top: 2.0rem;
+  background-color: #f6f6f6;
+  border-radius: 5px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
+
 a {
   font-weight: 300;
   color: $link-color;
