@@ -1,8 +1,6 @@
 #+title: Introduction to high performance research computing with Julia
 #+slug: intro
 
-#+OPTIONS: toc:5
-
 **** /Abstract/
 
 #+BEGIN_definition
