@@ -23,9 +23,11 @@ body {
 }
 
 ul {
+  li {
+    list-style-type: circle;
+  }
   p {
     margin: 0.5rem;
-    list-style-type: circle;
   }
 }
 
