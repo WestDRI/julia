@@ -12,11 +12,13 @@
       <div class="post-meta">
         <center>Last updated: {{ now.Format "January 2, 2006" }}</center>
       </div>
-      <div onclick="myFunction()">
+      <div class="toggle">
       	<i class="fas fa-plus-square" style="cursor: pointer;"></i>
 	&nbsp;Table of content
       </div>
-      {{ .TableOfContents }}
+      <div class="panel">
+	{{ .TableOfContents }}
+      </div>
     </header>
     <div>
       {{ .Content }}
@@ -32,13 +34,18 @@
 </section>
 
 <script>
-  function myFunction() {
-      var x = document.getElementById("TableOfContents");
-      if (x.style.display === "none") {
-  	  x.style.display = "block";
-      } else {
-  	  x.style.display = "none";
-      }
+  var acc = document.getElementsByClassName("toggle")
+  var i
+  for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+  	  this.classList.toggle("active")
+  	  var panel = this.nextElementSibling
+  	  if (panel.style.maxHeight){
+  	      panel.style.maxHeight = null
+  	  } else {
+  	      panel.style.maxHeight = panel.scrollHeight + "px"
+  	  }
+      })
   }
 </script>
 
