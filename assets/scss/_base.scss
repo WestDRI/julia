@@ -39,14 +39,22 @@ body {
   padding-left: 45.0rem;
   font-family: $heading-font-family;
   ul {
-    li {
-      line-height: 2.5rem;
-      list-style: none;
-      ul {
-	display: none;
-      }
+     li {
+       line-height: 2.5rem;
+       list-style: none;
+       ul {
+	 display: none;
+       }
     }
-    li:hover {
+  }
+}
+
+#TableOfContents:hover {
+  font-size: 1.5rem;
+  padding-left: 45.0rem;
+  font-family: $heading-font-family;
+  ul {
+    li {
       line-height: 2.5rem;
       list-style: none;
       ul {
