@@ -12,6 +12,10 @@
       <div class="post-meta">
         <center>Last updated: {{ now.Format "January 2, 2006" }}</center>
       </div>
+      <div onclick="myFunction()">
+      	<i class="fas fa-plus-square" style="cursor: pointer;"></i>
+	&nbsp;Table of content
+      </div>
       {{ .TableOfContents }}
     </header>
     <div>
@@ -26,5 +30,16 @@
   </article>
   {{ partial "posts/math.html" . }}
 </section>
+
+<script>
+  function myFunction() {
+      var x = document.getElementById("TableOfContents");
+      if (x.style.display === "none") {
+  	  x.style.display = "block";
+      } else {
+  	  x.style.display = "none";
+      }
+  }
+</script>
 
 {{ end }}
