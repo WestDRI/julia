@@ -12,6 +12,7 @@
       <div class="post-meta">
         <center>Last updated: {{ now.Format "January 2, 2006" }}</center>
       </div>
+      {{ if .TableOfContents }}
       <br>
       <div class="toggle">
       	<i class="fas fa-plus-circle"></i>
@@ -20,6 +21,7 @@
       <div class="panel">
 	{{ .TableOfContents }}
       </div>
+      {{ end }}
     </header>
     <div>
       {{ .Content }}
