@@ -22,26 +22,25 @@ In this workshop, which does not require any prior experience in Julia (experien
 **** /Software requirements/
 
 #+BEGIN_box
-For this workshop, you will need:
-
 *1 - A terminal emulator and an SSH client for remote access to clusters*
 
-/Windows:/ \\
-Install the free Home Edition of [[https://mobaxterm.mobatek.net/download.html][MobaXTerm]].
+{{<n>}}{{<s>}} /Windows:/ \\
+{{<n>}}{{<n>}}Install the free Home Edition of [[https://mobaxterm.mobatek.net/download.html][MobaXTerm]].
 
-/MacOS:/ \\
-Terminal and SSH are pre-installed.
+{{<n>}}{{<s>}} /MacOS:/ \\
+{{<n>}}{{<n>}}Terminal and SSH are pre-installed.
 
-/Linux:/ \\
-You can use xterm or the terminal emulator of your choice.\\
-If SSH does not come bundled with your distribution, install [[https://www.openssh.com/][OpenSSH]].
+{{<n>}}{{<s>}} /Linux:/ \\
+{{<n>}}{{<n>}}You can use xterm or the terminal emulator of your choice.\\
+{{<n>}}{{<n>}}If SSH does not come bundled with your distribution, install [[https://www.openssh.com/][OpenSSH]].
 
 *2 - The current [[https://julialang.org/downloads/][Julia stable release]]*
 
 *3 - A good text editor or the Julia IDE*
 
-You will need a capable text editor (e.g. Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++).\\
-If you would rather play in the Julia IDE, you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].
+{{<n>}}{{<n>}}You will need a capable text editor\\
+{{<n>}}{{<n>}}(e.g. Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++).\\
+{{<n>}}{{<n>}}If you would rather play in the Julia IDE, you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].
 #+END_box
 
 * Introducing Julia

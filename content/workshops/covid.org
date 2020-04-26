@@ -4,22 +4,23 @@
 {{<img src="/img/workinprogress.svg" title="Patience... patience..." width="200">}}
 {{</img>}}
 
+**** /Abstract/
+
+#+BEGIN_definition
+
+#+END_definition
+
 **** /Requirements/
 
 #+BEGIN_box
-For this workshop, you will need:
+*1 - The current [[https://julialang.org/downloads/][Julia stable release]]* \\
+{{<n>}}{{<n>}}Installation instructions can be found [[https://julialang.org/downloads/platform/][here]].
 
-*1 - The current [[https://julialang.org/downloads/][Julia stable release]]*
+*2 - The packages: [[https://github.com/JuliaData/CSV.jl][CSV]], [[https://github.com/JuliaData/DataFrames.jl][DataFrames]], [[https://github.com/JuliaStats/TimeSeries.jl][TimeSeries]], [[https://github.com/JuliaPlots/Plots.jl][Plots]]* \\
+{{<n>}}{{<n>}}Packages can be installed with {{<c>}}] add &lt;package&gt;{{</c>}}.
 
-Installation instructions can be found [[https://julialang.org/downloads/platform/][here]].
-
-*2 - The packages: [[https://github.com/JuliaData/CSV.jl][CSV]], [[https://github.com/JuliaData/DataFrames.jl][DataFrames]], [[https://github.com/JuliaStats/TimeSeries.jl][TimeSeries]], [[https://github.com/JuliaPlots/Plots.jl][Plots]]*
-
-Packages can be installed with {{<c>}}] add &lt;package&gt;{{</c>}}.
-
-*3 - Covid-19 data from the [[https://github.com/CSSEGISandData/COVID-19][Johns Hopkins University CSSE repository]]*
-
-Clone ({{<c>}}git clone &lt;repo url&gt;{{</c>}}) or download and unzip the repository.<br><br>
+*3 - Covid-19 data from the [[https://github.com/CSSEGISandData/COVID-19][Johns Hopkins University CSSE repository]]* \\
+{{<n>}}{{<n>}}Clone ({{<c>}}git clone &lt;repo url&gt;{{</c>}}) or download and unzip the repository.
 #+END_box
 
 **** Load packages
