@@ -209,12 +209,15 @@ img[alt=radius] {
 }
 
 .updated {
-  text-align: right;
-  font-size: 1.3rem;
+  // text-align: center;
+  font-size: 1.4rem;
+  padding: 0.8rem 0 1.0rem 0;
+  font-style: italic;
   line-height: 0;
-  // font-family: $heading-font-family;
+  font-family: $heading-font-family;
   // color: #8c8c8c;
-  color: #978282;
+  // color: #978282;
+  color: #808080;
 }
 
 // .accordion {
