@@ -23,6 +23,6 @@ Click to open the slides in a new tab:
 
 * Video
 
-{{< youtube XQsxn8OUXGA >}}
+{{<youtube XQsxn8OUXGA>}}
 
 * Comments & questions
