@@ -17,7 +17,7 @@ In this webinar, after a quickly presentation of some of the key features of Jul
 
 Click to open the slides in a new tab:
 
-#+BEGIN_export mhtml
+#+BEGIN_export html
 <a href="https://westgrid-webinars.netlify.app/julia_intro/" target="_blank"><p align="center"><img src="/img/julia_intro_slides.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
 #+END_export
 
