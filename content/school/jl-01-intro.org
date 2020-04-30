@@ -1,4 +1,4 @@
-#+title: Introduction to WestGrid Summer School Julia lesson
+#+title: Introduction to the Julia lesson
 #+description: Zoom
 #+colordes: #cc0066
 #+slug: jl-01-intro
