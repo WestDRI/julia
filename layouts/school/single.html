@@ -42,6 +42,9 @@
 	  {{ .Title }}
 	</span>
       </h1>
+      {{ with .Page.Params.Subtitle }}
+      <subtitle>{{ . }}</subtitle>
+      {{ end }}
       <div class="updated">
 	Last updated: {{ now.Format "January 2, 2006" }}
       </div>
