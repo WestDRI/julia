@@ -4,9 +4,6 @@
 #+date: 2020-05-13
 #+place: 45 min live webinar
 
-{{<img src="/img/workinprogress.svg" title="Patience... patience..." width="200">}}
-{{</img>}}
-
 #+BEGIN_sticker
 [[https://www.eventbrite.ca/e/machine-learning-in-julia-with-flux-registration-88600704091][Register for free webinar]]
 #+END_sticker
