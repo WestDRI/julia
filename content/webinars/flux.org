@@ -11,7 +11,7 @@
 **** /Abstract/
 
 #+BEGIN_definition
-In this webinar, I will introduce some basic concepts of machine learning such as perceptrons, the softmax function, and neural networks; then I will demo the use of the [[https://julialang.org/][Julia]] package [[https://fluxml.ai/][Flux]] in one of the most classic introductory exercises of neural network building and training: the classification of the [[http://yann.lecun.com/exdb/mnist/][MNIST database]] of handwritten digits.
+In this introductory webinar, I will introduce the basic concepts of neural networks; then I will demo the use of the [[https://julialang.org/][Julia]] package [[https://fluxml.ai/][Flux]] in the very classic exercise classifying the [[http://yann.lecun.com/exdb/mnist/][MNIST database]] of handwritten digits images.
 #+END_definition
 
 * Slides
