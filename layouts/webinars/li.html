@@ -1,4 +1,4 @@
 <li>
   <span class="date">{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
-  <a class="wbtitle" href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}{{ with .Page.Params.Subtitle }} <span style="font-size: 1.5rem;">{{ . }}</span>{{ end }}</a>
+  <a class="wbtitle" href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
 </li>

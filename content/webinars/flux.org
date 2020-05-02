@@ -1,4 +1,4 @@
-#+title: Machine learning in Julia with Flux:
+#+title: Machine learning in Julia with Flux
 #+subtitle: Example classifying the MNIST database
 #+slug: flux
 #+date: 2020-05-13
