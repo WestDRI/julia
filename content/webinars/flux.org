@@ -11,7 +11,7 @@
 **** /Abstract/
 
 #+BEGIN_definition
-In this introductory webinar, I will introduce the basic concepts of neural networks; then I will demo the use of the [[https://julialang.org/][Julia]] package [[https://fluxml.ai/][Flux]] in the very classic exercise classifying the [[http://yann.lecun.com/exdb/mnist/][MNIST database]] of handwritten digits images.
+This webinar, aimed at users with no experience in machine learning, is an introduction to the basic concepts of neural networks, followed by a simple example—the classic classification of the [[http://yann.lecun.com/exdb/mnist/][MNIST database]] of handwritten digits—using the [[https://julialang.org/][Julia]] package [[https://fluxml.ai/][Flux]].
 #+END_definition
 
 * Slides
