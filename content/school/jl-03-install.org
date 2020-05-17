@@ -6,5 +6,8 @@
 
 #+OPTIONS: toc:nil
 
+* Important note
+
+If you have issues installing Julia and/or some packages, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you have a running installation before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
 
 * Comments & questions
