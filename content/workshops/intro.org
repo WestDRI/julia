@@ -275,9 +275,9 @@ The GitHub star system allows you to easily judge the popularity of a package an
 
 In addition to these, there are unregistered packages and you can build your own.
 
-{{< challenge >}}
+{{<challenge>}}
 Try to find a list of popular plotting packages.
-{{< /challenge >}}
+{{</challenge>}}
 
 You can manage your personal library easily in package mode with the commands:
 
@@ -290,13 +290,13 @@ You can manage your personal library easily in package mode with the commands:
 (env) pkg> up                   # upgrade all packages
 #+END_src
 
-{{< challenge >}}
+{{<challenge>}}
 Check your list of packages; install the packages {{<b>}}Plots{{</b>}}, {{<b>}}GR{{</b>}}, {{<b>}}Distributions{{</b>}}, {{<b>}}StatsPlots{{</b>}}, and {{<b>}}UnicodePlot{{</b>}}; then check that list again.
-{{< /challenge >}}
+{{</challenge>}}
 
-{{< challenge >}}
+{{<challenge>}}
 Now go explore your {{<b>}}~/.julia{{</b>}}. If you don't find it, make sure that your file explorer allows you to see hidden files.
-{{< /challenge >}}
+{{</challenge>}}
 
 *** Loading packages
 
@@ -369,12 +369,12 @@ Example:
 > a + b
 #+END_src
 
-{{< challenge >}}
+{{<challenge>}}
 What does {{<c>}};{{</c>}} at the end of a command do?<br>
 What is surprising about {{<c>}}2a{{</c>}}?<br>
 What does {{<c>}}+={{</c>}} do?<br>
 What does {{<c>}}.+{{</c>}}do?
-{{< /challenge >}}
+{{</challenge>}}
 
 #+BEGIN_src julia
 > a = [3, 1, 2]
@@ -386,9 +386,9 @@ What does {{<c>}}.+{{</c>}}do?
 > println(a)
 #+END_src
 
-{{< challenge >}}
+{{<challenge>}}
 What does {{<c>}}!{{</c>}} at the end of a function name do?
-{{< /challenge >}}
+{{</challenge>}}
 
 ** Sourcing a file
 
@@ -446,10 +446,10 @@ Indexing is done with square brackets. As in R and unlike in C++ or Python, Juli
 > a[1, :]
 #+END_src
 
-{{< challenge >}}
+{{<challenge>}}
 How can I get the second column?<br>
 How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
-{{< /challenge >}}
+{{</challenge>}}
 
 ** For loops
 
@@ -487,9 +487,9 @@ How can I get the tuple {{<c>}}(2, 4){{</c>}}? (a tuple is a list of elements)
   end
 #+END_src
 
-{{< challenge >}}
+{{<challenge>}}
 What is the difference between {{<c>}}=={{</c>}} and {{<c>}}==={{</c>}}?
-{{< /challenge >}}
+{{</challenge>}}
 
 Predicates can be built with many other operators and functions. For example:
 
@@ -599,9 +599,9 @@ To see how many threads we are using, as well as the ID of the current thread, y
 
 ** For loops on multiple threads
 
-{{< challenge >}}
+{{<challenge>}}
 Launch Julia on 1 thread and run the function below. Then run Julia on the maximum nummber of threads you have on your machine and run the same function.
-{{< /challenge >}}
+{{</challenge>}}
 
 
 #+BEGIN_src julia
@@ -815,9 +815,9 @@ We will not run an interactive session with Julia on the cluster: we already hav
 
 We will create 2 scripts: one to run Julia on one core and one on as many cores as are available.
 
-{{< challenge >}}
+{{<challenge>}}
 How many processors are there on our training cluster?
-{{< /challenge >}}
+{{</challenge>}}
 
 
 Note that here too, we could run Julia with multiple threads by running:
