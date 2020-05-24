@@ -6,5 +6,9 @@
 
 #+OPTIONS: toc:2
 
+{{<img src="/img/xkcd_covid_chart.png" title="" width="%" line-height="0.5rem">}}
+from <a href="https://xkcd.com/">xkcd.com</a>
+{{</img>}}
+
 
 * Comments & questions
