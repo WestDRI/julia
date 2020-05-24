@@ -4,11 +4,11 @@
 #+slug: jl-03-install
 #+weight: 3
 
-* Installing Julia
+* Julia
 
 Download the current [[https://julialang.org/downloads/][Julia stable release]] and follow the [[https://julialang.org/downloads/platform/][installation instructions]] corresponding to your operating system.
 
-* Installing a terminal emulator and SSH client
+* Terminal emulator and SSH client
 
 You will need a terminal emulator and an SSH client for remote access to the Compute Canada cluster.
 
@@ -26,7 +26,7 @@ If not, follow the instructions for your OS:
 {{<n>}}{{<n>}}If SSH does not come bundled with your distribution, install [[https://www.openssh.com/][OpenSSH]].\\
 {{<n>}}{{<n>}}(You can type {{<c>}}ssh{{</c>}} in the command line to see whether it is installed).
 
-* Installing a text editor
+* Text editor
 
 Finally, you will need a capable text editor.\\
 Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.\\
@@ -34,7 +34,7 @@ Note that Microsoft Notepad is too simplistic and WordPad is not a text editor.
 
 Alternatively, if you would rather play in the [[https://junolab.org/][Julia IDE]], you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].{{<fl n="1">}}
 
-* Important note
+* Issues
 
 If you have issues with these installations{{<fl n="1">}}, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
 
