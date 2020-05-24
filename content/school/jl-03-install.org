@@ -4,7 +4,6 @@
 #+slug: jl-03-install
 #+weight: 3
 
-#+OPTIONS: toc:nil
 
 * Important note
 
