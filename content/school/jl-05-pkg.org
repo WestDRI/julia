@@ -4,7 +4,92 @@
 #+slug: jl-05-pkg
 #+weight: 5
 
-#+OPTIONS: toc:2
+* Standard library
 
+A set of packages are installed when you install Julia. They are stored in the *standard library* or *stdlib* (in Linux, they are in {{<b>}}/usr/share/julia/stdlib/vx.x{{</b>}}, where {{<b>}}vx.x{{</b>}} is the installed Julia version).
+
+Here is the list:
+
+#+BEGIN_example
+Base64
+CRC32c
+Dates
+DelimitedFiles
+Distributed
+FileWatching
+Future
+InteractiveUtils
+Libdl
+LibGit2
+LinearAlgebra
+Logging
+Markdown
+Mmap
+Pkg
+Printf
+Profile
+Random
+REPL
+Serialization
+SHA
+SharedArrays
+Sockets
+SparseArrays
+Statistics
+SuiteSparse
+Test
+Unicode
+UUIDs
+#+END_example
+
+They are not automatically loaded at the start of a session, so before you can use them, you need to load them as you would do for external packages (see below).
+
+* External packages
+
+To add functionality to Julia, you can install external packages from an ever-growing collection developed by the Julia community.
+
+** How to find external packages
+
+All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]] by name or tag.\\
+GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
+
+These packages get installed in your personal library (in linux, it is in {{<b>}}~/.julia{{</b>}}).
+
+** How to manage external packages
+
+In package mode, you can manage your personal library easily with the following commands:
+
+#+BEGIN_src julia
+(env) pkg> add <package>        # install <package>
+(env) pkg> rm <package>         # uninstall <package>
+(env) pkg> up <package>         # upgrade <package>
+
+(env) pkg> st                   # check which packages are installed
+(env) pkg> up                   # upgrade all packages
+#+END_src
+
+{{<exercise>}}
+Install the following packages:<br>
+- {{<b>}}Plots{{</b>}}<br>
+- {{<b>}}GR{{</b>}}<br>
+<!-- - {{<b>}}Distributions{{</b>}}<br> -->
+<!-- - {{<b>}}StatsPlots{{</b>}}<br> -->
+<!-- - {{<b>}}UnicodePlot{{</b>}} -->
+{{</exercise>}}
+
+* Loading packages
+
+You can load a package with {{<c>}}using{{</c>}} (e.g. {{<c>}}using Plots{{</c>}}).
+
+{{<exercise>}}
+Load your newly installed packages to make sure that they got installed properly.<br>
+Don't be surprised if this takes a long time: the first time you load a package, Julia compiles it.<br>
+Next time you load it, it will be a lot faster.<br>
+({{<b>}}Plots{{</b>}} is particularly long to load).
+{{</exercise>}}
+
+* Issues
+
+If you have issues installing the required packages, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
 
 * Comments & questions
