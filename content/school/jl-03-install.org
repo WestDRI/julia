@@ -1,4 +1,4 @@
-#+title: Installing Julia and getting started
+#+title: Software installation
 #+description: Practice
 #+colordes: #dc7309
 #+slug: jl-03-install
