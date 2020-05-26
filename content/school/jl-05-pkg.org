@@ -72,6 +72,9 @@ In package mode, you can manage your personal library easily with the following 
 Install the following packages:<br>
 - {{<b>}}Plots{{</b>}}<br>
 - {{<b>}}GR{{</b>}}<br>
+- {{<b>}}CSV{{</b>}}<br>
+- {{<b>}}DataFrames{{</b>}}<br>
+- {{<b>}}TimeSeries{{</b>}}<br>
 <!-- - {{<b>}}Distributions{{</b>}}<br> -->
 <!-- - {{<b>}}StatsPlots{{</b>}}<br> -->
 <!-- - {{<b>}}UnicodePlot{{</b>}} -->
