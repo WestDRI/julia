@@ -79,6 +79,29 @@ Notes:
 pkg> add <package1> <package2> <package3>
 #+END_src
 
+An alternative to this convenience mode is to load the package manager (part of stdlib), called {{<b>}}Pkg{{</b>}} and use it as you would any other package:
+
+#+BEGIN_src julia
+using Pkg
+
+Pkg.add("<package>")        # install <package>
+Pkg.rm("<package>")         # uninstall <package>
+Pkg.status("<package>")     # status of <package>
+Pkg.update("<package>")     # update <package>
+
+Pkg.update()                # status of all installed packages
+Pkg.status()                # update all packages
+#+END_src
+
+Notes:
+
+- The short forms {{<c>}}up{{</c>}} and {{<c>}}st{{</c>}} do not work in this context
+- To install, uninstall, or update several packages at once, you need to create an array:
+
+#+BEGIN_src julia
+Pkg.add(["<package1>", "<package2>", "<package3>"])
+#+END_src
+
 {{<exercise>}}
 Install the following packages:<br>
 - {{<b>}}Plots{{</b>}}<br>
