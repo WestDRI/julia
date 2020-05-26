@@ -48,11 +48,11 @@ The [[https://systems.jhu.edu/][Center for Systems Science and Engineering at Jo
 # If you have setup SSH for GitHub
 git clone git@github.com:CSSEGISandData/COVID-19.git
 
-# If you don't have SSH setup for GitHub
+# If you haven't setup SSH for GitHub
 git clone https://github.com/CSSEGISandData/COVID-19.git
 #+END_src
 
-- *If you are not familiar with Git*, simply download it (click on "Clone or download", then on "Download ZIP") and unzip it.
+- *If you are not familiar with Git*, simply download the repository (click on "Clone or download", then on "Download ZIP") and unzip it.
 
 Either way, make sure that you have the csv files that are in the {{<b>}}csse_covid_19_time_series{{</b>}} folder on your computer and that you know where they are.
 
