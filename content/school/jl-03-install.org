@@ -1,4 +1,4 @@
-#+title: Software installation
+#+title: Software installation and data download
 #+description: Practice
 #+colordes: #dc7309
 #+slug: jl-03-install
@@ -28,15 +28,37 @@ If not, follow the instructions for your OS:
 
 * Text editor
 
-Finally, you will need a capable text editor.\\
+You will also need a capable text editor.\\
 Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.\\
 Note that Microsoft Notepad is too simplistic and WordPad is not a text editor.
 
 Alternatively, if you would rather play in the [[https://junolab.org/][Julia IDE]], you can find the installation instructions [[http://docs.junolab.org/latest/man/installation][here]].{{<fl n="1">}}
 
+* Data
+
+Finally, you need to download the data that we will use to play in Julia.
+
+In this course, we will use... well... yes... some Covid-19 data (sorry...).
+
+The [[https://systems.jhu.edu/][Center for Systems Science and Engineering at Johns Hopkins University]] has been gathering Covid-19 data from the main international official sources throughout the pandemic and they are making the resulting database open source through GitHub. This is the data that is used in [[https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6][the dashboard that they also built]] and that you have probably seen. The GitHub repository is available [[https://github.com/CSSEGISandData/COVID-19][here]].
+
+- *If you are familiar with Git*, you can clone that repository with either of:
+
+#+BEGIN_src sh
+# If you have setup SSH for GitHub
+git clone git@github.com:CSSEGISandData/COVID-19.git
+
+# If you don't have SSH setup for GitHub
+git clone https://github.com/CSSEGISandData/COVID-19.git
+#+END_src
+
+- *If you are not familiar with Git*, simply download it (click on "Clone or download", then on "Download ZIP") and unzip it.
+
+Either way, make sure that you have the csv files that are in the {{<b>}}csse_covid_19_time_series{{</b>}} folder on your computer and that you know where they are.
+
 * Issues
 
-If you have issues with these installations{{<fl n="1">}}, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
+If you have issues with these installations{{<fl n="1">}} or with the data download, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
 
 {{<fn>}}
 {{<fr n="1" text="We will not debug the Juno IDE as its use is not part of this course. While you are welcome to use it, if you encounter problems with it, you will have to move to a text editor to edit your Julia code.">}}
