@@ -104,10 +104,11 @@ Pkg.add(["<package1>", "<package2>", "<package3>"])
 
 {{<exercise>}}
 Install the following packages:<br>
-- {{<b>}}Plots{{</b>}}<br>
-- {{<b>}}GR{{</b>}}<br>
 - {{<b>}}CSV{{</b>}}<br>
 - {{<b>}}DataFrames{{</b>}}<br>
+- {{<b>}}JLD{{</b>}}<br>
+- {{<b>}}Plots{{</b>}}<br>
+- {{<b>}}GR{{</b>}}<br>
 - {{<b>}}TimeSeries{{</b>}}<br>
 <!-- - {{<b>}}Distributions{{</b>}}<br> -->
 <!-- - {{<b>}}StatsPlots{{</b>}}<br> -->
