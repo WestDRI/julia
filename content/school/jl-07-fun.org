@@ -1,4 +1,4 @@
-#+title: Functions and macros
+#+title: Functions, control flow, and macros
 #+description: Reading
 #+colordes: #538cc6
 #+slug: jl-07-fun
@@ -18,7 +18,7 @@ function <name>(<arguments>)
 end
 #+END_src
 
-Example:
+/Example:/
 
 #+BEGIN_src julia
 function hello()
@@ -32,7 +32,7 @@ end
 <name>(<arguments>) = <body>
 #+END_src
 
-Example:
+/Example:/
 
 #+BEGIN_src julia
 hello() = println("Hello")
@@ -108,7 +108,7 @@ hello("Paul")
 
 Oops. Not quite... This function works but does not give the result we wanted.
 
-Here, we need to use string interpolation with the {{<c>}}${{</c>}} character:
+Here, we need to use [[https://en.wikipedia.org/wiki/String_interpolation][string interpolation]] with the {{<c>}}${{</c>}} character:
 
 #+BEGIN_src julia
 function hello(name)
@@ -133,6 +133,98 @@ hello()
 
 
 ** Dot syntax
+
+
+* Control flow
+
+** Conditional statements
+
+*** if
+
+#+BEGIN_src julia
+if <condition>
+    <do if true>
+end
+#+END_src
+
+(If condition is false, do nothing).
+
+/Example:/
+
+#+BEGIN_src julia
+function testsign(x)
+    if x >= 0
+        println("x is positive")
+    end
+end
+
+testsign(3)
+testsign(0)
+testsign(-2)
+#+END_src
+
+*** if else
+
+#+BEGIN_src julia
+if <condition>
+    <do if true>
+else
+    <do if false>
+end
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function testsign(x)
+    if x >= 0
+        println("x is positive")
+    else
+        println("x is negative")
+    end
+end
+
+testsign(3)
+testsign(0)
+testsign(-2)
+#+END_src
+
+*** if elseif else
+
+#+BEGIN_src julia
+if <condition1>
+    <do if condition1 true>
+elseif <condition2>
+    <do if condition1 false and condition2 true>
+else
+    <do if condition1 and condition2 false>
+end
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function testsign(x)
+    if x > 0
+        println("x is positive")
+    elseif x == 0
+        println("x is zero")
+    else
+        println("x is negative")
+    end
+end
+
+testsign(3)
+testsign(0)
+testsign(-2)
+#+END_src
+
+** Short-circuit evaluation
+
+** Loops
+
+* Macros
+
 
 
 * Comments & questions
