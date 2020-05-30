@@ -1,0 +1,138 @@
+#+title: Functions and macros
+#+description: Reading
+#+colordes: #538cc6
+#+slug: jl-07-fun
+#+weight: 7
+
+As you read this page, I suggest that you run the examples and even try variations of them to familiarize yourself with the Julia REPL and to start getting a feel for Julia.
+
+* Functions
+
+** Syntax
+
+*** Long
+
+#+BEGIN_src julia
+function <name>(<arguments>)
+    <body>
+end
+#+END_src
+
+Example:
+
+#+BEGIN_src julia
+function hello()
+    println("Hello")
+end
+#+END_src
+
+*** Compact
+
+#+BEGIN_src julia
+<name>(<arguments>) = <body>
+#+END_src
+
+Example:
+
+#+BEGIN_src julia
+hello() = println("Hello")
+#+END_src
+
+The function {{<c>}}hello(){{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
+
+** Return
+
+The value of the last expression is automatically returned, so {{<c>}}return{{</c>}} is unnecessary unless you want to return something else.
+
+Look at these 5 functions:
+
+#+BEGIN_src julia
+function test1(x, y)
+    x + y
+end
+
+function test2(x, y)
+    return x + y
+end
+
+function test3(x, y)
+    x * y
+end
+
+function test4(x, y)
+    x * y
+    x + y
+end
+
+function test5(x, y)
+    return x * y
+    x + y
+end
+#+END_src
+
+Now, try to guess the results of running:
+
+#+BEGIN_src julia
+test1(1, 2)
+test2(1, 2)
+test3(1, 2)
+test4(1, 2)
+test5(1, 2)
+#+END_src
+
+Then run these expressions to see whether you got it right.
+
+** Arguments
+
+Our function {{<c>}}hello(){{</c>}} did not accept any argument.
+
+So running, for instance:
+
+#+BEGIN_src julia
+hello("Paul")
+#+END_src
+
+returns an error message.
+
+To define a function which accepts arguments, we need to add them in the function definition as we did when we defined {{<c>}}test1(){{</c>}} to {{<c>}}test5(){{</c>}}.
+
+So maybe we could do this?
+
+#+BEGIN_src julia
+function hello(name)
+    println("Hello name")
+end
+
+hello("Paul")
+#+END_src
+
+Oops. Not quite... This function works but does not give the result we wanted.
+
+Here, we need to use string interpolation with the {{<c>}}${{</c>}} character:
+
+#+BEGIN_src julia
+function hello(name)
+    println("Hello $name")
+end
+
+hello("Paul")
+#+END_src
+
+We can also set default argument values: if no arguments are given, the function is evaluated with the defaults.
+
+#+BEGIN_src julia
+function hello(name = "you")
+    println("Hello $name")
+end
+
+hello("Paul")
+hello()
+#+END_src
+
+** Pipes
+
+
+** Dot syntax
+
+
+* Comments & questions
