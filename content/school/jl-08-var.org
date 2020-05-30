@@ -22,7 +22,7 @@ In this session, we will start playing in Julia and learn about variables and ty
 <br>
 #+END_export
 
-Note that *no recording* will be made during this session to encourage participation.
+Note that *no recording* will be made during this session so as not to discourage participation.
 
 *** Slides
 
