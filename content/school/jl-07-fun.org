@@ -245,6 +245,29 @@ abs.(a) == a .|> abs
 abs.(a) .== a .|> abs
 #+END_src
 
+** Methods
+
+Julia uses [[https://en.wikipedia.org/wiki/Multiple_dispatch][multiple dispatch]]: functions can have several methods. When that is the case, the method applied depends on the types of all the arguments passed to the function (rather than only the first argument as is common in other languages).
+
+#+BEGIN_src julia
+methods(+)
+#+END_src
+
+let's you see that {{<c>}}+{{</c>}} has 166 methods!
+
+Methods can be added to existing functions.
+
+Try to understand the following example:
+
+#+BEGIN_src julia
+abssum(x::Int64, y::Int64) = abs(x + y)
+abssum(x::Float64, y::Float64) = abs(x + y)
+
+abssum(2, 4)
+abssum(2.0, 4.0)
+abssum(2, 4.0)
+#+END_src
+
 * Control flow
 
 ** Conditional statements
