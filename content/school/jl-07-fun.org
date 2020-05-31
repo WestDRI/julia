@@ -4,7 +4,7 @@
 #+slug: jl-07-fun
 #+weight: 7
 
-As you read this page, I suggest that you run the examples and even try variations of them to familiarize yourself with the Julia REPL and to start getting a feel for Julia.
+As you read this page, I suggest that you run the examples and experiment with them to familiarize yourself with the Julia REPL and to start getting a feel for the language.
 
 * Functions
 
@@ -26,7 +26,7 @@ function hello()
 end
 #+END_src
 
-*** Compact
+*** Assignment form
 
 #+BEGIN_src julia
 <name>(<arguments>) = <body>
@@ -38,7 +38,7 @@ end
 hello() = println("Hello")
 #+END_src
 
-The function {{<c>}}hello(){{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
+The function {{<c>}}hello{{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
 
 ** Return
 
@@ -84,7 +84,7 @@ Then run these expressions to see whether you got it right.
 
 ** Arguments
 
-Our function {{<c>}}hello(){{</c>}} did not accept any argument.
+Our function {{<c>}}hello{{</c>}} did not accept any argument.
 
 So running, for instance:
 
@@ -94,7 +94,7 @@ hello("Paul")
 
 returns an error message.
 
-To define a function which accepts arguments, we need to add them in the function definition as we did when we defined {{<c>}}test1(){{</c>}} to {{<c>}}test5(){{</c>}}.
+To define a function which accepts arguments, we need to add them in the function definition as we did when we defined {{<c>}}test1{{</c>}} to {{<c>}}test5{{</c>}}.
 
 So maybe we could do this?
 
@@ -127,6 +127,44 @@ end
 
 hello("Paul")
 hello()
+#+END_src
+
+** Anonymous functions
+
+Anonymous functions are functions which aren't given a name. You can create them this way in Julia:
+
+#+BEGIN_src julia
+function (<arguments>)
+    <body>
+end
+#+END_src
+
+And in compact form:
+
+#+BEGIN_src julia
+<arguments> -> <body>
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function (name)
+    println("Hello $name")
+end
+#+END_src
+or
+#+BEGIN_src julia
+name -> println("Hello $name")
+#+END_src
+{{<br>}}
+*When would you want to use anonymous functions?*
+
+This is very useful for functional programming (when you apply a function—for instance {{<c>}}map{{</c>}}—to other functions to apply them in a vectorized manner which avoids repetitions).
+
+/Example:/
+
+#+BEGIN_src julia
+map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
 #+END_src
 
 ** Pipes
