@@ -169,9 +169,20 @@ map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
 
 ** Pipes
 
+The Julia pipe looks like this: {{<c>}}|>{{</c>}} and behaves as you would expect.
 
-** Dot syntax
+The following 2 expressions are equivalent:
 
+#+BEGIN_src julia
+println("Hello")
+"Hello" |> println
+#+END_src
+
+Quick test:
+
+#+BEGIN_src julia
+sqrt(2) == 2 |> sqrt
+#+END_src
 
 * Control flow
 
