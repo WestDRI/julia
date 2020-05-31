@@ -108,11 +108,8 @@ Install the following packages:<br>
 - {{<b>}}DataFrames{{</b>}}<br>
 - {{<b>}}JLD{{</b>}}<br>
 - {{<b>}}StatsPlots{{</b>}}<br>
-- {{<b>}}GR{{</b>}}<br>
-- {{<b>}}TimeSeries{{</b>}}<br>
-<!-- - {{<b>}}Distributions{{</b>}}<br> -->
-<!-- - {{<b>}}StatsPlots{{</b>}}<br> -->
-<!-- - {{<b>}}UnicodePlot{{</b>}} -->
+- {{<b>}}UnicodePlot{{</b>}}<br>
+- {{<b>}}TimeSeries{{</b>}}
 {{</exercise>}}
 
 * Loading packages
