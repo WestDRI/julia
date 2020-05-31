@@ -186,7 +186,7 @@ sqrt(2) == 2 |> sqrt
 
 ** Function composition
 
-Done with the composition operator {{<c>}}∘{{</c>}}
+Done with the composition operator {{<c>}}∘{{</c>}} (in the REPL, type {{<b>}}\circ{{</b>}} then press {{<b>}}&lt;tab&gt;{{</b>}}).
 
 The following 2 expressions are equivalent:
 
@@ -208,6 +208,22 @@ exp(+(-3, 1))
 {{<exsimple>}}
 Try to write the same expression in another 2 different ways using the pipe.
 {{</exsimple>}}
+
+** function!()
+
+{{<c>}}!{{</c>}} used after a function name indicates that the function modifies its arguments.
+
+/Example:/
+
+#+BEGIN_src julia
+a = [-2, 3, -5]
+
+sort(a)
+a
+
+sort!(a)
+a
+#+END_src
 
 ** Broadcasting
 
