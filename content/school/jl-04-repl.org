@@ -4,7 +4,6 @@
 #+slug: jl-04-repl
 #+weight: 4
 
-#+OPTIONS: toc:2
+#+OPTIONS: toc:nil
 
-
-* Comments & questions
+{{<youtube TBSTNj8Vlfs>}}
