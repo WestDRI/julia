@@ -209,6 +209,42 @@ exp(+(-3, 1))
 Try to write the same expression in another 2 different ways using the pipe.
 {{</exsimple>}}
 
+** Broadcasting
+
+To apply a function to each element of a collection rather than to the collection as a whole, Julia uses broadcasting.
+
+#+BEGIN_src julia
+a = [-3, 2, -5]
+abs(a)
+#+END_src
+
+This doesn't work because the function {{<c>}}abs{{</c>}} only applies to single elements.
+
+By broadcasting {{<c>}}abs{{</c>}}, you apply it to each element of {{<c>}}a{{</c>}}.
+
+#+BEGIN_src julia
+broadcast(abs, a)
+#+END_src
+
+The dot notation is equivalent:
+
+#+BEGIN_src julia
+abs.(a)
+#+END_src
+
+It can also be applied to the pipe, to unary and binary operators, etc.
+
+#+BEGIN_src julia
+a .|> abs
+#+END_src
+
+Try to understand the difference between the following 2 expressions:
+
+#+BEGIN_src julia
+abs.(a) == a .|> abs
+abs.(a) .== a .|> abs
+#+END_src
+
 * Control flow
 
 ** Conditional statements
