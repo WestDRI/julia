@@ -14,15 +14,28 @@ dat = DataFrame(CSV.File(file))
 
 # * Explore data
 
+typeof(dat)
+
 size(dat)
 nrow(dat)
 ncol(dat)
 
-dat
-typeof(dat)
+names(dat)
 
+dat[!, 1]
+dat[!, "Province/State"]
+dat[!, :"Province/State"]
 dat."Province/State"
+
 typeof(dat."Province/State")
+
+# * Convert WeakRefStrings.StringArray to String
+
+string([1, 2, 3])
+string.([1, 2, 3])
+
+dat[!, 1] = string.(dat[!, 1])
+dat[!, 2] = string.(dat[!, 2])
 
 # * Select and order columns
 
@@ -55,4 +68,4 @@ datlong
 
 # * Save the datlong object in a file
 
-save("covid.jld", "confirmed", datlong)
+save("../../data/covid.jld", "confirmed", datlong)
