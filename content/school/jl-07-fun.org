@@ -331,6 +331,20 @@ testsign(-2)
 
 ** Loops
 
+{{<c>}}while{{</c>}} and {{<c>}}for{{</c>}} loops follow a syntax similar to that of functions:
+
+#+BEGIN_src julia
+for name = ["Paul", "Lucie", "Sophie"]
+    println("Hello $name")
+end
+#+END_src
+
+#+BEGIN_src julia
+for i = 1:3, j = 3:5
+    println(i + j)
+end
+#+END_src
+
 * Macros
 
 
