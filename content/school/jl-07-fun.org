@@ -329,8 +329,6 @@ testsign(0)
 testsign(-2)
 #+END_src
 
-** Short-circuit evaluation
-
 ** Loops
 
 * Macros
