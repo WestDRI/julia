@@ -184,6 +184,31 @@ Quick test:
 sqrt(2) == 2 |> sqrt
 #+END_src
 
+** Function composition
+
+Done with the composition operator {{<c>}}∘{{</c>}}
+
+The following 2 expressions are equivalent:
+
+#+BEGIN_src julia
+<function2>(<function1>(<arguments>))
+(<function2> ∘ <function1>)(<arguments>)
+#+END_src
+
+/Example:/
+
+These are equivalent:
+
+#+BEGIN_src julia
+exp(+(-3, 1))
+
+(exp ∘ +)(-3, 1)
+#+END_src
+
+{{<exsimple>}}
+Try to write the same expression in another 2 different ways using the pipe.
+{{</exsimple>}}
+
 * Control flow
 
 ** Conditional statements
