@@ -53,13 +53,13 @@ plot(TimeArray(df1, timestamp = :date))
 #+END_src
 
 {{<plotshadow src="/plot/school/covid/world1.png" title="Covid-19 confirmed cases in the world" width="860">}}
-Covid-19 confirmed cases in the world
+Evolution of the number of Covid-19 confirmed cases in the world over time
 {{</plotshadow>}}
 
 That worked, but our graph is not exactly pretty.
 
 {{<exercise>}}
-Looking at the documentation for the <a href="https://docs.juliaplots.org/latest/generated/attributes_plot/">plot</a> and <a href="https://docs.juliaplots.org/latest/generated/attributes_subplot/">subplot</a> attributes of the {{<b>}}Plots{{</b>}} package ({{<b>}}StatsPlots{{</b>}} works the same way), try to customize and improve this graph.<br><br>
+Looking at the documentation for the <a href="https://docs.juliaplots.org/latest/generated/attributes_plot/">plot</a> and <a href="https://docs.juliaplots.org/latest/generated/attributes_subplot/">subplot</a> attributes of the {{<b>}}Plots{{</b>}} package ({{<b>}}StatsPlots{{</b>}} works the same way since it is the same package with more tools), try to customize and improve this graph.<br><br>
 For instance, maybe you could give it a title, a better legend, a legend in a better position...
 {{</exercise>}}
 
