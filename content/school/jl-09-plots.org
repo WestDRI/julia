@@ -26,4 +26,12 @@ For this course, we will use the [[https://gr-framework.org/][GR framework]]:
 gr()
 #+END_src
 
+* Load our data frame
+
+Let's start by loading our data frame from [[https://westgrid-julia.netlify.app/school/jl-08-var.html][the previous lesson]] thanks to the [[https://github.com/JuliaIO/JLD.jl][JLD]] package (of course, use the path to the {{<b>}}covid.jld{{</b>}} file in your system):
+
+#+BEGIN_src julia
+datlong = load("../../data/covid.jld", "confirmed")
+#+END_src
+
 * Comments & questions
