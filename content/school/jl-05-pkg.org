@@ -57,7 +57,7 @@ These packages get installed in your personal library (in linux, it is in {{<b>}
 
 ** How to manage external packages
 
-In [[https://westgrid-julia.netlify.app/school/jl-04-repl.html][package mode]], you can manage your personal library easily with the following commands:
+In [[https://westgrid-julia.netlify.app/school/jl-04-repl.html][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
 
 #+BEGIN_src julia
 pkg> add <package>        # install <package>
