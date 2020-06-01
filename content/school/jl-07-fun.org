@@ -8,9 +8,11 @@ As you read this page, I suggest that you run the examples and experiment with t
 
 * Functions
 
-** Syntax
+** Defining functions
 
-*** Long
+There are 2 ways to define a new function:
+
+*** Long form
 
 #+BEGIN_src julia
 function <name>(<arguments>)
@@ -40,7 +42,15 @@ hello() = println("Hello")
 
 The function {{<c>}}hello{{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
 
-** Return
+** Calling functions
+
+You call a function by running it followed by parentheses:
+
+#+BEGIN_src julia
+hello()
+#+END_src
+
+** Returning the result
 
 The value of the last expression is automatically returned, so {{<c>}}return{{</c>}} is unnecessary unless you want to return something else.
 
@@ -392,7 +402,7 @@ They resemble functions and just like functions, they accept as input a tuple of
 
 Macro's names are preceded by {{<c>}}@{{</c>}} (e.g. {{<c>}}@time{{</c>}}).
 
-Julia comes with many macros and you can create your own:
+Julia comes with many macros and you can create your own with:
 
 #+BEGIN_src julia
 macro <name>()
