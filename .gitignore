@@ -1,5 +1,6 @@
 public/
 resources/
+*.mkv
 !*.png
 !workinprogress.svg
 archetypes/default.md
