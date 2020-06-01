@@ -20,6 +20,6 @@ Click to open the slides in a new tab:
 
 * Video
 
-Coming on May 13.
+{{<youtube 9nhVaJSuMF8>}}
 
 * Comments & questions
