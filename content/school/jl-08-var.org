@@ -6,6 +6,12 @@
 
 #+OPTIONS: toc:nil
 
+{{<br>}}
+{{<img src="https://imgs.xkcd.com/comics/x.png" title="" width="%" line-height="0.5rem">}}
+from <a href="https://xkcd.com/">xkcd.com</a>
+{{</img>}}
+{{<br>}}
+
 In this session, we will start playing in Julia and learn about variables and types.
 
 #+BEGIN_export html
