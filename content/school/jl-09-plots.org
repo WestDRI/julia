@@ -9,5 +9,21 @@
 from <a href="https://xkcd.com/">xkcd.com</a>
 {{</img>}}
 
+* Load packages
+
+#+BEGIN_src julia
+using JLD
+using DataFrames
+using StatsPlots
+using TimeSeries
+#+END_src
+
+[[https://github.com/JuliaPlots/Plots.jl][Plots]] is a convenient Julia package which allows to use the same code with many graphing backends such as the [[https://gr-framework.org/][GR framework]] (great for speed), [[https://plotly.com/javascript/][Plotly.js]] (allows interaction with your graphs in a browser), or [[https://matplotlib.org/api/pyplot_api.html][PyPlot]]. [[https://github.com/JuliaPlots/StatsPlots.jl][StatsPlots]] is an enhanced version with added stats functionality.
+
+For this course, we will use the [[https://gr-framework.org/][GR framework]]:
+
+#+BEGIN_src julia
+gr()
+#+END_src
 
 * Comments & questions
