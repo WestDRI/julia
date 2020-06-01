@@ -34,4 +34,8 @@ Let's start by loading our data frame from [[https://westgrid-julia.netlify.app/
 datlong = load("../../data/covid.jld", "confirmed")
 #+END_src
 
+* World summary
+
+Let's start by plotting a world summary of confirmed Covid-19 cases over time.
+
 * Comments & questions
