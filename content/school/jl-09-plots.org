@@ -63,6 +63,24 @@ Looking at the documentation for the <a href="https://docs.juliaplots.org/latest
 For instance, maybe you could give it a title, a better legend, a legend in a better position...
 {{</exercise>}}
 
+* Backends
+
+I mentioned earlier that {{<b>}}Plots{{</b>}}/{{<b>}}StatsPlots{{</b>}} (remember that {{<b>}}StatsPlots{{</b>}} is {{<b>}}Plots{{</b>}} with added functionality) does not itself plot but that it uses backends and is a really convenient way to run the same code on many different APIs. We will give this a try in the next section.
+
+But first, a few notes on {{<b>}}Plots{{</b>}} backends:
+
+- Some of the plotting backends ({{<b>}}GR{{</b>}} and {{<b>}}Plotly{{</b>}}) don't need to be explicitly installed as they are installed as dependencies of {{<b>}}Plots{{</b>}} ({{<b>}}Plots{{</b>}} would not work if it had no backend!) This is why we could run {{<c>}}gr(){{</c>}} to chose the {{<b>}}GR{{</b>}} backend while we never explicitly installed the [[https://github.com/jheinen/GR.jl][GR]] package.
+
+- When you run {{<b>}}]{{</b>}} {{<c>}}status{{</c>}}, you won't see {{<b>}}GR{{</b>}} in the list (even though it is installed and you can use it: {{<c>}}Pkg.status{{</c>}} only lists packages that you have explicitly installed, not the dependencies. If you ran {{<b>}}]{{</b>}} {{<c>}}add GR{{</c>}}, then you would see it in the list (but there is no reason to do that).
+
+- The other backends need to be installed before they can be used (it wouldn't make sense to have all these different options installed by default).
+
+- The {{<b>}}Plots{{</b>}} documentation [[https://docs.juliaplots.org/latest/backends/][gives some advise as to which backend to choose]].
+
+- You don't need to load the backends with {{<c>}}using{{</c>}} (you would do this if you were using them directly, without using {{<b>}}Plots{{</b>}}): you select them as backend with the functions {{<c>}}gr{{</c>}}, {{<c>}}plotly{{</c>}}, etc.
+
+- If you don't run the code to set the backend (e.g. {{<c>}}gr(){{</c>}}), {{<b>}}Plots{{</b>}} will default to whatever backend is available on your machine (usually it defaults to {{<b>}}GR{{</b>}}).
+
 * Countries plot
 
 Now, we want to plot the data for some countries.
