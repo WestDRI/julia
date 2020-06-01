@@ -81,6 +81,24 @@ But first, a few notes on {{<b>}}Plots{{</b>}} backends:
 
 - If you don't run the code to set the backend (e.g. {{<c>}}gr(){{</c>}}), {{<b>}}Plots{{</b>}} will default to whatever backend is available on your machine (usually it defaults to {{<b>}}GR{{</b>}}).
 
+* UnicodePlots
+
+[[https://github.com/Evizero/UnicodePlots.jl][UnicodePlots]] plots in the terminal. As you can imagine, this does not produce the kind of graphs you want in your next paper. But it can be extremely convenient to be able to plot directly in the terminal, without using a graphical interface. A great place where this could be very useful is when you are running interactive jobs on the cluster with {{<c>}}salloc{{</c>}}.
+
+So, let's see if our code works as planned on {{<b>}}UnicodePlots{{</b>}}:
+
+#+BEGIN_src julia
+unicodeplots()
+
+plot(TimeArray(world, timestamp = :date))
+#+END_src
+
+{{<imgshadow src="/plot/school/covid/world2.png" title="Covid-19 confirmed cases in the world" width="860">}}
+Evolution of the number of Covid-19 confirmed cases in the world over time plotted directly in the terminal
+{{</imgshadow>}}
+
+That worked. The same code ran on a different API. That's the whole idea of {{<b>}}Plots{{</b>}}.
+
 * Countries plot
 
 Now, we want to plot the data for some countries.
