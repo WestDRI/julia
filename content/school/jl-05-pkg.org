@@ -120,7 +120,7 @@ You can load a package with {{<c>}}using &lt;package&gt;{{</c>}} (e.g. {{<c>}}us
 Load your newly installed packages to make sure that they got installed properly.<br>
 Don't be surprised if this takes a long time: the first time you load a package, Julia compiles it.<br>
 Next time you load it, it will be a lot faster.<br>
-({{<b>}}Plots{{</b>}} is particularly long to load).
+({{<b>}}StatsPlots{{</b>}} is particularly long to load).
 {{</exercise>}}
 
 * Issues
