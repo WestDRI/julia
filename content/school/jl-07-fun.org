@@ -386,6 +386,8 @@ end
 
 * Macros
 
+Macros are a form of [[https://en.wikipedia.org/wiki/Metaprogramming][metaprogramming]] (the ability of a program to transform itself while running).
 
+They resemble functions and just like functions, they accept as input a tuple of arguments. Unlike functions which return a value however, macros return an expression which is compiled directly (rather than at runtime).
 
 * Comments & questions
