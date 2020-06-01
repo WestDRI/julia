@@ -38,4 +38,262 @@ datlong = load("../../data/covid.jld", "confirmed")
 
 Let's start by plotting a world summary of confirmed Covid-19 cases over time.
 
+#+BEGIN_src julia
+# rename some variables to easier names
+DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
+                               2 => Symbol("country")))
+
+# create a one-dimensional array of strings
+var = ["total", "dead", "recovered"]
+
+#= transform the data into long format in a vectorized fashion
+using both our one-dimensional arrays of 3 elements =#
+datlong = map((x, y) -> stack(x, Not(collect(1:4)),
+                              variable_name = Symbol("date"),
+                              value_name = Symbol("$y")),
+              dat, var)
+#+END_src
+
+We now have a one-dimensional array of 3 DataFrames in long format called {{<c>}}datlong{{</c>}}.
+
+#+BEGIN_src julia
+# join all elements of this array into a single DataFrame
+all = join(datlong[1], datlong[2], datlong[3],
+           on = [:date, :country, :province, :Lat, :Long])
+
+# get rid of "Lat" and "Long" and re-order the columns
+select!(all, [4, 3, 1, 2, 7, 8])
+
+#= turn the year from 2 digits to 4 digits using regular expression
+(in a vectorised fashion by braodcasting with the dot notation);
+then turn these values into strings, and finally into dates =#
+all.date = Date.(replace.(string.(all[:, 3]),
+                          r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy");
+
+#= replace the missing values by the string "NA"
+(these are not real missing values, but rather non applicable ones) =#
+replace!(all.province, missing => "NA");
+#+END_src
+
+We now have a single DataFrame called {{<c>}}all{{</c>}}, in long format, with the variables {{<c>}}confirmed{{</c>}}, {{<c>}}dead{{</c>}}, {{<c>}}recovered{{</c>}}, and {{<c>}}ill{{</c>}}.
+
+Calculate the number of currently ill individuals (again, in a vectorized fashion, by broadcasting with the dot notation):
+
+#+BEGIN_src julia
+all.current = all.total .- all.dead .- all.recovered;
+#+END_src
+
+** World summary
+
+To make a single plot with world totals of confirmed, dead, recovered, and ill cases, we want the sums of these variables for each day. We do this by grouping the data by date:
+
+#+BEGIN_src julia
+world = by(all, :date,
+           total = :total => sum,
+           dead = :dead => sum,
+           recovered = :recovered => sum,
+           current = :current => sum)
+#+END_src
+
+Now we can plot our new variable {{<c>}}world{{</c>}}.
+
+As our data is a time series, we need to transform it to a TimeArray thanks to the {{<c>}}TimeArray(){{</c>}} function from the TimeSeries package.
+
+#+BEGIN_src julia
+plot(TimeArray(world, timestamp = :date),
+     title = "World",
+     legend = :outertopright,
+     widen = :false)
+#+END_src
+
+{{<plotshadow src="/plot/workshop/covid/world1.png" title="Global confirmed, dead, recovered, and current up to March 22, 2020" width="860">}}
+Data until March 22, 2020
+{{</plotshadow>}}
+
+** Countries/provinces summaries
+
+Now, we want to group the data by country:
+
+#+BEGIN_src julia
+countries = groupby(all, :country)
+#+END_src
+
+We also need to know how the authors of the dataset decided to label the various countries and their subregions.
+
+For example, if you want to see what the data looks like for France, Canada, and India, you can run:
+
+#+BEGIN_src julia
+countries[findall(x -> "France" in x, keys(countries))]
+countries[findall(x -> "Canada" in x, keys(countries))]
+countries[findall(x -> "India" in x, keys(countries))]
+#+END_src
+
+Then you need to subset the data for the countries or provinces you are interested in.
+
+Here are some examples:
+
+#+BEGIN_src julia
+# countries for which there are data for several provinces
+canada = all[all[:, :country] .== "Canada", :]
+us = all[all[:, :country] .== "US", :]
+china = all[all[:, :country] .== "China", :]
+
+# countries with no province data
+skorea = all[all[:, :country] .== "Korea, South", :]
+taiwan = all[all[:, :country] .== "Taiwan*", :]
+singapore = all[all[:, :country] .== "Singapore", :]
+italy = all[all[:, :country] .== "Italy", :]
+spain = all[all[:, :country] .== "Spain", :]
+
+#= countries wich have subregions spread widely in the world;
+here, I took the arbitrary decision to only look at the main subregions =#
+france = all[all[:, :province] .== "France", :]
+uk = all[all[:, :province] .== "United Kingdom", :]
+
+# provinces
+bc = all[all[:, :province] .== "British Columbia", :]
+ny = all[all[:, :province] .== "New York", :]
+#+END_src
+
+Calculate the totals for Canada, US, and China which all have data for subregions:
+
+#+BEGIN_src julia
+canada, us, china = by.([canada, us, china], :date,
+                        total = :total => sum,
+                        dead = :dead => sum,
+                        recovered = :recovered => sum,
+                        current = :current => sum)
+#+END_src
+
+The 3 variables {{<c>}}canada{{</c>}}, {{<c>}}us{{</c>}}, and {{<c>}}china{{</c>}} now only have
+
+In order to
+
+#+BEGIN_src julia
+loclist1 = [canada, us, china]
+loctitles1 = ["Canada", "US", "China"]
+
+pcanada, pus, pchina =
+    map((x, y) -> plot(TimeArray(x, timestamp = :date),
+                       title = "$y", legend = :outertopright,
+                       widen = :false, dpi = :300),
+        loclist1, loctitles1)
+#+END_src
+
+On the other hand, the other variables still have the {{<c>}}country{{</c>}} and {{<c>}}province{{</c>}} columns (since we did not group them by countries as we did for {{<c>}}canada{{</c>}}, {{<c>}}us{{</c>}}, and {{<c>}}china{{</c>}} when we calculated the country totals.
+
+So we need to remove those 2 columns before we can pass the DataFrames to {{<c>}}TimeArray(){{</c>}}.
+
+#+BEGIN_src julia
+loclist2 = [france, bc, ny, taiwan, skorea, singapore, spain, italy, uk]
+loctitles2 = ["France", "BC", "NY", "Taiwan", "South Korea",
+              "Singapore", "Spain", "Italy", "UK"]
+
+pfrance, pbc, pny, ptaiwan, pskorea,
+psingapore, pspain, pitaly, puk =
+    map((x, y) -> plot(TimeArray(select(x, Not([:country, :province])),
+                                 timestamp = :date),
+                       title = "$y", legend = :outertopright,
+                       widen = :false, dpi = :300),
+        loclist2, loctitles2)
+#+END_src
+
+Now, let's plot a few countries/provinces:
+
+*** North America
+
+#+BEGIN_src julia
+plot(pcanada, pbc, pus, pny,
+     legend = false, titlefontsize = 7, tickfontsize = 6)
+#+END_src
+
+{{<plotshadow src="/plot/workshop/covid/northamerica1.png" title="Confirmed, dead, recovered, and current in some North American countries/provinces until March 22, 2020" width="860">}}
+Data until March 22, 2020
+{{</plotshadow>}}
+
+*** Asia
+
+#+BEGIN_src julia
+plot(pchina, ptaiwan, pskorea, psingapore,
+     legend = false, titlefontsize = 7, tickfontsize = 6)
+#+END_src
+
+{{<plotshadow src="/plot/workshop/covid/asia1.png" title="Confirmed, dead, recovered, and current in some Asian countries until March 22, 2020" width="860">}}
+Data until March 22, 2020
+{{</plotshadow>}}
+
+*** Europe
+
+#+BEGIN_src julia
+plot(pfrance, pspain, pitaly, puk,
+     legend = false, titlefontsize = 7, tickfontsize = 6)
+#+END_src
+
+{{<plotshadow src="/plot/workshop/covid/europe1.png" title="Confirmed, dead, recovered, and current in some European countries until March 22, 2020" width="860">}}
+Data until March 22, 2020
+{{</plotshadow>}}
+
+* Data up to the present
+
+** Summary graphs
+
+{{<challenge>}}
+Write the code to create an up-to-date graph for the world using the files:<br>
+{{<b>}}time_series_covid19_confirmed_global.csv{{</b>}} and {{<b>}}time_series_covid19_deaths_global.csv{{</b>}}.
+{{</challenge>}}
+
+Here is the result:
+
+{{<plotshadow src="/plot/workshop/covid/world.png" title="Global confirmed and dead" width="860">}}
+Last updated: March 25, 2020
+{{</plotshadow>}}
+
+{{<challenge>}}
+Create up-to-date graphs for the countries and/or provinces of your choice.
+{{</challenge>}}
+
+Here are a few possible results:
+
+{{<plotshadow src="/plot/workshop/covid/4countries.png" title="Confirmed and dead for Italy, Spain, the US, and Canada" width="860">}}
+Last updated: March 25, 2020
+{{</plotshadow>}}
+
+** Countries comparison
+
+Our side by side graphs don't make comparisons very easy since they vary greatly in their axes scales.
+
+Of course, we could constrain them to have the same axes, but then, why not plot multiple countries or provinces in the same graph?
+
+#+BEGIN_src julia
+canada[!, :loc] .= "Canada";
+china[!, :loc] .= "China";
+
+all = join(all, canada, china, on = [:date, :total, :dead, :loc],
+           kind = :outer)
+
+confirmed = unstack(all[:, collect(3:5)], :loc, :total)
+
+conf_sel = select(confirmed,
+                  [:date, :Italy, :Spain, :China, :Iran,
+                   :France, :US, Symbol("South Korea"), :Canada])
+
+plot(TimeArray(conf_sel, timestamp = :date),
+     title = "Confirmed across a few countries",
+     legend = :outertopright, widen = :false)
+#+END_src
+
+{{<plotshadow src="/plot/workshop/covid/confirmed.png" title="Number of confirmed cases in a few countries" width="860">}}
+Last updated: March 25, 2020
+{{</plotshadow>}}
+
+{{<challenge>}}
+Write the code to make a similar graph with the number of deaths in a few countries of your choice.
+{{</challenge>}}
+
+Here is a possible result:
+
+{{<plotshadow src="/plot/workshop/covid/dead.png" title="Number of deaths in a few countries" width="860">}}
+Last updated: March 25, 2020
+{{</plotshadow>}}
+
 * Comments & questions
