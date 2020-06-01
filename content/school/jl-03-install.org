@@ -16,7 +16,7 @@ If you took the course on [[https://wgschool.netlify.app/bash-menu/][Bash]] or [
 If not, follow the instructions for your OS:
 
 {{<n>}}{{<s>}} /Windows:/ \\
-{{<n>}}{{<n>}}Install the [[https://mobaxterm.mobatek.net/download.html][free Home Edition of MobaXTerm]].\\
+{{<n>}}{{<n>}}Install the [[https://mobaxterm.mobatek.net/download.html][free Home Edition of MobaXTerm]].
 
 {{<n>}}{{<s>}} /MacOS:/ \\
 {{<n>}}{{<n>}}Terminal and SSH are pre-installed.
