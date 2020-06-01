@@ -1,12 +1,11 @@
-#+title: Plotting in Julia
+#+title: Plotting
 #+description: Practice
 #+colordes: #dc7309
 #+slug: jl-09-plots
 #+weight: 9
 
-#+OPTIONS: toc:2
-
-{{<img src="/img/xkcd_covid_chart.png" title="" width="%" line-height="0.5rem">}}
+{{<br>}}
+{{<img src="https://imgs.xkcd.com/comics/coronavirus_charts.png" title="" width="%" line-height="0.5rem">}}
 from <a href="https://xkcd.com/">xkcd.com</a>
 {{</img>}}
 
