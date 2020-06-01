@@ -108,7 +108,7 @@ Install the following packages (locally, don't worry about the cluster):<br>
 - {{<b>}}DataFrames{{</b>}}<br>
 - {{<b>}}JLD{{</b>}}<br>
 - {{<b>}}StatsPlots{{</b>}}<br>
-- {{<b>}}UnicodePlot{{</b>}}<br>
+- {{<b>}}UnicodePlots{{</b>}}<br>
 - {{<b>}}TimeSeries{{</b>}}
 {{</exercise>}}
 
