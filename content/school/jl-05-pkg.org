@@ -103,7 +103,7 @@ Pkg.add(["<package1>", "<package2>", "<package3>"])
 #+END_src
 
 {{<exercise>}}
-Install the following packages:<br>
+Install the following packages (locally, don't worry about the cluster):<br>
 - {{<b>}}CSV{{</b>}}<br>
 - {{<b>}}DataFrames{{</b>}}<br>
 - {{<b>}}JLD{{</b>}}<br>

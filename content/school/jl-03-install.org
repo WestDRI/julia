@@ -4,6 +4,9 @@
 #+slug: jl-03-install
 #+weight: 3
 
+{{<br>}}
+/All installations are local (on your machine). Don't worry about the cluster./
+
 * Julia
 
 Download the current [[https://julialang.org/downloads/][Julia stable release]] and follow the [[https://julialang.org/downloads/platform/][installation instructions]] corresponding to your operating system.
