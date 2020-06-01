@@ -38,77 +38,31 @@ datlong = load("../../data/covid.jld", "confirmed")
 
 Let's start by plotting a world summary of confirmed Covid-19 cases over time.
 
-#+BEGIN_src julia
-# rename some variables to easier names
-DataFrames.rename!.(dat, Dict.(1 => Symbol("province"),
-                               2 => Symbol("country")))
+For this, we need the sum of confirmed cases for each day. So we group the data by {{<c>}}date{{</c>}} ({{<c>}}:{{</c>}} in {{<c>}}:date{{</c>}} means that {{<c>}}date{{</c>}} is a {{<b>}}Symbol{{</b>}}).
 
-# create a one-dimensional array of strings
-var = ["total", "dead", "recovered"]
-
-#= transform the data into long format in a vectorized fashion
-using both our one-dimensional arrays of 3 elements =#
-datlong = map((x, y) -> stack(x, Not(collect(1:4)),
-                              variable_name = Symbol("date"),
-                              value_name = Symbol("$y")),
-              dat, var)
-#+END_src
-
-We now have a one-dimensional array of 3 DataFrames in long format called {{<c>}}datlong{{</c>}}.
+Then we {{<c>}}combine{{</c>}} the data within each group by making the sum of the {{<c>}}confirmed{{</c>}} values and we call our total {{<c>}}confsum{{</c>}}.
 
 #+BEGIN_src julia
-# join all elements of this array into a single DataFrame
-all = join(datlong[1], datlong[2], datlong[3],
-           on = [:date, :country, :province, :Lat, :Long])
-
-# get rid of "Lat" and "Long" and re-order the columns
-select!(all, [4, 3, 1, 2, 7, 8])
-
-#= turn the year from 2 digits to 4 digits using regular expression
-(in a vectorised fashion by braodcasting with the dot notation);
-then turn these values into strings, and finally into dates =#
-all.date = Date.(replace.(string.(all[:, 3]),
-                          r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy");
-
-#= replace the missing values by the string "NA"
-(these are not real missing values, but rather non applicable ones) =#
-replace!(all.province, missing => "NA");
+world = combine(groupby(datlong, :date), :confirmed => sum => :confsum)
 #+END_src
 
-We now have a single DataFrame called {{<c>}}all{{</c>}}, in long format, with the variables {{<c>}}confirmed{{</c>}}, {{<c>}}dead{{</c>}}, {{<c>}}recovered{{</c>}}, and {{<c>}}ill{{</c>}}.
-
-Calculate the number of currently ill individuals (again, in a vectorized fashion, by broadcasting with the dot notation):
+Since our data is a time series, we need to transform the data frame {{<c>}}world{{</c>}} we just created to a {{<b>}}TimeArray{{</b>}} thanks to the {{<c>}}TimeArray{{</c>}} function from the [[https://github.com/JuliaStats/TimeSeries.jl][TimeSeries]] package. Then we can plot it by passing it to the function {{<c>}}plot{{</c>}}:
 
 #+BEGIN_src julia
-all.current = all.total .- all.dead .- all.recovered;
+plot(TimeArray(df1, timestamp = :date))
 #+END_src
 
-** World summary
-
-To make a single plot with world totals of confirmed, dead, recovered, and ill cases, we want the sums of these variables for each day. We do this by grouping the data by date:
-
-#+BEGIN_src julia
-world = by(all, :date,
-           total = :total => sum,
-           dead = :dead => sum,
-           recovered = :recovered => sum,
-           current = :current => sum)
-#+END_src
-
-Now we can plot our new variable {{<c>}}world{{</c>}}.
-
-As our data is a time series, we need to transform it to a TimeArray thanks to the {{<c>}}TimeArray(){{</c>}} function from the TimeSeries package.
-
-#+BEGIN_src julia
-plot(TimeArray(world, timestamp = :date),
-     title = "World",
-     legend = :outertopright,
-     widen = :false)
-#+END_src
-
-{{<plotshadow src="/plot/workshop/covid/world1.png" title="Global confirmed, dead, recovered, and current up to March 22, 2020" width="860">}}
-Data until March 22, 2020
+{{<plotshadow src="/plot/school/covid/world1.png" title="Covid-19 confirmed cases in the world" width="860">}}
+Covid-19 confirmed cases in the world
 {{</plotshadow>}}
+
+That worked, but our graph is not exactly pretty.
+
+{{<exercise>}}
+Looking at the documentation for the <a href="https://docs.juliaplots.org/latest/generated/attributes_plot/">plot</a> and <a href="https://docs.juliaplots.org/latest/generated/attributes_subplot/">subplot</a> attributes of the {{<b>}}Plots{{</b>}} package ({{<b>}}StatsPlots{{</b>}} works the same way), try to customize and improve this graph.<br><br>
+For instance, maybe you could give it a title, a better legend, a legend in a better position...
+{{</exercise>}}
+
 
 ** Countries/provinces summaries
 
