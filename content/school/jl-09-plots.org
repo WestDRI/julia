@@ -63,9 +63,12 @@ Looking at the documentation for the <a href="https://docs.juliaplots.org/latest
 For instance, maybe you could give it a title, a better legend, a legend in a better position...
 {{</exercise>}}
 
-* Countries plots
+* Countries plot
 
 Now, we want to plot the data for some countries.
 
+{{<exercise>}}
+Try to group the data by country, index the countries of your choice, and plot the number of confirmed Covid-19 cases over time for these countries.
+{{</exercise>}}
 
 * Comments & questions
