@@ -70,7 +70,7 @@ addprocs(n)
 addprocs(4)
 #+END_src
 
-**** Managing workers
+* Managing workers
 
 To list all the worker process identifiers:
 
@@ -87,3 +87,69 @@ rmprocs(<pid>)
 #+END_src
 
 where {{<c>}}&lt;pid&gt;{{</c>}} is the process identifier of the worker you want to kill (you can kill several workers by providing a list of pids).
+
+* Using workers
+
+There are a number of [[https://docs.julialang.org/en/v1/manual/metaprogramming/#man-macros-1][macros]] that are very convenient here:
+
+- To execute an expression on all processes, there is {{<c>}}@everywhere{{</c>}}
+
+For instance, if your parallel code requires a module or an external package to run, you need to load that module or package with {{<c>}}@everywhere{{</c>}}:
+
+#+BEGIN_src julia
+@everywhere using DataFrames
+#+END_src
+
+If the parallel code requires a script to run:
+
+#+BEGIN_src julia
+@everywhere include("script.jl")
+#+END_src
+
+If it requires a function that you are defining, you need to define it on all the workers:
+
+#+BEGIN_src julia
+@everywhere function <name>(<arguments>)
+    <body>
+end
+#+END_src
+
+- To assign a task to a particular worker, you use {{<c>}}@spawnat{{</c>}}
+
+The first argument indicates the process id, the second argument is the expression that should be evaluated.
+
+#+BEGIN_src julia
+@spawnat <pid> <expression>
+#+END_src
+
+{{<c>}}@spawnat{{</c>}} returns of {{<b>}}Future{{</b>}}: the placeholder for a computation of unknown status and time. The function {{<c>}}fetch{{</c>}} waits for a {{<b>}}Future{{</b>}} to complete and returns the result of the computation.
+
+/Example:/
+
+The function {{<c>}}myid{{</c>}} gives the id of the current process. As I mentioned earlier, the process running the interactive Julia prompt has the pid {{<b>}}1{{</b>}}. So {{<c>}}myid(){{</c>}} normally returns {{<c>}}1{{</c>}}.
+
+But we can "spawn" {{<c>}}myid{{</c>}} on one of the worker, for instance the first worker (so pid {{<b>}}2{{</b>}}):
+
+#+BEGIN_src julia
+@spawnat 2 myid()
+#+END_src
+
+As you can see, we get a {{<b>}}Future{{</b>}} as a result. But if we pass it through {{<c>}}fetch{{</c>}}, we get the result of {{<c>}}myid{{</c>}} ran on the worker with pid {{<b>}}2{{</b>}}:
+
+#+BEGIN_src julia
+fetch(@spawnat 2 myid())
+#+END_src
+
+If you want tasks to be assigned to any worker automatically, you can pass the symbol {{<c>}}:any{{</c>}} to {{<c>}}@spawnat{{</c>}} instead of the worker id:
+
+#+BEGIN_src julia
+@spawnat :any myid()
+#+END_src
+
+To get the result:
+
+#+BEGIN_src julia
+fetch(@spawnat :any myid())
+#+END_src
+
+If you run this multiple times, you will see that {{<c>}}myid{{</c>}} is run on any of your available workers. This will however never return {{<c>}}1{{</c>}}, /except/ when you only have one running Julia process (in that case, the process running the prompt is considered a worker).
