@@ -1,8 +1,8 @@
 #+title: Using Julia on Compute Canada clusters
 #+description: Reading
 #+colordes: #538cc6
-#+slug: jl-11-cluster
-#+weight: 11
+#+slug: jl-10-cluster
+#+weight: 10
 
 * Logging to the cluster
 
