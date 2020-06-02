@@ -1,8 +1,8 @@
 #+title: Multi-threading
 #+description: Practice
 #+colordes: #dc7309
-#+slug: jl-10-multithreading
-#+weight: 10
+#+slug: jl-11-multithreading
+#+weight: 11
 
 * Launching Julia on multiple threads
 
