@@ -16,11 +16,11 @@ dat = DataFrame(CSV.File(file))
 
 typeof(dat)
 
+names(dat)
+
 size(dat)
 nrow(dat)
 ncol(dat)
-
-names(dat)
 
 dat[!, 1]
 dat[!, "Province/State"]
