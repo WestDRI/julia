@@ -1,0 +1,50 @@
+#+title: HPC
+#+description: Reading
+#+colordes: #538cc6
+#+slug: jl-11-hpc
+#+weight: 11
+
+* Logging to the cluster
+
+Open a terminal emulator.
+
+/Windows users, launch [[https://mobaxterm.mobatek.net/][MobaXTerm]]./ \\
+/MacOS users, launch Terminal./ \\
+/Linux users, launch xterm or the terminal emulator of your choice./
+
+#+BEGIN_src sh
+$ ssh userxxx@cassiopeia.c3.ca
+
+# enter password
+#+END_src
+
+You are now in our training cluster.
+
+* Loading the Julia module
+
+This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
+
+#+BEGIN_src sh
+# Get help on the module command
+$ module help
+$ module --help
+$ module -h
+
+# List modules that are already loaded
+$ module list
+
+# See which modules are available for Julia
+$ module spider julia
+
+# See how to load the latest version (julia 1.4.1)
+$ module spider julia/1.4.1
+
+# Load julia 1.4.1 with the required gcc module first
+# (the order is important)
+$ module load gcc/7.3.0 julia/1.4.1
+
+# You can see that we now have Julia loaded
+$ module list
+#+END_src
+
+* Comments & questions
