@@ -1,7 +1,7 @@
-#+title: HPC
+#+title: Using Julia on Compute Canada clusters
 #+description: Reading
 #+colordes: #538cc6
-#+slug: jl-11-hpc
+#+slug: jl-11-cluster
 #+weight: 11
 
 * Logging to the cluster
