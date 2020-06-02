@@ -22,3 +22,5 @@ end
 for i in workers()
     rmprocs(i)
 end
+
+fetch(@spawnat 2 myid())
