@@ -147,3 +147,7 @@ fetch(@spawnat :any myid())
 #+END_src
 
 If you run this multiple times, you will see that {{<c>}}myid{{</c>}} is run on any of your available workers. This will however never return {{<c>}}1{{</c>}}, /except/ when you only have one running Julia process (in that case, the process running the prompt is considered a worker).
+
+* Data too large to fit in the memory of one machine
+
+There is a package for this: [[https://github.com/JuliaParallel/DistributedArrays.jl][DistributedArrays]].
