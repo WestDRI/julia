@@ -1,8 +1,8 @@
 #+title: Distributed computing
 #+description: Zoom
 #+colordes: #cc0066
-#+slug: jl-11-distributed
-#+weight: 11
+#+slug: jl-12-distributed
+#+weight: 12
 
 #+OPTIONS: toc:nil
 
