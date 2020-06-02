@@ -1,7 +1,0 @@
-#+title: Parallel programming
-#+description: Reading
-#+colordes: #538cc6
-#+slug: jl-10-parallel
-#+weight: 10
-
-
