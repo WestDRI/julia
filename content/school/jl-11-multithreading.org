@@ -68,6 +68,10 @@ From Terminal:
 sysctl -n hw.ncpu
 #+END_src
 
+* Using multiple threads
+
+Multi-threading is supported by the {{<b>}}Base.Threads{{</b>}} interface (part of the {{<b>}}Base{{</b>}} module of Julia) which contains a number of functions and macros. Below are the most important ones.
+
 ** How do you know how many threads you are using in your Julia session?
 
 To see how many threads you are using, you can run (in the Julia REPL):
@@ -83,3 +87,19 @@ To get the ID of the current thread, you can run:
 #+BEGIN_src julia
 julia> Threads.threadid()
 #+END_src
+
+** For loop on multiple threads
+
+This is done thanks to the {{<c>}}Threads.@threads{{</c>}} macro:
+
+#+BEGIN_src julia
+julia> Threads.@threads for i = 1:10
+           println("i = $i on thread $(Threads.threadid())")
+       end
+#+END_src
+
+** Multi-threading outside of the context of loops
+
+Here, you want to use the {{<c>}}Threads.@spawn{{</c>}} macro. This feature is currently experimental and not documented in the Julia manual, but an example is given in [[https://julialang.org/blog/2019/07/multithreading/][this Julia blog post]].
+
+* Comments & questions
