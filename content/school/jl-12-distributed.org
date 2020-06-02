@@ -1,18 +1,12 @@
 #+title: Distributed computing
-#+description: Zoom
-#+colordes: #cc0066
+#+description: Reading
+#+colordes: #538cc6
 #+slug: jl-12-distributed
 #+weight: 12
 
 #+OPTIONS: toc:nil
 
-#+BEGIN_zoombox
-*This interactive session will be conducted through Zoom.*
-
-*The meeting ID and password will be emailed to people who registered for this course.*
-#+END_zoombox
-
-Note that *no recording* will be made during this session so as not to discourage participation.
+As you read this page, I suggest that you run the examples and experiment with them.
 
 * Launching several Julia processes
 
