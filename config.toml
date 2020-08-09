@@ -31,6 +31,8 @@ canonifyurls = true
 [params]
   # author = "Julia Training"
   # author = "Training Material on"
+  # description = ""
+  # keywords = ""
   # info = "Helping researchers with high-performance computing tools"
   repourl = "https://github.com/WestGrid/julia"
   wgavatar = "/img/wg_top_padding_medium.png"
