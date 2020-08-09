@@ -1,13 +1,17 @@
 baseurl = "/"
 title = "Julia"
+
 theme = "hugo-coder"
+
 languagecode = "en"
 defaultcontentlanguage = "en"
+
 buildFuture = true
 footnotereturnlinkcontents = "↩"
 relativeURLs = true
-uglyURLs = true
+
 enableEmoji = true
+
 paginate = 20
 canonifyurls = true
 
@@ -19,9 +23,6 @@ canonifyurls = true
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    # style = "friendly"
-    # style = "tango"
-    # style = "emacs"
     style = "manni"
   [markup.tableOfContents]
     endLevel = 1
@@ -29,11 +30,6 @@ canonifyurls = true
     startLevel = 1
 
 [params]
-  # author = "Julia Training"
-  # author = "Training Material on"
-  # description = ""
-  # keywords = ""
-  # info = "Helping researchers with high-performance computing tools"
   repourl = "https://github.com/WestGrid/julia"
   wgavatar = "/img/wg_top_padding_medium.png"
   siteavatar = "/img/julia.png"
@@ -82,18 +78,16 @@ canonifyurls = true
 [[menu.main]]
   name = "Workshops"
   weight = 1
-  url  = "/workshops/"
+  url  = "workshops/"
 [[menu.main]]
   name = "Webinars"
   weight = 2
-  url  = "/webinars/"
+  url  = "webinars/"
 [[menu.main]]
-  # name = "📓"
   name = "School"
   weight = 3
   url  = "https://wgschool.netlify.app/julia/"
 [[menu.main]]
-  # name = "🏠"
   name = "📚"
   weight = 4
   url  = "https://westgrid.github.io/trainingMaterials/"
