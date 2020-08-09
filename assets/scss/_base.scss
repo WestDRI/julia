@@ -96,23 +96,27 @@ p {
   margin: 2.0rem 0 2.0rem 0;
 }
 
-h2 {
-  font-family: $heading-font-family;
-  font-weight: 700;
-  margin: 5.0rem 0 3.2rem 0;
-}
-
+h2,
 h3,
-h4 {
-  font-family: $heading-font-family;
-  font-weight: 700;
-  margin: 3.7rem 0 2.8rem 0;
-}
+h4,
 h5,
 h6,
 h7 {
   font-family: $heading-font-family;
   font-weight: 700;
+}
+
+h2 {
+  margin: 5.0rem 0 3.2rem 0;
+}
+
+h3,
+h4 {
+  margin: 3.7rem 0 2.8rem 0;
+}
+h5,
+h6,
+h7 {
   margin: 3.5rem 0 2.5rem 0;
 }
 
@@ -127,8 +131,8 @@ h2 {
   }
 }
 h3 {
-  color: #584f1e;
-  font-size: 2.5rem;
+  color: #383D3D;
+  font-size: 2.3rem;
   line-height: 3.2rem;
   @media only screen and (max-width : 768px) {
     font-size: 2.6rem;
@@ -136,8 +140,8 @@ h3 {
   }
 }
 h4 {
-  color: #426456;
-  font-size: 2.4rem;
+  color: #435069;
+  font-size: 2.2rem;
   line-height: 2.8rem;
   @media only screen and (max-width : 768px) {
     font-size: 2.2rem;
@@ -145,8 +149,8 @@ h4 {
   }
 }
 h5 {
-  color: #644f67;
-  font-size: 2.2rem;
+  color: #4c4d67;
+  font-size: 2.1rem;
   line-height: 2.6rem;
   @media only screen and (max-width : 768px) {
     font-size: 2.0rem;
@@ -154,7 +158,7 @@ h5 {
   }
 }
 h6 {
-  color: #b43c3e;
+  color: #644f67;
   font-size: 2.0rem;
   line-height: 2.4rem;
   @media only screen and (max-width : 768px) {
@@ -163,8 +167,8 @@ h6 {
   }
 }
 h7 {
-  color: #b43c3e;
-  font-size: 1.8rem;
+  color: #556464;
+  font-size: 1.9rem;
   line-height: 2.2rem;
   @media only screen and (max-width : 768px) {
     font-size: 1.6rem;
@@ -195,7 +199,7 @@ pre {
 
 code {
   font-family: $code-font-family;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 400;
   background-color: $alt-bg-color;
   color: $fg-color;
@@ -217,21 +221,21 @@ table {
   border-collapse: collapse;
 }
 table td, table th {
-  border: 2px solid $alt-fg-color;
+  border: 1px solid $alt-fg-color;
 }
 table tr:first-child th {
-  border-top: 0;
+  border-top: 1px solid $alt-fg-color;
 }
 table tr:last-child td {
-  border-bottom: 0;
+  border-bottom: 1px solid $alt-fg-color;
 }
 table tr td:first-child,
 table tr th:first-child {
-  border-left: 0;
+  border-left: 1px solid $alt-fg-color;
 }
 table tr td:last-child,
 table tr th:last-child {
-  border-right: 0;
+  border-right: 1px solid $alt-fg-color;
 }
 
 img {
