@@ -1,0 +1,13 @@
+Notes from Alex (in Slack):
+
+I would like to see a problem that is computationally challenging, and then you benefit from parallelizing it on multiple cores, ideally scattered across multiple nodes. Or maybe even a problem that is too large to solve on one core/node, and then you can decompose it and run it in distributed memory on the cluster.
+
+An N-body solver. The direct solver scales as O(N^2) which can grow quite large for large N.
+
+And you can plot the solution in Julia too.
+
+You can write a small solver that runs on one core, with small N, and then eventually run it on the cluster for large N.
+
+The CPU-intensive part is force estimation for large N, and then you have to update the velocity and position of each particle — here you can experiment with different update schemes to see what works best.
+
+So eventually you’ll be able to do smth like this https://www.youtube.com/watch?v=fit1uX1HIlc
