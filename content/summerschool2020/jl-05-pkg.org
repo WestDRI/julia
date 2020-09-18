@@ -57,7 +57,7 @@ These packages get installed in your personal library (in linux, it is in {{<b>}
 
 ** How to manage external packages
 
-In [[https://westgrid-julia.netlify.app/school/jl-04-repl.html][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
+In [[https://westgrid-julia.netlify.app/summerschool2020/jl-04-repl.html][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
 
 #+BEGIN_src julia
 pkg> add <package>        # install <package>
@@ -125,6 +125,6 @@ Next time you load it, it will be a lot faster.<br>
 
 * Issues
 
-If you have issues installing the required packages, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
+If you have issues installing the required packages, please sign up for the [[https://westgrid-julia.netlify.app/summerschool2020/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
 
 * Comments & questions

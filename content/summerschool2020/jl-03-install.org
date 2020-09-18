@@ -61,7 +61,7 @@ Either way, make sure that you have the csv files that are in the {{<b>}}csse_co
 
 * Issues
 
-If you have issues with these installations{{<fl n="1">}} or with the data download, please sign up for the [[https://westgrid-julia.netlify.app/school/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
+If you have issues with these installations{{<fl n="1">}} or with the data download, please sign up for the [[https://westgrid-julia.netlify.app/summerschool2020/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
 
 {{<fn>}}
 {{<fr n="1" text="We will not debug the Juno IDE as its use is not part of this course. While you are welcome to use it, if you encounter problems with it, you will have to move to a text editor to edit your Julia code.">}}
