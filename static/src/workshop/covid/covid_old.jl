@@ -177,10 +177,6 @@ savefig(plot(pfrance, pspain, pitaly, puk,
 
 # * data up to the present
 
-dir = "covid_db/csse_covid_19_data/csse_covid_19_time_series"
-
-list = joinpath.(relpath(dir), readdir(dir))
-
 dat = DataFrame.(CSV.File.(list[collect(5:6)]))
 
 # ** long format
@@ -193,7 +189,7 @@ var = ["total", "dead"]
 datlong = map((x, y) -> stack(x, Not(collect(1:4)),
                               variable_name = Symbol("date"),
                               value_name = Symbol("$y")),
-               dat, var)
+               dat2, var)
 
 all = join(datlong[1], datlong[2],
            on = [:date, :country, :province, :Lat, :Long])
@@ -202,8 +198,8 @@ replace!(all.province, missing => "");
 
 all.loc = rstrip.(all.country .* " " .* all.province);
 
-replace!(all.loc, "Korea, South" => "South Korea");
-replace!(all.loc, "Taiwan*" => "Taiwan");
+replace!(all.loc, "Korea, South" => "South Korea")
+replace!(all.loc, "Taiwan*" => "Taiwan")
 
 select!(all, [4, 3, 8, 1, 2, 7])
 
@@ -309,8 +305,8 @@ savefig(plot(pitaly, pspain, pus, pcanada,
 
 # ** countries comparison
 
-canada[!, :loc] .= "Canada";
-china[!, :loc] .= "China";
+canada[!, :loc] .= "Canada"
+china[!, :loc] .= "China"
 
 all = join(all, canada, china, on = [:date, :total, :dead, :loc],
            kind = :outer)
@@ -328,35 +324,32 @@ dead = unstack(all[:, [3, 4, 6]], :loc, :dead)
 #      widen = :false, dpi = :300)
 
 conf_sel = select(confirmed,
-                  [:date, :Italy, :Spain, :China, :Iran,
-                   :France, :US, Symbol("South Korea"), :Canada])
+                  [:date, :Italy, :Spain, :US, :China,
+                   :Germany, :Iran, :France, Symbol("United Kingdom"),
+                   :Canada, Symbol("South Korea"), Symbol("Taiwan")])
 
 dead_sel = select(dead,
-                  [:date, :Italy, :Spain, :China, :Iran,
-                   :France, :US, Symbol("South Korea"), :Canada])
+                  [:date, :Italy, :Spain, :US, :China,
+                   :Germany, :Iran, :France, Symbol("United Kingdom"),
+                   :Canada, Symbol("South Korea"), Symbol("Taiwan")])
 
-# pconf = plot(TimeArray(conf_sel, timestamp = :date),
-#              title = "Confirmed across a few countries",
-#              legend = :outertopright, widen = :false)
+plot(TimeArray(conf_sel, timestamp = :date),
+     title = "Confirmed across some countries",
+     legend = :outertopright, widen = :false)
 
 savefig(plot(TimeArray(conf_sel, timestamp = :date),
-             title = "Confirmed across a few countries",
-             legend = :outertopright, widen = :false, dpi = :300),
-        "../../../plot/workshop/covid/confirmed.png")
-
-# pdead = plot(TimeArray(dead_sel, timestamp = :date),
-#              title = "Dead across a few countries",
-#              legend = :outertopright, widen = :false)
-
-savefig(plot(TimeArray(dead_sel, timestamp = :date),
-             title = "Dead across a few countries",
+             title = "Confirmed across some countries",
              legend = :outertopright, widen = :false, dpi = :300),
         "../../../plot/workshop/covid/dead.png")
 
-# savefig(plot(pconf, pdead, titlefontsize = 7,
-#              tickfontsize = 6, legend = :false, dpi = :300),
-#         "../../../plot/workshop/covid/conf_dead.png")
+plot(TimeArray(dead_sel, timestamp = :date),
+     title = "Dead across some countries",
+     legend = :outertopright, widen = :false)
 
+savefig(plot(TimeArray(dead_sel, timestamp = :date),
+             title = "Dead across some countries",
+             legend = :outertopright, widen = :false, dpi = :300),
+        "../../../plot/workshop/covid/confirmed.png")
 
 # * all regions on one graph
 
