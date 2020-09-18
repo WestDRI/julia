@@ -31,13 +31,22 @@ typeof(dat."Province/State")
 
 # * Convert WeakRefStrings.StringArray to String
 
+[1, 2, 3]
+
 string([1, 2, 3])
 string.([1, 2, 3])
 
+string.(dat[!, 2])
+
 dat[!, 1] = string.(dat[!, 1])
+
 dat[!, 2] = string.(dat[!, 2])
 
 # * Select and order columns
+
+dat = select(dat, vcat(2, 1, collect(5:ncol(dat))))
+
+select(dat, 2, 1, 5:ncol(dat))
 
 select!(dat, vcat(2, 1, collect(5:ncol(dat))))
 
@@ -45,6 +54,10 @@ select!(dat, vcat(2, 1, collect(5:ncol(dat))))
 
 :province == Symbol("province")
 typeof(:province)
+
+Dict(1 => :country, 2 => :province)
+
+Dict([(1, :country), (2, :province)])
 
 rename!(dat, Dict(1 => :country, 2 => :province))
 
@@ -68,4 +81,8 @@ datlong
 
 # * Save the datlong object in a file
 
+save("../../data/covid.jld", "file", file)
+
 save("../../data/covid.jld", "confirmed", datlong)
+
+save("..\\..\\data\\covid.jld", "confirmed", datlong)
