@@ -1,0 +1,3 @@
+#+title: Winter School 2020
+#+schoollink: xxxx
+#+weight: 2
