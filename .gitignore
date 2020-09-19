@@ -44,3 +44,7 @@ static/plot/workshop/covid/taiwan.png
 static/plot/workshop/covid/uk.png
 static/plot/workshop/covid/us.png
 static/plot/workshop/covid/hongkong.png
+static/notes/n-body.jl
+static/notes/parallel-algorithms
+static/notes/benchmarksgame.jl
+static/notes/nbabel.jl
