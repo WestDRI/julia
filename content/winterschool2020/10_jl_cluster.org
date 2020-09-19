@@ -1,0 +1,102 @@
+#+title: Using Julia on Compute Canada clusters
+#+description: Reading
+#+colordes: #538cc6
+#+slug: jl-10-cluster
+#+weight: 10
+
+* Logging to the cluster
+
+Open a terminal emulator.
+
+/Windows users, launch [[https://mobaxterm.mobatek.net/][MobaXTerm]]./ \\
+/MacOS users, launch Terminal./ \\
+/Linux users, launch xterm or the terminal emulator of your choice./
+
+#+BEGIN_src sh
+$ ssh userxxx@cassiopeia.c3.ca
+
+# enter password
+#+END_src
+
+You are now in our training cluster.
+
+* Loading the Julia module
+
+This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
+
+#+BEGIN_src sh
+# Get help on the module command
+$ module help
+$ module --help
+$ module -h
+
+# List modules that are already loaded
+$ module list
+
+# See which modules are available for Julia
+$ module spider julia
+
+# See how to load the latest version (julia 1.4.1)
+$ module spider julia/1.4.1
+
+# Load julia 1.4.1 with the required gcc module first
+# (the order is important)
+$ module load gcc/7.3.0 julia/1.4.1
+
+# You can see that we now have Julia loaded
+$ module list
+#+END_src
+
+* Copying files to the cluster
+
+If you need to copy files to the cluster, you can use {{<c>}}scp{{</c>}}.
+
+**** From your computer
+
+If you are in a local shell, run:
+
+#+BEGIN_src sh
+[local]$ scp /local/path/file  userxxx@cassiopeia.c3.ca:path/cluster
+#+END_src
+
+**** From the cluster
+
+If you are in a remote shell (through ssh), run:
+
+#+BEGIN_src sh
+[cluster]$ scp userxxx@cassiopeia.c3.ca:cluster/path/file  /local/path
+#+END_src
+
+* Job scripts
+
+To submit a job to Slurm (the job scheduler used by the Compute Canada clusters), you need to write an {{<b>}}sbatch{{</b>}} script:
+
+#+BEGIN_src sh
+#!/bin/bash
+#SBATCH --job-name=<name>			# job name
+#SBATCH --time=<time>				# max walltime
+#SBATCH --cpus-per-task=<n>         # number of cores
+#SBATCH --mem=<mem>					# max memory (default unit is megabytes)
+#SBATCH --output=<file%j.out>		# file name for the output
+#SBATCH --error=<file%j.err>		# file name for errors
+# %j gets replaced with the job number
+
+<body>
+#+END_src
+
+To submit a job to the cluster:
+
+#+BEGIN_src sh
+$ cd /dir/containing/script
+$ sbatch script.sh
+#+END_src
+
+And we can check its status with:
+
+#+BEGIN_src sh
+$ sq
+#+END_src
+
+{{<b>}}PD{{</b>}} stands for pending and {{<b>}}R{{</b>}} for running.
+
+* Comments & questions

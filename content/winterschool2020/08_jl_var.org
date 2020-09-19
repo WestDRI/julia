@@ -1,0 +1,41 @@
+#+title: Variables and types
+#+description: Zoom
+#+colordes: #cc0066
+#+slug: jl-08-var
+#+weight: 8
+
+#+OPTIONS: toc:nil
+
+{{<br>}}
+{{<img src="https://imgs.xkcd.com/comics/x.png" title="" width="%" line-height="0.5rem">}}
+from <a href="https://xkcd.com/">xkcd.com</a>
+{{</img>}}
+{{<br>}}
+
+In this session, we will start playing in Julia and learn about variables and types.
+
+#+BEGIN_export html
+<br>
+#+END_export
+
+#+BEGIN_zoombox
+*This interactive session will be conducted through Zoom.*
+
+*The meeting ID and password will be emailed to people who registered for this course.*
+#+END_zoombox
+
+#+BEGIN_export html
+<br>
+#+END_export
+
+Note that *no recording* will be made during this session so as not to discourage participation.
+
+*** Slides
+
+Click to open the slides in a new tab:
+
+#+BEGIN_export html
+<a href="https://westgrid-webinars.netlify.app/jl_variables_types#/" target="_blank"><p align="center"><img src="/img/jl_var_slides.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
+#+END_export
+
+*** Comments & questions

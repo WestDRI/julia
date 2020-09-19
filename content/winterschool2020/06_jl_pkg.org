@@ -1,0 +1,130 @@
+#+title: Julia packages
+#+description: Practice
+#+colordes: #dc7309
+#+slug: jl-05-pkg
+#+weight: 5
+
+* Standard library
+
+A set of packages are installed when you install Julia. They are stored in the *standard library* or *stdlib* (in Linux, they are in {{<b>}}/usr/share/julia/stdlib/vx.x{{</b>}}, where {{<b>}}vx.x{{</b>}} is the installed Julia version).
+
+Here is the list:
+
+#+BEGIN_example
+Base64
+CRC32c
+Dates
+DelimitedFiles
+Distributed
+FileWatching
+Future
+InteractiveUtils
+Libdl
+LibGit2
+LinearAlgebra
+Logging
+Markdown
+Mmap
+Pkg
+Printf
+Profile
+Random
+REPL
+Serialization
+SHA
+SharedArrays
+Sockets
+SparseArrays
+Statistics
+SuiteSparse
+Test
+Unicode
+UUIDs
+#+END_example
+
+They are not automatically loaded at the start of a session, so before you can use them, you need to load them as you would do for external packages (see below).
+
+* External packages
+
+To add functionality to Julia, you can install external packages from an ever-growing collection developed by the Julia community.
+
+** How to find external packages
+
+All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]] by name or tag.\\
+GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
+
+These packages get installed in your personal library (in linux, it is in {{<b>}}~/.julia{{</b>}}).
+
+** How to manage external packages
+
+In [[https://westgrid-julia.netlify.app/summerschool2020/jl-04-repl.html][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
+
+#+BEGIN_src julia
+pkg> add <package>        # install <package>
+pkg> rm <package>         # uninstall <package>
+pkg> status <package>     # status of <package>
+pkg> update <package>     # update <package>
+
+pkg> status               # status of all installed packages
+pkg> update               # update all packages
+#+END_src
+
+Notes:
+
+- Replace {{<c>}}&lt;package&gt;{{</c>}} by the name of the package (e.g. {{<c>}}Plots{{</c>}})
+- You can use {{<c>}}up{{</c>}} instead of {{<c>}}update{{</c>}} and {{<c>}}st{{</c>}} instead of {{<c>}}status{{</c>}}
+- To install, uninstall, or update several packages at once, list them with a space:
+
+#+BEGIN_src julia
+pkg> add <package1> <package2> <package3>
+#+END_src
+
+An alternative to this convenience mode is to load the package manager (part of stdlib), called {{<b>}}Pkg{{</b>}} and use it as you would any other package:
+
+#+BEGIN_src julia
+using Pkg
+
+Pkg.add("<package>")        # install <package>
+Pkg.rm("<package>")         # uninstall <package>
+Pkg.status("<package>")     # status of <package>
+Pkg.update("<package>")     # update <package>
+
+Pkg.update()                # status of all installed packages
+Pkg.status()                # update all packages
+#+END_src
+
+Notes:
+
+- The short forms {{<c>}}up{{</c>}} and {{<c>}}st{{</c>}} do not work in this context
+- To install, uninstall, or update several packages at once, you need to create an array:
+
+#+BEGIN_src julia
+Pkg.add(["<package1>", "<package2>", "<package3>"])
+#+END_src
+
+{{<exercise>}}
+Install the following packages (locally, don't worry about the cluster):<br>
+- {{<b>}}CSV{{</b>}}<br>
+- {{<b>}}DataFrames{{</b>}}<br>
+- {{<b>}}JLD{{</b>}}<br>
+- {{<b>}}StatsPlots{{</b>}}<br>
+- {{<b>}}UnicodePlots{{</b>}}<br>
+- {{<b>}}TimeSeries{{</b>}}
+{{</exercise>}}
+
+* Loading packages
+
+You can load a package with {{<c>}}using &lt;package&gt;{{</c>}} (e.g. {{<c>}}using Plots{{</c>}}).
+
+{{<exercise>}}
+Load your newly installed packages to make sure that they got installed properly.<br>
+Don't be surprised if this takes a long time: the first time you load a package, Julia compiles it.<br>
+Next time you load it, it will be a lot faster.<br>
+({{<b>}}StatsPlots{{</b>}} is particularly long to load).
+{{</exercise>}}
+
+* Issues
+
+If you have issues installing the required packages, please sign up for the [[https://westgrid-julia.netlify.app/summerschool2020/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
+
+* Comments & questions

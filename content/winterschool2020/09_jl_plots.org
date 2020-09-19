@@ -1,0 +1,110 @@
+#+title: Plotting
+#+description: Practice
+#+colordes: #dc7309
+#+slug: jl-09-plots
+#+weight: 9
+
+{{<br>}}
+{{<img src="https://imgs.xkcd.com/comics/coronavirus_charts.png" title="" width="%" line-height="0.5rem">}}
+from <a href="https://xkcd.com/">xkcd.com</a>
+{{</img>}}
+
+* Load packages
+
+#+BEGIN_src julia
+using JLD
+using DataFrames
+using StatsPlots
+using TimeSeries
+#+END_src
+
+[[https://github.com/JuliaPlots/Plots.jl][Plots]] is a convenient Julia package which allows to use the same code with many graphing backends such as the [[https://gr-framework.org/][GR framework]] (great for speed), [[https://plotly.com/javascript/][Plotly.js]] (allows interaction with your graphs in a browser), or [[https://matplotlib.org/api/pyplot_api.html][PyPlot]]. [[https://github.com/JuliaPlots/StatsPlots.jl][StatsPlots]] is an enhanced version with added stats functionality.
+
+For this course, we will use the [[https://gr-framework.org/][GR framework]]:
+
+#+BEGIN_src julia
+gr()
+#+END_src
+
+* Load our data frame
+
+Let's start by loading our data frame from [[https://westgrid-julia.netlify.app/summerschool2020/jl-08-var.html][the previous lesson]] thanks to the [[https://github.com/JuliaIO/JLD.jl][JLD]] package (of course, use the path to the {{<b>}}covid.jld{{</b>}} file in your system):
+
+#+BEGIN_src julia
+datlong = load("../../data/covid.jld", "confirmed")
+#+END_src
+
+* World plot
+
+Let's start by plotting a world summary of confirmed Covid-19 cases over time.
+
+For this, we need the sum of confirmed cases for each day. So we group the data by {{<c>}}date{{</c>}} ({{<c>}}:{{</c>}} in {{<c>}}:date{{</c>}} means that {{<c>}}date{{</c>}} is a {{<b>}}Symbol{{</b>}}).
+
+Then we {{<c>}}combine{{</c>}} the data within each group by making the sum of the {{<c>}}confirmed{{</c>}} values and we call our total {{<c>}}confsum{{</c>}}.
+
+#+BEGIN_src julia
+world = combine(groupby(datlong, :date), :confirmed => sum => :confsum)
+#+END_src
+
+Since our data is a time series, we need to transform the data frame {{<c>}}world{{</c>}} we just created to a {{<b>}}TimeArray{{</b>}} thanks to the {{<c>}}TimeArray{{</c>}} function from the [[https://github.com/JuliaStats/TimeSeries.jl][TimeSeries]] package. Then we can plot it by passing it to the function {{<c>}}plot{{</c>}}:
+
+#+BEGIN_src julia
+plot(TimeArray(df1, timestamp = :date))
+#+END_src
+
+{{<plotshadow src="/plot/summerschool2020/covid/world1.png" title="Covid-19 confirmed cases in the world" width="860">}}
+Evolution of the number of Covid-19 confirmed cases in the world over time
+{{</plotshadow>}}
+
+That worked, but our graph is not exactly pretty.
+
+{{<exercise>}}
+Looking at the documentation for the <a href="https://docs.juliaplots.org/latest/generated/attributes_plot/">plot</a> and <a href="https://docs.juliaplots.org/latest/generated/attributes_subplot/">subplot</a> attributes of the {{<b>}}Plots{{</b>}} package ({{<b>}}StatsPlots{{</b>}} works the same way since it is the same package with more tools), try to customize and improve this graph.<br><br>
+For instance, maybe you could give it a title, a better legend, a legend in a better position...
+{{</exercise>}}
+
+* Backends
+
+I mentioned earlier that {{<b>}}Plots{{</b>}}/{{<b>}}StatsPlots{{</b>}} (remember that {{<b>}}StatsPlots{{</b>}} is {{<b>}}Plots{{</b>}} with added functionality) does not itself plot but that it uses backends and is a really convenient way to run the same code on many different APIs. We will give this a try in the next section.
+
+But first, a few notes on {{<b>}}Plots{{</b>}} backends:
+
+- Some of the plotting backends ({{<b>}}GR{{</b>}} and {{<b>}}Plotly{{</b>}}) don't need to be explicitly installed as they are installed as dependencies of {{<b>}}Plots{{</b>}} ({{<b>}}Plots{{</b>}} would not work if it had no backend!) This is why we could run {{<c>}}gr(){{</c>}} to chose the {{<b>}}GR{{</b>}} backend while we never explicitly installed the [[https://github.com/jheinen/GR.jl][GR]] package.
+
+- When you run {{<b>}}]{{</b>}} {{<c>}}status{{</c>}}, you won't see {{<b>}}GR{{</b>}} in the list (even though it is installed and you can use it: {{<c>}}Pkg.status{{</c>}} only lists packages that you have explicitly installed, not the dependencies. If you ran {{<b>}}]{{</b>}} {{<c>}}add GR{{</c>}}, then you would see it in the list (but there is no reason to do that).
+
+- The other backends need to be installed before they can be used (it wouldn't make sense to have all these different options installed by default).
+
+- The {{<b>}}Plots{{</b>}} documentation [[https://docs.juliaplots.org/latest/backends/][gives some advise as to which backend to choose]].
+
+- You don't need to load the backends with {{<c>}}using{{</c>}} (you would do this if you were using them directly, without using {{<b>}}Plots{{</b>}}): you select them as backend with the functions {{<c>}}gr{{</c>}}, {{<c>}}plotly{{</c>}}, etc.
+
+- If you don't run the code to set the backend (e.g. {{<c>}}gr(){{</c>}}), {{<b>}}Plots{{</b>}} will default to whatever backend is available on your machine (usually it defaults to {{<b>}}GR{{</b>}}).
+
+* UnicodePlots
+
+[[https://github.com/Evizero/UnicodePlots.jl][UnicodePlots]] plots in the terminal. As you can imagine, this does not produce the kind of graphs you want in your next paper. But it can be extremely convenient to be able to plot directly in the terminal, without using a graphical interface. A great place where this could be very useful is when you are running interactive jobs on the cluster with {{<c>}}salloc{{</c>}}.
+
+So, let's see if our code works as planned on {{<b>}}UnicodePlots{{</b>}}:
+
+#+BEGIN_src julia
+unicodeplots()
+
+plot(TimeArray(world, timestamp = :date))
+#+END_src
+
+{{<imgshadow src="/plot/summerschool2020/covid/world2.png" title="Covid-19 confirmed cases in the world" width="860">}}
+Evolution of the number of Covid-19 confirmed cases in the world over time plotted directly in the terminal
+{{</imgshadow>}}
+
+That worked. The same code ran on a different API. That's the whole idea of {{<b>}}Plots{{</b>}}.
+
+* Countries plot
+
+Now, we want to plot the data for some countries.
+
+{{<exercise>}}
+Try to group the data by country, index the countries of your choice, and plot the number of confirmed Covid-19 cases over time for these countries.
+{{</exercise>}}
+
+* Comments & questions

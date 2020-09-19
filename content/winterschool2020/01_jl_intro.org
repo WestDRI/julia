@@ -1,0 +1,17 @@
+#+title: Introduction to the Julia lesson
+#+description: Zoom
+#+colordes: #cc0066
+#+slug: jl-01-intro
+#+weight: 1
+
+#+OPTIONS: toc:nil
+
+In this session, I will present the schedule for our Julia lesson and we will briefly introduce each other.
+
+#+BEGIN_zoombox
+*This interactive session will be conducted through Zoom.*
+
+*The meeting ID and password will be emailed to people who registered for this course.*
+#+END_zoombox
+
+Note that *no recording* will be made during this session so as not to discourage participation.

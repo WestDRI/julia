@@ -1,0 +1,413 @@
+#+title: Functions, control flow, and macros
+#+description: Reading
+#+colordes: #538cc6
+#+slug: jl-07-fun
+#+weight: 7
+
+As you read this page, I suggest that you run the examples and experiment with them to familiarize yourself with the Julia REPL and to start getting a feel for the language.
+
+* Functions
+
+** Defining functions
+
+There are 2 ways to define a new function:
+
+*** Long form
+
+#+BEGIN_src julia
+function <name>(<arguments>)
+    <body>
+end
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function hello()
+    println("Hello")
+end
+#+END_src
+
+*** Assignment form
+
+#+BEGIN_src julia
+<name>(<arguments>) = <body>
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+hello() = println("Hello")
+#+END_src
+
+The function {{<c>}}hello{{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
+
+** Calling functions
+
+You call a function by running it followed by parentheses:
+
+#+BEGIN_src julia
+hello()
+#+END_src
+
+** Returning the result
+
+The value of the last expression is automatically returned, so {{<c>}}return{{</c>}} is unnecessary unless you want to return something else.
+
+Look at these 5 functions:
+
+#+BEGIN_src julia
+function test1(x, y)
+    x + y
+end
+
+function test2(x, y)
+    return x + y
+end
+
+function test3(x, y)
+    x * y
+end
+
+function test4(x, y)
+    x * y
+    x + y
+end
+
+function test5(x, y)
+    return x * y
+    x + y
+end
+#+END_src
+
+Now, try to guess the results of running:
+
+#+BEGIN_src julia
+test1(1, 2)
+test2(1, 2)
+test3(1, 2)
+test4(1, 2)
+test5(1, 2)
+#+END_src
+
+Then run these expressions to see whether you got it right.
+
+** Arguments
+
+Our function {{<c>}}hello{{</c>}} did not accept any argument.
+
+So running, for instance:
+
+#+BEGIN_src julia
+hello("Paul")
+#+END_src
+
+returns an error message.
+
+To define a function which accepts arguments, we need to add them in the function definition as we did when we defined {{<c>}}test1{{</c>}} to {{<c>}}test5{{</c>}}.
+
+So maybe we could do this?
+
+#+BEGIN_src julia
+function hello(name)
+    println("Hello name")
+end
+
+hello("Paul")
+#+END_src
+
+Oops. Not quite... This function works but does not give the result we wanted.
+
+Here, we need to use [[https://en.wikipedia.org/wiki/String_interpolation][string interpolation]] with the {{<c>}}${{</c>}} character:
+
+#+BEGIN_src julia
+function hello(name)
+    println("Hello $name")
+end
+
+hello("Paul")
+#+END_src
+
+We can also set default argument values: if no arguments are given, the function is evaluated with the defaults.
+
+#+BEGIN_src julia
+function hello(name = "you")
+    println("Hello $name")
+end
+
+hello("Paul")
+hello()
+#+END_src
+
+** Anonymous functions
+
+Anonymous functions are functions which aren't given a name. You can create them this way in Julia:
+
+#+BEGIN_src julia
+function (<arguments>)
+    <body>
+end
+#+END_src
+
+And in compact form:
+
+#+BEGIN_src julia
+<arguments> -> <body>
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function (name)
+    println("Hello $name")
+end
+#+END_src
+or
+#+BEGIN_src julia
+name -> println("Hello $name")
+#+END_src
+{{<br>}}
+*When would you want to use anonymous functions?*
+
+This is very useful for functional programming (when you apply a function—for instance {{<c>}}map{{</c>}}—to other functions to apply them in a vectorized manner which avoids repetitions).
+
+/Example:/
+
+#+BEGIN_src julia
+map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
+#+END_src
+
+** Pipes
+
+The Julia pipe looks like this: {{<c>}}|>{{</c>}} and behaves as you would expect.
+
+The following 2 expressions are equivalent:
+
+#+BEGIN_src julia
+println("Hello")
+"Hello" |> println
+#+END_src
+
+Quick test:
+
+#+BEGIN_src julia
+sqrt(2) == 2 |> sqrt
+#+END_src
+
+** Function composition
+
+Done with the composition operator {{<c>}}∘{{</c>}} (in the REPL, type {{<b>}}\circ{{</b>}} then press {{<b>}}&lt;tab&gt;{{</b>}}).
+
+The following 2 expressions are equivalent:
+
+#+BEGIN_src julia
+<function2>(<function1>(<arguments>))
+(<function2> ∘ <function1>)(<arguments>)
+#+END_src
+
+/Example:/
+
+These are equivalent:
+
+#+BEGIN_src julia
+exp(+(-3, 1))
+
+(exp ∘ +)(-3, 1)
+#+END_src
+
+{{<exsimple>}}
+Try to write the same expression in another 2 different ways using the pipe.
+{{</exsimple>}}
+
+** function!()
+
+{{<c>}}!{{</c>}} used after a function name indicates that the function modifies its arguments.
+
+/Example:/
+
+#+BEGIN_src julia
+a = [-2, 3, -5]
+
+sort(a)
+a
+
+sort!(a)
+a
+#+END_src
+
+** Broadcasting
+
+To apply a function to each element of a collection rather than to the collection as a whole, Julia uses broadcasting.
+
+#+BEGIN_src julia
+a = [-3, 2, -5]
+abs(a)
+#+END_src
+
+This doesn't work because the function {{<c>}}abs{{</c>}} only applies to single elements.
+
+By broadcasting {{<c>}}abs{{</c>}}, you apply it to each element of {{<c>}}a{{</c>}}.
+
+#+BEGIN_src julia
+broadcast(abs, a)
+#+END_src
+
+The dot notation is equivalent:
+
+#+BEGIN_src julia
+abs.(a)
+#+END_src
+
+It can also be applied to the pipe, to unary and binary operators, etc.
+
+#+BEGIN_src julia
+a .|> abs
+#+END_src
+
+Try to understand the difference between the following 2 expressions:
+
+#+BEGIN_src julia
+abs.(a) == a .|> abs
+abs.(a) .== a .|> abs
+#+END_src
+
+** Methods
+
+Julia uses [[https://en.wikipedia.org/wiki/Multiple_dispatch][multiple dispatch]]: functions can have several methods. When that is the case, the method applied depends on the types of all the arguments passed to the function (rather than only the first argument as is common in other languages).
+
+#+BEGIN_src julia
+methods(+)
+#+END_src
+
+let's you see that {{<c>}}+{{</c>}} has 166 methods!
+
+Methods can be added to existing functions.
+
+Try to understand the following example:
+
+#+BEGIN_src julia
+abssum(x::Int64, y::Int64) = abs(x + y)
+abssum(x::Float64, y::Float64) = abs(x + y)
+
+abssum(2, 4)
+abssum(2.0, 4.0)
+abssum(2, 4.0)
+#+END_src
+
+* Control flow
+
+** Conditional statements
+
+*** if
+
+#+BEGIN_src julia
+if <condition>
+    <do if true>
+end
+#+END_src
+
+(If condition is false, do nothing).
+
+/Example:/
+
+#+BEGIN_src julia
+function testsign(x)
+    if x >= 0
+        println("x is positive")
+    end
+end
+
+testsign(3)
+testsign(0)
+testsign(-2)
+#+END_src
+
+*** if else
+
+#+BEGIN_src julia
+if <condition>
+    <do if true>
+else
+    <do if false>
+end
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function testsign(x)
+    if x >= 0
+        println("x is positive")
+    else
+        println("x is negative")
+    end
+end
+
+testsign(3)
+testsign(0)
+testsign(-2)
+#+END_src
+
+*** if elseif else
+
+#+BEGIN_src julia
+if <condition1>
+    <do if condition1 true>
+elseif <condition2>
+    <do if condition1 false and condition2 true>
+else
+    <do if condition1 and condition2 false>
+end
+#+END_src
+
+/Example:/
+
+#+BEGIN_src julia
+function testsign(x)
+    if x > 0
+        println("x is positive")
+    elseif x == 0
+        println("x is zero")
+    else
+        println("x is negative")
+    end
+end
+
+testsign(3)
+testsign(0)
+testsign(-2)
+#+END_src
+
+** Loops
+
+{{<c>}}while{{</c>}} and {{<c>}}for{{</c>}} loops follow a syntax similar to that of functions:
+
+#+BEGIN_src julia
+for name = ["Paul", "Lucie", "Sophie"]
+    println("Hello $name")
+end
+#+END_src
+
+#+BEGIN_src julia
+for i = 1:3, j = 3:5
+    println(i + j)
+end
+#+END_src
+
+* Macros
+
+Macros are a form of [[https://en.wikipedia.org/wiki/Metaprogramming][metaprogramming]] (the ability of a program to transform itself while running).
+
+They resemble functions and just like functions, they accept as input a tuple of arguments. Unlike functions which return a value however, macros return an expression which is compiled directly (rather than at runtime).
+
+Macro's names are preceded by {{<c>}}@{{</c>}} (e.g. {{<c>}}@time{{</c>}}).
+
+Julia comes with many macros and you can create your own with:
+
+#+BEGIN_src julia
+macro <name>()
+    <body>
+end
+#+END_src
+
+* Comments & questions
