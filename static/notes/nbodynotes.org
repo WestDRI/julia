@@ -11,3 +11,9 @@ You can write a small solver that runs on one core, with small N, and then event
 The CPU-intensive part is force estimation for large N, and then you have to update the velocity and position of each particle — here you can experiment with different update schemes to see what works best.
 
 So eventually you’ll be able to do smth like this https://www.youtube.com/watch?v=fit1uX1HIlc
+
+Just write a short code from scratch, then make it slow by scaling the problem, and then concentrate on parallel speedup.
+
+You want to do direct summation for training.
+
+Make all point masses the same for simplicity, do everything in dimensionless units: volume 0 to 1 on a side (but particles can of course be thrown out of it), set G=1 (gravitational constant). Once the code is working, you can play with the initial setup: number of particles, their initial positions and velocities.
