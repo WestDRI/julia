@@ -1,4 +1,4 @@
-# using LabelledArrays
+using LabelledArrays
 using Plots
 
 # * Initial conditions
@@ -8,21 +8,21 @@ n = 5
 dt = 0.1
 step = 100
 
-# label = @SLVector (:id, :m, :rx, :ry, :rz, :vx, :vy, :vz, :ax, :ay, :az)
+label = @SLVector (:id, :m, :rx, :ry, :rz, :vx, :vy, :vz, :ax, :ay, :az)
 
-# for i in 1:n
-#     @eval $(Symbol("body$i")) = label(
-#         $i,
-#         rand(),
-#         rand(), rand(), rand(),
-#         rand(), rand(), rand(),
-#         rand(), rand(), rand()
-#     )
-# end
+for i in 1:n
+    @eval $(Symbol("body$i")) = label(
+        $i,
+        rand(),
+        rand(), rand(), rand(),
+        rand(), rand(), rand(),
+        rand(), rand(), rand()
+    )
+end
 
-# for i in 1:n
-#     @eval $(Symbol("body$i")) = SLVector(id=$i, m=rand(), rx=rand(), ry=rand())
-# end
+for i in 1:n
+    @eval $(Symbol("body$i")) = SLVector(id=$i, m=rand(), rx=rand(), ry=rand())
+end
 
 # mutable struct Body
 #     id::Int
@@ -38,8 +38,14 @@ step = 100
 #     push!(bodies, Body(i, positions[i], velocities[i], masses[i]))
 # end
 
-bodies = [[i, rand(), rand(Float64, 3),
-           rand(Float64, 3), rand(Float64, 3)] for i in 1:n]
+bodies_old = [[i, rand(), rand(Float64, 3),
+               rand(Float64, 3), rand(Float64, 3)] for i in 1:n]
+
+bodies = [SLVector(id=i,
+                   m=rand(),
+                    rx=rand(), ry=rand(), rz=rand(),
+                    vx=rand(), vy=rand(), vz=rand(),
+                    ax=rand(), ay=rand(), az=rand()) for i in 1:n]
 
 history = deepcopy(bodies)
 
@@ -53,7 +59,22 @@ function a!(bodies::Array{Array{Any,1},1}, id::Int)
             d1 = bodies[i][3][1] - bodies[id][3][1]
             d2 = bodies[i][3][2] - bodies[id][3][2]
             d3 = bodies[i][3][3] - bodies[id][3][3]
-            f = (-G * bodies[i][2][1] * bodies[id][2][1]) /
+            f = (G * bodies[i][2][1] * bodies[id][2][1]) /
+                (sqrt(d1^2 + d2^2 + d3^2))^3
+            bodies[id][5][1] += f * d1
+            bodies[id][5][2] += f * d2
+            bodies[id][5][3] += f * d3
+        end
+    end
+end
+
+function a!(bodies::Array{Array{Any,1},1}, id::Int)
+    for i in 1:n
+        if bodies[i][1] != id
+            d1 = bodies[i][3][1] - bodies[id][3][1]
+            d2 = bodies[i][3][2] - bodies[id][3][2]
+            d3 = bodies[i][3][3] - bodies[id][3][3]
+            f = (G * bodies[i][2][1] * bodies[id][2][1]) /
                 (sqrt(d1^2 + d2^2 + d3^2))^3
             bodies[id][5][1] += f * d1
             bodies[id][5][2] += f * d2
@@ -75,7 +96,7 @@ end
 #     dz = position[Z] - body.position[Z]
 #     dist = sqrt(dx*dx + dy*dy + dz*dz)
 #     dist_cubed = dist * dist * dist
-#     f = (-G * body.mass * mass) / dist_cubed
+#     f = (G * body.mass * mass) / dist_cubed
 #     body.force = body.force + Vec3(f * dx, f * dy, f * dz)
 #     nothing
 # end
@@ -103,7 +124,7 @@ end
 
 # * Simulation
 
-# function sim!(bodies, dt, step)
+# function step!(bodies, dt, step)
 #     history_coord = Array{Float64}(undef, 3)
 #     history_body = fill(history_coord, n)
 #     history = fill(history_body, step)
@@ -117,7 +138,7 @@ end
 #     return history
 # end
 
-# function sim!(bodies, dt, step)
+# function step!(bodies, dt, step)
 #     for i in 1:step
 #         v!(bodies, dt)
 #         r!(bodies, dt)
@@ -128,7 +149,7 @@ end
 #     bodies
 # end
 
-# function sim!(bodies, dt, step)
+# function step!(bodies, dt, step)
 #     history_coord = Array{Float64}(undef, 3)
 #     history_body = fill(history_coord, n)
 #     history = fill(history_body, step)
@@ -139,7 +160,7 @@ end
 #     end
 # end
 
-# function sim!(bodies, dt, step)
+# function step!(bodies, dt, step)
 #     for i in 1:step
 #         v!(bodies, dt)
 #         r!(bodies, dt)
@@ -147,7 +168,7 @@ end
 #     end
 # end
 
-# function sim!(bodies, dt)
+# function step!(bodies, dt)
 #     history_coord = Array{Float64}(undef, 3)
 #     history = fill(history_coord, n)
 #     v!(bodies, dt)
@@ -158,9 +179,9 @@ end
 #     history
 # end
 
-# sim!(bodies, dt)
+# step!(bodies, dt)
 
-# function sim!(bodies, dt)
+# function step!(bodies, dt)
 #     v!(bodies, dt)
 #     r!(bodies, dt)
 #     for i in 1:n
@@ -173,9 +194,9 @@ function step!(bodies, dt)
     r!(bodies, dt)
 end
 
-# sim!(bodies, dt)
+# step!(bodies, dt)
 
-function sim!(bodies, dt, step)
+function step!(bodies, dt, step)
     for i in 1:step
         v!(bodies, dt)
         r!(bodies, dt)
@@ -185,7 +206,7 @@ function sim!(bodies, dt, step)
     end
 end
 
-sim!(bodies, dt, step)
+step!(bodies, dt, step)
 
 # * Plot
 
@@ -222,32 +243,7 @@ for j in 1:n
     @eval $(Symbol("hist$j")) = history[[history[i][1] == $j for i=1:length(history)]]
 end
 
-for j in 1:n
-    @eval $(Symbol("hist$j")) = [(history[[history[i][1] == 1 for i=1:length(history)]])[j][2] for j=1:length]
-end
-
-for j in 1:n
-    @eval $(Symbol("hist$j")) = [(history[[history[i][1] == 1 for i=1:length(history)]])[j][2] for j=1:length]
-end
-
-[(history[[history[i][1] == 1 for i=1:length(history)]])[j][2] for j=1]
-
-
-
-
-
-history[[history[i][1] == 1 for i=1:length(history)]]
-
-
-
-for i in 1:n
-    println("hist$i")
-end
-
-
 hist1 = [hist1[i][2] for i=1:length(hist1)]
-
-
 
 # @gif for i=1:step+1
 #     push!(plt, hist_1[i][2][1], hist_1[i][2][2], hist_1[i][2][3])
@@ -262,17 +258,17 @@ hist1 = [hist1[i][2] for i=1:length(hist1)]
 # end every 10
 
 # @gif for i=1:1500
-#     sim!(bodies, dt)
+#     step!(bodies, dt)
 #     push!(plt, bodies[1][1], bodies[1][2], bodies[1][3])
 # end every 10
 
-# for i in 1:step+1
+# @gif for i in 1:step+1
 #     push!(plt, bodies[i][1][1], bodies[i][1][2], bodies[i][1][3])
 # end
 
 @gif for i=1:500
-        sim!(bodies, dt)
-        for j in 1:n
+    step!(bodies, dt)
+    for j in 1:n
         push!(plt, bodies[j][3][1], bodies[j][3][2], bodies[j][3][3])
     end
 end every 10
@@ -280,4 +276,3 @@ end every 10
 for j in 1:n
     push!(plt, bodies[j][3][1], bodies[j][3][2], bodies[j][3][3])
 end
-
