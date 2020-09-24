@@ -113,35 +113,27 @@ for k in 1:3
     push!(acc, tmp0)
 end
 
-reshape(collect(Iterators.flatten(acc)), n, 3)
+acc = reshape(collect(Iterators.flatten(acc)), n, 3)
 
 # * Velocity
 
-v = v + a dt
+# v = v + a dt
 
-
+for k in 1:3
+    for i in 1:n
+        bodies[i].v[k] += acc[i, k] * dt
+    end
+end
 
 # * Position
 
-r = r + v dt
+# r = r + v dt
 
-body.position = body.position .+ (dt .* body.velocity)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for k in 1:3
+    for i in 1:n
+        bodies[i].r[k] += bodies[i].v[k] * dt
+    end
+end
 
 
 
