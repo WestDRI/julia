@@ -6,7 +6,7 @@ using Plots
 const G = 6.67e-11
 n = 5
 dt = 0.1
-step = 1000
+step = 200
 
 bodies = [SLArray{Tuple{5}}(id=i::Int,
                             m=rand(Float64),
@@ -47,20 +47,51 @@ end
 
 # * Plot
 
-plt = plot(
-    n,
-    xlim = (0, 1),
-    ylim = (0, 1),
-    zlim = (0, 1),
-    markersize = 2,
-    seriescolor = :green,
-    seriestype = :scatter3d,
-    legend = false
-)
+# plt = plot(
+#     n,
+#     xlim = (0, 100),
+#     ylim = (0, 100),
+#     zlim = (0, 100),
+#     markersize = 2,
+#     seriescolor = :green,
+#     seriestype = :scatter3d,
+#     legend = false
+# )
 
-@gif for i in 1:step
+# @gif for i in 1:step
+#     sim!()
+#     for j in 1:n
+#         push!(plt, bodies[j].r[1], bodies[j].r[2], bodies[j].r[3])
+#     end
+# end
+
+# anim = Animation()
+
+# for i in 1:step
+#     sim!()
+#     for j in 1:n
+#         push!(plt, bodies[j].r[1], bodies[j].r[2], bodies[j].r[3])
+#     end
+# end
+
+for i in 1:step
     sim!()
+    plt = plot(
+        n,
+        xlim = (0, 30),
+        ylim = (0, 30),
+        zlim = (0, 30),
+        markersize = 2,
+        seriescolor = :green,
+        seriestype = :scatter3d,
+        legend = false,
+        dpi = :300
+    );
     for j in 1:n
         push!(plt, bodies[j].r[1], bodies[j].r[2], bodies[j].r[3])
     end
-end every 10
+    png("nbody_plot/nbody" * lpad(i, length(string(step)), '0'))
+end
+
+# create video with:
+# ffmpeg -r 30 -pattern_type glob -i '/home/marie/parvus/pwg/wtm/tjl/static/src/winterschool2020/nbody_plot/*.png' -c:v libx264 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" '/home/marie/parvus/pwg/wtm/tjl/static/src/winterschool2020/nbody_plot/nbody.mp4'
