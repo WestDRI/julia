@@ -47,33 +47,6 @@ end
 
 # * Plot
 
-# plt = plot(
-#     n,
-#     xlim = (0, 100),
-#     ylim = (0, 100),
-#     zlim = (0, 100),
-#     markersize = 2,
-#     seriescolor = :green,
-#     seriestype = :scatter3d,
-#     legend = false
-# )
-
-# @gif for i in 1:step
-#     sim!()
-#     for j in 1:n
-#         push!(plt, bodies[j].r[1], bodies[j].r[2], bodies[j].r[3])
-#     end
-# end
-
-# anim = Animation()
-
-# for i in 1:step
-#     sim!()
-#     for j in 1:n
-#         push!(plt, bodies[j].r[1], bodies[j].r[2], bodies[j].r[3])
-#     end
-# end
-
 for i in 1:step
     sim!()
     plt = plot(
