@@ -4,8 +4,8 @@ using Plots
 # * Initial conditions
 
 const G = 6.67e-11
-n = 5
-dt = 0.1
+n = 2
+dt = 0.01
 step = 200
 
 bodies = [SLArray{Tuple{5}}(id=i::Int,
