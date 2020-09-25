@@ -2,7 +2,7 @@
 #+subtitle: Example classifying the MNIST database
 #+slug: flux
 #+date: 2020-05-13
-#+place: 45 min live webinar
+#+place: 60 min live webinar
 
 **** /Abstract/
 
