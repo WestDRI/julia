@@ -6,13 +6,25 @@ using Plots
 const G = 6.67e-11
 n = 2
 dt = 0.01
+# dt = 0.001
 step = 200
+# step = 10000
 
-bodies = [SLArray{Tuple{5}}(id=i::Int,
-                            m=rand(Float64),
-                            r=rand(Float64, 3),
-                            v=rand(Float64, 3),
-                            a=rand(Float64, 3)) for i in 1:n]
+# bodies = [SLArray{Tuple{5}}(id=i::Int,
+#                             m=rand(Float64),
+#                             r=rand(Float64, 3),
+#                             v=rand(Float64, 3),
+#                             a=rand(Float64, 3)) for i in 1:n]
+
+bodies = [LArray((5, 1);
+                 id=i::Int,
+                 m=1.0,
+                 r=rand(Float64, 3),
+                 v=rand(Float64, 3),
+                 a=zeros(1,3)) for i in 1:n]
+
+bodies[1].r, bodies[1].v = [-1.0, 0.0, 0.0], [0.0, 0.5, 0.0]
+bodies[2].r, bodies[2].v = [1.0, 0.0, 0.0], [0.0, 0.5, 0.0]
 
 # * Step
 
@@ -51,9 +63,9 @@ for i in 1:step
     sim!()
     plt = plot(
         n,
-        xlim = (0, 30),
-        ylim = (0, 30),
-        zlim = (0, 30),
+        xlim = (-2, 2),
+        ylim = (-2, 2),
+        zlim = (-2, 2),
         markersize = 2,
         seriescolor = :green,
         seriestype = :scatter3d,
