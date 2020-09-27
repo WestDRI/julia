@@ -1,9 +1,7 @@
 using Plots
 
 n = 2
-
 x, v = zeros(n, 3), zeros(n, 3)
-
 vel = 0.5
 
 x[1, :], v[1, :] = [-1, 0, 0], [0, vel, 0]
@@ -12,11 +10,9 @@ x[2, :], v[2, :] = [1, 0, 0], [0, -vel, 0]
 xnew, vnew = zeros(n, 3), zeros(n, 3)
 
 dt = 0.001
-
 step = Int(1e4)
 
 history = zeros(n, 3, step+1)
-
 history[:, :, 1] = x
 
 for t in 1:step
@@ -36,7 +32,7 @@ for t in 1:step
     history[:, :, t+1] = x
 end
 
-# * 3D plot
+# * 3D static plot
 
 plt = plot(
     n,
@@ -52,7 +48,7 @@ plt = plot(
 plot!(history[1, 1, :], history[1, 2, :], history[1, 3, :], seriescolor = :blue)
 plot!(history[2, 1, :], history[2, 2, :], history[2, 3, :], seriescolor = :red)
 
-# * 2D plot
+# * 2D static plot
 
 plt = plot(
     n,
