@@ -1,10 +1,7 @@
 public/
 resources/
-*.mkv
-!*.png
-!workinprogress.svg
 archetypes/default.md
-static/img/cc_regional_partner_brown_large.png
+static/notes/
 static/plot/workshop/covid/bc1.png
 static/plot/workshop/covid/ca1.png
 static/plot/workshop/covid/canada1.png
