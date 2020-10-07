@@ -1,4 +1,4 @@
 #+title: Online autumn school 2020
-#+schooltitle: 
-#+schoollink: xxxx
+#+schooltitle: Scientific programming in Julia
+#+schoollink: https://autumnschool.netlify.app/jl/
 #+weight: 9
