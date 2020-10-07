@@ -88,4 +88,4 @@ for i in range(1, step=50, stop=step)
 end
 
 # create video with:
-# ffmpeg -r 30 -pattern_type glob -i '/home/marie/parvus/pwg/wtm/tjl/static/src/winterschool2020/nbody_plot/*.png' -c:v libx264 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" '/home/marie/parvus/pwg/wtm/tjl/static/src/winterschool2020/nbody_plot/nbody.mp4'
+# ffmpeg -r 30 -pattern_type glob -i '/home/marie/parvus/pwg/wtm/tjl/static/src/autumnschool2020/nbody_plot/*.png' -c:v libx264 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" '/home/marie/parvus/pwg/wtm/tjl/static/src/autumnschool2020/nbody_plot/nbody.mp4'

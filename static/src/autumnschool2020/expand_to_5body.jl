@@ -1,18 +1,27 @@
 using Plots
 
-n = 2
+n = 5
+
 x, v = zeros(n, 3), zeros(n, 3)
+
 vel = 0.5
 
 x[1, :], v[1, :] = [-1, 0, 0], [0, vel, 0]
 x[2, :], v[2, :] = [1, 0, 0], [0, -vel, 0]
+x[3, :], v[3, :] = [0, 0, 1], [0, 0, -vel]
+x[4, :], v[4, :] = [0.5, 0.5, 0], [vel/2, vel/2, 0]
+x[5, :], v[5, :] = [0, 0, -1], [0, 0, vel]
 
 xnew, vnew = zeros(n, 3), zeros(n, 3)
 
 dt = 0.001
+# dt = 0.01
+
 step = Int(1e4)
+# step = 200
 
 history = zeros(n, 3, step+1)
+
 history[:, :, 1] = x
 
 for t in 1:step
@@ -32,8 +41,6 @@ for t in 1:step
     history[:, :, t+1] = x
 end
 
-# * 3D static plot
-
 plt = plot(
     n,
     xlim = (-2, 2),
@@ -47,8 +54,9 @@ plt = plot(
 
 plot!(history[1, 1, :], history[1, 2, :], history[1, 3, :], seriescolor = :blue)
 plot!(history[2, 1, :], history[2, 2, :], history[2, 3, :], seriescolor = :red)
-
-# * 2D static plot
+plot!(history[3, 1, :], history[3, 2, :], history[3, 3, :], seriescolor = :green)
+plot!(history[4, 1, :], history[4, 2, :], history[4, 3, :], seriescolor = :yellow)
+plot!(history[5, 1, :], history[5, 2, :], history[5, 3, :], seriescolor = :black)
 
 plt = plot(
     n,
@@ -62,8 +70,9 @@ plt = plot(
 
 plot!(history[1, 1, :], history[1, 2, :], seriescolor = :blue)
 plot!(history[2, 1, :], history[2, 2, :], seriescolor = :red)
-
-# * 3D animated plot
+plot!(history[3, 1, :], history[3, 2, :], seriescolor = :green)
+plot!(history[4, 1, :], history[4, 2, :], seriescolor = :yellow)
+plot!(history[5, 1, :], history[5, 2, :], seriescolor = :black)
 
 for i in range(1, step=50, stop=step)
     plt = plot(
@@ -77,8 +86,11 @@ for i in range(1, step=50, stop=step)
     );
     scatter3d!(history[1, 1, i:i], history[1, 2, i:i], history[1, 3, i:i], markersize = 2);
     scatter3d!(history[2, 1, i:i], history[2, 2, i:i], history[2, 3, i:i], markersize = 2);
+    scatter3d!(history[3, 1, i:i], history[3, 2, i:i], history[3, 3, i:i], markersize = 2);
+    scatter3d!(history[4, 1, i:i], history[4, 2, i:i], history[4, 3, i:i], markersize = 2);
+    scatter3d!(history[5, 1, i:i], history[5, 2, i:i], history[5, 3, i:i], markersize = 2);
     png("nbody_plot/nbody" * lpad(i, length(string(step)), '0'))
-end
+end 
 
 # create video with:
-# ffmpeg -r 30 -pattern_type glob -i '/home/marie/parvus/pwg/wtm/tjl/static/src/winterschool2020/nbody_plot/*.png' -c:v libx264 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" '/home/marie/parvus/pwg/wtm/tjl/static/src/winterschool2020/nbody_plot/nbody.mp4'
+# ffmpeg -r 30 -pattern_type glob -i '/home/marie/parvus/pwg/wtm/tjl/static/src/autumnschool2020/nbody_plot/*.png' -c:v libx264 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" '/home/marie/parvus/pwg/wtm/tjl/static/src/autumnschool2020/nbody_plot/nbody.mp4'
