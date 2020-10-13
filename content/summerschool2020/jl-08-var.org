@@ -32,7 +32,7 @@ Note that *no recording* will be made during this session so as not to discourag
 
 *** Slides
 
-Click to open the slides:
+Click to open the presentation:
 
 #+BEGIN_export html
 <a href="https://westgrid-webinars.netlify.app/jl_variables_types#/"><p align="center"><img src="/img/jl_var_slides.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
