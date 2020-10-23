@@ -44,6 +44,7 @@ canonifyurls = true
   math = true
   [params.utteranc]
     repo = "WestGrid/julia"
+    issueTerm = "url"
 
 [taxonomies]
   category = "categories"
