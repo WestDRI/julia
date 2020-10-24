@@ -9,6 +9,7 @@
       margin-bottom: 3.2rem;
       h1 {
 	font-family: $heading-font-family;
+	// font-weight: 700;
 	margin: 0 0 1.0rem 0;
 	font-size: 3.5rem;
 	line-height: 4.6rem;
@@ -114,14 +115,15 @@ img[alt=radius] {
 	margin: 1.6rem 0 1.6rem 0;
       }
       .date {
-	font-size: 1.7rem;
+	font-family: $heading-font-family;
+	font-size: 1.6rem;
 	display: inline-block;
 	width: 20.0rem;
 	text-align: right;
 	margin-right: 3.0rem;
 	@media only screen and (max-width : 768px) {
 	  display: block;
-	  text-align: right;
+	  text-align: left;
 	}
       }
       .schoolname {
@@ -132,6 +134,36 @@ img[alt=radius] {
 	@media only screen and (max-width : 768px) {
 	  display: block;
 	  text-align: right;
+	}
+      }
+      .wstopic {
+	font-family: $heading-font-family;
+	font-size: 1.6rem;
+	color: #669999;
+	font-weight: 700;
+	display: inline-block;
+	margin-left: 3.0rem;
+	margin-right: 3.0rem;
+	width: 0rem;
+	text-align: right;
+	@media only screen and (max-width : 768px) {
+	  display: block;
+	  text-align: right;
+	}
+      }
+      .wbtopic {
+	font-family: $heading-font-family;
+	font-size: 1.6rem;
+	color: #669999;
+	font-weight: 700;
+	display: inline-block;
+	margin-left: 3.0rem;
+	// margin-right: 0rem;
+	width: 0rem;
+	// text-align: right;
+	@media only screen and (max-width : 768px) {
+	  display: block;
+	  // text-align: right;
 	}
       }
       .wstitle {
@@ -296,14 +328,6 @@ img[alt=radius] {
   line-height: 2.5rem;
 }
 
-.exsimple-block {
-  color: #262626;
-  margin: 45px 50px 45px 20px;
-  border-left: 4px solid #ff3399;
-  padding-left: 1.3rem;
-  line-height: 3.0rem;
-}
-
 .exercise-block {
   color: #262626;
   margin: 45px 50px 45px 0px;
@@ -380,6 +404,21 @@ img[alt=radius] {
   line-height: 25px;
 }
 
+.mhexample-block {
+  // color: #404040;
+  // color: #282d35;
+  color: #424a57;
+  font-family: 'Maven Pro', sans-serif;
+  // font-family: 'Antic Slab', serif;
+  // font-family: $code-font-family;
+  // font-family: 'Crimson Text', serif;
+  font-size: 1.7rem;
+  font-style: italic;
+  margin-left: 10px;
+  // keep this line to have the verses indented
+  line-height: 25px;
+}
+
 .org-center-block {
   // center
   margin: auto;
@@ -415,8 +454,11 @@ img[alt=radius] {
 
 .sticker-block {
   color: #b35900;
-  background-color: #ececec;
-  border: 1pt solid #ffcc99;
+  // background-color: #ececec;
+  // background-color: #fdfdfd;
+  border: 1pt solid #e7dbd1;
+  box-shadow: 0px 0px 6px rgba(244,164,96,0.3);
+  // box-shadow: 0px 0px 6px #e7dbd1;
   // margin: auto;
   font-family: 'Slabo';
   width: max-content;
