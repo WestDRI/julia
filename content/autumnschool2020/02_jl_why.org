@@ -1,7 +1,7 @@
 #+title: Why another programming language?
 #+description: Reading
-#+colordes: #538cc6
-#+slug: jl-02-why
+#+colordes: #2d5986
+#+slug: 02_jl_why
 #+weight: 2
 
 Between Python, R, MATLAB, and others, there are many excellent programming languages suitable to data science. So why did Jeff Bezanson, [[https://en.wikipedia.org/wiki/Stefan_Karpinski][Stefan Karpinski]], [[https://en.wikipedia.org/wiki/Viral_B._Shah][Viral B. Shah]], and [[https://en.wikipedia.org/wiki/Alan_Edelman][Alan Edelman]] decide in 2009 to write a new language?
