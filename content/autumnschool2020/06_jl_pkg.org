@@ -1,8 +1,8 @@
-#+title: Julia packages
-#+description: Practice
-#+colordes: #dc7309
-#+slug: jl-05-pkg
-#+weight: 5
+#+title: Packages
+#+description: Reading
+#+colordes: #2d5986
+#+slug: 06_jl_pkg
+#+weight: 6
 
 * Standard library
 
