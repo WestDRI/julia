@@ -1,0 +1,30 @@
+#+title: Installing Julia on your machine
+#+description: (Optional)
+#+colordes: #999999
+#+slug: 03_jl_install
+#+weight: 3
+
+{{<br>}}
+/Installing Julia on your machine is entirely optional as you can run everything on the training cluster. If you would like to practice on your machine in addition to (or instead of) the training cluster, this lesson will guide you through the setup of your machine. Please note that we won't be debugging local installations./
+
+* Julia
+
+Download the current [[https://julialang.org/downloads/][Julia stable release]] and follow the [[https://julialang.org/downloads/platform/][installation instructions]] corresponding to your operating system.
+
+* Packages
+
+
+
+* Text editor
+
+To write scripts, you will also need a capable text editor.\\
+Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.\\
+Note that Microsoft Notepad is too simplistic and WordPad is not a text editor.
+
+
+
+* Jupyter
+
+
+
+* Comments & questions
