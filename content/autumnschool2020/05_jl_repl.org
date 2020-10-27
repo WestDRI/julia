@@ -1,9 +1,11 @@
 #+title: The Julia REPL
 #+description: Video
-#+colordes: #5c8a6f
-#+slug: jl-04-repl
-#+weight: 4
+#+colordes: #663300
+#+slug: 05_jl_repl
+#+weight: 5
 
 #+OPTIONS: toc:nil
 
 {{<youtube TBSTNj8Vlfs>}}
+
+* Comments & questions
