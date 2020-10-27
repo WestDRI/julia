@@ -1,8 +1,15 @@
-#+title: Functions, control flow, and macros
-#+description: Reading
-#+colordes: #538cc6
-#+slug: jl-07-fun
-#+weight: 7
+#+title: Julia basics
+#+description: Zoom
+#+colordes: #e86e0a
+#+slug: 08_jl_basics
+#+weight: 8
+
+*Zoom session 2 — part 2*
+
+
+cover types, variables, fun, control flow, etc. while introducing the nbody problem.
+
+
 
 As you read this page, I suggest that you run the examples and experiment with them to familiarize yourself with the Julia REPL and to start getting a feel for the language.
 
