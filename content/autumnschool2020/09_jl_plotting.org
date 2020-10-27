@@ -1,7 +1,7 @@
 #+title: Plotting
-#+description: Practice
-#+colordes: #dc7309
-#+slug: jl-09-plots
+#+description: Hands-on
+#+colordes: #8a2000
+#+slug: 09_jl_plotting
 #+weight: 9
 
 {{<br>}}
