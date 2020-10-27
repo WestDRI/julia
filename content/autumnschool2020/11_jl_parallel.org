@@ -1,20 +1,124 @@
-#+title: Distributed computing
-#+description: Reading
-#+colordes: #538cc6
-#+slug: jl-12-distributed
-#+weight: 12
+#+title: Parallel computing in Julia
+#+description: Zoom
+#+colordes: #e86e0a
+#+slug: 11_jl_parallel
+#+weight: 11
 
-#+OPTIONS: toc:nil
+*Zoom session 2 — part 1*
 
-As you read this page, I suggest that you run the examples and experiment with them.
+{{<m>}} /Access:/ You should have received the meeting id and password by email. \\
+{{<m>}} /Time:/ xx pm Pacific Time. \\
+{{<m>}} /Topic:/ 
 
-* Launching several Julia processes
+* Multi-threading
+
+** Launching Julia on multiple threads
+
+To use Julia on multiple threads, you need to set the {{<b>}}JULIA_NUM_THREADS{{</b>}} environment variable.
+
+This can be done by running (in the terminal, not in Julia):
+
+#+BEGIN_src sh
+$ export JULIA_NUM_THREADS=n      # n is the number of threads you want to use
+#+END_src
+
+Or by launching Julia with (again, in the terminal):
+
+#+BEGIN_src sh
+$ JULIA_NUM_THREADS=n julia
+#+END_src
+
+For example, to launch Julia on 4 threads, you can run:
+
+#+BEGIN_src sh
+$ JULIA_NUM_THREADS=4 julia
+#+END_src
+
+/Note 1:/
+
+The Juno IDE automatically launches Julia on all your available threads.
+
+/Note 2:/
+
+Windows users can also set this environment variable with CMD with:
+
+#+BEGIN_src sh
+set JULIA_NUM_THREADS=n
+#+END_src
+
+or with Powershell with:
+
+#+BEGIN_src sh
+$env:JULIA_NUM_THREADS=n
+#+END_src
+
+*** How do you know how many threads are available on your machine?
+
+A lot of laptops around have 4 threads (2 CPU, each with 2 threads). Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visualize the working threads.
+
+***** Linux
+
+From a terminal:
+
+#+BEGIN_src sh
+$ nproc
+#+END_src
+
+***** Windows
+
+Go to {{<b>}}System Information{{</b>}}. This will show you the {{<b>}}System Summary{{</b>}} in which you can see a description of your {{<b>}}Processor{{</b>}}.
+
+***** MacOS
+
+From Terminal:
+
+#+BEGIN_src sh
+sysctl -n hw.ncpu
+#+END_src
+
+** Using multiple threads
+
+Multi-threading is supported by the {{<b>}}Base.Threads{{</b>}} interface (part of the {{<b>}}Base{{</b>}} module of Julia) which contains a number of functions and macros. Below are the most important ones.
+
+*** How do you know how many threads you are using in your Julia session?
+
+To see how many threads you are using, you can run (in the Julia REPL):
+
+#+BEGIN_src julia
+julia> Threads.nthreads()
+#+END_src
+
+/Note: if you could not determine how many threads you have on your machine with the methods above, you can try to launch Julia on a number of threads larger than what you can possibly have (e.g. 10) and run this command. Julia will be launched on all your available threads and this command will tell you how many that is./
+
+To get the ID of the current thread, you can run:
+
+#+BEGIN_src julia
+julia> Threads.threadid()
+#+END_src
+
+*** For loop on multiple threads
+
+This is done thanks to the {{<c>}}Threads.@threads{{</c>}} macro:
+
+#+BEGIN_src julia
+julia> Threads.@threads for i = 1:10
+           println("i = $i on thread $(Threads.threadid())")
+       end
+#+END_src
+
+*** Multi-threading outside of the context of loops
+
+Here, you want to use the {{<c>}}Threads.@spawn{{</c>}} macro. This feature is currently experimental and not documented in the Julia manual, but an example is given in [[https://julialang.org/blog/2019/07/multithreading/][this Julia blog post]].
+
+* Distributed computing
+
+** Launching several Julia processes
 
 Julia supports distributed computing thanks to the module {{<b>}}Distributed{{</b>}} from its standard library.
 
 There are two ways to launch several Julia processes (called "workers"):
 
-**** Launch Julia on n workers
+***** Launch Julia on n workers
 
 Julia can be started with the {{<c>}}-p{{</c>}} flag followed by the number of workers by running (in a terminal):
 
@@ -44,7 +148,7 @@ The total number of processes can be seen with:
 nprocs()
 #+END_src
 
-**** Start workers from within a Julia session
+***** Start workers from within a Julia session
 
 Alternatively, workers can be started from within a Julia session. In this case, you need to load the module {{<b>}}Distributed{{</b>}} explicitly:
 
@@ -64,7 +168,7 @@ addprocs(n)
 addprocs(4)
 #+END_src
 
-* Managing workers
+** Managing workers
 
 To list all the worker process identifiers:
 
@@ -82,7 +186,7 @@ rmprocs(<pid>)
 
 where {{<c>}}&lt;pid&gt;{{</c>}} is the process identifier of the worker you want to kill (you can kill several workers by providing a list of pids).
 
-* Using workers
+** Using workers
 
 There are a number of [[https://docs.julialang.org/en/v1/manual/metaprogramming/#man-macros-1][macros]] that are very convenient here:
 
@@ -148,6 +252,8 @@ fetch(@spawnat :any myid())
 
 If you run this multiple times, you will see that {{<c>}}myid{{</c>}} is run on any of your available workers. This will however never return {{<c>}}1{{</c>}}, /except/ when you only have one running Julia process (in that case, the process running the prompt is considered a worker).
 
-* Data too large to fit in the memory of one machine
+** Data too large to fit in the memory of one machine
 
 There is a package for this: [[https://github.com/JuliaParallel/DistributedArrays.jl][DistributedArrays]].
+
+* Comments & questions
