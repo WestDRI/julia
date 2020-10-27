@@ -1,0 +1,13 @@
+#+title: Final questions
+#+description: Zoom
+#+colordes: #e86e0a
+#+slug: 12_jl_wrapup
+#+weight: 12
+
+#+OPTIONS: toc:nil
+
+*Zoom session 2 — part 2*
+
+{{<m>}} /Topic:/ I will answer your last questions and wrap up the course.
+
+* Comments & questions
