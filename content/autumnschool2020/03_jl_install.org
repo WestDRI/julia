@@ -15,16 +15,20 @@ Download the current [[https://julialang.org/downloads/][Julia stable release]] 
 
 
 
-* Text editor
+* Text editor, IDE, or Jupyter
 
-To write scripts, you will also need a capable text editor.\\
-Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.\\
-Note that Microsoft Notepad is too simplistic and WordPad is not a text editor.
+*** Text editor
 
-
-
-* Jupyter
+To write scripts, you will need a capable text editor.\\
+Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.
 
 
+*** IDE
+
+Additionally (and optionally), several text editors have a plug-in or extension turning it into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
+
+*** Jupyter
+
+You can also run Julia in [[https://jupyter.org/][Jupyter]]. See [[https://github.com/JuliaLang/IJulia.jl][here]] to install the Julia kernel for Jupyter.
 
 * Comments & questions
