@@ -42,20 +42,20 @@ Unicode
 UUIDs
 #+END_example
 
-They are not automatically loaded at the start of a session, so before you can use them, you need to load them as you would do for external packages (see below).
+They are not automatically loaded at the start of a session, so before you can use them, you need to [[http://westgrid-julia.netlify.app/autumnschool2020/06_jl_pkg/#headline-5][load them]] as you would do for external packages.
 
 * External packages
 
 To add functionality to Julia, you can install external packages from an ever-growing collection developed by the Julia community.
 
-** How to find external packages
+*** How to find external packages
 
 All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]] by name or tag.\\
 GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
 
 These packages get installed in your personal library (in linux, it is in {{<b>}}~/.julia{{</b>}}).
 
-** How to manage external packages
+*** How to manage external packages
 
 In [[https://westgrid-julia.netlify.app/summerschool2020/jl-04-repl.html][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
 
@@ -69,15 +69,17 @@ pkg> status               # status of all installed packages
 pkg> update               # update all packages
 #+END_src
 
+#+BEGIN_mhexample
 Notes:
 
-- Replace {{<c>}}&lt;package&gt;{{</c>}} by the name of the package (e.g. {{<c>}}Plots{{</c>}})
-- You can use {{<c>}}up{{</c>}} instead of {{<c>}}update{{</c>}} and {{<c>}}st{{</c>}} instead of {{<c>}}status{{</c>}}
+- Replace ~<package>~ by the name of the package (e.g. ~Plots~)
+- You can use ~up~ instead of ~update~ and ~st~ instead of ~status~
 - To install, uninstall, or update several packages at once, list them with a space:
 
 #+BEGIN_src julia
 pkg> add <package1> <package2> <package3>
 #+END_src
+#+END_mhexample
 
 An alternative to this convenience mode is to load the package manager (part of stdlib), called {{<b>}}Pkg{{</b>}} and use it as you would any other package:
 
@@ -93,28 +95,19 @@ Pkg.update()                # status of all installed packages
 Pkg.status()                # update all packages
 #+END_src
 
+#+BEGIN_mhexample
 Notes:
 
-- The short forms {{<c>}}up{{</c>}} and {{<c>}}st{{</c>}} do not work in this context
+- The short forms ~up~ and ~st~ do not work in this context
 - To install, uninstall, or update several packages at once, you need to create an array:
 
 #+BEGIN_src julia
 Pkg.add(["<package1>", "<package2>", "<package3>"])
 #+END_src
+#+END_mhexample
 
 * Loading packages
 
-You can load a package with {{<c>}}using &lt;package&gt;{{</c>}} (e.g. {{<c>}}using Plots{{</c>}}).
-
-{{<exercise>}}
-Load your newly installed packages to make sure that they got installed properly.<br>
-Don't be surprised if this takes a long time: the first time you load a package, Julia compiles it.<br>
-Next time you load it, it will be a lot faster.<br>
-({{<b>}}StatsPlots{{</b>}} is particularly long to load).
-{{</exercise>}}
-
-* Issues
-
-If you have issues installing the required packages, please sign up for the [[https://westgrid-julia.netlify.app/summerschool2020/jl-06-debug.html][debug session]] to make sure that you are set before our next Zoom meeting (we will not have time to debug installation issues during that meeting).
+You can load a package with ~using <package>~ (e.g. ~using Plots~).
 
 * Comments & questions
