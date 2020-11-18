@@ -1,4 +1,4 @@
-#+title: Installing Julia on your machine
+#+title: Local installation
 #+description: (Optional)
 #+colordes: #999999
 #+slug: 03_jl_install
