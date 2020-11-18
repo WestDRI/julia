@@ -4,11 +4,11 @@
 #+slug: 04_jl_doc
 #+weight: 4
 
-Here is a list of some useful resources.
+Here are some useful resources.
 
 * Documentation
 
-** From within Julia
+*** From within Julia
 
 To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
 
@@ -16,7 +16,7 @@ To get help on an object in Julia, simply type in [[https://westgrid-julia.netli
 ?object
 #+END_src
 
-** Online
+*** Online
 
 [[https://julialang.org/][Julia website]] \\
 [[https://docs.julialang.org/en/v1/][Julia documentation]] \\
@@ -38,7 +38,7 @@ To get help on an object in Julia, simply type in [[https://westgrid-julia.netli
 
 * IDE
 
-Many text editors have plugins, extensions, or packages to turn them into IDEs for Julia. You can find the list on the [[https://julialang.org/][Julia website]]. Here are a few:
+Several text editors have plugins, extensions, or packages turning them into IDEs for Julia. You can find the list on the [[https://julialang.org/][Julia website]]. Here are a few:
 
 [[https://www.julia-vscode.org/][Julia for VSCode]] \\
 [[https://junolab.org/][Juno]] (built on [[https://atom.io/][Atom]]) \\
