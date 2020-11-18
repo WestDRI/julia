@@ -102,16 +102,6 @@ Notes:
 Pkg.add(["<package1>", "<package2>", "<package3>"])
 #+END_src
 
-{{<exercise>}}
-Install the following packages (locally, don't worry about the cluster):<br>
-- {{<b>}}CSV{{</b>}}<br>
-- {{<b>}}DataFrames{{</b>}}<br>
-- {{<b>}}JLD{{</b>}}<br>
-- {{<b>}}StatsPlots{{</b>}}<br>
-- {{<b>}}UnicodePlots{{</b>}}<br>
-- {{<b>}}TimeSeries{{</b>}}
-{{</exercise>}}
-
 * Loading packages
 
 You can load a package with {{<c>}}using &lt;package&gt;{{</c>}} (e.g. {{<c>}}using Plots{{</c>}}).
