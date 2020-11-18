@@ -13,7 +13,15 @@ Download the current [[https://julialang.org/downloads/][Julia stable release]] 
 
 * Packages
 
+You will also need a number of Julia packages.
 
+#+BEGIN_export html
+To install them, first type {{<c>}}]{{</c>}} (you will see your prompt change from <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; box-shadow: 0px 0px 2px rgba(0,0,0,0.3); border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>), then run:
+#+END_export
+
+#+BEGIN_src julia
+add 
+#+END_src
 
 * Text editor, IDE, or Jupyter
 
