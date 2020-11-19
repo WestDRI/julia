@@ -10,10 +10,47 @@
 /Topic:/ {{<m>}}In this lesson, we will cover the basics of Julia such as functions and control flow.
 #+END_simplebox
 
+* Variables
 
+A variable is a name bound to a value:
 
+#+BEGIN_src julia
+a = 3
+#+END_src
 
-As you read this page, I suggest that you run the examples and experiment with them to familiarize yourself with the Julia REPL and to start getting a feel for the language.
+Notice that, when you are in the REPL, Julia returns the value when you assign it to a variable. If you would like to prevent this, you need to add a semi-colon at the end of the expression:
+
+#+BEGIN_src julia
+b = "Hello, World!";
+#+END_src
+
+To print a value in the REPL, you only need to call it:
+
+#+BEGIN_src julia
+a
+#+END_src
+
+If you want to print it while running a script however, you need to use the ~println()~ function:
+
+#+BEGIN_src julia
+println(a)
+#+END_src
+
+Variables in Julia are case-sensitive and can include Unicode characters:
+
+#+BEGIN_src julia
+δ = 8.5
+#+END_src
+
+[[https://docs.julialang.org/en/v1/base/base/#Keywords][Built-in keywords]] are not allowed. Neither are built-in constants and keywords in use in a session.
+
+#+BEGIN_src julia
+false = 3
+
+ERROR: syntax: invalid assignment location "false" around REPL[7]:1
+Stacktrace:
+ [1] top-level scope at REPL[7]:1
+#+END_src
 
 * Functions
 
