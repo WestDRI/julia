@@ -12,8 +12,30 @@ Here are some useful resources.
 
 To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
 
-#+BEGIN_src julia
+#+BEGIN_syntax
 ?object
+#+END_syntax
+
+#+BEGIN_mhex
+Example:
+#+END_mhex
+
+#+BEGIN_src julia
+?sum
+#+END_src
+
+To print the list of functions containing a certain expression in their description, you can use:
+
+#+BEGIN_syntax
+apropos("<expression>")
+#+END_syntax
+
+#+BEGIN_mhex
+Example:
+#+END_mhex
+
+#+BEGIN_src julia
+apropos("truncate")
 #+END_src
 
 *** Online
