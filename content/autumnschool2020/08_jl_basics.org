@@ -4,10 +4,12 @@
 #+slug: 08_jl_basics
 #+weight: 8
 
+#+BEGIN_simplebox
 *Zoom session 2 — part 2*
 
+/Topic:/ {{<m>}}In this lesson, we will cover the basics of Julia such as functions and control flow.
+#+END_simplebox
 
-cover types, variables, fun, control flow, etc. while introducing the nbody problem.
 
 
 
