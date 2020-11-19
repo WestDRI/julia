@@ -36,6 +36,14 @@ If you want to print it while running a script however, you need to use the ~pri
 println(a)
 #+END_src
 
+You can reassign values to variables:
+
+#+BEGIN_src julia
+a = 3;
+a = -8,2;
+a
+#+END_src
+
 Variables in Julia are case-sensitive and can include Unicode characters:
 
 #+BEGIN_src julia
