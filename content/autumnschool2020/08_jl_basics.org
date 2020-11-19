@@ -52,6 +52,21 @@ Stacktrace:
  [1] top-level scope at REPL[7]:1
 #+END_src
 
+* Comments
+
+Comments do not get evaluated.
+
+#+BEGIN_src julia
+# Single line comment
+
+#=
+Comments can also spread over multiple lines
+if you enclose them with this syntax
+=#
+
+x = 2;          # comments can be added at the end of lines
+#+END_src
+
 * Functions
 
 ** Defining functions
