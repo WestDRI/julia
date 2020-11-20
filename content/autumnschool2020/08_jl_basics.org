@@ -130,6 +130,9 @@ function hello()
 end
 typeof("a")
 typeof('a')
+
+println("This is a string")
+println('Ouch')
 #+END_src
 
 *** Assignment form
