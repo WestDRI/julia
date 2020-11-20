@@ -7,7 +7,7 @@
 #+BEGIN_simplebox
 *Zoom session 2 — part 2*
 
-/Topic:/ {{<m>}}In this lesson, we will cover the basics of Julia such as functions and control flow.
+/Topic:/ {{<m>}}In this lesson, we will cover the basics of Julia.
 #+END_simplebox
 
 * Variables
