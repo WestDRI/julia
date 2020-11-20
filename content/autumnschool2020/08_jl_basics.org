@@ -44,6 +44,13 @@ a = -8,2;
 a
 #+END_src
 
+You can define multiple variables at once:
+
+#+BEGIN_src julia
+a, b, c = 1, 2, 3
+b
+#+END_src
+
 Variables in Julia are case-sensitive and can include Unicode characters:
 
 #+BEGIN_src julia
@@ -58,6 +65,17 @@ false = 3
 ERROR: syntax: invalid assignment location "false" around REPL[7]:1
 Stacktrace:
  [1] top-level scope at REPL[7]:1
+#+END_src
+
+The keyword ~ans~ is a variable which, in the REPL, automatically takes the value of the last computed value:
+
+#+BEGIN_src sh
+a = 3
+typeof(ans)
+ans + 1
+
+b = "test"
+typeof(ans)
 #+END_src
 
 * Comments
