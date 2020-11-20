@@ -51,7 +51,7 @@ $ module list
 
 If you need to copy files to the cluster, you can use {{<c>}}scp{{</c>}}.
 
-**** From your computer
+** From your computer
 
 If you are in a local shell, run:
 
@@ -59,7 +59,7 @@ If you are in a local shell, run:
 [local]$ scp /local/path/file  userxxx@cassiopeia.c3.ca:path/cluster
 #+END_src
 
-**** From the cluster
+** From the cluster
 
 If you are in a remote shell (through ssh), run:
 

@@ -3,7 +3,7 @@
 #+date: 2020-03-04
 #+place: 60 min live webinar
 
-**** /Abstract/
+*** /Abstract/
 
 #+BEGIN_definition
 Julia is fast: just-in-time (JIT) compilation and multiple dispatch bring efficiency to interactivity. People often say that using Julia feels like running R or python with a speed /almost/ comparable to that of C.

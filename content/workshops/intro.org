@@ -1,7 +1,7 @@
 #+title: Introduction to high performance research computing with Julia
 #+slug: intro
 
-**** /Abstract/
+*** /Abstract/
 
 #+BEGIN_definition
 #+BEGIN_quote
@@ -19,7 +19,7 @@ Finally, Julia shines by its extremely clean and concise syntax. This last featu
 In this workshop, which does not require any prior experience in Julia (experience in another language—e.g. R or python—would be best), we will go over the basics of Julia's syntax and package system; then we will push the performance aspect further by looking at how Julia can make use of clusters for large scale parallel computing.
 #+END_definition
 
-**** /Software requirements/
+*** /Software requirements/
 
 #+BEGIN_box
 *1 - A terminal emulator and an SSH client for remote access to clusters*

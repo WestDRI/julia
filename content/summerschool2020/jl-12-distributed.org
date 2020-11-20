@@ -14,7 +14,7 @@ Julia supports distributed computing thanks to the module {{<b>}}Distributed{{</
 
 There are two ways to launch several Julia processes (called "workers"):
 
-**** Launch Julia on n workers
+** Launch Julia on n workers
 
 Julia can be started with the {{<c>}}-p{{</c>}} flag followed by the number of workers by running (in a terminal):
 
@@ -44,7 +44,7 @@ The total number of processes can be seen with:
 nprocs()
 #+END_src
 
-**** Start workers from within a Julia session
+** Start workers from within a Julia session
 
 Alternatively, workers can be started from within a Julia session. In this case, you need to load the module {{<b>}}Distributed{{</b>}} explicitly:
 

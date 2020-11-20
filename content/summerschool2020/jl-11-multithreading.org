@@ -48,7 +48,7 @@ $env:JULIA_NUM_THREADS=n
 
 A lot of laptops around have 4 threads (2 CPU, each with 2 threads). Utilities such as [[https://github.com/hishamhm/htop][htop]] allow you to visualize the working threads.
 
-**** Linux
+*** Linux
 
 From a terminal:
 
@@ -56,11 +56,11 @@ From a terminal:
 $ nproc
 #+END_src
 
-**** Windows
+*** Windows
 
 Go to {{<b>}}System Information{{</b>}}. This will show you the {{<b>}}System Summary{{</b>}} in which you can see a description of your {{<b>}}Processor{{</b>}}.
 
-**** MacOS
+*** MacOS
 
 From Terminal:
 
