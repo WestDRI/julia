@@ -77,7 +77,7 @@ x = 2;          # comments can be added at the end of lines
 
 * Functions
 
-** Defining functions
+** Function definition
 
 There are 2 ways to define a new function:
 

@@ -48,14 +48,14 @@ They are not automatically loaded at the start of a session, so before you can u
 
 To add functionality to Julia, you can install external packages from an ever-growing collection developed by the Julia community.
 
-*** How to find external packages
+** How to find external packages
 
 All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]] by name or tag.\\
 GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
 
 These packages get installed in your personal library (in linux, it is in {{<b>}}~/.julia{{</b>}}).
 
-*** How to manage external packages
+** How to manage external packages
 
 In [[https://westgrid-julia.netlify.app/summerschool2020/jl-04-repl.html][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
 

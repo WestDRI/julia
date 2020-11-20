@@ -8,7 +8,7 @@ Here are some useful resources.
 
 * Documentation
 
-*** From within Julia
+** From within Julia
 
 To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
 
@@ -38,7 +38,7 @@ Example:
 apropos("truncate")
 #+END_src
 
-*** Online
+** Online
 
 [[https://julialang.org/][Julia website]] \\
 [[https://docs.julialang.org/en/v1/][Julia documentation]] \\

@@ -30,17 +30,17 @@ add
 
 * Text editor, IDE, or Jupyter
 
-*** Text editor
+** Text editor
 
 To write scripts, you will need a capable text editor.\\
 Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.
 
 
-*** IDE
+** IDE
 
 Additionally (and optionally), several text editors have a plug-in or extension turning it into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
 
-*** Jupyter
+** Jupyter
 
 You can also run Julia in [[https://jupyter.org/][Jupyter]]. See [[https://github.com/JuliaLang/IJulia.jl][here]] to install the Julia kernel for Jupyter.
 
