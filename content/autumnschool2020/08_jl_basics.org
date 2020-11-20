@@ -78,6 +78,18 @@ b = "test"
 typeof(ans)
 #+END_src
 
+* Unicode support
+
+[[https://docs.julialang.org/en/v1/manual/unicode-input/][You can enter Unicode characters via tab completion of LaTeX abbreviations]]:
+
+#+BEGIN_src julia
+\omega		 # press TAB
+\sum  		 # press TAB
+\sqrt	     # press TAB
+\in  	     # press TAB
+\:phone :    # no space before colon (I added it to prevent parsing), press TAB
+#+END_src
+
 * Comments
 
 Comments do not get evaluated.
