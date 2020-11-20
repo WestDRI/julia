@@ -10,6 +10,8 @@ Here are some useful resources.
 
 ** From within Julia
 
+*** Help
+
 To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
 
 #+BEGIN_syntax
@@ -24,6 +26,8 @@ Example:
 ?sum
 #+END_src
 
+*** Find function
+
 To print the list of functions containing a certain expression in their description, you can use:
 
 #+BEGIN_syntax
@@ -36,6 +40,15 @@ Example:
 
 #+BEGIN_src julia
 apropos("truncate")
+#+END_src
+
+*** Version
+
+If you need to find your Julia version, you can use either of:
+
+#+BEGIN_src julia
+VERSION          # outputs Julia version only
+versioninfo()    # outputs more info, including OS info
 #+END_src
 
 ** Online
