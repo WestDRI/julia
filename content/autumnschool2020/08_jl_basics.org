@@ -128,37 +128,67 @@ end
 #+END_src
 
 *** Assignment form
+* Operators
+
+The operators are functions. For instance, you can use the addition operator (~+~) in 2 ways:
 
 #+BEGIN_src julia
 <name>(<arguments>) = <body>
+3 + 2
++(3, 2)
 #+END_src
 
 /Example:/
+The multiplication operator can be omitted when this does not create any ambiguity:
 
 #+BEGIN_src julia
 hello() = println("Hello")
+a = 3
+2a
 #+END_src
 
 The function {{<c>}}hello{{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
+Julia has "assignment by operation" operators:
 
 ** Calling functions
+#+BEGIN_src julia
+a = 2
+a += 7    # this is the same as a = a + 7
+#+END_src
 
 You call a function by running it followed by parentheses:
+There is a *left* division operator:
 
 #+BEGIN_src julia
 hello()
+2\8 == 8/2
 #+END_src
 
 ** Returning the result
+The boolean type is a subtype of the integer type:
 
 The value of the last expression is automatically returned, so {{<c>}}return{{</c>}} is unnecessary unless you want to return something else.
+#+BEGIN_src julia
+Bool <: Integer
 
 Look at these 5 functions:
+false == 0
+true == 1
+
+a = true
+b = false
+3a + 2b
+#+END_src
+
+Julia supports fraction operations:
 
 #+BEGIN_src julia
 function test1(x, y)
     x + y
 end
+4//8
+1//2 + 3//4
+#+END_src
 
 function test2(x, y)
     return x + y
