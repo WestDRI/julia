@@ -544,4 +544,14 @@ macro <name>()
 end
 #+END_src
 
+* Sourcing a file
+
+To source a Julia script within Julia, use the function ~include()~.
+
+Example:
+
+#+BEGIN_src julia
+include("/path/to/file.jl")
+#+END_src
+
 * Comments & questions
