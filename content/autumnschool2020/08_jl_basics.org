@@ -120,11 +120,16 @@ end
 #+END_src
 
 /Example:/
+* Quotes
+
+Notice the difference between single and double quotes:
 
 #+BEGIN_src julia
 function hello()
     println("Hello")
 end
+typeof("a")
+typeof('a')
 #+END_src
 
 *** Assignment form
