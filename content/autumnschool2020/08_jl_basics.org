@@ -534,7 +534,7 @@ Macros are a form of [[https://en.wikipedia.org/wiki/Metaprogramming][metaprogra
 
 They resemble functions and just like functions, they accept as input a tuple of arguments. Unlike functions which return a value however, macros return an expression which is compiled directly (rather than at runtime).
 
-Macro's names are preceded by {{<c>}}@{{</c>}} (e.g. {{<c>}}@time{{</c>}}).
+Macro's names are preceded by ~@~ (e.g. ~@time~).
 
 Julia comes with many macros and you can create your own with:
 
