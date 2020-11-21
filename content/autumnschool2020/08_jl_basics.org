@@ -103,16 +103,12 @@ if you enclose them with this syntax
 x = 2;          # comments can be added at the end of lines
 #+END_src
 
-* Functions
 * Data types
 
-** Function definition
 ** Type systems
 
-There are 2 ways to define a new function:
 *** Static type systems
 
-*** Long form
 In static type systems, the type of every expression is known and checked before the program is executed. This allows for faster execution of the program, but it is more constraining.
 
 #+BEGIN_mhexample
@@ -132,8 +128,6 @@ Examples of dynamically typed languages: Python, JavaScript, PHP, Ruby, Lisp.
 You don't have to define the types:
 
 #+BEGIN_src julia
-function <name>(<arguments>)
-    <body>
 typeof(2)
 typeof(2.0)
 typeof("Hello, World!")
@@ -151,7 +145,6 @@ end
 floatsum(2.3, 1.0)
 #+END_src
 
-/Example:/
 This passed the check.
 
 #+BEGIN_src julia
@@ -179,9 +172,6 @@ Type declaration is not yet supported on global variables. So this only works in
 Notice the difference between single and double quotes:
 
 #+BEGIN_src julia
-function hello()
-    println("Hello")
-end
 typeof("a")
 typeof('a')
 
@@ -189,51 +179,40 @@ println("This is a string")
 println('Ouch')
 #+END_src
 
-*** Assignment form
 * Operators
 
 The operators are functions. For instance, you can use the addition operator (~+~) in 2 ways:
 
 #+BEGIN_src julia
-<name>(<arguments>) = <body>
 3 + 2
 +(3, 2)
 #+END_src
 
-/Example:/
 The multiplication operator can be omitted when this does not create any ambiguity:
 
 #+BEGIN_src julia
-hello() = println("Hello")
 a = 3;
 2a
 #+END_src
 
-The function {{<c>}}hello{{</c>}} defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
 Julia has "assignment by operation" operators:
 
-** Calling functions
 #+BEGIN_src julia
 a = 2;
 a += 7    # this is the same as a = a + 7
 #+END_src
 
-You call a function by running it followed by parentheses:
 There is a *left* division operator:
 
 #+BEGIN_src julia
-hello()
 2\8 == 8/2
 #+END_src
 
-** Returning the result
 The boolean type is a subtype of the integer type:
 
-The value of the last expression is automatically returned, so {{<c>}}return{{</c>}} is unnecessary unless you want to return something else.
 #+BEGIN_src julia
 Bool <: Integer
 
-Look at these 5 functions:
 false == 0
 true == 1
 
@@ -245,57 +224,71 @@ b = false
 Julia supports fraction operations:
 
 #+BEGIN_src julia
-function test1(x, y)
-    x + y
-end
 4//8
 1//2 + 3//4
 #+END_src
 
-function test2(x, y)
-    return x + y
-end
 
-function test3(x, y)
-    x * y
-end
 
-function test4(x, y)
-    x * y
-    x + y
-end
+* Functions
 
-function test5(x, y)
-    return x * y
-    x + y
-end
-#+END_src
+** Function definition
 
-Now, try to guess the results of running:
+There are 2 ways to define a new function:
+
+*** Long form
 
 #+BEGIN_src julia
-test1(1, 2)
-test2(1, 2)
-test3(1, 2)
-test4(1, 2)
-test5(1, 2)
+function <name>(<arguments>)
+    <body>
+end
 #+END_src
 
-Then run these expressions to see whether you got it right.
+#+BEGIN_mhex
+Example:
+#+END_mhex
+
+#+BEGIN_src julia
+function hello()
+    println("Hello")
+end
+#+END_src
+
+*** Assignment form
+
+#+BEGIN_src julia
+<name>(<arguments>) = <body>
+#+END_src
+
+#+BEGIN_mhex
+Example:
+#+END_mhex
+
+#+BEGIN_src julia
+hello() = println("Hello")
+#+END_src
+
+The function ~hello~ defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
+
+** Calling functions
+
+You call a function by running it followed by parentheses:
+
+#+BEGIN_src julia
+hello()
+#+END_src
 
 ** Arguments
 
-Our function {{<c>}}hello{{</c>}} did not accept any argument.
-
-So running, for instance:
+Our function ~hello~ does not accept any argument:
 
 #+BEGIN_src julia
 hello("Paul")
+
+> ERROR: MethodError: no method matching hello(::String)
 #+END_src
 
-returns an error message.
-
-To define a function which accepts arguments, we need to add them in the function definition as we did when we defined {{<c>}}test1{{</c>}} to {{<c>}}test5{{</c>}}.
+To define a function which accepts arguments, we need to add them in the function definition.
 
 So maybe we could do this?
 
@@ -309,7 +302,7 @@ hello("Paul")
 
 Oops. Not quite... This function works but does not give the result we wanted.
 
-Here, we need to use [[https://en.wikipedia.org/wiki/String_interpolation][string interpolation]] with the {{<c>}}${{</c>}} character:
+Here, we need to use [[https://en.wikipedia.org/wiki/String_interpolation][string interpolation]] with the ~$~ character:
 
 #+BEGIN_src julia
 function hello(name)
@@ -330,9 +323,76 @@ hello("Paul")
 hello()
 #+END_src
 
+#+BEGIN_mhexample
+Here is another example:
+#+END_mhexample
+
+#+BEGIN_src python
+function addTwo(a)
+      a + 2
+  end
+
+addTwo(3)
+
+# This can be written in a terse format with:
+addtwo = a -> a + 2
+
+# With default argument:
+function addSomethingOrTwo(a, b = 2)
+      a + b
+  end
+
+addSomethingOrTwo(3)
+addSomethingOrTwo(3, 4)
+#+END_src
+
+** Returning the result
+
+The value of the last expression is automatically returned, so ~return~ is unnecessary unless you want to return something else.
+
+Look at these 5 functions:
+
+#+BEGIN_src julia
+function test1(x, y)
+    x + y
+end
+
+function test2(x, y)
+    return x + y
+end
+
+function test3(x, y)
+    x * y
+end
+
+function test4(x, y)
+    x * y
+    x + y
+end
+
+function test5(x, y)
+    return x * y
+    x + y
+end
+#+END_src
+
+{{<exsimplec>}}
+Now, without running the code, try to guess the results of:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+test1(1, 2)
+test2(1, 2)
+test3(1, 2)
+test4(1, 2)
+test5(1, 2)
+#+END_src
+
+Then run these expressions to see whether you got it right.
+
 ** Anonymous functions
 
-Anonymous functions are functions which aren't given a name. You can create them this way in Julia:
+Anonymous functions are functions which aren't given a name:
 
 #+BEGIN_src julia
 function (<arguments>)
@@ -346,23 +406,31 @@ And in compact form:
 <arguments> -> <body>
 #+END_src
 
-/Example:/
+#+BEGIN_mhex
+Example:
+#+END_mhex
 
 #+BEGIN_src julia
 function (name)
     println("Hello $name")
 end
 #+END_src
-or
+
+#+BEGIN_mhex
+Compact form:
+#+END_mhex
+
 #+BEGIN_src julia
 name -> println("Hello $name")
 #+END_src
-{{<br>}}
-*When would you want to use anonymous functions?*
 
-This is very useful for functional programming (when you apply a function—for instance {{<c>}}map{{</c>}}—to other functions to apply them in a vectorized manner which avoids repetitions).
+*** When would you want to use anonymous functions?
 
-/Example:/
+This is very useful for functional programming (when you apply a function—for instance ~map~ —to other functions to apply them in a vectorized manner which avoids repetitions).
+
+#+BEGIN_mhex
+Example:
+#+END_mhex
 
 #+BEGIN_src julia
 map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
@@ -370,16 +438,21 @@ map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
 
 ** Pipes
 
-The Julia pipe looks like this: {{<c>}}|>{{</c>}} and behaves as you would expect.
+The Julia pipe looks like this: ~|>~. \\
+It redirects the output of the expression on the left as the input of the expression on the right.
 
-The following 2 expressions are equivalent:
+#+BEGIN_mhexample
+The following 2 expressions are thus equivalent:
+#+END_mhexample
 
 #+BEGIN_src julia
 println("Hello")
 "Hello" |> println
 #+END_src
 
+#+BEGIN_mhexample
 Quick test:
+#+END_mhexample
 
 #+BEGIN_src julia
 sqrt(2) == 2 |> sqrt
@@ -387,18 +460,19 @@ sqrt(2) == 2 |> sqrt
 
 ** Function composition
 
-Done with the composition operator {{<c>}}∘{{</c>}} (in the REPL, type {{<b>}}\circ{{</b>}} then press {{<b>}}&lt;tab&gt;{{</b>}}).
+This is done with the composition operator ~∘~ (in the REPL, type {{<b>}}\circ{{</b>}} then press {{<b>}}&lt;tab&gt;{{</b>}}).
 
 The following 2 expressions are equivalent:
 
 #+BEGIN_src julia
 <function2>(<function1>(<arguments>))
+
 (<function2> ∘ <function1>)(<arguments>)
 #+END_src
 
-/Example:/
-
-These are equivalent:
+#+BEGIN_mhex
+Example:
+#+END_mhex
 
 #+BEGIN_src julia
 exp(+(-3, 1))
@@ -406,15 +480,17 @@ exp(+(-3, 1))
 (exp ∘ +)(-3, 1)
 #+END_src
 
-{{<exsimple>}}
+{{<exsimplec>}}
 Try to write the same expression in another 2 different ways using the pipe.
-{{</exsimple>}}
+{{</exsimplec>}}
 
 ** function!()
 
-{{<c>}}!{{</c>}} used after a function name indicates that the function modifies its arguments.
+~!~ used after a function name indicates that the function modifies its arguments.
 
-/Example:/
+#+BEGIN_mhex
+Example:
+#+END_mhex
 
 #+BEGIN_src julia
 a = [-2, 3, -5]
@@ -435,9 +511,9 @@ a = [-3, 2, -5]
 abs(a)
 #+END_src
 
-This doesn't work because the function {{<c>}}abs{{</c>}} only applies to single elements.
+This doesn't work because the function ~abs~ only applies to single elements.
 
-By broadcasting {{<c>}}abs{{</c>}}, you apply it to each element of {{<c>}}a{{</c>}}.
+By broadcasting ~abs~, you apply it to each element of ~a~.
 
 #+BEGIN_src julia
 broadcast(abs, a)
@@ -455,7 +531,9 @@ It can also be applied to the pipe, to unary and binary operators, etc.
 a .|> abs
 #+END_src
 
+{{<exsimplec>}}
 Try to understand the difference between the following 2 expressions:
+{{</exsimplec>}}
 
 #+BEGIN_src julia
 abs.(a) == a .|> abs
@@ -470,11 +548,13 @@ Julia uses [[https://en.wikipedia.org/wiki/Multiple_dispatch][multiple dispatch]
 methods(+)
 #+END_src
 
-let's you see that {{<c>}}+{{</c>}} has 166 methods!
+let's you see that ~+~ has 166 methods!
 
 Methods can be added to existing functions.
 
+{{<exsimplec>}}
 Try to understand the following example:
+{{</exsimplec>}}
 
 #+BEGIN_src julia
 abssum(x::Int64, y::Int64) = abs(x + y)
@@ -492,14 +572,16 @@ abssum(2, 4.0)
 *** if
 
 #+BEGIN_src julia
-if <condition>
+if <predicate>
     <do if true>
 end
 #+END_src
 
-(If condition is false, do nothing).
+/(If predicate evaluates to false, do nothing)./
 
-/Example:/
+#+BEGIN_mhex
+Example:
+#+END_mhex
 
 #+BEGIN_src julia
 function testsign(x)
@@ -513,17 +595,34 @@ testsign(0)
 testsign(-2)
 #+END_src
 
+Predicates can be built with many operators and functions.
+
+#+BEGIN_mhex
+Examples of predicates:
+#+END_mhex
+
+#+BEGIN_src julia
+occursin("that", "this and that")
+4 < 3
+a != b
+2 in 1:3
+3 <= 4 && 4 > 5
+3 <= 4 || 4 > 5
+#+END_src
+
 *** if else
 
 #+BEGIN_src julia
-if <condition>
+if <predicate>
     <do if true>
 else
     <do if false>
 end
 #+END_src
 
-/Example:/
+#+BEGIN_mhex
+Examples:
+#+END_mhex
 
 #+BEGIN_src julia
 function testsign(x)
@@ -539,19 +638,52 @@ testsign(0)
 testsign(-2)
 #+END_src
 
+#+BEGIN_src julia
+a = 2
+b = 2.0
+
+if a == b
+      println("It's true")
+  else
+      println("It's false")
+  end
+
+if a === b
+      println("It's true")
+  else
+      println("It's false")
+  end
+#+END_src
+
+This can be written in a terse format:
+
+#+BEGIN_src julia
+<predicate> ? <do if true> : <do if false>
+#+END_src
+
+#+BEGIN_mhex
+Example:
+#+END_mhex
+
+#+BEGIN_src julia
+a === b ? println("It's true") : println("It's false")
+#+END_src
+
 *** if elseif else
 
 #+BEGIN_src julia
-if <condition1>
-    <do if condition1 true>
-elseif <condition2>
-    <do if condition1 false and condition2 true>
+if <predicate1>
+    <do if predicate1 true>
+elseif <predicate2>
+    <do if predicate1 false and predicate2 true>
 else
-    <do if condition1 and condition2 false>
+    <do if predicate1 and predicate2 false>
 end
 #+END_src
 
-/Example:/
+#+BEGIN_mhex
+Example:
+#+END_mhex
 
 #+BEGIN_src julia
 function testsign(x)
@@ -571,7 +703,7 @@ testsign(-2)
 
 ** Loops
 
-{{<c>}}while{{</c>}} and {{<c>}}for{{</c>}} loops follow a syntax similar to that of functions:
+~while~ and ~for~ loops follow a syntax similar to that of functions:
 
 #+BEGIN_src julia
 for name = ["Paul", "Lucie", "Sophie"]
@@ -582,6 +714,15 @@ end
 #+BEGIN_src julia
 for i = 1:3, j = 3:5
     println(i + j)
+end
+#+END_src
+
+#+BEGIN_src julia
+i = 0
+
+while i <= 10
+    println(i)
+    global i += 1
 end
 #+END_src
 
