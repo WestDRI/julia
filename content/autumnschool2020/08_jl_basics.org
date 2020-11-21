@@ -54,17 +54,15 @@ b
 Variables in Julia are case-sensitive and can include Unicode characters:
 
 #+BEGIN_src julia
-δ = 8.5
+δ = 8.5;
 #+END_src
 
 [[https://docs.julialang.org/en/v1/base/base/#Keywords][Built-in keywords]] are not allowed. Neither are built-in constants and keywords in use in a session.
 
 #+BEGIN_src julia
-false = 3
+false = 3;
 
-ERROR: syntax: invalid assignment location "false" around REPL[7]:1
-Stacktrace:
- [1] top-level scope at REPL[7]:1
+> ERROR: syntax: invalid assignment location "false"
 #+END_src
 
 The keyword ~ans~ is a variable which, in the REPL, automatically takes the value of the last computed value:
@@ -207,7 +205,7 @@ The multiplication operator can be omitted when this does not create any ambigui
 
 #+BEGIN_src julia
 hello() = println("Hello")
-a = 3
+a = 3;
 2a
 #+END_src
 
@@ -216,7 +214,7 @@ Julia has "assignment by operation" operators:
 
 ** Calling functions
 #+BEGIN_src julia
-a = 2
+a = 2;
 a += 7    # this is the same as a = a + 7
 #+END_src
 
