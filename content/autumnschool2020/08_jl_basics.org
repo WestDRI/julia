@@ -730,7 +730,7 @@ end
 
 Macros are a form of [[https://en.wikipedia.org/wiki/Metaprogramming][metaprogramming]] (the ability of a program to transform itself while running).
 
-They resemble functions and just like functions, they accept as input a tuple of arguments. Unlike functions which return a value however, macros return an expression which is compiled directly (rather than at runtime).
+They resemble functions and just like functions, they accept as input a tuple of arguments. Unlike functions which return a value however, macros return an expression which is executed when the code is parsed (rather than at runtime). They are thus executed /before/ the code is run.
 
 Macro's names are preceded by ~@~ (e.g. ~@time~).
 
@@ -744,9 +744,7 @@ end
 
 * Sourcing a file
 
-To source a Julia script within Julia, use the function ~include()~.
-
-Example:
+~include()~ sources a Julia script:
 
 #+BEGIN_src julia
 include("/path/to/file.jl")
