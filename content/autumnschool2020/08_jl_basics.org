@@ -106,20 +106,76 @@ x = 2;          # comments can be added at the end of lines
 #+END_src
 
 * Functions
+* Data types
 
 ** Function definition
+** Type systems
 
 There are 2 ways to define a new function:
+*** Static type systems
 
 *** Long form
+In static type systems, the type of every expression is known and checked before the program is executed. This allows for faster execution of the program, but it is more constraining.
+
+#+BEGIN_mhexample
+Examples of statically typed languages: C, C++, Java, Fortran, Haskell.
+#+END_mhexample
+
+*** Dynamic type systems
+
+In dynamic type systems, the type safety of the program is checked at runtime. This makes for more fluid, but slower and languages.
+
+#+BEGIN_mhexample
+Examples of dynamically typed languages: Python, JavaScript, PHP, Ruby, Lisp.
+#+END_mhexample
+
+*** Julia: dynamically typed with optional type declaration
+
+You don't have to define the types:
 
 #+BEGIN_src julia
 function <name>(<arguments>)
     <body>
+typeof(2)
+typeof(2.0)
+typeof("Hello, World!")
+typeof(true)
+typeof((2, 4, 1.0, "test"))
+#+END_src
+
+You can however do so for clearer, faster, and more robust code:
+
+#+BEGIN_src julia
+function floatsum(a, b)
+    (a + b)::Float64
 end
+
+floatsum(2.3, 1.0)
 #+END_src
 
 /Example:/
+This passed the check.
+
+#+BEGIN_src julia
+floatsum(2, 4)
+
+> ERROR: TypeError: in typeassert, expected Float64, got a value of type Int64
+#+END_src
+
+This did not...
+
+#+BEGIN_mhexample
+Type declaration is not yet supported on global variables. So this only works in local contexts.
+#+END_mhexample
+
+** Types in Julia
+
+[[https://docs.julialang.org/en/v1/manual/types/][Julia's type system]] is much more elaborate than a collection of object implementations: it is a conceptual hierarchical tree, at the bottom of which are the *concrete types*. Above them are several levels of *abstract types* which only exist as concepts to allow for the construction of code suitable for a collection of concrete types. At the very top is the ~Any~ type, encompassing all types.
+
+{{<img src="/img/type_nw.png" margin="5rem" title="" width="70%" line-height="2rem">}}
+<center>{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}From <a href="https://www.oreilly.com/library/view/learning-julia-abstract/9781491999585/ch01.html">O'Reilly</a></center>
+{{</img>}}
+
 * Quotes
 
 Notice the difference between single and double quotes:
