@@ -1,8 +1,8 @@
 #+title: Parallel computing in Julia
 #+description: Zoom
 #+colordes: #e86e0a
-#+slug: 11_jl_parallel
-#+weight: 11
+#+slug: 10_jl_parallel
+#+weight: 10
 
 #+BEGIN_simplebox
 *Zoom session 3 — part 1*

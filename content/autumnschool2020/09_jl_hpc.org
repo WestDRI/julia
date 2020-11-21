@@ -1,8 +1,8 @@
 #+title: Julia on Compute Canada clusters
 #+description: Reading
 #+colordes: #2d5986
-#+slug: 10_jl_hpc
-#+weight: 10
+#+slug: 09_jl_hpc
+#+weight: 9
 
 * Logging to the cluster
 
