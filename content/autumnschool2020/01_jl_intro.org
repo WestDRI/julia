@@ -47,7 +47,7 @@ To launch JupyterLab on UU:
    {{<n>}}{{<m>}}Make sure the interface is set to *JupyterLab*
 4. Press start
 
-{{<img src="/img/autumnschool2020/jh_widget_nw.png" margin="rem" title="" width="%" line-height="0rem">}}
+{{<img src="/img/jh_widget_nw.png" margin="rem" title="" width="%" line-height="0rem">}}
 {{</img>}}
 
 Note that, unlike other JupyterHubs you might have used (e.g. [[https://syzygy.ca/][syzygy.ca]]), this JupyterHub is not permanent, so you can only use it for this course.
