@@ -4,11 +4,12 @@
 #+slug: 11_jl_parallel
 #+weight: 11
 
-*Zoom session 2 — part 1*
+#+BEGIN_simplebox
+*Zoom session 3 — part 1*
 
-{{<m>}} /Access:/ You should have received the meeting id and password by email. \\
-{{<m>}} /Time:/ xx pm Pacific Time. \\
-{{<m>}} /Topic:/ 
+/Time:/ {{<m>}}3 pm Pacific Time. \\
+/Topic:/ {{<m>}}In this session, we will solve [[https://en.wikipedia.org/wiki/N-body_problem][the n-body problem]] in Julia.
+#+END_simplebox
 
 * Multi-threading
 
