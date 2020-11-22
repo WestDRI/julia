@@ -250,6 +250,14 @@ x = (a=2, b=4, c=1.0, d="test");
 x[4] == x.d
 #+END_src
 
+** Dictionaries
+
+Similarly to Python, Julia has dictionaries: associative collections of key/value pairs:
+
+#+BEGIN_src julia
+Dict("a"=>1, "b"=>2, "c"=>3)
+#+END_src
+
 * Functions
 
 ** Function definition
