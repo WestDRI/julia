@@ -16,10 +16,8 @@ You will also go through your allocations quickly.
 
 Lastly, your notebook is running on a single node. It is thus not suitable to run distributed memory parallel tasks.
 
-* Loading the Julia module
 ** A good approach
 
-This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module]] command. You can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]] and below are the subcommands you will need:
 A pretty good strategy is to develop and test your code with small samples, few iterations, etc. in an interactive job (from an SSH session in the cluster with ~salloc~), on your own computer (if appropriate), or in Jupyter, *then*, launch an ~sbatch~ job from an SSH session in the cluster to run the full code. This ensures that heavy duty resources such as GPU(s) are only allocated to you when you are actually needing and using them.
 
 This is exactly what we are doing during this workshop.
@@ -30,11 +28,15 @@ This is exactly what we are doing during this workshop.
 
 First, [[https://westgrid-julia.netlify.app/autumnschool2020/01_jl_intro/#headline-3][SSH into our training cluster UU]]. This takes you to the login node of the cluster.
 
+** Load necessary modules
+
+This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[https://docs.computecanada.ca/wiki/Utiliser_des_modules/en][module command]] (you can find the full documentation [[https://lmod.readthedocs.io/en/latest/010_user.html][here]]).
+
+Below are some key [[https://lmod.readthedocs.io/en/latest/010_user.html][Lmod commands]]:
+
 #+BEGIN_src sh
 # Get help on the module command
 $ module help
-$ module --help
-$ module -h
 
 # List modules that are already loaded
 $ module list
@@ -42,12 +44,12 @@ $ module list
 # See which modules are available for Julia
 $ module spider julia
 
-# See how to load the latest version (julia 1.4.1)
-$ module spider julia/1.4.1
+# See how to load the latest version (julia/1.5.2)
+$ module spider julia/1.5.2
 
-# Load julia 1.4.1 with the required gcc module first
+# Load julia/1.5.2 with the required StdEnv/2020 module first
 # (the order is important)
-$ module load gcc/7.3.0 julia/1.4.1
+$ module load StdEnv/2020 julia/1.5.2
 
 # You can see that we now have Julia loaded
 $ module list
