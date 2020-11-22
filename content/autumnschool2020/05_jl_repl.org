@@ -4,8 +4,68 @@
 #+slug: 05_jl_repl
 #+weight: 5
 
-#+OPTIONS: toc:nil
-
 {{<youtube TBSTNj8Vlfs>}}
+
+* REPL modes
+
+The Julia REPL has 4 modes:
+
+#+BEGIN_export html
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Julian mode to run code. Default mode. Go back to it from other modes with {{<b>}}Backspace{{</b>}}<br><br>
+#+END_export
+
+#+BEGIN_export html
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #dab314"><b>help?></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Help mode to access documentation. Enter it with {{<b>}}?{{</b>}}<br><br>
+#+END_export
+
+#+BEGIN_export html
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #b30000"><b>shell></b></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shell mode to run Bash commands. Enter it with {{<b>}};{{</b>}}<br><br>
+#+END_export
+
+#+BEGIN_export html
+<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(env) pkg></b></span> &nbsp;&nbsp; Package manager mode to manage external packages. Enter it with {{<b>}}]{{</b>}}<br><br>
+#+END_export
+
+#+BEGIN_export html
+(<span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>env</b></span> is the name of your current project environment.
+#+END_export
+
+#+BEGIN_export html
+Project environments are similar to Python's virtual environments and allow you, for instance, to have different package versions for different projects. By default, it is the current Julia version. So what you will see is <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>(v1.5) pkg></b></span>).<br>
+#+END_export
+
+* REPL keybindings
+
+In the REPL, you can use standard command line (Emacs) keybindings:
+
+#+BEGIN_example
+C-c		cancel
+C-d		quit
+C-l		clear console
+
+C-u		kill from the start of line
+C-k		kill until the end of line
+
+C-a		go to start of line
+C-e		go to end of line
+
+C-f		move forward one character
+C-b		move backward one character
+
+M-f		move forward one word
+M-b		move backward one word
+
+C-d		delete forward one character
+C-h		delete backward one character
+
+M-d		delete forward one word
+M-Backspace	delete backward one word
+
+C-p		previous command
+C-n		next command
+
+C-r		backward search
+C-s		forward search
+#+END_example
 
 * Comments & questions
