@@ -4,26 +4,16 @@
 #+slug: 09_jl_hpc
 #+weight: 9
 
-* Logging to the cluster
 * Jupyter vs SSH
 
-Open a terminal emulator.
 ** Limitations of Jupyter
 
-/Windows users, launch [[https://mobaxterm.mobatek.net/][MobaXTerm]]./ \\
-/MacOS users, launch Terminal./ \\
-/Linux users, launch xterm or the terminal emulator of your choice./
 Jupyter is a fantastic tool. It has a major downside however: when you launch a Jupyter session, you are running a job on a compute node. If you want to play for 8 hours in Jupyter, you are requesting an 8 hour job. Now, most of the time you spend on Jupyter is spent typing, running bits and pieces of code, or doing nothing at all. If you ask for GPUs, many CPUs, and lots of RAM, all of it will remain idle most of the time. This is a suboptimal use of resources.
 
-#+BEGIN_src sh
-$ ssh userxxx@cassiopeia.c3.ca
 In addition, if you ask for lots of resources for a long time, you will have to wait for a while before they get allocated to you.
 
-# enter password
-#+END_src
 You will also go through your allocations quickly.
 
-You are now in our training cluster.
 Lastly, your notebook is running on a single node. It is thus not suitable to run distributed memory parallel tasks.
 
 * Loading the Julia module
@@ -33,6 +23,12 @@ This is done with the [[https://github.com/TACC/Lmod][Lmod]] tool through the [[
 A pretty good strategy is to develop and test your code with small samples, few iterations, etc. in an interactive job (from an SSH session in the cluster with ~salloc~), on your own computer (if appropriate), or in Jupyter, *then*, launch an ~sbatch~ job from an SSH session in the cluster to run the full code. This ensures that heavy duty resources such as GPU(s) are only allocated to you when you are actually needing and using them.
 
 This is exactly what we are doing during this workshop.
+
+* Accessing Julia in an SSH session
+
+** Log in the training cluster
+
+First, [[https://westgrid-julia.netlify.app/autumnschool2020/01_jl_intro/#headline-3][SSH into our training cluster UU]]. This takes you to the login node of the cluster.
 
 #+BEGIN_src sh
 # Get help on the module command
