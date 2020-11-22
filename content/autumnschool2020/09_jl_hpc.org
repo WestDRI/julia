@@ -55,26 +55,6 @@ $ module load StdEnv/2020 julia/1.5.2
 $ module list
 #+END_src
 
-* Copying files to the cluster
-
-If you need to copy files to the cluster, you can use {{<c>}}scp{{</c>}}.
-
-**** From your computer
-
-If you are in a local shell, run:
-
-#+BEGIN_src sh
-[local]$ scp /local/path/file  userxxx@cassiopeia.c3.ca:path/cluster
-#+END_src
-
-**** From the cluster
-
-If you are in a remote shell (through ssh), run:
-
-#+BEGIN_src sh
-[cluster]$ scp userxxx@cassiopeia.c3.ca:cluster/path/file  /local/path
-#+END_src
-
 * Job scripts
 
 To submit a job to Slurm (the job scheduler used by the Compute Canada clusters), you need to write an {{<b>}}sbatch{{</b>}} script:
