@@ -228,7 +228,27 @@ Julia supports fraction operations:
 1//2 + 3//4
 #+END_src
 
+* Collections of elements
 
+** Tuples
+
+Immutable, indexable, possibly heterogeneous collection of elements:
+
+#+BEGIN_src julia
+typeof((2, 4, 1.0, "test"))
+(2, 4, 1.0, "test")[2]
+#+END_src
+
+*** Named tuples
+
+Tuples can have named components:
+
+#+BEGIN_src julia
+typeof((a=2, b=4, c=1.0, d="test"))
+
+x = (a=2, b=4, c=1.0, d="test");
+x[4] == x.d
+#+END_src
 
 * Functions
 
