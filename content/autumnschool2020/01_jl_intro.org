@@ -54,7 +54,7 @@ Note that, unlike other JupyterHubs you might have used (e.g. [[https://syzygy.c
 
 ** SSH
 
-To SSH into the training cluster to launch ~sbatch~ jobs:
+To SSH into the training cluster to run computationally intensive jobs:
 
 *** Open a terminal emulator
 
