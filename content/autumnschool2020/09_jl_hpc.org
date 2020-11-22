@@ -1,6 +1,6 @@
-#+title: Julia on Compute Canada clusters
-#+description: Reading
-#+colordes: #2d5986
+#+title: HPC with Julia: a short introduction
+#+description: Hands-on
+#+colordes: #8a2000
 #+slug: 09_jl_hpc
 #+weight: 9
 
