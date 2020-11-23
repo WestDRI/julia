@@ -19,13 +19,15 @@ You will also need a number of Julia packages. To install them,
 
 
 - type ~]~
+
 #+BEGIN_export html
 (you will see your prompt change from <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>) <br>
 #+END_export
+
 - then run:
 
 #+BEGIN_src julia
-add
+add BenchmarkTools
 #+END_src
 
 * Text editor, IDE, or Jupyter
