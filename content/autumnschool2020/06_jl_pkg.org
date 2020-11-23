@@ -50,7 +50,8 @@ To add functionality to Julia, you can install external packages from an ever-gr
 
 ** How to find external packages
 
-All registered packages are on GitHub and can easily be searched [[https://pkg.julialang.org/docs/][here]] by name or tag.\\
+All registered packages are on GitHub and can easily be searched in [[https://juliahub.com/ui/Home][JuliaHub]] or [[https://juliaobserver.com/][Julia Observer]].
+
 GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
 
 These packages get installed in your personal library (in linux, it is in {{<b>}}~/.julia{{</b>}}).
