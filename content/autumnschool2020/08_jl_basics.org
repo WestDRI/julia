@@ -177,6 +177,8 @@ typeof('a')
 
 println("This is a string")
 println('Ouch')
+
+> ERROR: syntax: character literal contains multiple characters
 #+END_src
 
 * Operators
