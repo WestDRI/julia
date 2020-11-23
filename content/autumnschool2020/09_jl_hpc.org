@@ -12,9 +12,7 @@ Jupyter is a fantastic tool. It has a major downside however: when you launch a 
 
 In addition, if you ask for lots of resources for a long time, you will have to wait for a while before they get allocated to you.
 
-You will also go through your allocations quickly.
-
-Lastly, your notebook is running on a single node. It is thus not suitable to run distributed memory parallel tasks.
+Lastly, you will go through your allocations quickly.
 
 ** A good approach
 
