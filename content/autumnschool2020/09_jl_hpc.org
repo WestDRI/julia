@@ -155,4 +155,67 @@ Once your job has finished running, you can display efficiency measures with:
 $ seff <jobid>
 #+END_src
 
+* Parallel computing
+
+The whole point of running your Julia script on the cluster is to take advantage of its large computing power to improve the time required for it to run. [[https://docs.julialang.org/en/v1/manual/performance-tips/][There are hardware-independent techniques to optimize your Julia code]]. After that, the key to improve performance is code parallelization through shared memory, distributed memory, and the use of GPUs.
+
+** Shared memory (aka multi-threading)
+
+*** Launching Julia on multiple threads
+
+Starting with Julia 1.5, you can launch Julia on ~n~ threads with:
+
+#+BEGIN_src sh
+$ julia -t n
+#+END_src
+
+#+BEGIN_ex
+For example, to launch Julia on 4 threads, you can run:
+#+END_ex
+
+#+BEGIN_src sh
+$ julia -t 4
+#+END_src
+
+For earlier versions, you need to set the {{<b>}}JULIA_NUM_THREADS{{</b>}} environment variable:
+
+#+BEGIN_src sh
+$ export JULIA_NUM_THREADS=n
+$ julia
+#+END_src
+
+Or you can launch Julia with:
+
+#+BEGIN_src sh
+$ JULIA_NUM_THREADS=n julia
+#+END_src
+
+#+BEGIN_ex
+For example, to launch Julia on 4 threads, you can run:
+#+END_ex
+
+#+BEGIN_src sh
+$ JULIA_NUM_THREADS=4 julia
+#+END_src
+
+*** Using multiple threads
+
+Multi-threading is supported by the {{<b>}}Base.Threads{{</b>}} module.
+
+~Threads.nthreads()~ outputs the number of threads Julia is using and ~Threads.threadid()~ outputs the ID of the current thread.
+
+The ~Threads.@threads~ macro allows to run for loops on multiple threads extremely easily.
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+Threads.@threads for i = 1:10
+    println("i = $i on thread $(Threads.threadid())")
+end
+#+END_src
+
+The ~Threads.@spawn~ macro allows multi-threading outside the context of loops. This feature is currently experimental and little documented, but an example is given in [[https://julialang.org/blog/2019/07/multithreading/][this blog post]].
+
 * Comments & questions
