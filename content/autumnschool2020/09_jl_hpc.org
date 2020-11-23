@@ -53,22 +53,75 @@ $ module load StdEnv/2020 julia/1.5.2
 $ module list
 #+END_src
 
-* Job scripts
+* Running jobs on the cluster
 
-To submit a job to Slurm (the job scheduler used by the Compute Canada clusters), you need to write an {{<b>}}sbatch{{</b>}} script:
+You should never run computing tasks on the login node. You need to submit a job to Slurm (the job scheduler used by the Compute Canada clusters) to access the computing nodes of the cluster.
+
+** Interactive jobs
+
+To launch an interactive session on a compute node, use the [[https://slurm.schedmd.com/salloc.html][salloc command]].
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src sh
+$ salloc -t 10 -c 8 --mem=2G
+#+END_src
+
+This will send you on a compute node for 10 minutes. On that node, you will have access to 8 CPU and 2G of RAM. This is a place where you can launch ~julia~ and run some computations. At the end of the 10 min, or if you cancel the job with {{<b>}}Ctrl-D{{</b>}}, you will get back to the login node.
+
+Interactive jobs have the same drawback as Jupyter. To limit your resource allocations to what you really need, you want to submit jobs to Slurm with [[https://slurm.schedmd.com/sbatch.html][sbatch]].
+
+** Job scripts
+
+To submit a batch job to Slurm, first, you need a Julia script to run.
+
+*** Write a Julia script
+
+Create a directory for your project in ~~/~ and ~cd~ into it:
+
+#+BEGIN_src sh
+$ mkdir ~/julia_project
+$ cd ~/julia_project
+#+END_src
+
+Write a Julia script with the text editor of your choice:
+
+#+BEGIN_src sh
+$ nano my_julia_script.jl
+#+END_src
+
+*** Write an sbatch script
+
+Then you need to write a shell script for {{<b>}}sbatch{{</b>}}:
+
+#+BEGIN_src sh
+$ nano script.sh
+#+END_src
+
+The script may look something like this:
 
 #+BEGIN_src sh
 #!/bin/bash
 #SBATCH --job-name=<name>			# job name
 #SBATCH --time=<time>				# max walltime
-#SBATCH --cpus-per-task=<n>         # number of cores
+#SBATCH --nodes=<N>			        # number of nodes
+#SBATCH --cpus-per-task=<n>         # number of cores on each node
 #SBATCH --mem=<mem>					# max memory (default unit is megabytes)
 #SBATCH --output=<file%j.out>		# file name for the output
 #SBATCH --error=<file%j.err>		# file name for errors
 # %j gets replaced with the job number
 
-<body>
+julia my_julia_script.jl
 #+END_src
+
+#+BEGIN_note
+Notes:
+- ~--time~ accepts these formats: "min", "min:s", "h:min:s", "d-h", "d-h:min" & "d-h:min:s"
+- ~%x~ will get replaced by the script name & ~%j~ by the job number
+#+END_note
+
 
 To submit a job to the cluster:
 
@@ -83,6 +136,23 @@ And we can check its status with:
 $ sq
 #+END_src
 
-{{<b>}}PD{{</b>}} stands for pending and {{<b>}}R{{</b>}} for running.
+#+BEGIN_note
+{{<b>}}PD{{</b>}} = pending\\
+{{<b>}}R{{</b>}} = running\\
+{{<b>}}CG{{</b>}} = completing (Slurm is doing the closing processes) \\
+No information = your job has finished running
+#+END_note
+
+You can cancel it with:
+
+#+BEGIN_src sh
+$ scancel <jobid>
+#+END_src
+
+Once your job has finished running, you can display efficiency measures with:
+
+#+BEGIN_src sh
+$ seff <jobid>
+#+END_src
 
 * Comments & questions
