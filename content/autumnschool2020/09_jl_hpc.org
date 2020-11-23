@@ -1,6 +1,6 @@
 #+title: HPC with Julia: a short introduction
-#+description: Hands-on
-#+colordes: #8a2000
+#+description: Reading
+#+colordes: #2d5986
 #+slug: 09_jl_hpc
 #+weight: 9
 
