@@ -218,4 +218,164 @@ end
 
 The ~Threads.@spawn~ macro allows multi-threading outside the context of loops. This feature is currently experimental and little documented, but an example is given in [[https://julialang.org/blog/2019/07/multithreading/][this blog post]].
 
+** Distributed computing
+
+*** Launching several Julia processes
+
+Julia supports distributed computing thanks to the module {{<b>}}Distributed{{</b>}}.
+
+There are two ways to launch several Julia processes (called "workers"):
+
+**** Launch Julia on n workers
+
+Julia can be started with the ~-p~ flag followed by the number of workers by running:
+
+#+BEGIN_src sh
+$ julia -p n
+#+END_src
+
+This launches {{<b>}}n{{</b>}} workers, available for parallel computations, in addition to the process running the interactive prompt, so there are {{<b>}}n + 1{{</b>}} Julia processes in total.
+
+#+BEGIN_ex
+Example to start 4 worker processes:
+#+END_ex
+
+#+BEGIN_src sh
+$ julia -p 4
+#+END_src
+
+Launching Julia with the ~-p~ flag automatically loads the {{<b>}}Distributed{{</b>}} module.
+
+**** Start workers from within a Julia session
+
+Alternatively, workers can be started from within a Julia session. In this case, you need to load the module {{<b>}}Distributed{{</b>}} explicitly:
+
+#+BEGIN_src julia
+using Distributed
+#+END_src
+
+To launch {{<b>}}n{{</b>}} workers:
+
+#+BEGIN_src julia
+addprocs(n)
+#+END_src
+
+#+BEGIN_ex
+Example to add 4 worker processes to a running Julia session:
+#+END_ex
+
+#+BEGIN_src julia
+addprocs(4)
+#+END_src
+
+*** Managing workers
+
+In Julia, you can see how many workers are running with:
+
+#+BEGIN_src julia
+nworkers()
+#+END_src
+
+The total number of processes ({{<b>}}n + 1{{</b>}}) can be returned with:
+
+#+BEGIN_src julia
+nprocs()
+#+END_src
+
+You can list all the worker process identifiers with:
+
+#+BEGIN_src julia
+workers()
+#+END_src
+
+#+BEGIN_ex
+The process running the Julia prompt has id {{<b>}}1{{</b>}}.
+#+END_ex
+
+To kill a worker:
+
+#+BEGIN_src julia
+rmprocs(<pid>)
+#+END_src
+
+#+BEGIN_note
+where ~<pid>~ is the process identifier of the worker you want to kill (you can kill several workers by providing a list of pids).
+#+END_note
+
+*** Using workers
+
+There are a number of convenient macros:
+
+**** @everywhere
+
+*The following expression gets executed on all processes.*
+
+For instance, if your parallel code requires a module or an external package to run, you need to load that module or package with ~@everywhere~:
+
+#+BEGIN_src julia
+@everywhere using DataFrames
+#+END_src
+
+If the parallel code requires a script to run:
+
+#+BEGIN_src julia
+@everywhere include("script.jl")
+#+END_src
+
+If it requires a function that you are defining, you need to define it on all the workers:
+
+#+BEGIN_src julia
+@everywhere function <name>(<arguments>)
+    <body>
+end
+#+END_src
+
+**** @spawnat
+
+*Assigns a task to a particular worker.*
+
+The first argument indicates the process id, the second argument is the expression that should be evaluated:
+
+#+BEGIN_src julia
+@spawnat <pid> <expression>
+#+END_src
+
+~@spawnat~ returns a {{<b>}}Future{{</b>}}: the placeholder for a computation of unknown status and time. The function ~fetch~ waits for a {{<b>}}Future{{</b>}} to complete and returns the result of the computation.
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+The function ~myid~ gives the id of the current process. As I mentioned earlier, the process running the interactive Julia prompt has the pid {{<b>}}1{{</b>}}. So ~myid()~ normally returns ~1~.
+
+But we can "spawn" ~myid~ on one of the worker, for instance the first worker (so pid {{<b>}}2{{</b>}}):
+
+#+BEGIN_src julia
+@spawnat 2 myid()
+#+END_src
+
+This returns a {{<b>}}Future{{</b>}}, but if we pass it through ~fetch~, we get the result of ~myid~ ran on the worker with pid {{<b>}}2{{</b>}}:
+
+#+BEGIN_src julia
+fetch(@spawnat 2 myid())
+#+END_src
+
+If you want tasks to be assigned to any worker automatically, you can pass the symbol ~:any~ to ~@spawnat~ instead of the worker id:
+
+#+BEGIN_src julia
+@spawnat :any myid()
+#+END_src
+
+And to get the result:
+
+#+BEGIN_src julia
+fetch(@spawnat :any myid())
+#+END_src
+
+If you run this multiple times, you will see that ~myid~ is run on any of your available workers. This will however never return ~1~, /except/ when you only have one running Julia process (in that case, the process running the prompt is considered a worker).
+
+*** Data too large to fit in the memory of a single node
+
+In the case of extremely large data which cannot fit in memory on a single node, the [[https://github.com/JuliaParallel/DistributedArrays.jl][DistributedArrays]] package allows to distribute large arrays across multiple nodes.
+
 * Comments & questions
