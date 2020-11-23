@@ -57,6 +57,8 @@ $ module list
 
 ** Install Julia packages
 
+*Important note: our Julia kernel in Compute Canada JupyterHubs is under development. At this point, installing Julia packages as is explained here will render that kernel inoperational. That is fine as we do not need to run Julia in our JupyterHub anymore today and you can still access JupyterLab, your files there, etc., but you will not be able to run a Julia notebook anymore after you have done this.*
+
 {{<challenge>}}
 Install the package {{<b>}}BenchmarkTools{{</b>}}
 {{</challenge>}}
