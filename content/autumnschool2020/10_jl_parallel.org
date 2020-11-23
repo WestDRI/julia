@@ -11,4 +11,58 @@
 /Topic:/ {{<m>}}In this session, we will solve [[https://en.wikipedia.org/wiki/N-body_problem][the n-body problem]] in Julia.
 #+END_simplebox
 
+* Sequential script
+
+** sbatch script
+
+{{<b>}}seq.sh{{</b>}}
+
+#+BEGIN_src sh
+#!/bin/bash
+#SBATCH --time=5
+#SBATCH --mem=2G
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+
+echo Sequential: running non parallel script
+julia seq.jl
+#+END_src
+
+* Shared memory script
+
+** sbatch script
+
+{{<b>}}sha.sh{{</b>}}
+
+#+BEGIN_src sh
+#!/bin/bash
+#SBATCH --time=5
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+
+echo Shared memory: running parallel script on $SLURM_CPUS_PER_TASK cores
+julia -t 4 sha.jl
+#+END_src
+
+* Distributed memory script
+
+** sbatch script
+
+{{<b>}}dis.sh{{</b>}}
+
+#+BEGIN_src sh
+#!/bin/bash
+#SBATCH --time=10
+#SBATCH --nodes=2
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8G
+#SBATCH --output=%j.out
+#SBATCH --error=%j.err
+
+echo Distributed memory: running parallel script on 2 nodes and $SLURM_CPUS_PER_TASK cores per node
+julia -p 2 -t 4 dis.jl
+#+END_src
+
 * Comments & questions
