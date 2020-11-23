@@ -111,17 +111,17 @@ x = 2;          # comments can be added at the end of lines
 
 In static type systems, the type of every expression is known and checked before the program is executed. This allows for faster execution of the program, but it is more constraining.
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Examples of statically typed languages: C, C++, Java, Fortran, Haskell.
-#+END_mhexample
+#+END_note
 
 *** Dynamic type systems
 
 In dynamic type systems, the type safety of the program is checked at runtime. This makes for more fluid, but slower and languages.
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Examples of dynamically typed languages: Python, JavaScript, PHP, Ruby, Lisp.
-#+END_mhexample
+#+END_note
 
 *** Julia: dynamically typed with optional type declaration
 
@@ -155,9 +155,9 @@ floatsum(2, 4)
 
 This did not...
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Type declaration is not yet supported on global variables. So this only works in local contexts.
-#+END_mhexample
+#+END_note
 
 ** Types in Julia
 
@@ -272,9 +272,9 @@ function <name>(<arguments>)
 end
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 function hello()
@@ -288,9 +288,9 @@ end
 <name>(<arguments>) = <body>
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 hello() = println("Hello")
@@ -351,9 +351,9 @@ hello("Paul")
 hello()
 #+END_src
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Here is another example:
-#+END_mhexample
+#+END_note
 
 #+BEGIN_src python
 function addTwo(a)
@@ -434,9 +434,9 @@ And in compact form:
 <arguments> -> <body>
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 function (name)
@@ -444,9 +444,9 @@ function (name)
 end
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Compact form:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 name -> println("Hello $name")
@@ -456,9 +456,9 @@ name -> println("Hello $name")
 
 This is very useful for functional programming (when you apply a function—for instance ~map~ —to other functions to apply them in a vectorized manner which avoids repetitions).
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
@@ -469,18 +469,18 @@ map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
 The Julia pipe looks like this: ~|>~. \\
 It redirects the output of the expression on the left as the input of the expression on the right.
 
-#+BEGIN_mhexample
+#+BEGIN_note
 The following 2 expressions are thus equivalent:
-#+END_mhexample
+#+END_note
 
 #+BEGIN_src julia
 println("Hello")
 "Hello" |> println
 #+END_src
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Quick test:
-#+END_mhexample
+#+END_note
 
 #+BEGIN_src julia
 sqrt(2) == 2 |> sqrt
@@ -498,9 +498,9 @@ The following 2 expressions are equivalent:
 (<function2> ∘ <function1>)(<arguments>)
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 exp(+(-3, 1))
@@ -516,9 +516,9 @@ Try to write the same expression in another 2 different ways using the pipe.
 
 ~!~ used after a function name indicates that the function modifies its arguments.
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 a = [-2, 3, -5]
@@ -607,9 +607,9 @@ end
 
 /(If predicate evaluates to false, do nothing)./
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 function testsign(x)
@@ -625,9 +625,9 @@ testsign(-2)
 
 Predicates can be built with many operators and functions.
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Examples of predicates:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 occursin("that", "this and that")
@@ -648,9 +648,9 @@ else
 end
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Examples:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 function testsign(x)
@@ -689,9 +689,9 @@ This can be written in a terse format:
 <predicate> ? <do if true> : <do if false>
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 a === b ? println("It's true") : println("It's false")
@@ -709,9 +709,9 @@ else
 end
 #+END_src
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 function testsign(x)

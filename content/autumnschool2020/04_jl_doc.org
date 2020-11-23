@@ -18,9 +18,9 @@ To get help on an object in Julia, simply type in [[https://westgrid-julia.netli
 ?object
 #+END_syntax
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 ?sum
@@ -34,9 +34,9 @@ To print the list of functions containing a certain expression in their descript
 apropos("<expression>")
 #+END_syntax
 
-#+BEGIN_mhex
+#+BEGIN_ex
 Example:
-#+END_mhex
+#+END_ex
 
 #+BEGIN_src julia
 apropos("truncate")

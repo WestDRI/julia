@@ -69,7 +69,7 @@ pkg> status               # status of all installed packages
 pkg> update               # update all packages
 #+END_src
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Notes:
 
 - Replace ~<package>~ by the name of the package (e.g. ~Plots~)
@@ -79,7 +79,7 @@ Notes:
 #+BEGIN_src julia
 pkg> add <package1> <package2> <package3>
 #+END_src
-#+END_mhexample
+#+END_note
 
 An alternative to this convenience mode is to load the package manager (part of stdlib), called {{<b>}}Pkg{{</b>}} and use it as you would any other package:
 
@@ -95,7 +95,7 @@ Pkg.update()                # status of all installed packages
 Pkg.status()                # update all packages
 #+END_src
 
-#+BEGIN_mhexample
+#+BEGIN_note
 Notes:
 
 - The short forms ~up~ and ~st~ do not work in this context
@@ -104,7 +104,7 @@ Notes:
 #+BEGIN_src julia
 Pkg.add(["<package1>", "<package2>", "<package3>"])
 #+END_src
-#+END_mhexample
+#+END_note
 
 * Loading packages
 
