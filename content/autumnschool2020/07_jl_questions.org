@@ -9,7 +9,7 @@
 #+BEGIN_simplebox
 *Zoom session 2 — part 1*
 
-/Time:/ {{<m>}}Noon Pacific Time. \\
+/Time:/ {{<m>}}11 am Pacific Time. \\
 /Topic:/ {{<m>}}I will answer questions you may have had while going over the first few lessons.
 #+END_simplebox
 

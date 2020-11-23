@@ -7,7 +7,7 @@
 #+BEGIN_simplebox
 *Zoom session 3 — part 1*
 
-/Time:/ {{<m>}}3 pm Pacific Time. \\
+/Time:/ {{<m>}}2:30 pm Pacific Time. \\
 /Topic:/ {{<m>}}In this session, we will solve [[https://en.wikipedia.org/wiki/N-body_problem][the n-body problem]] in Julia.
 #+END_simplebox
 
