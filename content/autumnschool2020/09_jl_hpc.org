@@ -378,4 +378,8 @@ If you run this multiple times, you will see that ~myid~ is run on any of your a
 
 In the case of extremely large data which cannot fit in memory on a single node, the [[https://github.com/JuliaParallel/DistributedArrays.jl][DistributedArrays]] package allows to distribute large arrays across multiple nodes.
 
+** GPUs
+
+Julia has [[https://github.com/JuliaGPU][GPU support through a number of packages]]. We will offer workshops and webinars on running Julia on GPUs in 2021.
+
 * Comments & questions
