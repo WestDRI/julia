@@ -109,9 +109,8 @@ The script may look something like this:
 #SBATCH --nodes=<N>			        # number of nodes
 #SBATCH --cpus-per-task=<n>         # number of cores on each node
 #SBATCH --mem=<mem>					# max memory (default unit is megabytes)
-#SBATCH --output=<file%j.out>		# file name for the output
-#SBATCH --error=<file%j.err>		# file name for errors
-# %j gets replaced with the job number
+#SBATCH --output=%j.out				# file name for the output
+#SBATCH --error=%j.err				# file name for errors
 
 julia my_julia_script.jl
 #+END_src
@@ -119,7 +118,7 @@ julia my_julia_script.jl
 #+BEGIN_note
 Notes:
 - ~--time~ accepts these formats: "min", "min:s", "h:min:s", "d-h", "d-h:min" & "d-h:min:s"
-- ~%x~ will get replaced by the script name & ~%j~ by the job number
+- ~%j~ gets replaced with the job number
 #+END_note
 
 
