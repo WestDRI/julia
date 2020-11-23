@@ -4,7 +4,7 @@
 #+slug: 09_jl_hpc
 #+weight: 9
 
-* Jupyter vs SSH
+* Interactive sessions (Jupyter or salloc) vs sbatch
 
 ** Limitations of Jupyter
 
@@ -13,6 +13,8 @@ Jupyter is a fantastic tool. It has a major downside however: when you launch a 
 In addition, if you ask for lots of resources for a long time, you will have to wait for a while before they get allocated to you.
 
 Lastly, you will go through your allocations quickly.
+
+All of this applies equally for [[https://westgrid-julia.netlify.app/autumnschool2020/09_jl_hpc/#headline-8][interactive sessions launched with ~salloc~]].
 
 ** A good approach
 
@@ -95,7 +97,7 @@ $ salloc -t 10 -c 8 --mem=2G
 
 This will send you on a compute node for 10 minutes. On that node, you will have access to 8 CPU and 2G of RAM. This is a place where you can launch ~julia~ and run some computations. At the end of the 10 min, or if you cancel the job with {{<b>}}Ctrl-D{{</b>}}, you will get back to the login node.
 
-Interactive jobs have the same drawback as Jupyter. To limit your resource allocations to what you really need, you want to submit jobs to Slurm with [[https://slurm.schedmd.com/sbatch.html][sbatch]].
+As mentioned earlier, interactive jobs have the same drawback as Jupyter. To limit your resource allocations to what you really need, you want to submit jobs to Slurm with [[https://slurm.schedmd.com/sbatch.html][sbatch]].
 
 ** Job scripts
 
