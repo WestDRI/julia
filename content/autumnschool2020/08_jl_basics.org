@@ -234,7 +234,7 @@ Julia supports fraction operations:
 
 ** Tuples
 
-Immutable, indexable, possibly heterogeneous collection of elements:
+Immutable, indexable, possibly heterogeneous collections of elements:
 
 #+BEGIN_src julia
 typeof((2, 4, 1.0, "test"))
@@ -262,9 +262,11 @@ Dict("a"=>1, "b"=>2, "c"=>3)
 
 ** Arrays
 
+Arrays are mutable, indexable, homogeneous collections of elements.
+
 *** One dimension
 
-Unidimensional arrays of one element (pay attention to the type):
+Unidimensional arrays of one element:
 
 #+BEGIN_src julia
 [3]
@@ -278,7 +280,7 @@ Unidimensional arrays of multiple elements:
 [3, 4]
 #+END_src
 
-Arrays are homogeneous collections, but look how Julia's abstract types allow for this:
+Arrays are homogeneous collections, but look how Julia's abstract types make the following array possible:
 
 #+BEGIN_src julia
 [3, "hello"]
@@ -331,6 +333,8 @@ Compare the outputs of the following:
 
 *** Initializing arrays
 
+Here are a few of the functions initializing arrays:
+
 #+BEGIN_src julia
 rand(2, 3, 4)
 rand(Int64, 2, 3, 4)
@@ -341,6 +345,8 @@ fill("test", (2, 2))
 #+END_src
 
 *** Comprehensions
+
+Julia has comprehensions similar to Python:
 
 #+BEGIN_src julia
 [ 3i + j for i=1:10, j=3 ]
@@ -627,7 +633,7 @@ exp(+(-3, 1))
 #+END_src
 
 {{<exsimplec>}}
-Try to write the same expression in another 2 different ways using the pipe.
+Try to write the same expression in another 2 different ways.
 {{</exsimplec>}}
 
 ** function!()
