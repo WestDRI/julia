@@ -327,7 +327,7 @@ Compare the outputs of the following:
 [1:2 3:4]
 #+END_src
 
-*** Constructors
+*** Initializing arrays
 
 #+BEGIN_src julia
 rand(2, 3, 4)
