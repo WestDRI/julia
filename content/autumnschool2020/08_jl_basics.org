@@ -344,6 +344,36 @@ fill("test", (2, 2))
 [ 3i + j for i=1:10, j=3 ]
 #+END_src
 
+*** Indexing
+
+As in other mathematically oriented languages such as R, Julia starts indexing at ~1~. \\
+Indexing is done with square brackets:
+
+#+BEGIN_src julia
+a = [1 2; 3 4]
+a[1, 1]
+a[1, :]
+a[:, 1]
+#+END_src
+
+{{<exsimplec>}}
+Index the element on the 3<sup>rd</sup> row and 2<sup>nd</sup> column of {{<c>}}b{{</c>}}:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+b = ["wrong" "wrong" "wrong"; "wrong" "wrong" "wrong"; "wrong" "you got it" "wrong"]
+#+END_src
+
+As in Python, by default, arrays are passed by sharing:
+
+#+BEGIN_src julia
+a = [1, 2, 3];
+a[1] = 0;
+a
+#+END_src
+
+This prevents the unwanted copying of arrays.
+
 * Functions
 
 ** Function definition
