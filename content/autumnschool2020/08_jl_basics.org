@@ -600,7 +600,7 @@ Try to write the same expression in another 2 different ways using the pipe.
 
 ** function!()
 
-~!~ used after a function name indicates that the function modifies its arguments.
+~!~ used after a function name indicates that the function modifies its argument(s).
 
 #+BEGIN_ex
 Example:
@@ -623,11 +623,13 @@ To apply a function to each element of a collection rather than to the collectio
 #+BEGIN_src julia
 a = [-3, 2, -5]
 abs(a)
+
+> ERROR: MethodError: no method matching abs(::Array{Int64,1})
 #+END_src
 
 This doesn't work because the function ~abs~ only applies to single elements.
 
-By broadcasting ~abs~, you apply it to each element of ~a~.
+By broadcasting ~abs~, you apply it to each element of ~a~:
 
 #+BEGIN_src julia
 broadcast(abs, a)
