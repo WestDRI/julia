@@ -53,29 +53,29 @@ $ module load StdEnv/2020 julia/1.5.2
 $ module list
 #+END_src
 
-** Install Julia packages
+# ** Install Julia packages
 
-{{<challenge>}}
-Install the package {{<b>}}BenchmarkTools{{</b>}}
-{{</challenge>}}
+# {{<challenge>}}
+# Install the package {{<b>}}BenchmarkTools{{</b>}}
+# {{</challenge>}}
 
-- After loading the proper modules, launch Julia:
+# - After loading the proper modules, launch Julia:
 
-#+BEGIN_src sh
-$ julia
-#+END_src
+# #+BEGIN_src sh
+# $ julia
+# #+END_src
 
-- Within Julia, type ~]~
+# - Within Julia, type ~]~
 
-#+BEGIN_export html
-(you will see your prompt change from <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>) <br>
-#+END_export
+# #+BEGIN_export html
+# (you will see your prompt change from <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>) <br>
+# #+END_export
 
-- then run:
+# - then run:
 
-#+BEGIN_src julia
-add BenchmarkTools
-#+END_src
+# #+BEGIN_src julia
+# add BenchmarkTools
+# #+END_src
 
 * Running jobs on the cluster
 
