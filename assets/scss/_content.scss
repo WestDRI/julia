@@ -129,7 +129,7 @@ img[alt=radius] {
       .schoolname {
 	font-size: 1.7rem;
 	display: inline-block;
-	width: 30.0rem;
+	width: 28.0rem;
 	text-align: right;
 	@media only screen and (max-width : 768px) {
 	  display: block;
@@ -557,5 +557,12 @@ img[alt=radius] {
 }
 
 .footnote-definition {
-  font-size: 90%;
+  font-size: 83%;
+  margin: 4rem 0 0 0.5rem;
+  line-height: 2.5rem;
+  ol {
+    p {
+      margin: 1.8rem 0 0 0.2rem;
+    }
+  }
 }
