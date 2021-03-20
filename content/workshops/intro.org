@@ -1,5 +1,6 @@
 #+title: Introduction to high performance research computing with Julia
 #+slug: intro
+#+weight: 20
 
 *** /Abstract/
 

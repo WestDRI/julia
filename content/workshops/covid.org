@@ -1,5 +1,6 @@
 #+title: Covid-19 in Julia
 #+slug: covid
+#+weight: 19
 
 {{<img src="/img/workinprogress.svg" title="Patience... patience..." width="200">}}
 {{</img>}}
