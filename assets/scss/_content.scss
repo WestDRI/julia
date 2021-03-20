@@ -136,36 +136,6 @@ img[alt=radius] {
 	  text-align: right;
 	}
       }
-      .wstopic {
-	font-family: $heading-font-family;
-	font-size: 1.6rem;
-	color: #669999;
-	font-weight: 700;
-	display: inline-block;
-	margin-left: 3.0rem;
-	margin-right: 3.0rem;
-	width: 0rem;
-	text-align: right;
-	@media only screen and (max-width : 768px) {
-	  display: block;
-	  text-align: right;
-	}
-      }
-      .wbtopic {
-	font-family: $heading-font-family;
-	font-size: 1.6rem;
-	color: #669999;
-	font-weight: 700;
-	display: inline-block;
-	margin-left: 3.0rem;
-	// margin-right: 0rem;
-	width: 0rem;
-	// text-align: right;
-	@media only screen and (max-width : 768px) {
-	  display: block;
-	  // text-align: right;
-	}
-      }
       .wstitle {
 	font-size: 1.9rem;
 	margin-left: 11.0rem;
