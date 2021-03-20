@@ -1,4 +1,4 @@
 <li>
   <span class="schoolname">{{ .Title }}</span>
-  <a class="coursetitle" href="{{ .Params.courselink }}">{{ .Params.coursetitle }}</a>
+  <a class="coursetitle" href="{{ .Params.courselink }}">{{ .Params.coursetitle }}{{ with .Page.Params.Subtitle }}:&ensp;{{ end }}<span>{{ .Params.subtitle }}</span></a>
 </li>
