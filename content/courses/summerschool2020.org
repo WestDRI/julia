@@ -1,0 +1,4 @@
+#+title: WestGrid Summer School 2020
+#+coursetitle: Introduction to programming in Julia
+#+courselink: https://wgschool.netlify.app/julia/
+#+weight: 10

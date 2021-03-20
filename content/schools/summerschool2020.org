@@ -1,4 +1,0 @@
-#+title: Online summer school 2020
-#+schooltitle: Introduction to programming in Julia
-#+schoollink: https://wgschool.netlify.app/julia/
-#+weight: 10

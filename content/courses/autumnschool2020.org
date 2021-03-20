@@ -1,0 +1,4 @@
+#+title: WestGrid Autumn School 2020
+#+coursetitle: Scientific programming in Julia
+#+courselink: https://autumnschool.netlify.app/julia/
+#+weight: 9
