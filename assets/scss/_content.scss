@@ -121,8 +121,9 @@ img[alt=radius] {
 	width: 15.0rem;
 	margin-left: 4.0rem;
 	@media only screen and (max-width : 768px) {
+	  font-size: 1.5rem;
 	  display: block;
-	  text-align: left;
+	  margin-left: 0;
 	}
       }
       .schoolname {
@@ -131,7 +132,9 @@ img[alt=radius] {
 	width: 28.0rem;
 	margin-left: 4.0rem;
 	@media only screen and (max-width : 768px) {
+	  font-size: 1.45rem;
 	  display: block;
+	  margin-left: 0;
 	}
       }
       .wstitle {
@@ -141,6 +144,12 @@ img[alt=radius] {
 	color: $fg-color;
 	font-family: $heading-font-family;
 	font-weight: 700;
+	@media only screen and (max-width : 768px) {
+	  font-size: 1.6rem;
+	  display: block;
+	  line-height: 2rem;
+	  margin-left: 0;
+	}
 	&:hover,
 	&:focus {
 	  color: $link-color
@@ -153,6 +162,12 @@ img[alt=radius] {
 	color: $fg-color;
 	font-family: $heading-font-family;
 	font-weight: 700;
+	@media only screen and (max-width : 768px) {
+	  font-size: 1.6rem;
+	  display: block;
+	  line-height: 2rem;
+	  margin-left: 0;
+	}
 	&:hover,
 	&:focus {
 	  color: $link-color
@@ -165,6 +180,12 @@ img[alt=radius] {
 	color: $fg-color;
 	font-family: $heading-font-family;
 	font-weight: 700;
+	@media only screen and (max-width : 768px) {
+	  font-size: 1.6rem;
+	  display: block;
+	  line-height: 2rem;
+	  margin-left: 0;
+	}
 	&:hover,
 	&:focus {
 	  color: $link-color
