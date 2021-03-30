@@ -1,0 +1,114 @@
+#+title: Packages
+#+description: Reading
+#+colordes: #2d5986
+#+slug: 06_jl_pkg
+#+weight: 6
+
+* Standard library
+
+A set of packages are installed when you install Julia. They are stored in the *standard library* or *stdlib* (in Linux, they are in {{<b>}}/usr/share/julia/stdlib/vx.x{{</b>}}, where {{<b>}}vx.x{{</b>}} is the installed Julia version).
+
+Here is the list:
+
+#+BEGIN_example
+Base64
+CRC32c
+Dates
+DelimitedFiles
+Distributed
+FileWatching
+Future
+InteractiveUtils
+Libdl
+LibGit2
+LinearAlgebra
+Logging
+Markdown
+Mmap
+Pkg
+Printf
+Profile
+Random
+REPL
+Serialization
+SHA
+SharedArrays
+Sockets
+SparseArrays
+Statistics
+SuiteSparse
+Test
+Unicode
+UUIDs
+#+END_example
+
+They are not automatically loaded at the start of a session, so before you can use them, you need to [[http://westgrid-julia.netlify.app/autumnschool2020/06_jl_pkg/#headline-5][load them]] as you would do for external packages.
+
+* External packages
+
+To add functionality to Julia, you can install external packages from an ever-growing collection developed by the Julia community.
+
+** How to find external packages
+
+All registered packages are on GitHub and can easily be searched in [[https://juliahub.com/ui/Home][JuliaHub]] or [[https://juliaobserver.com/][Julia Observer]].
+
+GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
+
+These packages get installed in your personal library (in linux, it is in {{<b>}}~/.julia{{</b>}}).
+
+** How to manage external packages
+
+In [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl/#headline-1][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
+
+#+BEGIN_src julia
+pkg> add <package>        # install <package>
+pkg> rm <package>         # uninstall <package>
+pkg> status <package>     # status of <package>
+pkg> update <package>     # update <package>
+
+pkg> status               # status of all installed packages
+pkg> update               # update all packages
+#+END_src
+
+#+BEGIN_note
+Notes:
+
+- Replace ~<package>~ by the name of the package (e.g. ~Plots~)
+- You can use ~up~ instead of ~update~ and ~st~ instead of ~status~
+- To install, uninstall, or update several packages at once, list them with a space:
+
+#+BEGIN_src julia
+pkg> add <package1> <package2> <package3>
+#+END_src
+#+END_note
+
+An alternative to this convenience mode is to load the package manager (part of stdlib), called {{<b>}}Pkg{{</b>}} and use it as you would any other package:
+
+#+BEGIN_src julia
+using Pkg
+
+Pkg.add("<package>")        # install <package>
+Pkg.rm("<package>")         # uninstall <package>
+Pkg.status("<package>")     # status of <package>
+Pkg.update("<package>")     # update <package>
+
+Pkg.update()                # status of all installed packages
+Pkg.status()                # update all packages
+#+END_src
+
+#+BEGIN_note
+Notes:
+
+- The short forms ~up~ and ~st~ do not work in this context
+- To install, uninstall, or update several packages at once, you need to create an array:
+
+#+BEGIN_src julia
+Pkg.add(["<package1>", "<package2>", "<package3>"])
+#+END_src
+#+END_note
+
+* Loading packages
+
+You can load a package with ~using <package>~ (e.g. ~using Plots~).
+
+* Comments & questions

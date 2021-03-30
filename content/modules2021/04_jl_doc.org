@@ -1,0 +1,87 @@
+#+title: Documentation
+#+description: Reading
+#+colordes: #2d5986
+#+slug: 04_jl_doc
+#+weight: 4
+
+Here are some useful resources.
+
+* Documentation
+
+** From within Julia
+
+*** Help
+
+To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
+
+#+BEGIN_syntax
+?object
+#+END_syntax
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+?sum
+#+END_src
+
+*** Find function
+
+To print the list of functions containing a certain expression in their description, you can use:
+
+#+BEGIN_syntax
+apropos("<expression>")
+#+END_syntax
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+apropos("truncate")
+#+END_src
+
+*** Version
+
+If you need to find your Julia version, you can use either of:
+
+#+BEGIN_src julia
+VERSION          # outputs Julia version only
+versioninfo()    # outputs more info, including OS info
+#+END_src
+
+** Online
+
+[[https://julialang.org/][Julia website]] \\
+[[https://docs.julialang.org/en/v1/][Julia documentation]] \\
+[[https://julialang.org/learning/][Online training material]] \\
+[[https://www.youtube.com/user/JuliaLanguage][Julia YouTube channel]] \\
+[[https://en.wikibooks.org/wiki/Introducing_Julia][Julia Wikibook]] \\
+[[https://www.juliabloggers.com/][Blog aggregator for Julia]]
+
+* Getting help
+
+[[https://discourse.julialang.org/][Julia Discourse forum]] \\
+[[https://stackoverflow.com/tags/julia][[julia] tag on Stack Overflow]] \\
+[[https://app.slack.com/client/T68168MUP/C67910KEH][Julia Slack team]]
+(you need to [[slackinvite.julialang.org][agree to the community code of conduct first]]) \\
+[[https://twitter.com/search?q=%23julialang][#julialang hashtag on Twitter]] \\
+[[https://www.reddit.com/r/Julia/][Julia subreddit]] \\
+[[https://gitter.im/JuliaLang/julia][Julia Gitter channel]] \\
+[[https://webchat.freenode.net/#julia][#julia IRC channel on Freenode]]
+
+* IDE
+
+Several text editors have plugins, extensions, or packages turning them into IDEs for Julia. You can find the list on the [[https://julialang.org/][Julia website]]. Here are a few:
+
+[[https://www.julia-vscode.org/][Julia for VSCode]] \\
+[[https://junolab.org/][Juno]] (built on [[https://atom.io/][Atom]]) \\
+[[https://www.gnu.org/software/emacs/][Emacs]] with the [[https://github.com/JuliaEditorSupport/julia-emacs][julia-emac]]s and [[https://github.com/tpapp/julia-repl][julia-repl]] packages \\
+[[https://www.vim.org/][Vim]] with the [[https://github.com/JuliaEditorSupport/julia-vim][julia-vim]] package \\
+[[https://www.sublimetext.com/][Sublime Text]] with the [[https://github.com/JuliaEditorSupport/Julia-sublime][Julia-sublime]] package \\
+[[https://www.gnu.org/software/emacs/][Emacs]] with the [[https://github.com/emacs-ess/ESS][ESS]] package \\
+[[https://jupyter.org/][Project Jupyter]] with the [[https://github.com/JuliaLang/IJulia.jl][Julia kernel]] \\
+[[https://jupyter.org/][Project Jupyter]] with the [[https://github.com/JuliaLang/IJulia.jl][Julia kernel]] in [[https://www.gnu.org/software/emacs/][Emacs]] with the [[http://millejoh.github.io/emacs-ipython-notebook/][EIN]] package
+
+* Comments & questions

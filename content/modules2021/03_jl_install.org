@@ -1,0 +1,49 @@
+#+title: Local installation
+#+description: (Optional)
+#+colordes: #999999
+#+slug: 03_jl_install
+#+weight: 3
+
+{{<br>}}
+/Installing Julia on your machine is entirely optional as you can run everything on the training cluster. If you would like to practice on your machine in addition to (or instead of) the training cluster, this lesson will guide you through the setup of your machine. Please note that we won't be debugging local installations./
+
+* Julia
+
+Download the current [[https://julialang.org/downloads/][Julia stable release]] and follow the [[https://julialang.org/downloads/platform/][installation instructions]] corresponding to your operating system.
+
+* Packages
+
+You will also need a number of Julia packages. To install them,
+
+- open the Julia REPL (double-click on the Julia shortcut if you are on Windows/MacOS or type ~julia~ in the terminal if you are on Linux)
+
+
+- type ~]~
+
+#+BEGIN_export html
+(you will see your prompt change from <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>) <br>
+#+END_export
+
+- then run:
+
+#+BEGIN_src julia
+add BenchmarkTools
+#+END_src
+
+* Text editor, IDE, or Jupyter
+
+** Text editor
+
+To write scripts, you will need a capable text editor.\\
+Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.
+
+
+** IDE
+
+Additionally (and optionally), several text editors have a plug-in or extension turning it into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
+
+** Jupyter
+
+You can also run Julia in [[https://jupyter.org/][Jupyter]]. See [[https://github.com/JuliaLang/IJulia.jl][here]] to install the Julia kernel for Jupyter.
+
+* Comments & questions
