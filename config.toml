@@ -37,6 +37,7 @@ canonifyurls = true
   hidecopyright = false
   summerschool2020url = "https://wgschool.netlify.app/julia/"
   autumnschool2020url = "https://autumnschool.netlify.app/julia/"
+  modules2021url = "https://wgtm21.netlify.app/programming_julia/"
   since = 2020
   rtl = false
   math = true
