@@ -9,7 +9,7 @@
 * Zoom session
 
 #+BEGIN_def
-/Time:/ {{<m>}} 11 am Pacific Time. \\
+/Time:/ {{<m>}} 10:30 am Pacific Time. \\
 /Access:/ {{<s>}}{{<s>}} You should have received the meeting id and password by email.
 #+END_def
 
@@ -19,7 +19,7 @@
 Once in the presentation, navigate the slides with the left and right arrows and refresh any page to show the link that will take you back here./
 
 #+BEGIN_export html
-<a href="https://westgrid-slides.netlify.app/jl_var_type_con/#/"><p align="center"><img src="/img/var_type_con.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
+<a href="https://westgrid-slides.netlify.app/jl_var_type_cons/#/"><p align="center"><img src="/img/var_type_con_slides.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
 #+END_export
 
 * Variables
