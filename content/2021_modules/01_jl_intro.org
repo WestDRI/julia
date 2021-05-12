@@ -1,80 +1,41 @@
-#+title: Introduction to the course & cluster access
+#+title: Introduction to the course & access to JupyterHub
 #+description: Zoom
 #+colordes: #e86e0a
 #+slug: 01_jl_intro
 #+weight: 1
 
-#+BEGIN_simplebox
-*Zoom session 1*
+#+OPTIONS: toc:nil
 
-/Access:/ {{<n>}}{{<s>}}You should have received the meeting id and password by email.
+* Zoom session 1
 
-/Time:/ {{<n>}}{{<m>}}9 am Pacific Time.
+#+BEGIN_def
+/Time:/ {{<m>}} 9 am Pacific Time. \\
+/Access:/ {{<s>}}{{<s>}} You should have received the meeting id and password by email.
+#+END_def
 
-/Topics:/
-{{<n>}}{{<n>}}Presentation of the course. \\
-{{<n>}}{{<s>}}{{<m>}}{{<m>}}{{<m>}}Distribution of usernames and password. \\
-{{<n>}}{{<s>}}{{<m>}}{{<m>}}{{<m>}}Access to the JupyterHub for this course. \\
-{{<n>}}{{<s>}}{{<m>}}{{<m>}}{{<m>}}Access to the training cluster for this course.
-#+END_simplebox
-{{<br>}}
+* JupyterHub access
 
-* Training cluster access
+For this course, we will use a temporary JupyterHub. Here is how to log in:
 
-For this course, we will use our training cluster UU (readers of Terry Pratchett may smile).
+- Go to [[https://uu.c3.ca][https://uu.c3.ca]].
+- Sign in with the username & password you just got.
+- Set the server options according to the image below:
 
-For interactive jobs requiring little computing power, we will use a JupyterHub running on UU and using few resources. We could run such jobs with ~salloc~ from an SSH session, but JupyterLab creates a friendly interface. \\
-This is a good place to develop and try code, explore data, etc.
+{{<imgm src="/img/jh_widget_nw.png" margin="4rem 0 0 0" title="" width="%" line-height="0rem">}}
+{{</imgm>}}
 
-When we need lots of computing power however—for instance while training models—we will SSH to the training cluster and run ~sbatch~ jobs. \\
-Training models from Jupyter would be a poor use of computing resources: while large amounts of memory, many CPUs and a GPU are useful to train models, having them allocated for an entire Jupyter session would have them sit idle for most of the time. This is something to think about when you use the real Compute Canada clusters!
+#+BEGIN_note
+{{<s>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}} *These are the only values that you should edit:* \\
+{{<s>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}} Change the time to *8.0* \\
+{{<s>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}} Change the memory to *2000* \\
+{{<s>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}}{{<m>}} Make sure the interface is set to *JupyterLab*
+#+END_note
+{{<br size="5">}}
 
-** JupyterLab
-
-To launch JupyterLab on UU:
-
-1. Go to [[https://uu.c3.ca][https://uu.c3.ca]]
-2. Sign in with your username and password
-3. Set the server options (see image below): \\
-   {{<n>}} /Please leave the following untouched:/ \\
-   {{<n>}}{{<m>}}Reservation: "None" \\
-   {{<n>}}{{<m>}}Account: "def-sponsor00" \\
-   {{<n>}}{{<m>}}Number of cores: "1" \\
-   {{<n>}}{{<m>}}GPU configuration: "None" \\
-   {{<n>}} /These are the only values you should edit:/ \\
-   {{<n>}}{{<m>}}Change the time to *8.0* \\
-   {{<n>}}{{<m>}}Change the memory to *2000* \\
-   {{<n>}}{{<m>}}Make sure the interface is set to *JupyterLab*
-4. Press start
-
-{{<img src="/img/jh_widget_nw.png" margin="rem" title="" width="%" line-height="0rem">}}
-{{</img>}}
-
-Note that, unlike other JupyterHubs you might have used (e.g. [[https://syzygy.ca/][syzygy.ca]]), this JupyterHub is not permanent, so you can only use it for this course.
-
-** SSH
-
-To SSH into the training cluster to run computationally intensive jobs:
-
-*** Open a terminal emulator
-
-/Windows:/ {{<m>}}{{<s>}}[[https://mobaxterm.mobatek.net/][MobaXTerm]] (install the free version)\\
-/MacOS:/ {{<m>}}{{<m>}}{{<s>}}Terminal \\
-/Linux/WSL:/ {{<n>}}{{<s>}}Your usual terminal
-
-*** SSH into the cluster
-
-- Linux, WSL, and MacOS, type:
-
-#+BEGIN_src sh
-$ ssh userxxx@uu.c3.ca
-# enter password (it is blind typing, so you won't see it as you type)
-#+END_src
-
-- Window users:
-
-[[https://mobaxterm.mobatek.net/demo.html][This demo]] shows you how to use SSH with MobaXTerm. \\
-Only the first 24% of the video are relevant for us. \\
-For "Remote host" enter: *uu.c3.ca*.
+- Press start.
+   
+#+BEGIN_note
+Note that, unlike other JupyterHubs you might have used (e.g. [[https://syzygy.ca/][syzygy.ca]]), this JupyterHub is not permanent and can only be used for this course.
+#+END_note
 
 * Comments & questions
