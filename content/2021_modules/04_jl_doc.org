@@ -12,7 +12,7 @@ Here are some useful resources.
 
 *** Help
 
-To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
+To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/2021_modules/05_jl_repl][the julia REPL]]:
 
 #+BEGIN_src julia
 ?<object>

@@ -42,7 +42,7 @@ Unicode
 UUIDs
 #+END_example
 
-They are not automatically loaded at the start of a session, so before you can use them, you need to [[http://westgrid-julia.netlify.app/autumnschool2020/06_jl_pkg/#headline-5][load them]] as you would do for external packages.
+They are not automatically loaded at the start of a session, so before you can use them, you need to [[http://westgrid-julia.netlify.app/2021_modules/06_jl_pkg/#headline-5][load them]] as you would do for external packages.
 
 * External packages
 
@@ -58,7 +58,7 @@ These packages get installed in your personal library (in linux, it is in {{<b>}
 
 ** How to manage external packages
 
-In [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl/#headline-1][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
+In [[https://westgrid-julia.netlify.app/2021_modules/05_jl_repl/#headline-1][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
 
 #+BEGIN_note
 #+BEGIN_export html
