@@ -60,14 +60,20 @@ These packages get installed in your personal library (in linux, it is in {{<b>}
 
 In [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl/#headline-1][package mode]] (accessed in the Julia REPL by pressing {{<b>}}]{{</b>}}), you can manage your personal library easily with the following commands:
 
-#+BEGIN_src julia
-pkg> add <package>        # install <package>
-pkg> rm <package>         # uninstall <package>
-pkg> status <package>     # status of <package>
-pkg> update <package>     # update <package>
+#+BEGIN_note
+#+BEGIN_export html
+Make sure that you are in package mode first: the usual <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> prompt should have changed to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>.
+#+END_export
+#+END_note
 
-pkg> status               # status of all installed packages
-pkg> update               # update all packages
+#+BEGIN_src julia
+add <package>        # install <package>
+rm <package>         # uninstall <package>
+status <package>     # status of <package>
+update <package>     # update <package>
+
+status               # status of all installed packages
+update               # update all packages
 #+END_src
 
 #+BEGIN_note
@@ -78,7 +84,7 @@ Notes:
 - To install, uninstall, or update several packages at once, list them with a space:
 
 #+BEGIN_src julia
-pkg> add <package1> <package2> <package3>
+add <package1> <package2> <package3>
 #+END_src
 #+END_note
 
