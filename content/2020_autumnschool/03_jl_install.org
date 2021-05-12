@@ -40,7 +40,7 @@ Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.
 
 ** IDE
 
-Additionally (and optionally), several text editors have a plug-in or extension turning it into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
+Additionally (and optionally), several text editors have a plug-in or extension turning them into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
 
 ** Jupyter
 
