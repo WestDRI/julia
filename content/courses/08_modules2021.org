@@ -1,4 +1,4 @@
 #+title: WestGrid Training Modules 2021
-#+coursetitle: Scientific programming in Julia
+#+coursetitle: Basics of the Julia language
 #+courselink: https://wgtm21.netlify.app/programming_julia/
 #+weight: 8
