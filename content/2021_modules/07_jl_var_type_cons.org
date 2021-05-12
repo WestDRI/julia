@@ -1,14 +1,26 @@
-#+title: Julia basics
+#+title: Variables, types, and constructors
 #+description: Zoom
 #+colordes: #e86e0a
-#+slug: 08_jl_basics
-#+weight: 8
+#+slug: 07_jl_var_type_cons
+#+weight: 7
 
-#+BEGIN_simplebox
-*Zoom session 2 — part 2*
+#+OPTIONS: toc:nil
 
-/Topic:/ {{<m>}}In this lesson, we will cover the basics of Julia.
-#+END_simplebox
+* Zoom session
+
+#+BEGIN_def
+/Time:/ {{<m>}} 11 am Pacific Time. \\
+/Access:/ {{<s>}}{{<s>}} You should have received the meeting id and password by email.
+#+END_def
+
+* Slides
+
+/Click below to open the presentation.\\
+Once in the presentation, navigate the slides with the left and right arrows and refresh any page to show the link that will take you back here./
+
+#+BEGIN_export html
+<a href="https://westgrid-slides.netlify.app/jl_var_type_con/#/"><p align="center"><img src="/img/jl_var_type_con.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
+#+END_export
 
 * Variables
 
@@ -82,9 +94,9 @@ typeof(ans)
 
 #+BEGIN_src julia
 \omega		 # press TAB
-\sum  		 # press TAB
+\sum             # press TAB
 \sqrt	     # press TAB
-\in  	     # press TAB
+\in          # press TAB
 \:phone :    # no space before colon (I added it to prevent parsing), press TAB
 #+END_src
 
