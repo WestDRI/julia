@@ -14,9 +14,9 @@ Here are some useful resources.
 
 To get help on an object in Julia, simply type in [[https://westgrid-julia.netlify.app/autumnschool2020/05_jl_repl][the julia REPL]]:
 
-#+BEGIN_syntax
-?object
-#+END_syntax
+#+BEGIN_src julia
+?<object>
+#+END_src
 
 #+BEGIN_ex
 Example:
@@ -30,9 +30,9 @@ Example:
 
 To print the list of functions containing a certain expression in their description, you can use:
 
-#+BEGIN_syntax
+#+BEGIN_src julia
 apropos("<expression>")
-#+END_syntax
+#+END_src
 
 #+BEGIN_ex
 Example:
