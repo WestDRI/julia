@@ -30,7 +30,7 @@ You will also need a number of Julia packages. To install them,
 add BenchmarkTools
 #+END_src
 
-* Text editor, IDE, or Jupyter
+* Text editor, IDE, or notebooks
 
 ** Text editor
 
@@ -40,10 +40,11 @@ Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.
 
 ** IDE
 
-Additionally (and optionally), several text editors have a plug-in or extension turning it into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
+Additionally (and optionally), several text editors have a plug-in or extension turning them into an IDE for Julia. You can find a list of options at the bottom of the [[https://julialang.org/][Julia website]] (example: [[https://www.julia-vscode.org/][Julia for VSCode]]).
 
-** Jupyter
+** Notebooks
 
-You can also run Julia in [[https://jupyter.org/][Jupyter]]. See [[https://github.com/JuliaLang/IJulia.jl][here]] to install the Julia kernel for Jupyter.
+You can also run Julia in [[https://jupyter.org/][Jupyter]] thanks to the [[https://github.com/JuliaLang/IJulia.jl][Julia kernel]].\\
+Alternatively, Julia has [[https://github.com/fonsp/Pluto.jl][its own interactive notebook called Pluto]].
 
 * Comments & questions
