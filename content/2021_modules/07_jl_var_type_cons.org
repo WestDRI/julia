@@ -1,4 +1,4 @@
-#+title: Variables, types, and constructors
+#+title: Variables, types, constructors
 #+description: Zoom
 #+colordes: #e86e0a
 #+slug: 07_jl_var_type_cons
