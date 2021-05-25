@@ -4,8 +4,6 @@
 #+slug: 01_jl_intro
 #+weight: 1
 
-#+OPTIONS: toc:nil
-
 * Zoom session 1
 
 #+BEGIN_def
