@@ -82,4 +82,8 @@ Type declaration is optional. Out of convenience, you can forego the feature if 
 
 In the tradition of Lisp (again!), Julia has [[https://en.wikibooks.org/wiki/Introducing_Julia/Metaprogramming#Macros][strong metaprogramming capabilities]], in particular in the form of macros.
 
+* The official Julia pitch
+
+For more information, you can read [[https://docs.julialang.org/en/v1/][the introduction of the Julia official documentation]]. It covers the particularities, goals, and strengths of Julia.
+
 * Comments & questions
