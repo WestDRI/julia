@@ -1,0 +1,342 @@
+#+title: Functions
+#+description: Reading
+#+colordes: #2d5986
+#+slug: 10_jl_functions
+#+weight: 10
+
+* Function definition
+
+There are 2 ways to define a new function:
+
+** Long form
+
+#+BEGIN_src julia
+function <name>(<arguments>)
+    <body>
+end
+#+END_src
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+function hello()
+    println("Hello")
+end
+#+END_src
+
+** Assignment form
+
+#+BEGIN_src julia
+<name>(<arguments>) = <body>
+#+END_src
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+hello() = println("Hello")
+#+END_src
+
+The function ~hello~ defined with this compact syntax is exactly the same as the one we defined above with the longer syntax.
+
+* Calling functions
+
+You call a function by running it followed by parentheses:
+
+#+BEGIN_src julia
+hello()
+#+END_src
+
+* Arguments
+
+Our function ~hello~ does not accept any argument:
+
+#+BEGIN_src julia
+hello("Paul")
+
+> ERROR: MethodError: no method matching hello(::String)
+#+END_src
+
+To define a function which accepts arguments, we need to add them in the function definition.
+
+So maybe we could do this?
+
+#+BEGIN_src julia
+function hello(name)
+    println("Hello name")
+end
+
+hello("Paul")
+#+END_src
+
+Oops. Not quite... This function works but does not give the result we wanted.
+
+Here, we need to use [[https://en.wikipedia.org/wiki/String_interpolation][string interpolation]] with the ~$~ character:
+
+#+BEGIN_src julia
+function hello(name)
+    println("Hello $name")
+end
+
+hello("Paul")
+#+END_src
+
+We can also set default argument values: if no arguments are given, the function is evaluated with the defaults.
+
+#+BEGIN_src julia
+function hello(name = "you")
+    println("Hello $name")
+end
+
+hello("Paul")
+hello()
+#+END_src
+
+#+BEGIN_note
+Here is another example:
+#+END_note
+
+#+BEGIN_src python
+function addTwo(a)
+      a + 2
+  end
+
+addTwo(3)
+
+# This can be written in a terse format with:
+addtwo = a -> a + 2
+
+# With default argument:
+function addSomethingOrTwo(a, b = 2)
+      a + b
+  end
+
+addSomethingOrTwo(3)
+addSomethingOrTwo(3, 4)
+#+END_src
+
+* Returning the result
+
+The value of the last expression is automatically returned, so ~return~ is unnecessary unless you want to return something else.
+
+Look at these 5 functions:
+
+#+BEGIN_src julia
+function test1(x, y)
+    x + y
+end
+
+function test2(x, y)
+    return x + y
+end
+
+function test3(x, y)
+    x * y
+end
+
+function test4(x, y)
+    x * y
+    x + y
+end
+
+function test5(x, y)
+    return x * y
+    x + y
+end
+#+END_src
+
+{{<exsimplec>}}
+Now, without running the code, try to guess the results of:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+test1(1, 2)
+test2(1, 2)
+test3(1, 2)
+test4(1, 2)
+test5(1, 2)
+#+END_src
+
+Then run these expressions to see whether you got it right.
+
+* Anonymous functions
+
+Anonymous functions are functions which aren't given a name:
+
+#+BEGIN_src julia
+function (<arguments>)
+    <body>
+end
+#+END_src
+
+And in compact form:
+
+#+BEGIN_src julia
+<arguments> -> <body>
+#+END_src
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+function (name)
+    println("Hello $name")
+end
+#+END_src
+
+#+BEGIN_ex
+Compact form:
+#+END_ex
+
+#+BEGIN_src julia
+name -> println("Hello $name")
+#+END_src
+
+** When would you want to use anonymous functions?
+
+This is very useful for functional programming (when you apply a function—for instance ~map~ —to other functions to apply them in a vectorized manner which avoids repetitions).
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+map(name -> println("Hello $name"), ["Paul", "Lucie", "Sophie"]);
+#+END_src
+
+* Pipes
+
+The Julia pipe looks like this: ~|>~. \\
+It redirects the output of the expression on the left as the input of the expression on the right.
+
+#+BEGIN_note
+The following 2 expressions are thus equivalent:
+#+END_note
+
+#+BEGIN_src julia
+println("Hello")
+"Hello" |> println
+#+END_src
+
+#+BEGIN_note
+Quick test:
+#+END_note
+
+#+BEGIN_src julia
+sqrt(2) == 2 |> sqrt
+#+END_src
+
+* Function composition
+
+This is done with the composition operator ~∘~ (in the REPL, type {{<b>}}\circ{{</b>}} then press {{<b>}}&lt;tab&gt;{{</b>}}).
+
+The following 2 expressions are equivalent:
+
+#+BEGIN_src julia
+<function2>(<function1>(<arguments>))
+
+(<function2> ∘ <function1>)(<arguments>)
+#+END_src
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+exp(+(-3, 1))
+
+(exp ∘ +)(-3, 1)
+#+END_src
+
+{{<exsimplec>}}
+Try to write the same expression in another 2 different ways.
+{{</exsimplec>}}
+
+* function!()
+
+~!~ used after a function name indicates that the function modifies its argument(s).
+
+#+BEGIN_ex
+Example:
+#+END_ex
+
+#+BEGIN_src julia
+a = [-2, 3, -5]
+
+sort(a)
+a
+
+sort!(a)
+a
+#+END_src
+
+* Broadcasting
+
+To apply a function to each element of a collection rather than to the collection as a whole, Julia uses broadcasting.
+
+#+BEGIN_src julia
+a = [-3, 2, -5]
+abs(a)
+
+> ERROR: MethodError: no method matching abs(::Array{Int64,1})
+#+END_src
+
+This doesn't work because the function ~abs~ only applies to single elements.
+
+By broadcasting ~abs~, you apply it to each element of ~a~:
+
+#+BEGIN_src julia
+broadcast(abs, a)
+#+END_src
+
+The dot notation is equivalent:
+
+#+BEGIN_src julia
+abs.(a)
+#+END_src
+
+It can also be applied to the pipe, to unary and binary operators, etc.
+
+#+BEGIN_src julia
+a .|> abs
+#+END_src
+
+{{<exsimplec>}}
+Try to understand the difference between the following 2 expressions:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+abs.(a) == a .|> abs
+abs.(a) .== a .|> abs
+#+END_src
+
+* Methods
+
+Julia uses [[https://en.wikipedia.org/wiki/Multiple_dispatch][multiple dispatch]]: functions can have several methods. When that is the case, the method applied depends on the types of all the arguments passed to the function (rather than only the first argument as is common in other languages).
+
+#+BEGIN_src julia
+methods(+)
+#+END_src
+
+let's you see that ~+~ has 166 methods!
+
+Methods can be added to existing functions.
+
+{{<exsimplec>}}
+Try to understand the following example:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+abssum(x::Int64, y::Int64) = abs(x + y)
+abssum(x::Float64, y::Float64) = abs(x + y)
+
+abssum(2, 4)
+abssum(2.0, 4.0)
+abssum(2, 4.0)
+#+END_src
+
+* Comments & questions
