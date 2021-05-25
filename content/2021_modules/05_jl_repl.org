@@ -4,6 +4,12 @@
 #+slug: 05_jl_repl
 #+weight: 5
 
+If you double-click the Julia executable or if you run the ~julia~ command on the terminal, you will enter the Julia read-eval-print loop or REPL. This is the default way to run an interactive Julia session.
+
+In this course, we will use Jupyter: another way to run an interactive Julia session by running the Julia kernel inside an interactive notebook. So you won't get to play directly in the REPL. Consequently, the keybindings will be those of Jupyter, not those of the REPL given below. It is important however to be familiar with the concept of the Julia REPL as you will encounter it soon enough if you use Julia.
+
+{{<br size="5">}}
+
 {{<youtube TBSTNj8Vlfs>}}
 
 * REPL modes
@@ -70,8 +76,8 @@ C-s		forward search
 
 * Running Julia in a Jupyter notebook
 
-For this course, we will use Jupyter, so you won't get to play directly in the REPL. Consequently, the keybindings will be those of Jupyter, not those of the REPL given above. It is important however to be familiar with the concept of the Julia REPL as you will encounter it soon enough if you use Julia.
+While running Julia in a Jupyter notebook, note that the various Julia modes (help, shell, and package) can still be accessed. Since the code cells in Jupyter don't have prompts, you won't see the fancy prompt change that you would see in the REPL.
 
-Also note that the various Julia modes (help, shell, and package) can be accessed from Jupyter. Since the code cells in Jupyter don't have prompts, you won't see any change in prompt. Nevertheless, running, for instance, ~; pwd~ will run ~pwd~ in shell mode.
+Nevertheless, running, for instance, ~; pwd~ will run ~pwd~ in shell mode.
 
 * Comments & questions
