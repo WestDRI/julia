@@ -1,0 +1,7 @@
+#+title: Final questions
+#+description: Zoom
+#+colordes: #e86e0a
+#+slug: 13_jl_wrapup
+#+weight: 13
+
+#+OPTIONS: toc:nil
