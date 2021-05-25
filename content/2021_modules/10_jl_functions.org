@@ -4,6 +4,55 @@
 #+slug: 10_jl_functions
 #+weight: 10
 
+* Operators
+
+The operators are functions. For instance, you can use the addition operator (~+~) in 2 ways:
+
+#+BEGIN_src julia
+3 + 2
++(3, 2)
+#+END_src
+
+The multiplication operator can be omitted when this does not create any ambiguity:
+
+#+BEGIN_src julia
+a = 3;
+2a
+#+END_src
+
+Julia has "assignment by operation" operators:
+
+#+BEGIN_src julia
+a = 2;
+a += 7    # this is the same as a = a + 7
+#+END_src
+
+There is a *left* division operator:
+
+#+BEGIN_src julia
+2\8 == 8/2
+#+END_src
+
+The boolean type is a subtype of the integer type:
+
+#+BEGIN_src julia
+Bool <: Integer
+
+false == 0
+true == 1
+
+a = true
+b = false
+3a + 2b
+#+END_src
+
+Julia supports fraction operations:
+
+#+BEGIN_src julia
+4//8
+1//2 + 3//4
+#+END_src
+
 * Function definition
 
 There are 2 ways to define a new function:
