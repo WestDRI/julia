@@ -1,0 +1,157 @@
+#+title: Collections
+#+description: Reading
+#+colordes: #2d5986
+#+slug: 09_jl_collections
+#+weight: 9
+
+* Tuples
+
+Immutable, indexable, possibly heterogeneous collections of elements:
+
+#+BEGIN_src julia
+typeof((2, 4, 1.0, "test"))
+(2, 4, 1.0, "test")[2]
+#+END_src
+
+** Named tuples
+
+Tuples can have named components:
+
+#+BEGIN_src julia
+typeof((a=2, b=4, c=1.0, d="test"))
+
+x = (a=2, b=4, c=1.0, d="test");
+x[4] == x.d
+#+END_src
+
+* Dictionaries
+
+Similarly to Python, Julia has dictionaries: associative collections of key/value pairs:
+
+#+BEGIN_src julia
+Dict("a"=>1, "b"=>2, "c"=>3)
+#+END_src
+
+* Arrays
+
+Arrays are mutable, indexable, homogeneous collections of elements.
+
+** One dimension
+
+Unidimensional arrays of one element:
+
+#+BEGIN_src julia
+[3]
+[3.4]
+["Hello, World!"]
+#+END_src
+
+Unidimensional arrays of multiple elements:
+
+#+BEGIN_src julia
+[3, 4]
+#+END_src
+
+Arrays are homogeneous collections, but look how Julia's abstract types make the following array possible:
+
+#+BEGIN_src julia
+[3, "hello"]
+#+END_src
+
+These 4 syntaxes are equivalent:
+
+#+BEGIN_src julia
+[2
+4
+8]
+[2; 4; 8]
+vcat(2, 4, 8)
+cat(2, 4, 8, dims=1)
+#+END_src
+
+** Two dimensions
+
+#+BEGIN_src julia
+[3 4]
+[[1, 3] [1, 2]]
+#+END_src
+
+These 3 syntaxes are equivalent:
+
+#+BEGIN_src julia
+[2 4 8]
+hcat(2, 4, 8)
+cat(2, 4, 8, dims=2)
+#+END_src
+
+** Syntax subtleties
+
+Elements separated by semi-colons or end of line get expanded vertically. Those separated by commas do not get expanded. Elements separated by spaces or tabs get expanded horizontally.
+
+{{<exsimplec>}}
+Compare the outputs of the following:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+[1:2; 3:4]
+
+[1:2
+ 3:4]
+
+[1:2, 3:4]
+
+[1:2 3:4]
+#+END_src
+
+** Initializing arrays
+
+Here are a few of the functions initializing arrays:
+
+#+BEGIN_src julia
+rand(2, 3, 4)
+rand(Int64, 2, 3, 4)
+zeros(Int64, 2, 5)
+ones(2, 5)
+reshape([1, 2, 4, 2], (2, 2))
+fill("test", (2, 2))
+#+END_src
+
+** Comprehensions
+
+Julia has comprehensions similar to Python:
+
+#+BEGIN_src julia
+[ 3i + j for i=1:10, j=3 ]
+#+END_src
+
+** Indexing
+
+As in other mathematically oriented languages such as R, Julia starts indexing at ~1~. \\
+Indexing is done with square brackets:
+
+#+BEGIN_src julia
+a = [1 2; 3 4]
+a[1, 1]
+a[1, :]
+a[:, 1]
+#+END_src
+
+{{<exsimplec>}}
+Index the element on the 3<sup>rd</sup> row and 2<sup>nd</sup> column of {{<c>}}b{{</c>}}:
+{{</exsimplec>}}
+
+#+BEGIN_src julia
+b = ["wrong" "wrong" "wrong"; "wrong" "wrong" "wrong"; "wrong" "you got it" "wrong"]
+#+END_src
+
+As in Python, by default, arrays are passed by sharing:
+
+#+BEGIN_src julia
+a = [1, 2, 3];
+a[1] = 0;
+a
+#+END_src
+
+This prevents the unwanted copying of arrays.
+
+* Comments & questions
