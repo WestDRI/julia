@@ -7,7 +7,7 @@
 * Zoom session 3
 
 #+BEGIN_def
-/Time:/ {{<m>}} 10:30 am Pacific Time. \\
+/Time:/ {{<m>}} 2:30 pm Pacific Time. \\
 /Access:/ {{<s>}}{{<s>}} You should have received the meeting id and password by email.
 #+END_def
 
