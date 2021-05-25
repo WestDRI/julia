@@ -68,4 +68,10 @@ C-r		backward search
 C-s		forward search
 #+END_example
 
+* Running Julia in a Jupyter notebook
+
+For this course, we will use Jupyter, so you won't get to play directly in the REPL. Consequently, the keybindings will be those of Jupyter, not those of the REPL given above. It is important however to be familiar with the concept of the Julia REPL as you will encounter it soon enough if you use Julia.
+
+Also note that the various Julia modes (help, shell, and package) can be accessed from Jupyter. Since the code cells in Jupyter don't have prompts, you won't see any change in prompt. Nevertheless, running, for instance, ~; pwd~ will run ~pwd~ in shell mode.
+
 * Comments & questions
