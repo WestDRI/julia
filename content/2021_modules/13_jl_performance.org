@@ -1,0 +1,16 @@
+#+title: Performance
+#+description: Zoom
+#+colordes: #e86e0a
+#+slug: 13_jl_performance
+#+weight: 13
+
+* Slides
+
+/Click below to open the presentation.\\
+Once in the presentation, navigate the slides with the left and right arrows and refresh any page to show the link that will take you back here./
+
+#+BEGIN_export html
+<a href="https://westgrid-slides.netlify.app/jl_performance/#/"><p align="center"><img src="/img/performance_slides.png" title="" width="100%" style="border-style: solid; border-width: 1.5px 1.5px 0 2px; border-color: black"/></p></a>
+#+END_export
+
+* Comments & questions
