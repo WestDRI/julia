@@ -1,0 +1,4 @@
+#+title: Western Canada Research Computing Training Modules 2022
+#+coursetitle: Introductory Julia
+#+courselink: https://rcmodules22.netlify.app/programming_julia/
+#+weight: 7
