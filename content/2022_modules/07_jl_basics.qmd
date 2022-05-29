@@ -56,7 +56,7 @@ x = 2          # Comments can be added at the end of lines
 2 + 3
 ```
 ```{julia}
-# Ending semi-colons suppress the output
+# Trailing semi-colons suppress the output
 3 + 7;
 ```
 ```{julia}
@@ -64,7 +64,12 @@ x = 2          # Comments can be added at the end of lines
 +(2, 5)
 ```
 ```{julia}
-# Operation priority follows standard rules
+# Updating operators
+a = 3
+a += 8
+```
+```{julia}
+# Operator precedence follows standard rules
 3 + 2 ^ 3 * 10
 ```
 
@@ -86,14 +91,59 @@ x = 2          # Comments can be added at the end of lines
 # Remainder
 7 % 2        # equivalent to rem(7, 2)
 ```
+```{julia}
+# Fraction
+4//8
+```
+```{julia}
+# Julia supports fraction operations
+1//2 + 3//4
+```
 
 ## Variables
 
 A variable is a name bound to a value:
 
 ```{julia}
-a = 3
+a = 3;
 ```
+
+It can be called:
+
+```{julia}
+a
+```
+
+Or used in expressions:
+
+```{julia}
+a + 2
+```
+
+### Assignment
+
+You can re-assign new values to variables:
+
+```{julia}
+a = 3;
+a = -8.2;
+a
+```
+
+Even values of a different type:
+
+```{julia}
+a = "a is now a string"
+```
+
+You can define multiple variables at once:
+
+```{julia}
+a, b, c = 1, 2, 3
+b
+```
+
+### Variable names
 
 These names are extremely flexible and {{<a "https://docs.julialang.org/en/v1/manual/unicode-input/" "can use Unicode character:">}}
 
@@ -112,7 +162,7 @@ These names are extremely flexible and {{<a "https://docs.julialang.org/en/v1/ma
 δ + 🐌
 ```
 
-Admittedly, using emojis doesn't seem very useful, but using Greek letters to write equations really makes Julia a great math and physics language:
+Admittedly, using emojis doesn't seem very useful, but using Greek letters to write equations really makes Julia a great mathematical language:
 
 ```{julia}
 σ = 3
@@ -128,66 +178,52 @@ Note how the multiplication operator can be omitted when this does not lead to c
 Also note how the mathematical constant π is available in Julia without having to load any module.
 {{</notes>}}
 
+If you want to know how to type a symbol, ask Julia: type `?` and paste it in the REPL.
 
-### Variable names
+<u>The only hard rules for variable names are:</u>
 
-Hard rules:
+- They must begin with a letter or an underscore,
 
-- They must begin with a letter or an underscore
+- They cannot take the names of {{<a "https://docs.julialang.org/en/v1/base/base/#Keywords" "built-in keywords">}} such as `if`, `do`, `try`, `else`,
 
-- They cannot take the names of {{<a "https://docs.julialang.org/en/v1/base/base/#Keywords" "built-in keywords">}} such as `if`, `do`, `try`, `else`
-
-- They cannot take the names of built-in constants (e.g. `π`) and keywords in use in a session
+- They cannot take the names of built-in constants (e.g. `π`) and keywords in use in a session.
 
 ```{julia}
 false = 3
 ```
 
-In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow the following conventions:
+In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow these conventions:
 
-- Use lower case
+- Use lower case,
 
-- Word separation can be indicated by underscores, but better not to use them if the names can be read easily enough without them
-
-### Printing
-
-```{julia}
-# To print the value of a variable in the REPL or in Jupyter, you only need to call it
-a
-```
-```{julia}
-# In a script, you have to use println
-println(a)
-```
+- Word separation can be indicated by underscores, but better not to use them if the names can be read easily enough without them.
 
 ### The ans variable
 
-The keyword `ans` is a variable which, in the REPL, automatically takes the value of the last computation:
+The keyword `ans` is a variable which, in the REPL, takes the value of the last computation:
 
 ```{.julia}
-a = 3;
+a = 3 ^ 2;
 ans + 1
 ```
 
 ```
-4
+10
 ```
 
-### Assignment
+### Printing
 
-You can reassign new values to variables:
+To print the value of a variable in an interactive session, you only need to call it:
 
 ```{julia}
 a = 3;
-a = -8.2;
 a
 ```
 
-You can define multiple variables at once:
+In non interactive sessions, you have to use the `println` function:
 
 ```{julia}
-a, b, c = 1, 2, 3
-b
+println(a)
 ```
 
 ## Quotes
@@ -211,11 +247,6 @@ typeof('a')
 ```
 ```{julia}
 'a'
-```
-
-
-
-
 ```
 
 ## Comments & questions
