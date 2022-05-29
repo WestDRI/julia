@@ -10,8 +10,13 @@ format: hugo
 jupyter: julia-1.7
 ---
 
-*Time:* {{<m>}}{{<s>}} 10:30 am Pacific Time. \
-*Access:* {{<s>}}{{<s>}} You should have received the meeting id and password by email.
+*Date:* {{<m>}}{{<s>}} Tuesday, May 31 \
+*Time:* {{<m>}}{{<s>}} 10:30 am Pacific Time \
+*Access:* {{<m>}} You should have received the meeting id and password by email.
+
+{{<notes>}}
+Please have a look in your spam box if you haven't received the email.
+{{</notes>}}
 
 ## Comments
 
