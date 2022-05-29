@@ -201,14 +201,9 @@ typeof('a')
 'a'
 ```
 
-## Sourcing a file
 
-Julia scripts have a `.jl` extension.
 
-`include()` sources a Julia script (in a REPL session or in another script):
 
-```{.julia}
-include("/path/to/file.jl")
 ```
 
 ## Comments & questions
