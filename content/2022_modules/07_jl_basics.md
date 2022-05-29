@@ -12,8 +12,25 @@ jupyter: julia-1.7
 
 
 
-*Time:* {{<m>}}{{<s>}} 10:30 am Pacific Time.  
-*Access:* {{<s>}}{{<s>}} You should have received the meeting id and password by email.
+*Date:* {{<m>}}{{<s>}} Tuesday, May 31  
+*Time:* {{<m>}}{{<s>}} 10:30 am Pacific Time  
+*Access:* {{<m>}} You should have received the meeting id and password by email.
+
+{{<notes>}}
+Please have a look in your spam box if you haven't received the email.
+{{</notes>}}
+
+## How to run Julia
+
+There are several ways to run Julia interactively:
+
+-   Directly in [the REPL](https://westgrid-julia.netlify.app/2022_modules/05_jl_repl),
+-   In interactive notebooks (e.g. [Jupyter](https://jupyter.org/), [Pluto](https://github.com/fonsp/Pluto.jl)),
+-   In an editor able to run Julia interactively (e.g. [Emacs](https://github.com/JuliaEditorSupport/julia-emacs), [VS Code](https://www.julia-vscode.org/), [Vim](https://github.com/JuliaEditorSupport/julia-vim)).
+
+Julia can also be run [non interactively from the command line]().
+
+For now, we will run Julia directly in [the REPL](https://westgrid-julia.netlify.app/2022_modules/05_jl_repl).
 
 ## Comments
 
@@ -46,7 +63,7 @@ x = 2          # Comments can be added at the end of lines
     5
 
 ``` julia
-# Ending semi-colons suppress the output
+# Trailing semi-colons suppress the output
 3 + 7;
 ```
 
@@ -58,7 +75,15 @@ x = 2          # Comments can be added at the end of lines
     7
 
 ``` julia
-# Operation priority follows standard rules
+# Updating operators
+a = 3
+a += 8
+```
+
+    11
+
+``` julia
+# Operator precedence follows standard rules
 3 + 2 ^ 3 * 10
 ```
 
@@ -94,15 +119,74 @@ x = 2          # Comments can be added at the end of lines
 
     1
 
+``` julia
+# Fraction
+4//8
+```
+
+    1//2
+
+``` julia
+# Julia supports fraction operations
+1//2 + 3//4
+```
+
+    5//4
+
 ## Variables
 
 A variable is a name bound to a value:
 
 ``` julia
-a = 3
+a = 3;
+```
+
+It can be called:
+
+``` julia
+a
 ```
 
     3
+
+Or used in expressions:
+
+``` julia
+a + 2
+```
+
+    5
+
+### Assignment
+
+You can re-assign new values to variables:
+
+``` julia
+a = 3;
+a = -8.2;
+a
+```
+
+    -8.2
+
+Even values of a different type:
+
+``` julia
+a = "a is now a string"
+```
+
+    "a is now a string"
+
+You can define multiple variables at once:
+
+``` julia
+a, b, c = 1, 2, 3
+b
+```
+
+    2
+
+### Variable names
 
 These names are extremely flexible and {{<a "https://docs.julialang.org/en/v1/manual/unicode-input/" "can use Unicode character:">}}
 
@@ -123,7 +207,7 @@ These names are extremely flexible and {{<a "https://docs.julialang.org/en/v1/ma
 
     11.5
 
-Admittedly, using emojis doesn't seem very useful, but using Greek letters to write equations really makes Julia a great math and physics language:
+Admittedly, using emojis doesn't seem very useful, but using Greek letters to write equations really makes Julia a great mathematical language:
 
 ``` julia
 σ = 3
@@ -141,75 +225,57 @@ Note how the multiplication operator can be omitted when this does not lead to c
 Also note how the mathematical constant π is available in Julia without having to load any module.
 {{</notes>}}
 
-### Variable names
+If you want to know how to type a symbol, ask Julia: type `?` and paste it in the REPL.
 
-Hard rules:
+<u>The only hard rules for variable names are:</u>
 
--   They must begin with a letter or an underscore
+-   They must begin with a letter or an underscore,
 
--   They cannot take the names of {{<a "https://docs.julialang.org/en/v1/base/base/#Keywords" "built-in keywords">}} such as `if`, `do`, `try`, `else`
+-   They cannot take the names of {{<a "https://docs.julialang.org/en/v1/base/base/#Keywords" "built-in keywords">}} such as `if`, `do`, `try`, `else`,
 
--   They cannot take the names of built-in constants (e.g. `π`) and keywords in use in a session
+-   They cannot take the names of built-in constants (e.g. `π`) and keywords in use in a session.
 
 ``` julia
 false = 3
 ```
 
-    LoadError: syntax: invalid assignment location "false" around In[276]:1
+    LoadError: syntax: invalid assignment location "false" around In[24]:1
 
-In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow the following conventions:
+In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow these conventions:
 
--   Use lower case
+-   Use lower case,
 
--   Word separation can be indicated by underscores, but better not to use them if the names can be read easily enough without them
+-   Word separation can be indicated by underscores, but better not to use them if the names can be read easily enough without them.
+
+### The ans variable
+
+The keyword `ans` is a variable which, in the REPL, takes the value of the last computation:
+
+``` julia
+a = 3 ^ 2;
+ans + 1
+```
+
+    10
 
 ### Printing
 
+To print the value of a variable in an interactive session, you only need to call it:
+
 ``` julia
-# To print the value of a variable in the REPL or in Jupyter, you only need to call it
+a = 3;
 a
 ```
 
     3
 
+In non interactive sessions, you have to use the `println` function:
+
 ``` julia
-# In a script, you have to use println
 println(a)
 ```
 
     3
-
-### The ans variable
-
-The keyword `ans` is a variable which, in the REPL, automatically takes the value of the last computation:
-
-``` julia
-a = 3;
-ans + 1
-```
-
-    4
-
-### Assignment
-
-You can reassign new values to variables:
-
-``` julia
-a = 3;
-a = -8.2;
-a
-```
-
-    -8.2
-
-You can define multiple variables at once:
-
-``` julia
-a, b, c = 1, 2, 3
-b
-```
-
-    2
 
 ## Quotes
 
@@ -244,15 +310,5 @@ typeof('a')
 ```
 
     'a': ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
-
-## Sourcing a file
-
-Julia scripts have a `.jl` extension.
-
-`include()` sources a Julia script (in a REPL session or in another script):
-
-``` julia
-include("/path/to/file.jl")
-```
 
 ## Comments & questions
