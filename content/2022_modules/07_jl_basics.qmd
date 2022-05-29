@@ -18,6 +18,18 @@ jupyter: julia-1.7
 Please have a look in your spam box if you haven't received the email.
 {{</notes>}}
 
+## How to run Julia
+
+There are several ways to run Julia interactively:
+
+- Directly in [the REPL](https://westgrid-julia.netlify.app/2022_modules/05_jl_repl),
+- In interactive notebooks (e.g. [Jupyter](https://jupyter.org/), [Pluto](https://github.com/fonsp/Pluto.jl)),
+- In an editor able to run Julia interactively (e.g. [Emacs](https://github.com/JuliaEditorSupport/julia-emacs), [VS Code](https://www.julia-vscode.org/), [Vim](https://github.com/JuliaEditorSupport/julia-vim)).
+
+Julia can also be run [non interactively from the command line]().
+
+For now, we will run Julia directly in [the REPL](https://westgrid-julia.netlify.app/2022_modules/05_jl_repl).
+
 ## Comments
 
 Comments do not get evaluated by Julia and are for humans only.
