@@ -66,3 +66,15 @@ The function `hello1` defined with this compact syntax is exactly the same as th
 
 Julia suggests to use lower case, without underscores, as function names.
 
+## Calling functions
+
+Since you pass a tuple to a function when you run it, you call a function by appending parentheses to its name:
+
+```{julia}
+hello1()
+```
+
+{{<notes>}}
+Here, our function does not take any argument, so the tuple is empty.
+{{</notes>}}
+
