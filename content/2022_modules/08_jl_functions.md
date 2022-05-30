@@ -103,7 +103,7 @@ hello1("Bob")
 
     LoadError: MethodError: no method matching hello1(::String)
     [0mClosest candidates are:
-    [0m  hello1() at In[2658]:1
+    [0m  hello1() at In[764]:1
 
 ### One argument
 
@@ -201,7 +201,7 @@ function hello5(name="")
 end
 ```
 
-    hello5 (generic function with 3 methods)
+    hello5 (generic function with 2 methods)
 
 ``` julia
 hello5()
@@ -254,7 +254,7 @@ end
 ```
 
 {{<exo>}}
-Without running the code, try to guess the results of:
+Without running the code, try to guess the outputs of:
 {{</exo>}}
 
 ``` julia
@@ -270,3 +270,224 @@ test6(1, 2)
 Now, run the code and draw some conclusions on the behaviour of the return statement.
 {{</exo>}}
 
+## Anonymous functions
+
+Anonymous functions are functions which aren't given a name:
+
+``` julia
+function (<arguments>)
+    <body>
+end
+```
+
+In compact form:
+
+``` julia
+<arguments> -> <body>
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+``` julia
+function (name)
+    println("Hello $name")
+end
+```
+
+    #139 (generic function with 1 method)
+
+{{<ex>}}
+Compact form:
+{{</ex>}}
+
+``` julia
+name -> println("Hello $name")
+```
+
+    #141 (generic function with 1 method)
+
+### When would you want to use anonymous functions?
+
+This is very useful for functional programming (when you apply a function---for instance `map`---to other functions to apply them in a vectorized manner which avoids repetitions).
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+``` julia
+map(name -> println("Hello $name"), ["Bob", "Lucie", "Sophie"]);
+```
+
+    Hello Bob
+    Hello Lucie
+    Hello Sophie
+
+## Pipes
+
+`|>` is the pipe in Julia.<br>
+It redirects the output of the expression on the left as the input of the expression on the right.
+
+{{<ex>}}
+The following 2 expressions are equivalent:
+{{</ex>}}
+
+``` julia
+println("Hello")
+"Hello" |> println
+```
+
+{{<ex>}}
+Here is another example:
+{{</ex>}}
+
+``` julia
+sqrt(2) == 2 |> sqrt
+```
+
+    true
+
+## Function composition
+
+You can pass a function inside another function:
+
+``` julia
+<function2>(<function1>(<arguments>))
+```
+
+`<arguments>` will be passed to `<function1>` and the result will then be passed to `<function2>`.
+
+An equivalent syntax is to use the composition operator `∘` (in the REPL, type `\circ` then press tab):
+
+``` julia
+(<function2> ∘ <function1>)(<arguments>)
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+``` julia
+# sum is our first function
+sum(1:3)
+```
+
+    6
+
+``` julia
+# sqrt is the second function
+sqrt(sum(1:3))
+```
+
+    2.449489742783178
+
+``` julia
+# This is equivalent
+(sqrt ∘ sum)(1:3)
+```
+
+    2.449489742783178
+
+{{<exo>}}
+Write three other equivalent expressions using the pipe.
+{{</exo>}}
+
+## Mutating functions
+
+Functions usually do not modify their argument(s):
+
+``` julia
+a = [-2, 3, -5]
+```
+
+    3-element Vector{Int64}:
+     -2
+      3
+     -5
+
+``` julia
+sort(a)
+```
+
+    3-element Vector{Int64}:
+     -5
+     -2
+      3
+
+``` julia
+a
+```
+
+    3-element Vector{Int64}:
+     -2
+      3
+     -5
+
+Julia has a set of functions which modify their argument(s). By convention, their names end with `!`
+
+{{<ex>}}
+The function sort has a mutating equivalent sort!:
+{{</ex>}}
+
+``` julia
+sort!(a);
+a
+```
+
+    3-element Vector{Int64}:
+     -5
+     -2
+      3
+
+{{<notes>}}
+If you write functions which modify their arguments, make sure to follow this convention too.
+{{</notes>}}
+
+## Broadcasting
+
+To apply a function to each element of a collection rather than to the collection as a whole, Julia uses broadcasting.
+
+{{<ex>}}
+Let's create a collection (here a tuple):
+{{</ex>}}
+
+``` julia
+a = (2, 3)
+```
+
+    (2, 3)
+
+{{<ex>}}
+If we pass `a` to the string function, that function applies to the whole collection:
+{{</ex>}}
+
+``` julia
+string(a)
+```
+
+    "(2, 3)"
+
+{{<ex>}}
+In contrast, we can broadcast the function string to all elements of a:
+{{</ex>}}
+
+``` julia
+broadcast(string, a)
+```
+
+    ("2", "3")
+
+{{<ex>}}
+An alternative syntax is to add a period after the function name:
+{{</ex>}}
+
+``` julia
+string.(a)
+```
+
+    ("2", "3")
+
+We will see more examples in the [array section](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays).
+
+## Comments & questions
