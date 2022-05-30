@@ -326,6 +326,12 @@ intersect(set1, set2)
 setdiff(set1, set2)
 ```
 
+Sets can be heterogeneous:
+
+```{julia}
+Set(["test", 9, :a])
+```
+
 ### Arrays
 
 Arrays are homogeneous (all values are of the same type), indexable, and mutable collections. The order of elements matters. We will talk about them in [a later section](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays).
