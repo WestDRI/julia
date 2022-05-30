@@ -24,3 +24,45 @@ Operators are functions and can be written in a way that shows the tuple of argu
 +(3, 2)
 ```
 
+## Function definition
+
+There are 2 ways to define a new function:
+
+### Long form
+
+```{.julia}
+function <name>(<arguments>)
+    <body>
+end
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{julia}
+function hello1()
+    println("Hello")
+end
+```
+
+### Assignment form
+
+```{.julia}
+<name>(<arguments>) = <body>
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{julia}
+hello1() = println("Hello")
+```
+
+The function `hello1` defined with this compact syntax is exactly the same as the one we defined above.
+
+### Stylistic conventions
+
+Julia suggests to use lower case, without underscores, as function names.
+
