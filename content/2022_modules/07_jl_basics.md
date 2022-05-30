@@ -28,7 +28,7 @@ There are several ways to run Julia interactively:
 -   In interactive notebooks (e.g. [Jupyter](https://jupyter.org/), [Pluto](https://github.com/fonsp/Pluto.jl)),
 -   In an editor able to run Julia interactively (e.g. [Emacs](https://github.com/JuliaEditorSupport/julia-emacs), [VS Code](https://www.julia-vscode.org/), [Vim](https://github.com/JuliaEditorSupport/julia-vim)).
 
-Julia can also be run [non interactively from the command line]().
+Julia can also be run non interactively as we will see [in a further section](https://westgrid-julia.netlify.app/2022_modules/16_jl_non_interactive).
 
 For now, we will run Julia directly in [the REPL](https://westgrid-julia.netlify.app/2022_modules/05_jl_repl).
 
@@ -239,7 +239,7 @@ If you want to know how to type a symbol, ask Julia: type `?` and paste it in th
 false = 3
 ```
 
-    LoadError: syntax: invalid assignment location "false" around In[875]:1
+    LoadError: syntax: invalid assignment location "false" around In[24]:1
 
 In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow these conventions:
 
