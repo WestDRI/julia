@@ -176,3 +176,58 @@ hello5()
 hello5("Bob")
 ```
 
+## Returning the result
+
+In Julia, functions return the value(s) of the last expression automatically.<br>
+If you want to return something else instead, you need to use the `return` statement. This causes the function to exit early.
+
+{{<ex>}}
+Look at these 5 functions:
+{{</ex>}}
+
+```{.julia}
+function test1(x, y)
+    x + y
+end
+
+function test2(x, y)
+    return x + y
+end
+
+function test3(x, y)
+    x * y
+    x + y
+end
+
+function test4(x, y)
+    return x * y
+    x + y
+end
+
+function test5(x, y)
+    return x * y
+    return x + y
+end
+
+function test6(x, y)
+    x * y, x + y
+end
+```
+
+{{<exo>}}
+Without running the code, try to guess the results of:
+{{</exo>}}
+
+```{.julia}
+test1(1, 2)
+test2(1, 2)
+test3(1, 2)
+test4(1, 2)
+test5(1, 2)
+test6(1, 2)
+```
+
+{{<exo>}}
+Now, run the code and draw some conclusions on the behaviour of the return statement.
+{{</exo>}}
+
