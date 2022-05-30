@@ -277,3 +277,25 @@ Example:
 map(name -> println("Hello $name"), ["Bob", "Lucie", "Sophie"]);
 ```
 
+## Pipes
+
+`|>` is the pipe in Julia.<br>
+It redirects the output of the expression on the left as the input of the expression on the right.
+
+{{<ex>}}
+The following 2 expressions are equivalent:
+{{</ex>}}
+
+```{.julia}
+println("Hello")
+"Hello" |> println
+```
+
+{{<ex>}}
+Here is another example:
+{{</ex>}}
+
+```{julia}
+sqrt(2) == 2 |> sqrt
+```
+
