@@ -239,7 +239,7 @@ If you want to know how to type a symbol, ask Julia: type `?` and paste it in th
 false = 3
 ```
 
-    LoadError: syntax: invalid assignment location "false" around In[24]:1
+    LoadError: syntax: invalid assignment location "false" around In[875]:1
 
 In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow these conventions:
 
@@ -276,6 +276,170 @@ println(a)
 ```
 
     3
+
+## Collections
+
+Values can also be stored in collections.
+
+### Tuples
+
+Tuples are immutable, indexable, and possibly heterogeneous collections of elements. The order of elements matters.
+
+``` julia
+# Possibly heterogeneous (values can be of different types)
+typeof((2, 'a', 1.0, "test"))
+```
+
+    Tuple{Int64, Char, Float64, String}
+
+``` julia
+# Indexable (note that indexing in Julia starts with 1)
+x = (2, 'a', 1.0, "test");
+x[3]
+```
+
+    1.0
+
+``` julia
+# Immutable (they cannot be modified)
+x[3] = 8
+```
+
+    LoadError: MethodError: no method matching setindex!(::Tuple{Int64, Char, Float64, String}, ::Int64, ::Int64)
+
+#### Named tuples
+
+Tuples can have named components:
+
+``` julia
+typeof((a=2, b='a', c=1.0, d="test"))
+```
+
+    NamedTuple{(:a, :b, :c, :d), Tuple{Int64, Char, Float64, String}}
+
+``` julia
+x = (a=2, b='a', c=1.0, d="test");
+x.c
+```
+
+    1.0
+
+### Dictionaries
+
+Julia also has dictionaries: associative collections of key/value pairs:
+
+``` julia
+x = Dict("Name"=>"Roger", "Age"=>52, "Index"=>0.3)
+```
+
+    Dict{String, Any} with 3 entries:
+      "Index" => 0.3
+      "Age"   => 52
+      "Name"  => "Roger"
+
+`"Name"`, `"Age"`, and `"Index"` are the keys; `"Roger"`, `52`, and `0.3` are the values.
+
+The `=>` operator is the same as the `Pair` function:
+
+``` julia
+p = "foo" => 7
+```
+
+    "foo" => 7
+
+``` julia
+q = Pair("bar", 8)
+```
+
+    "bar" => 8
+
+Dictionaries can be heterogeneous (as in this example) and the order doesn't matter. They are also indexable:
+
+``` julia
+x["Name"]
+```
+
+    "Roger"
+
+And mutable (they can be modified):
+
+``` julia
+x["Name"] = "Alex";
+x
+```
+
+    Dict{String, Any} with 3 entries:
+      "Index" => 0.3
+      "Age"   => 52
+      "Name"  => "Alex"
+
+### Sets
+
+Sets are collections without duplicates. The order of elements doesn't matter.
+
+``` julia
+set1 = Set([9, 4, 8, 2, 7, 8])
+```
+
+    Set{Int64} with 5 elements:
+      4
+      7
+      2
+      9
+      8
+
+{{<notes>}}
+Notice how this is a set of 5 (and not 6) elements: the duplicated 8 didn't matter.
+{{</notes>}}
+
+``` julia
+set2 = Set([10, 2, 3])
+```
+
+    Set{Int64} with 3 elements:
+      2
+      10
+      3
+
+You can compare sets:
+
+``` julia
+# The union is the set of elements that are in one OR the other set
+union(set1, set2)
+```
+
+    Set{Int64} with 7 elements:
+      4
+      7
+      2
+      10
+      9
+      8
+      3
+
+``` julia
+# The intersect is the set of elements that are in one AND the other set
+intersect(set1, set2)
+```
+
+    Set{Int64} with 1 element:
+      2
+
+``` julia
+# The setdiff is the set of elements that are in the first set but not in the second
+# Note that the order matters here
+setdiff(set1, set2)
+```
+
+    Set{Int64} with 4 elements:
+      4
+      7
+      9
+      8
+
+### Arrays
+
+Arrays are homogeneous (all values are of the same type), indexable, and mutable collections. The order of elements matters. We will talk about them in [a later section](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays).
 
 ## Quotes
 
