@@ -215,7 +215,7 @@ end
 ```
 
 {{<exo>}}
-Without running the code, try to guess the results of:
+Without running the code, try to guess the outputs of:
 {{</exo>}}
 
 ```{.julia}
@@ -230,4 +230,50 @@ test6(1, 2)
 {{<exo>}}
 Now, run the code and draw some conclusions on the behaviour of the return statement.
 {{</exo>}}
+
+## Anonymous functions
+
+Anonymous functions are functions which aren't given a name:
+
+```{.julia}
+function (<arguments>)
+    <body>
+end
+```
+
+In compact form:
+
+```{.julia}
+<arguments> -> <body>
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{julia}
+function (name)
+    println("Hello $name")
+end
+```
+
+{{<ex>}}
+Compact form:
+{{</ex>}}
+
+```{julia}
+name -> println("Hello $name")
+```
+
+### When would you want to use anonymous functions?
+
+This is very useful for functional programming (when you apply a function—for instance `map`—to other functions to apply them in a vectorized manner which avoids repetitions).
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{julia}
+map(name -> println("Hello $name"), ["Bob", "Lucie", "Sophie"]);
+```
 
