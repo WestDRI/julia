@@ -1,0 +1,11 @@
+---
+title: Functions
+description: Zoom
+colordes: "#e86e0a"
+slug: 08_jl_functions
+weight: 8
+execute:
+  error: true
+format: hugo
+jupyter: julia-1.7
+---
