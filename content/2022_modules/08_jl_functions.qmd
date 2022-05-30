@@ -9,3 +9,7 @@ execute:
 format: hugo
 jupyter: julia-1.7
 ---
+
+Functions are objects containing a set of instructions.<br>
+When you pass a tuple of argument(s) (possibly an empty tuple) to them, you get one or more values as output.
+
