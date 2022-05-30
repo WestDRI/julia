@@ -299,3 +299,40 @@ Here is another example:
 sqrt(2) == 2 |> sqrt
 ```
 
+## Function composition
+
+You can pass a function inside another function:
+
+```{.julia}
+<function2>(<function1>(<arguments>))
+```
+
+`<arguments>` will be passed to `<function1>` and the result will then be passed to `<function2>`.
+
+An equivalent syntax is to use the composition operator `∘` (in the REPL, type `\circ` then press tab):
+
+```{.julia}
+(<function2> ∘ <function1>)(<arguments>)
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{julia}
+# sum is our first function
+sum(1:3)
+```
+```{julia}
+# sqrt is the second function
+sqrt(sum(1:3))
+```
+```{julia}
+# This is equivalent
+(sqrt ∘ sum)(1:3)
+```
+
+{{<exo>}}
+Write three other equivalent expressions using the pipe.
+{{</exo>}}
+
