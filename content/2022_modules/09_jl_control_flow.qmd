@@ -1,0 +1,11 @@
+---
+title: Control flow
+description: Zoom
+colordes: "#e86e0a"
+slug: 09_jl_control_flow
+weight: 9
+execute:
+  error: true
+format: hugo
+jupyter: julia-1.7
+---
