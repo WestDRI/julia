@@ -365,3 +365,42 @@ a
 If you write functions which modify their arguments, make sure to follow this convention too.
 {{</notes>}}
 
+## Broadcasting
+
+To apply a function to each element of a collection rather than to the collection as a whole, Julia uses broadcasting.
+
+{{<ex>}}
+Let's create a collection (here a tuple):
+{{</ex>}}
+
+```{julia}
+a = (2, 3)
+```
+
+{{<ex>}}
+If we pass `a` to the string function, that function applies to the whole collection:
+{{</ex>}}
+
+```{julia}
+string(a)
+```
+
+{{<ex>}}
+In contrast, we can broadcast the function string to all elements of a:
+{{</ex>}}
+
+```{julia}
+broadcast(string, a)
+```
+
+{{<ex>}}
+An alternative syntax is to add a period after the function name:
+{{</ex>}}
+
+```{julia}
+string.(a)
+```
+
+We will see more examples in the [array section](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays).
+
+## Comments & questions
