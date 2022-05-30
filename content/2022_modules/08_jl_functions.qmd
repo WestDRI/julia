@@ -78,3 +78,101 @@ hello1()
 Here, our function does not take any argument, so the tuple is empty.
 {{</notes>}}
 
+## Arguments
+
+### No argument
+
+Our function `hello` does not accept any argument. If we pass an argument, we get an error message:
+
+```{julia}
+hello1("Bob")
+```
+
+### One argument
+
+To define a function which accepts an argument, we need to add a placeholder for it in the function definition.
+
+{{<ex>}}
+So let's try this:
+{{</ex>}}
+
+```{julia}
+function hello2(name)
+    println("Hello name")
+end
+```
+
+```{julia}
+hello2("Bob")
+```
+
+Mmm ... not quite ... this function works but does not give the result we wanted.
+
+Here, we need to use {{<a "https://en.wikipedia.org/wiki/String_interpolation" "string interpolation:">}}
+
+```{julia}
+function hello3(name)
+    println("Hello $name")
+end
+```
+
+`$name` in the body of the function points to `name` in the tuple of argument.
+
+When we run the function, `$name` is replaced by the value we used in lieu of `name` in the function definition:
+
+```{julia}
+hello3("Bob")
+```
+
+{{<ex>}}
+Note that this dollar sign is only required with strings. Here is an example with integers:
+{{</ex>}}
+
+```{julia}
+function cube(a)
+    a ^ 3
+end
+
+cube(4)
+```
+
+### Multiple arguments
+
+Now, let's write a function which accepts 2 arguments. For this, we put 2 placeholders in the tuple passed to the function in the function definition:
+
+```{julia}
+function hello4(name1, name2)
+    println("Hello $name1 and $name2")
+end
+```
+
+This means that this function expects a tuple of 2 values:
+
+```{julia}
+hello4("Bob", "Pete")
+```
+
+{{<exo>}}
+See what happens when you pass no argument, a single argument, or three arguments to this function.
+{{</exo>}}
+
+### Default arguments
+
+You can set a default value for some or all arguments. In this case, the function will run with or without a value passed for those arguments. If no value is given, the default is used. If a value is given, it will replace the default.
+
+{{<ex>}}
+Here is an example:
+{{</ex>}}
+
+```{julia}
+function hello5(name="")
+    println("Hello $name")
+end
+```
+```{julia}
+hello5()
+```
+```{julia}
+hello5("Bob")
+```
+
