@@ -437,9 +437,20 @@ setdiff(set1, set2)
       9
       8
 
+Sets can be heterogeneous:
+
+``` julia
+Set(["test", 9, :a])
+```
+
+    Set{Any} with 3 elements:
+      :a
+      "test"
+      9
+
 ### Arrays
 
-Arrays are homogeneous (all values are of the same type), indexable, and mutable collections. The order of elements matters. We will talk about them in [a later section](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays).
+Arrays are indexable and mutable collections. The order of elements matters and they can be heterogeneous. We will talk about them in [a later section](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays).
 
 ## Quotes
 
