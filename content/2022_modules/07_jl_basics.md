@@ -77,7 +77,7 @@ x = 2          # Comments can be added at the end of lines
 ``` julia
 # Updating operators
 a = 3
-a += 8
+a += 8    # this is the same as a = a + 8
 ```
 
     11
@@ -221,7 +221,6 @@ Admittedly, using emojis doesn't seem very useful, but using Greek letters to wr
 
 {{<notes>}}
 Note how the multiplication operator can be omitted when this does not lead to confusion.<br>
-
 Also note how the mathematical constant π is available in Julia without having to load any module.
 {{</notes>}}
 
