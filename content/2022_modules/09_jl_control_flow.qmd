@@ -41,7 +41,7 @@ The function `isapprox` or the equivalent binary operator `≈` can be used:
 0.1 + 0.2 ≈ 0.3
 ```
 
-The negatives are the function `!isapprox` and `≈`.
+The negatives are the function `!isapprox` and `≉`.
 
 ### If statements
 

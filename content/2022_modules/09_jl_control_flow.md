@@ -48,7 +48,7 @@ The function `isapprox` or the equivalent binary operator `≈` can be used:
 
     true
 
-The negatives are the function `!isapprox` and `≈`.
+The negatives are the function `!isapprox` and `≉`.
 
 ### If statements
 
