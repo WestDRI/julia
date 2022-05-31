@@ -38,7 +38,7 @@ $ ssh userxxx@beluu.c3.ca
 
 - Window users:
 
-{{<a "https://mobaxterm.mobatek.net/demo.html" "This demo">}} shows how to use SSH with MobaXterm (for "Remote host" enter: ~uu.c3.ca~).
+{{<a "https://mobaxterm.mobatek.net/demo.html" "This demo">}} shows how to use SSH with MobaXterm (for "Remote host" enter: ~beluu.c3.ca~).
 
 * Running Julia in a job inside the training cluster
 
