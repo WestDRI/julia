@@ -12,6 +12,37 @@ jupyter: julia-1.7
 
 ## Conditional statements
 
+Conditional statements allow to run instructions based on predicates.
+
+Different set of instructions will be executed depending on whether the predicates return `true` or `false`.
+
+{{<ex>}}
+Here are a few examples of predicates:
+{{</ex>}}
+
+```{.julia}
+occursin("that", "this and that")
+4 < 3
+a == b
+a != b
+2 in 1:3
+3 <= 4 && 4 > 5
+3 <= 4 || 4 > 5
+```
+
+Note that Julia possesses an inexact equality comparator which is useful to compare floating-point numbers despite computer rounding.
+
+The function `isapprox` or the equivalent binary operator `≈` can be used:
+
+```{julia}
+0.1 + 0.2 == 0.3
+```
+```{julia}
+0.1 + 0.2 ≈ 0.3
+```
+
+The negatives are the function `!isapprox` and `≈`.
+
 ### If statements
 
 ```{.julia}
@@ -42,19 +73,6 @@ testsign1(0)
 ```
 ```{julia}
 testsign1(-2)
-```
-
-{{<ex>}}
-A few examples of predicates:
-{{</ex>}}
-
-```{.julia}
-occursin("that", "this and that")
-4 < 3
-a != b
-2 in 1:3
-3 <= 4 && 4 > 5
-3 <= 4 || 4 > 5
 ```
 
 ### If else statements
