@@ -72,18 +72,20 @@ $ julia
 
 * JupyterHub access
 
+** Log in to the JupyterHub on our training cluster
+
 For this course, we will also use a temporary JupyterHub. Here is how to log in:
 
 - Go to {{<a "https://beluu.c3.ca" "https://beluu.c3.ca,">}}
 - Sign in with the username & password you just got,
 - Set the server options according to the image below,
 
-{{<imgm src="/img/jupyter_sever_options.png" margin="4rem 0 0 0" title="" width="%" line-height="0rem">}}
-{{</imgm>}}
+{{<imgmshadow src="/img/jupyter_sever_options.png" margin="4rem 0 0 0" title="" width="%" line-height="0rem">}}
+{{</imgmshadow>}}
 
 #+BEGIN_note
 *These are the only values that you should edit:* \\
-Change the time to *3.0* \\
+Change the time to *3.0*
 
 Make sure the Memobry is set to *7482* \\
 Make sure the interface is set to *JupyterLab*
@@ -97,5 +99,9 @@ Make sure the interface is set to *JupyterLab*
 #+BEGIN_note
 Note that, unlike other JupyterHubs you might have used (e.g. {{<a "https://syzygy.ca/" "Syzygy">}}), this JupyterHub is not permanent and can only be used for this course.
 #+END_note
+
+** Start a Julia notebook
+
+To start a Jupyter notebook with the Julia kernel, click on the button "Julia 1.5.2" in the "Notebook" section (top row of buttons).
 
 * Comments & questions
