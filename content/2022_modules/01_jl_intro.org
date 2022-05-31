@@ -1,0 +1,5 @@
+#+title: Opening session
+#+description: Zoom
+#+colordes: #e86e0a
+#+slug: 01_jl_intro
+#+weight: 1
