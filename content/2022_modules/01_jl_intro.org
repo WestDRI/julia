@@ -59,7 +59,7 @@ $ module load julia              # not mentioning any version loads the default
 ** Start an interactive job
 
 #+BEGIN_src sh
-$ salloc --time=03:00:00 --mem=7482
+$ salloc --time=01:00:00 --mem=7482
 #+END_src
 
 ** Launch Julia
