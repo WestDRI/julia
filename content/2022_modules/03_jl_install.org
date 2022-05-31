@@ -1,0 +1,50 @@
+#+title: Local installation
+#+description: (Optional)
+#+colordes: #999999
+#+slug: 03_jl_install
+#+weight: 3
+
+{{<br>}}
+/Installing Julia on your machine is entirely optional as you can run everything on the training cluster. If you would like to practice on your machine in addition to (or instead of) the training cluster, this lesson will guide you through the setup of your machine. Please note that we won't be debugging local installations./
+
+* Julia
+
+Download the current {{<a "https://julialang.org/downloads/" "Julia stable release">}} and follow the {{<a "https://julialang.org/downloads/platform/" "installation instructions">}} corresponding to your operating system.
+
+* Packages
+
+You will also need to install a number of Julia packages:
+
+- Launch the Julia REPL (double-click on the Julia shortcut if you are on Windows/MacOS or type ~julia~ in the terminal if you are on Linux)
+
+
+- Type ~]~
+
+#+BEGIN_export html
+<em>(Your prompt will change from <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>)</em>
+#+END_export
+
+- Run:
+
+#+BEGIN_src julia
+add BenchmarkTools
+#+END_src
+
+* Text editor, IDE, or notebooks
+
+** Text editor
+
+To write scripts, you will need a capable text editor.\\
+Examples include Emacs, Vim, Visual Studio Code, Sublime, Nano, Atom, Notepad++.
+
+
+** IDE
+
+Additionally (and optionally), several text editors have a plug-in or extension turning them into an IDE for Julia. You can find a list of options at the bottom of the {{<a "https://julialang.org/" "Julia website">}} (example: {{<a "https://www.julia-vscode.org/" "Julia for VSCode">}}).
+
+** Notebooks
+
+You can also run Julia in {{<a "https://jupyter.org/" "Jupyter">}} thanks to the {{<a "https://github.com/JuliaLang/IJulia.jl" "Julia kernel.">}}\\
+Alternatively, Julia has {{<a "https://github.com/fonsp/Pluto.jl" "its own interactive notebook called Pluto.">}}
+
+* Comments & questions
