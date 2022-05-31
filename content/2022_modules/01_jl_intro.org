@@ -25,15 +25,14 @@ Please have a look in your spam box if you haven't received the email.
 ** SSH into the cluster
 
 #+BEGIN_note
-If you were with us for the Python course last week, you can use the same usernames and passwords.
-Otherwise, those will be given to you during the Zoom session.
+Usernames and passwords will be given to you during the Zoom session.
 #+END_note
 {{<br size="3">}}
 
 - Linux, WSL, and MacOS type in your terminal:
 
 #+BEGIN_src sh
-$ ssh userxxx@uu.c3.ca
+$ ssh userxxx@beluu.c3.ca
 # enter password (it is blind typing, so you won't see it as you type)
 #+END_src
 
@@ -41,32 +40,26 @@ $ ssh userxxx@uu.c3.ca
 
 {{<a "https://mobaxterm.mobatek.net/demo.html" "This demo">}} shows how to use SSH with MobaXterm (for "Remote host" enter: ~uu.c3.ca~).
 
-* Running Julia
+* Running Julia in a job inside the training cluster
 
 ** Load the Julia module
 
 To see which versions of Julia are available on the cluster:
 
 #+BEGIN_src sh
-$ module spider julia
+$ module avail julia
 #+END_src
 
-To load one of the modules (e.g. ~julia/1.3.0~), we first need to know what its dependencies are:
+We will load the latest Julia (julia/1.7.0) which is the default
 
 #+BEGIN_src sh
-$ module spider julia/1.3.0
-#+END_src
-
-We can then load the dependencies and the Julia module:
-
-#+BEGIN_src sh
-$ module load nixpkgs/16.09 gcc/7.3.0 julia/1.3.0
+$ module load julia              # not mentioning any version loads the default
 #+END_src
 
 ** Start an interactive job
 
 #+BEGIN_src sh
-$ salloc --time=03:00:00 --mem=11250
+$ salloc --time=03:00:00 --mem=7482
 #+END_src
 
 ** Launch Julia
@@ -76,5 +69,33 @@ Finally, we can launch the Julia REPL by running the `julia` command:
 #+BEGIN_src sh
 $ julia
 #+END_src
+
+* JupyterHub access
+
+For this course, we will also use a temporary JupyterHub. Here is how to log in:
+
+- Go to {{<a "https://beluu.c3.ca" "https://beluu.c3.ca,">}}
+- Sign in with the username & password you just got,
+- Set the server options according to the image below,
+
+{{<imgm src="/img/jupyter_sever_options.png" margin="4rem 0 0 0" title="" width="%" line-height="0rem">}}
+{{</imgm>}}
+
+#+BEGIN_note
+*These are the only values that you should edit:* \\
+Change the time to *3.0* \\
+
+Make sure the Memobry is set to *7482* \\
+Make sure the interface is set to *JupyterLab*
+#+END_note
+{{<br size="4">}}
+
+- Press start.
+
+{{<br size="4">}}
+
+#+BEGIN_note
+Note that, unlike other JupyterHubs you might have used (e.g. {{<a "https://syzygy.ca/" "Syzygy">}}), this JupyterHub is not permanent and can only be used for this course.
+#+END_note
 
 * Comments & questions
