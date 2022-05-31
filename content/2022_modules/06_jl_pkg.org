@@ -1,0 +1,120 @@
+#+title: Packages
+#+description: Reading
+#+colordes: #2d5986
+#+slug: 06_jl_pkg
+#+weight: 6
+
+* Standard library
+
+A set of packages are installed when you install Julia. They are stored in the *standard library* or *stdlib* (in Linux, they are in ~/usr/share/julia/stdlib/vx.x~, where ~vx.x~ is the installed Julia version).
+
+Here is the list:
+
+#+BEGIN_example
+Base64
+CRC32c
+Dates
+DelimitedFiles
+Distributed
+FileWatching
+Future
+InteractiveUtils
+Libdl
+LibGit2
+LinearAlgebra
+Logging
+Markdown
+Mmap
+Pkg
+Printf
+Profile
+Random
+REPL
+Serialization
+SHA
+SharedArrays
+Sockets
+SparseArrays
+Statistics
+SuiteSparse
+Test
+Unicode
+UUIDs
+#+END_example
+
+They are not automatically loaded at the start of a session, so before you can use them, you need to [[http://westgrid-julia.netlify.app/2022_modules/06_jl_pkg/#headline-5][load them]] as you would do for external packages.
+
+* External packages
+
+To add functionality to Julia, you can install external packages from an ever-growing collection developed by the Julia community.
+
+** How to find external packages
+
+All registered packages are on GitHub and can easily be searched in {{<a "https://juliahub.com/ui/Packages" "JuliaHub">}} or {{<a "https://juliapackages.com/" "JuliaPackages.">}}
+
+GitHub allows to easily get an idea about the popularity of a package (number of stars) and whether it is under current development (age of latest commit).
+
+These packages get installed in your personal library (in linux, it is in ~~/.julia~).
+
+** How to manage external packages
+
+In [[https://westgrid-julia.netlify.app/2022_modules/05_jl_repl/#headline-1][package mode]] (accessed in the Julia REPL by pressing ~]~), you can manage your personal library easily with the following commands:
+
+#+BEGIN_note
+#+BEGIN_export html
+Make sure that you are in package mode first: the usual <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #339933"><b>julia></b></span> prompt should have changed to <span style="font-family: 'Source Code Pro', 'Lucida Console', monospace; font-size: 1.4rem; padding: 0.2rem; border-radius: 5%; background-color: #f0f3f3; color: #2e5cb8"><b>pkg></b></span>.
+#+END_export
+#+END_note
+
+#+BEGIN_src julia
+add <package>        # install <package>
+rm <package>         # uninstall <package>
+status <package>     # status of <package>
+update <package>     # update <package>
+
+status               # status of all installed packages
+update               # update all packages
+#+END_src
+
+#+BEGIN_note
+Notes:
+
+- Replace ~<package>~ by the name of the package (e.g. ~Plots~)
+- You can use ~up~ instead of ~update~ and ~st~ instead of ~status~
+- To install, uninstall, or update several packages at once, list them with a space:
+
+#+BEGIN_src julia
+add <package1> <package2> <package3>
+#+END_src
+#+END_note
+
+An alternative to this convenience mode is to load the package manager (part of stdlib), called ~Pkg~ and use it as you would any other package:
+
+#+BEGIN_src julia
+using Pkg
+
+Pkg.add("<package>")        # install <package>
+Pkg.rm("<package>")         # uninstall <package>
+Pkg.status("<package>")     # status of <package>
+Pkg.update("<package>")     # update <package>
+
+Pkg.update()                # status of all installed packages
+Pkg.status()                # update all packages
+#+END_src
+
+#+BEGIN_note
+Notes:
+
+- The short forms ~up~ and ~st~ do not work in this context
+- To install, uninstall, or update several packages at once, you need to create an array:
+
+#+BEGIN_src julia
+Pkg.add(["<package1>", "<package2>", "<package3>"])
+#+END_src
+#+END_note
+
+* Loading packages
+
+You can load a package with ~using <package>~ (e.g. ~using Plots~).
+
+* Comments & questions
