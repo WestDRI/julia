@@ -13,3 +13,31 @@
 Please have a look in your spam box if you haven't received the email.
 {{</notes>}}
 #+END_def
+
+* Accessing our training cluster
+
+** Open a terminal emulator
+
+/Windows:/ {{<m>}}{{<s>}}[[https://mobaxterm.mobatek.net/][MobaXTerm]] (free Home Edition)\\
+/MacOS:/ {{<m>}}{{<m>}}Terminal \\
+/Linux/WSL:/ {{<s>}}{{<s>}}Your usual terminal emulator
+
+** SSH into the cluster
+
+#+BEGIN_note
+If you were with us for the Python course last week, you can use the same usernames and passwords.
+Otherwise, those will be given to you during the Zoom session.
+#+END_note
+{{<br size="3">}}
+
+- Linux, WSL, and MacOS type in your terminal:
+
+#+BEGIN_src sh
+$ ssh userxxx@uu.c3.ca
+# enter password (it is blind typing, so you won't see it as you type)
+#+END_src
+
+- Window users:
+
+{{<a "https://mobaxterm.mobatek.net/demo.html" "This demo">}} shows how to use SSH with MobaXterm (for "Remote host" enter: ~uu.c3.ca~).
+
