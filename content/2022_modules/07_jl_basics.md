@@ -12,13 +12,17 @@ jupyter: julia-1.7
 
 
 
-*Date:* {{<m>}}{{<s>}} Tuesday, May 31  
-*Time:* {{<m>}}{{<s>}} 10:30 am Pacific Time  
-*Access:* {{<m>}} You should have received the meeting id and password by email.
-
+{{<def>}}
+{{<br size="2">}}
+<em>Date:</em> {{<m>}}{{<s>}} Tuesday, May 31 <br>
+<em>Time:</em> {{<m>}}{{<s>}} 10:30 am Pacific Time <br>
+<em>Access:</em> {{<m>}} You should have received the meeting id and password by email.
+{{<br size="2">}}
 {{<notes>}}
 Please have a look in your spam box if you haven't received the email.
 {{</notes>}}
+{{<br size="2">}}
+{{</def>}}
 
 ## How to run Julia
 
@@ -238,7 +242,7 @@ If you want to know how to type a symbol, ask Julia: type `?` and paste it in th
 false = 3
 ```
 
-    LoadError: syntax: invalid assignment location "false" around In[24]:1
+    LoadError: syntax: invalid assignment location "false" around In[216]:1
 
 In addition, the {{<a "https://docs.julialang.org/en/v1/manual/style-guide/#Style-Guide-1" "Julia Style Guide">}} recommends to follow these conventions:
 
