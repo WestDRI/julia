@@ -41,3 +41,40 @@ $ ssh userxxx@uu.c3.ca
 
 {{<a "https://mobaxterm.mobatek.net/demo.html" "This demo">}} shows how to use SSH with MobaXterm (for "Remote host" enter: ~uu.c3.ca~).
 
+* Running Julia
+
+** Load the Julia module
+
+To see which versions of Julia are available on the cluster:
+
+#+BEGIN_src sh
+$ module spider julia
+#+END_src
+
+To load one of the modules (e.g. ~julia/1.3.0~), we first need to know what its dependencies are:
+
+#+BEGIN_src sh
+$ module spider julia/1.3.0
+#+END_src
+
+We can then load the dependencies and the Julia module:
+
+#+BEGIN_src sh
+$ module load nixpkgs/16.09 gcc/7.3.0 julia/1.3.0
+#+END_src
+
+** Start an interactive job
+
+#+BEGIN_src sh
+$ salloc --time=03:00:00 --mem=11250
+#+END_src
+
+** Launch Julia
+
+Finally, we can launch the Julia REPL by running the `julia` command:
+
+#+BEGIN_src sh
+$ julia
+#+END_src
+
+* Comments & questions
