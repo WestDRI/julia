@@ -1,0 +1,104 @@
+---
+title: Documentation
+description: Reading
+colordes: "#2d5986"
+slug: 04_jl_doc
+weight: 4
+execute:
+  error: true
+format: hugo
+jupyter: julia-1.7
+---
+
+## Documentation from within Julia
+
+To get documentation on an object in Julia, simply type in [the julia REPL](https://westgrid-julia.netlify.app/2022_modules/05_jl_repl):
+
+```{.julia}
+?<object>
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{.julia}
+?sum
+```
+
+```
+search: sum sum! summary cumsum cumsum! isnumeric VersionNumber issubnormal get_zero_subnormals set_zero_subnormals
+
+  sum(f, itr; [init])
+
+  Sum the results of calling function f on each element of itr.
+
+  The return type is Int for signed integers of less than system word size, and UInt for unsigned integers of less than system word size. For all other arguments, a
+  common return type is found to which all arguments are promoted.
+
+  The value returned for empty itr can be specified by init. It must be the additive identity (i.e. zero) as it is unspecified whether init is used for non-empty
+  collections.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> sum(abs2, [2; 3; 4])
+  29
+
+  Note the important difference between sum(A) and reduce(+, A) for arrays with small integer eltype:
+
+  julia> sum(Int8[100, 28])
+  128
+
+  julia> reduce(+, Int8[100, 28])
+  -128
+```
+
+## Find function from within Julia
+
+To print the list of functions containing a certain expression in their description, you can use:
+
+```{.julia}
+apropos("<expression>")
+```
+
+{{<ex>}}
+Example:
+{{</ex>}}
+
+```{julia}
+apropos("truncate")
+```
+
+## Get version
+
+If you need to find your Julia version, you can use either of:
+
+```{julia}
+VERSION          # outputs Julia version only
+```
+```{julia}
+versioninfo()    # outputs more info, including OS info
+```
+
+## Online documentation
+
+{{<a "https://julialang.org/" "Julia website">}} \
+{{<a "https://docs.julialang.org/en/v1/" "Julia documentation">}} \
+{{<a "https://julialang.org/learning/" "Online training material">}} \
+{{<a "https://www.youtube.com/user/JuliaLanguage" "Julia YouTube channel">}} \
+{{<a "https://en.wikibooks.org/wiki/Introducing_Julia" "Julia Wikibook">}} \
+{{<a "https://www.juliabloggers.com/" "Blog aggregator for Julia">}}
+
+## Getting help
+
+{{<a "https://discourse.julialang.org/" "Julia Discourse forum">}} \
+[[julia] tag on Stack Overflow](https://stackoverflow.com/tags/julia) \
+{{<a "https://julialang.org/slack/" "The Julia Language Slack">}} \
+{{<a "https://julialang.zulipchat.com/register/" "Zulip">}} \
+[#julialang hashtag on Twitter](https://twitter.com/search?q=%23julialang) \
+{{<a "https://www.reddit.com/r/Julia/" "Julia subreddit">}} \
+{{<a "https://gitter.im/JuliaLang/julia" "Julia Gitter channel">}} \
+[#julia IRC channel on Freenode](https://webchat.freenode.net/#julia)
+
+## Comments & questions
