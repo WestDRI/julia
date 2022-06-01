@@ -1,0 +1,11 @@
+---
+title: Types
+description: Zoom
+colordes: "#e86e0a"
+slug: 10_jl_types
+weight: 10
+execute:
+  error: true
+format: hugo
+jupyter: julia-1.7
+---
