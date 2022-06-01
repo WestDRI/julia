@@ -29,6 +29,7 @@ using CSV
 using DataFrames
 using Dates          # from the standard Julia library
 using TimeSeries
+using JLD
 ```
 
 ### Load the data
@@ -112,6 +113,16 @@ Our data is a time series, we need to transform it to a TimeArray thanks to the 
 
 ```{julia}
 deaths_countries = TimeArray(deaths_countries_sums, timestamp = :date)
+```
+
+## Saving a Julia object
+
+```{.julia}
+save("deaths_countries.jld", "deaths_countries", deaths_countries)
+```
+```{julia}
+#| echo: false
+save("../../static/data/deaths_countries.jld", "deaths_countries", deaths_countries)
 ```
 
 ## DataFrame cheatsheet
