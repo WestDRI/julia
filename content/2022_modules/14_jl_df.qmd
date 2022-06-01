@@ -29,7 +29,7 @@ using CSV
 using DataFrames
 using Dates          # from the standard Julia library
 using TimeSeries
-using BSON
+using BSON: @save
 ```
 
 ### Load the data
@@ -115,11 +115,11 @@ Let's save our DataFrame `deaths_countries` into a file to plot it in the next c
 For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON package">}} which 
 
 ```{.julia}
-bson("deaths_countries.bson", deaths_countries=deaths_countries)
+@save "deaths_countries.bson" deaths_countries
 ```
 ```{julia}
 #| echo: false
-bson("../../static/data/deaths_countries.bson", deaths_countries=deaths_countries)
+@save "../../static/data/deaths_countries.bson" deaths_countries
 ```
 
 ## DataFrame cheatsheet
