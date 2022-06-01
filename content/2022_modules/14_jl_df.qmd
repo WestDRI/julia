@@ -57,13 +57,6 @@ size(deaths_global)
 describe(deaths_global)
 ```
 
-### Replace missing values by the string "NA"
-
-```{julia}
-replace!(deaths_global[!, 1], missing => "NA");
-deaths_global
-```
-
 ### Rename some variables to easier names
 
 ```{julia}
