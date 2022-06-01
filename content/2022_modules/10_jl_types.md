@@ -10,6 +10,8 @@ format: hugo
 jupyter: julia-1.7
 ---
 
+
+
 {{<def>}}
 {{<br size="2">}}
 <em>Date:</em> {{<m>}}{{<s>}} Thursday, June 2 <br>
@@ -50,20 +52,20 @@ This gives users the freedom to choose between an easy and convenient language, 
 
 ### Julia types: a hierarchical tree
 
-At the bottom: &emsp;**concrete types** <br>
-Above: &emsp;&emsp;&emsp;&emsp;**abstract types** (concepts for collections of concrete types) <br>
-At the top: &emsp;&emsp;&ensp;&nbsp;the `Any` type, encompassing all types
+At the bottom:  **concrete types** <br>
+Above:     **abstract types** (concepts for collections of concrete types) <br>
+At the top:     the `Any` type, encompassing all types
 {{<br size="4">}}
 
 {{<imgshadow src="/img/type.png" margin="1rem" title="" width="75%" line-height="3rem">}}
-From <a href="https://www.oreilly.com/library/view/learning-julia-abstract/9781491999585/ch01.html">O'Reilly &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;</a>
+From <a href="https://www.oreilly.com/library/view/learning-julia-abstract/9781491999585/ch01.html">O'Reilly       </a>
 {{</imgshadow>}}
 
 #### Optional type declaration
 
 Done with `::`
 
-```{.julia}
+``` julia
 <value>::<type>
 ```
 
@@ -71,24 +73,30 @@ Done with `::`
 Example:
 {{</ex>}}
 
-```{julia}
+``` julia
 2::Int
 ```
+
+    2
 
 #### Illustration of type safety
 
 This works:
 
-```{julia}
+``` julia
 2::Int
 ```
 
+    2
+
 This doesn't work:
 
-```{julia}
+``` julia
 2.0::Int
 ```
 
+    LoadError: TypeError: in typeassert, expected Int64, got a value of type Float64
+
 #### Illustration of type safety
 
 {{<notes>}}
@@ -99,17 +107,21 @@ Type declaration is not supported on global variables; this is used in local con
 Example:
 {{</ex>}}
 
-```{julia}
+``` julia
 function floatsum(a, b)
     (a + b)::Float64
 end
 ```
+
+    floatsum (generic function with 1 method)
 
 This works:
 
-```{julia}
+``` julia
 floatsum(2.3, 1.0)
 ```
+
+    3.3
 
 #### Illustration of type safety
 
@@ -121,72 +133,110 @@ Type declaration is not supported on global variables; this is used in local con
 Example:
 {{</ex>}}
 
-```{julia}
+``` julia
 function floatsum(a, b)
     (a + b)::Float64
 end
 ```
 
+    floatsum (generic function with 1 method)
+
 This doesn't work:
 
-```{julia}
+``` julia
 floatsum(2, 4)
 ```
+
+    LoadError: TypeError: in typeassert, expected Float64, got a value of type Int64
 
 #### Information and conversion
 
 As we have already seen, to know the type of an object, use the `typeof` function:
 
-```{julia}
+``` julia
 typeof(2)
 ```
-```{julia}
+
+    Int64
+
+``` julia
 typeof(2.0)
 ```
-```{julia}
+
+    Float64
+
+``` julia
 typeof("Hello, World!")
 ```
-```{julia}
+
+    String
+
+``` julia
 typeof(true)
 ```
-```{julia}
+
+    Bool
+
+``` julia
 typeof((2, 4, 1.0, "test"))
 ```
 
+    Tuple{Int64, Int64, Float64, String}
+
 When it makes sense, you can also convert types:
 
-```{julia}
+``` julia
 Int(2.0)
 ```
-```{julia}
+
+    2
+
+``` julia
 typeof(Int(2.0))
 ```
-```{julia}
+
+    Int64
+
+``` julia
 Char(2.0)
 ```
-```{julia}
+
+    '\x02': ASCII/Unicode U+0002 (category Cc: Other, control)
+
+``` julia
 typeof(Char(2.0))
 ```
 
+    Char
+
 The boolean type is a subtype of the integer type:
 
-```{julia}
+``` julia
 Bool <: Integer
 ```
-```{julia}
+
+    true
+
+``` julia
 false == 0
 ```
-```{julia}
+
+    true
+
+``` julia
 true == 1
 ```
-```{julia}
+
+    true
+
+``` julia
 a = true;
 b = false;
 3a + 2b
 ```
 
+    3
+
 ## Stylistic conventions
-
-
 
 ## Comments & questions
