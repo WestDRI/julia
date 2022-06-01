@@ -27,7 +27,7 @@ You will also need to install a number of Julia packages:
 - Run:
 
 #+BEGIN_src julia
-add BenchmarkTools CSV DataFrames StatsPlots TimeSeries
+add CSV DataFrames StatsPlots TimeSeries BSON
 #+END_src
 
 * Text editor, IDE, or notebooks
