@@ -36,7 +36,7 @@ using CSV
 using DataFrames
 using Dates          # from the standard Julia library
 using TimeSeries
-using JLD
+using BSON
 ```
 
 ### Load the data
@@ -194,8 +194,12 @@ deaths_countries = TimeArray(deaths_countries_sums, timestamp = :date)
 
 ## Saving a Julia object
 
+Let's save our DataFrame `deaths_countries` into a file to plot it in the next chapter.
+
+For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON package">}} which
+
 ``` julia
-save("deaths_countries.jld", "deaths_countries", deaths_countries)
+bson("deaths_countries.bson", deaths_countries=deaths_countries)
 ```
 
 ## DataFrame cheatsheet
