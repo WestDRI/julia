@@ -36,6 +36,7 @@ using CSV
 using DataFrames
 using Dates          # from the standard Julia library
 using TimeSeries
+using JLD
 ```
 
 ### Load the data
@@ -77,8 +78,8 @@ deaths_global
 ### Rename some variables to easier names
 
 ``` julia
-rename!(deaths_global, Dict.(1 => Symbol("province"),
-                             2 => Symbol("country")))
+DataFrames.rename!(deaths_global, Dict.(1 => Symbol("province"),
+                                        2 => Symbol("country")))
 ```
 
 <div class="data-frame"><p>285 rows × 865 columns (omitted printing of 860 columns)</p><table class="data-frame"><thead><tr><th></th><th>province</th><th>country</th><th>Lat</th><th>Long</th><th>1/22/20</th></tr><tr><th></th><th title="Union{Missing, String}">String?</th><th title="String">String</th><th title="Union{Missing, Float64}">Float64?</th><th title="Union{Missing, Float64}">Float64?</th><th title="Int64">Int64</th></tr></thead><tbody><tr><th>1</th><td>NA</td><td>Afghanistan</td><td>33.9391</td><td>67.71</td><td>0</td></tr><tr><th>2</th><td>NA</td><td>Albania</td><td>41.1533</td><td>20.1683</td><td>0</td></tr><tr><th>3</th><td>NA</td><td>Algeria</td><td>28.0339</td><td>1.6596</td><td>0</td></tr><tr><th>4</th><td>NA</td><td>Andorra</td><td>42.5063</td><td>1.5218</td><td>0</td></tr><tr><th>5</th><td>NA</td><td>Angola</td><td>-11.2027</td><td>17.8739</td><td>0</td></tr><tr><th>6</th><td>NA</td><td>Antarctica</td><td>-71.9499</td><td>23.347</td><td>0</td></tr><tr><th>7</th><td>NA</td><td>Antigua and Barbuda</td><td>17.0608</td><td>-61.7964</td><td>0</td></tr><tr><th>8</th><td>NA</td><td>Argentina</td><td>-38.4161</td><td>-63.6167</td><td>0</td></tr><tr><th>9</th><td>NA</td><td>Armenia</td><td>40.0691</td><td>45.0382</td><td>0</td></tr><tr><th>10</th><td>Australian Capital Territory</td><td>Australia</td><td>-35.4735</td><td>149.012</td><td>0</td></tr><tr><th>11</th><td>New South Wales</td><td>Australia</td><td>-33.8688</td><td>151.209</td><td>0</td></tr><tr><th>12</th><td>Northern Territory</td><td>Australia</td><td>-12.4634</td><td>130.846</td><td>0</td></tr><tr><th>13</th><td>Queensland</td><td>Australia</td><td>-27.4698</td><td>153.025</td><td>0</td></tr><tr><th>14</th><td>South Australia</td><td>Australia</td><td>-34.9285</td><td>138.601</td><td>0</td></tr><tr><th>15</th><td>Tasmania</td><td>Australia</td><td>-42.8821</td><td>147.327</td><td>0</td></tr><tr><th>16</th><td>Victoria</td><td>Australia</td><td>-37.8136</td><td>144.963</td><td>0</td></tr><tr><th>17</th><td>Western Australia</td><td>Australia</td><td>-31.9505</td><td>115.861</td><td>0</td></tr><tr><th>18</th><td>NA</td><td>Austria</td><td>47.5162</td><td>14.5501</td><td>0</td></tr><tr><th>19</th><td>NA</td><td>Azerbaijan</td><td>40.1431</td><td>47.5769</td><td>0</td></tr><tr><th>20</th><td>NA</td><td>Bahamas</td><td>25.0259</td><td>-78.0359</td><td>0</td></tr><tr><th>21</th><td>NA</td><td>Bahrain</td><td>26.0275</td><td>50.55</td><td>0</td></tr><tr><th>22</th><td>NA</td><td>Bangladesh</td><td>23.685</td><td>90.3563</td><td>0</td></tr><tr><th>23</th><td>NA</td><td>Barbados</td><td>13.1939</td><td>-59.5432</td><td>0</td></tr><tr><th>24</th><td>NA</td><td>Belarus</td><td>53.7098</td><td>27.9534</td><td>0</td></tr><tr><th>25</th><td>NA</td><td>Belgium</td><td>50.8333</td><td>4.46994</td><td>0</td></tr><tr><th>26</th><td>NA</td><td>Belize</td><td>17.1899</td><td>-88.4976</td><td>0</td></tr><tr><th>27</th><td>NA</td><td>Benin</td><td>9.3077</td><td>2.3158</td><td>0</td></tr><tr><th>28</th><td>NA</td><td>Bhutan</td><td>27.5142</td><td>90.4336</td><td>0</td></tr><tr><th>29</th><td>NA</td><td>Bolivia</td><td>-16.2902</td><td>-63.5887</td><td>0</td></tr><tr><th>30</th><td>NA</td><td>Bosnia and Herzegovina</td><td>43.9159</td><td>17.6791</td><td>0</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table></div>
@@ -190,6 +191,12 @@ deaths_countries = TimeArray(deaths_countries_sums, timestamp = :date)
     │ 2022-05-31 │ "Yemen"                │ 2149              │
     │ 2022-05-31 │ "Zambia"               │ 3987              │
     │ 2022-05-31 │ "Zimbabwe"             │ 5503              │
+
+## Saving a Julia object
+
+``` julia
+save("deaths_countries.jld", "deaths_countries", deaths_countries)
+```
 
 ## DataFrame cheatsheet
 
