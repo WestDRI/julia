@@ -1,0 +1,124 @@
+---
+title: Data frames
+description: Zoom
+colordes: "#e86e0a"
+slug: 14_jl_df
+weight: 14
+execute:
+  error: true
+format: hugo
+jupyter: julia-1.7
+---
+
+## Working with tabular data in julia
+
+Julia was created with large computations in mind. Its main type for large collections of data is thus [the array](https://westgrid-julia.netlify.app/2022_modules/13_jl_arrays/). The array is Julia's equivalent to NumPy's ndarray (the data collection object used for efficient computations in Python). It is also equivalent to PyTorch's tensors (the data collection object used for deep learning in this Python library).
+
+Julia's equivalent to {{<a "https://pandas.pydata.org/" "pandas'">}} DataFrame (in Python) and data.frames or their variations such as {{<a "https://cran.r-project.org/web/packages/tibble/vignettes/tibble.html" "tibbles">}} and {{<a "https://rdatatable.gitlab.io/data.table/" "data.tables">}} (in R) is provided by {{<a "https://github.com/JuliaData/DataFrames.jl" "the DataFrames package.">}}
+
+## DataFrame through an example
+
+Let's introduce DataFrame through an example typical of tabular data workflows using Covid-19 data from Johns Hopkins University. This data is open source, easy to access from {{<a "https://github.com/CSSEGISandData/COVID-19" "a repository on GitHub,">}} and is the data used in {{<a "https://www.arcgis.com/apps/dashboards/bda7594740fd40299423467b48e9ecf6" "the JHU Covid-19 dashboard.">}}
+
+### Load packages
+
+We will need a number of external packages for this. Remember that external packages {{<a "https://westgrid-julia.netlify.app/2022_modules/06_jl_pkg/" "first need to be installed,">}} but you don't have to do anything here as the packages we need are pre-installed on our training cluster. You still have to load them though to make them accessible in the current session:
+
+```{julia}
+using CSV
+using DataFrames
+using Dates          # from the standard Julia library
+using TimeSeries
+```
+
+### Load the data
+
+We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository.
+
+I uploaded it to our training cluster, so you can find it at: \
+`~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv`.
+
+```{.julia}
+deaths_global = CSV.read("~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv", DataFrame)
+```
+
+```{julia}
+#| echo: false
+deaths_global = CSV.read("/home/marie/parvus/prog/tdoc/djl/data/covid/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv", DataFrame)
+```
+
+### Explore the data
+
+```{julia}
+size(deaths_global)
+```
+```{julia}
+describe(deaths_global)
+```
+
+### Replace missing values by the string "NA"
+
+```{julia}
+replace!(deaths_global[!, 1], missing => "NA");
+deaths_global
+```
+
+### Rename some variables to easier names
+
+```{julia}
+rename!(deaths_global, Dict.(1 => Symbol("province"),
+                             2 => Symbol("country")))
+```
+
+### Transform the data into long format
+
+```{julia}
+deaths_global_long = stack(deaths_global, Not(collect(1:4)),
+                           variable_name = Symbol("date"),
+                           value_name = Symbol("number_deaths"))
+```
+
+### Views of the data
+
+Instead of indexing a DataFrame, it is a lot more memory efficient to create a view.
+
+### Get totals by country
+
+```{julia}
+deaths_countries_grouped = groupby(deaths_global_long, [:country, :date])
+```
+```{julia}
+deaths_countries_sums = combine(deaths_countries_grouped, :number_deaths => sum)
+```
+
+## Working with dates
+
+### Turn the date into a proper date format
+
+```{julia}
+#= Turn the year from 2 digits to 4 digits using regular expression
+(in a vectorised fashion by braodcasting with the dot notation);
+then turn these values into strings, and finally into dates =#
+deaths_countries_sums.date = Date.(replace.(string.(deaths_countries_sums[!, 2]),
+                                            r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy")
+```
+```{julia}
+deaths_countries_sums
+```
+
+### Time series
+
+Our data is a time series, we need to transform it to a TimeArray thanks to the {{<c>}}TimeArray(){{</c>}} function from the TimeSeries package.
+
+```{julia}
+deaths_countries = TimeArray(deaths_countries_sums, timestamp = :date)
+```
+
+## DataFrame cheatsheet
+
+{{<imgmshadow src="/img/dataframes-0.png" title="" width="%" line-height="1.0rem">}}
+{{</imgmshadow>}}
+{{<imgmshadow src="/img/dataframes-1.png" title="" width="%" line-height="1.0rem">}}
+{{</imgmshadow>}}
+
+## Comments & questions
