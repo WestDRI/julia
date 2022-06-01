@@ -9,3 +9,15 @@ execute:
 format: hugo
 jupyter: julia-1.7
 ---
+
+{{<def>}}
+{{<br size="2">}}
+<em>Date:</em> {{<m>}}{{<s>}} Thursday, June 2 <br>
+<em>Time:</em> {{<m>}}{{<s>}} 9:30 am Pacific Time <br>
+<em>Access:</em> {{<m>}} You should have received the meeting id and password by email.
+{{<br size="2">}}
+{{<notes>}}
+Please have a look in your spam box if you haven't received the email.
+{{</notes>}}
+{{<br size="2">}}
+{{</def>}}
