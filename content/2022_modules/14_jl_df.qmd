@@ -66,8 +66,8 @@ deaths_global
 ### Rename some variables to easier names
 
 ```{julia}
-rename!(deaths_global, Dict.(1 => Symbol("province"),
-                             2 => Symbol("country")))
+DataFrames.rename!(deaths_global, Dict.(1 => Symbol("province"),
+                                        2 => Symbol("country")))
 ```
 
 ### Transform the data into long format
