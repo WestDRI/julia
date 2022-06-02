@@ -73,7 +73,7 @@ hello1() = println("Hello")
 
 The function `hello1` defined with this compact syntax is exactly the same as the one we defined above.
 
-### Stylistic conventions
+### Stylistic convention
 
 Julia suggests to use lower case, without underscores, as function names.
 
@@ -103,7 +103,7 @@ hello1("Bob")
 
     LoadError: MethodError: no method matching hello1(::String)
     [0mClosest candidates are:
-    [0m  hello1() at In[764]:1
+    [0m  hello1() at In[5]:1
 
 ### One argument
 
@@ -296,7 +296,7 @@ function (name)
 end
 ```
 
-    #139 (generic function with 1 method)
+    #1 (generic function with 1 method)
 
 {{<ex>}}
 Compact form:
@@ -306,7 +306,7 @@ Compact form:
 name -> println("Hello $name")
 ```
 
-    #141 (generic function with 1 method)
+    #3 (generic function with 1 method)
 
 ### When would you want to use anonymous functions?
 

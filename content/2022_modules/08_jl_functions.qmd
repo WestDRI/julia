@@ -62,7 +62,7 @@ hello1() = println("Hello")
 
 The function `hello1` defined with this compact syntax is exactly the same as the one we defined above.
 
-### Stylistic conventions
+### Stylistic convention
 
 Julia suggests to use lower case, without underscores, as function names.
 
