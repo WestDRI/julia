@@ -28,7 +28,6 @@ We will need a number of external packages for this. Remember that external pack
 using CSV
 using DataFrames
 using Dates          # from the standard Julia library
-using TimeSeries
 using BSON: @save
 ```
 
@@ -72,54 +71,52 @@ deaths_global_long = stack(deaths_global, Not(collect(1:4)),
                            value_name = Symbol("number_deaths"))
 ```
 
-### Views of the data
-
-Instead of indexing a DataFrame, it is a lot more memory efficient to create a view.
-
-### Get totals by country
-
-```{julia}
-deaths_countries_grouped = groupby(deaths_global_long, [:country, :date])
-```
-```{julia}
-deaths_countries_sums = combine(deaths_countries_grouped, :number_deaths => sum)
-```
-
-## Working with dates
-
-### Turn the date into a proper date format
+### Turn the date into a proper format and type
 
 ```{julia}
 #= Turn the year from 2 digits to 4 digits using regular expression
 (in a vectorised fashion by braodcasting with the dot notation);
 then turn these values into strings, and finally into dates =#
-deaths_countries_sums.date = Date.(replace.(string.(deaths_countries_sums[!, 2]),
-                                            r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy")
+deaths_global_long.date = Date.(replace.(string.(deaths_global_long[!, 5]),
+                                         r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy")
 ```
 ```{julia}
-deaths_countries_sums
+deaths_global_long
 ```
 
-### Time series
-
-Our data is a time series, we need to transform it to a TimeArray thanks to the {{<c>}}TimeArray(){{</c>}} function from the TimeSeries package.
+### Get totals by country and by date
 
 ```{julia}
-deaths_countries = TimeArray(deaths_countries_sums, timestamp = :date)
+deaths_countries_grouped = groupby(deaths_global_long, [:country, :date])
+```
+```{julia}
+deaths_countries = combine(deaths_countries_grouped, :number_deaths => sum)
+```
+
+### Index totals by date for Canada
+
+```{julia}
+deaths_canada = filter(:country => isequal("Canada"), deaths_countries)
+```
+
+We can then drop the country column:
+
+```{julia}
+select!(deaths_canada, Not(1))
 ```
 
 ## Saving a Julia object
 
-Let's save our DataFrame `deaths_countries` into a file to plot it in the next chapter.
+Let's save our DataFrame `deaths_canada` into a file to plot it in the next chapter.
 
 For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON package">}} which 
 
 ```{.julia}
-@save "deaths_countries.bson" deaths_countries
+@save "deaths_canada.bson" deaths_canada
 ```
 ```{julia}
 #| echo: false
-@save "../../static/data/deaths_countries.bson" deaths_countries
+@save "../../static/data/deaths_canada.bson" deaths_canada
 ```
 
 ## DataFrame cheatsheet
