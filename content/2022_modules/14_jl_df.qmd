@@ -22,7 +22,19 @@ Let's introduce DataFrame through an example typical of tabular data workflows u
 
 ### Load packages
 
-We will need a number of external packages for this. Remember that external packages {{<a "https://westgrid-julia.netlify.app/2022_modules/06_jl_pkg/" "first need to be installed,">}} but you don't have to do anything here as the packages we need are pre-installed on our training cluster. You still have to load them though to make them accessible in the current session:
+We will need a number of external packages for this. Remember that external packages {{<a "https://westgrid-julia.netlify.app/2022_modules/06_jl_pkg/" "first need to be installed:">}}
+
+```{.julia}
+] add CSV DataFrames StatsPlots TimeSeries BSON
+```
+
+There is a conflict version between the latest CSV package version and the version of Julia running in our JupyterHub. For this reason, we have to downgrade the version to v0.8.5:
+
+```{.julia}
+] pin CSV@0.8.5
+```
+
+Then, you have to load them to make them accessible in the current session:
 
 ```{julia}
 using CSV
