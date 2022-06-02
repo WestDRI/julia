@@ -12,6 +12,14 @@ jupyter: julia-1.7
 
 
 
+## Loading a Julia object
+
+We will load the object we saved in the last chapter into this session so that we can plot the data.
+
+To successfully load the BSON file and recreate our DataFrame, we need to load in this session all the packages that were involved in the creation of the DataFrames so that the necessary types are available to Julia.
+
+In addition, we will load the {{<a "https://github.com/JuliaPlots/StatsPlots.jl" "StatsPlots package">}} which is a version of the {{<a "https://github.com/JuliaPlots/Plots.jl" "Plots package">}} with some additional statistical functionality:
+
 ``` julia
 using BSON: @load
 using DataFrames
@@ -20,17 +28,11 @@ using TimeSeries
 using StatsPlots
 ```
 
-{{<a "https://github.com/JuliaPlots/StatsPlots.jl" "StatsPlots package">}} {{<a "https://github.com/JuliaPlots/Plots.jl" "Plots package">}}
+Plots (and thus StatsPlots) is built on top of various visualization backends (e.g. {{<a "https://plotly.com/javascript/" "Plotly">}} or {{<a "https://gr-framework.org/" "GR">}}). This allows to use the same code to run any of these backends. The GR framework is used by default.
 
-We will use the {{<a "https://gr-framework.org/" "GR framework">}} as a backend for Plots:
-
-``` julia
-gr()
-```
-
-    Plots.GRBackend()
-
-## Loading a Julia object
+{{<ex>}}
+We can now load our BSON file and recreate our DataFrame:
+{{</ex>}}
 
 ``` julia
 @load "deaths_canada.bson" deaths_canada
@@ -42,7 +44,7 @@ gr()
 
 ## Time series
 
-Our data is a time series, we need to transform it to a TimeArray thanks to the {{<c>}}TimeArray(){{</c>}} function from the TimeSeries package.
+Our data is a time series and needs to be transformed into a TimeArray thanks to the `TimeArray` function from the TimeSeries package before it can be plotted:
 
 ``` julia
 deaths_canada = TimeArray(deaths_canada, timestamp = :date)
@@ -74,24 +76,30 @@ deaths_canada = TimeArray(deaths_canada, timestamp = :date)
     │ 2022-05-30 │ 41043             │
     │ 2022-05-31 │ 41070             │
 
+We are now ready to create a plot.
+
 ## Creating a plot
+
+Creating a plot is very simple:
 
 ``` julia
 plot(deaths_canada)
 ```
 
-![](15_jl_plotting_files/figure-gfm/cell-6-output-1.svg)
+![](15_jl_plotting_files/figure-gfm/cell-5-output-1.svg)
 
 {{<imgmshadow src="/15_jl_plotting_files/figure-gfm/cell-6-output-1.svg" title="" width="%" line-height="2.5rem">}}
 {{</imgmshadow>}}
 
-### Customization
+## Customization
+
+Of course, some amount of tweaking is needed to make a plot nicer. Here, let's simply add a title and remove the unnecessary legend:
 
 ``` julia
 plot(deaths_canada, title="Daily number of Covid-19 deaths in Canada", legend=false)
 ```
 
-![](15_jl_plotting_files/figure-gfm/cell-7-output-1.svg)
+![](15_jl_plotting_files/figure-gfm/cell-6-output-1.svg)
 
 {{<imgmshadow src="/15_jl_plotting_files/figure-gfm/cell-7-output-1.svg" title="" width="%" line-height="2.5rem">}}
 {{</imgmshadow>}}
