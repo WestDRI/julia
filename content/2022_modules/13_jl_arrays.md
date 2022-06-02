@@ -133,7 +133,9 @@ cat(2, 4, 8, dims=1)
      4
      8
 
-Elements separated by semi-colons or end of line get expanded vertically. Those separated by commas do not get expanded. Elements separated by spaces or tabs get expanded horizontally.
+Elements separated by semi-colons or end of lines get expanded vertically.<br>
+Those separated by commas do not get expanded.<br>
+Elements separated by spaces or tabs get expanded horizontally.
 
 {{<exo>}}
 Compare the outputs of the following:
@@ -188,9 +190,11 @@ In Julia, arrays can be heterogeneous:
      3
       "hello"
 
+This is possible because all elements of an array, no matter of what types, will always sit below the `Any` type in the [type hierarchy](https://westgrid-julia.netlify.app/2022_modules/10_jl_types/#julia-types-a-hierarchical-tree).
+
 ## Initializing arrays
 
-Here are a few of the functions initializing arrays:
+Below are examples of some of the functions initializing arrays:
 
 ``` julia
 rand(2, 3, 4)
@@ -198,20 +202,20 @@ rand(2, 3, 4)
 
     2×3×4 Array{Float64, 3}:
     [:, :, 1] =
-     0.798047  0.496548  0.236837
-     0.668231  0.109772  0.903741
+     0.287968  0.460719  0.153366
+     0.280913  0.539013  0.00871208
 
     [:, :, 2] =
-     0.65958    0.740433  0.131257
-     0.0576897  0.766578  0.710548
+     0.265209  0.655567  0.537502
+     0.26706   0.674964  0.861944
 
     [:, :, 3] =
-     0.934939  0.219563  0.363393
-     0.105168  0.323677  0.0644256
+     0.953564  0.907631   0.828447
+     0.515199  0.0105021  0.695217
 
     [:, :, 4] =
-     0.963333  0.279537  0.243513
-     0.731795  0.456465  0.754355
+     0.583481  0.84174    0.970322
+     0.152088  0.0482478  0.560455
 
 ``` julia
 rand(Int64, 2, 3, 4)
@@ -219,20 +223,20 @@ rand(Int64, 2, 3, 4)
 
     2×3×4 Array{Int64, 3}:
     [:, :, 1] =
-     -5877684800836648487  -8004892433994089835   1569062311890483209
-      6746795739727460269   -390670006413537477  -7588162193144172996
+     283631121498974884  5523893714833594940  -766547241876310447
+     193907474732102996   117640300918070571  2207880073658713015
 
     [:, :, 2] =
-     -8045145312760491744   3898316157625349679  7143617639483134893
-      7654763728111701016  -2626889611392855788  7794551181658274315
+     5448671591094212079  -6818252937298802646  -6593535695756447601
+     5644809475266060301  -8052566091470393472   -894025445933767430
 
     [:, :, 3] =
-     -4028612176419923140  5000708450664997944  -4666281487633278287
-     -9092379100401401553  6642748728533427738   2973413358574734622
+     -4704833441856952965  -7395983219772785088   7078606437917951545
+     -3634511620742085399  -2898846961850744754  -5207663753325904582
 
     [:, :, 4] =
-      6206262993944991558  -1018925241949506705   1781064374107573695
-     -5690545416867372913   3114699551660702936  -8369210866128032461
+     -3498469619188751973  8296251293241855904  9094565288786527968
+      -825154316697021437  6105724017006134850  3820314553677873025
 
 ``` julia
 zeros(Int64, 2, 5)
@@ -268,7 +272,8 @@ fill("test", (2, 2))
 
 ## Indexing
 
-As in other mathematically oriented languages such as R, Julia starts indexing at `1`. <br>
+As in other mathematically oriented languages such as R, Julia starts indexing at `1`.
+
 Indexing is done with square brackets:
 
 ``` julia
@@ -407,7 +412,13 @@ abs.(a) .== a .|> abs
      1
      1
 
+{{<notes>}}
+Hint: 0/1 are a short-form notations for false/true in arrays of booleans.
+{{</notes>}}
+
 ## Comprehensions
+
+Julia has an array comprehension syntax similar to Python's:
 
 ``` julia
 [ 3i + j for i=1:10, j=3 ]

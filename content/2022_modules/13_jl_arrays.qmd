@@ -74,7 +74,9 @@ vcat(2, 4, 8)
 cat(2, 4, 8, dims=1)
 ```
 
-Elements separated by semi-colons or end of line get expanded vertically. Those separated by commas do not get expanded. Elements separated by spaces or tabs get expanded horizontally.
+Elements separated by semi-colons or end of lines get expanded vertically.<br>
+Those separated by commas do not get expanded.<br>
+Elements separated by spaces or tabs get expanded horizontally.
 
 {{<exo>}}
 Compare the outputs of the following:
@@ -102,9 +104,11 @@ In Julia, arrays can be heterogeneous:
 [3, "hello"]
 ```
 
+This is possible because all elements of an array, no matter of what types, will always sit below the `Any` type in the [type hierarchy](https://westgrid-julia.netlify.app/2022_modules/10_jl_types/#julia-types-a-hierarchical-tree).
+
 ## Initializing arrays
 
-Here are a few of the functions initializing arrays:
+Below are examples of some of the functions initializing arrays:
 
 ```{julia}
 rand(2, 3, 4)
@@ -127,7 +131,8 @@ fill("test", (2, 2))
 
 ## Indexing
 
-As in other mathematically oriented languages such as R, Julia starts indexing at `1`. <br>
+As in other mathematically oriented languages such as R, Julia starts indexing at `1`.
+
 Indexing is done with square brackets:
 
 ```{julia}
@@ -203,7 +208,13 @@ abs.(a) == a .|> abs
 abs.(a) .== a .|> abs
 ```
 
+{{<notes>}}
+Hint: 0/1 are a short-form notations for false/true in arrays of booleans.
+{{</notes>}}
+
 ## Comprehensions
+
+Julia has an array comprehension syntax similar to Python's:
 
 ```{julia}
 [ 3i + j for i=1:10, j=3 ]
