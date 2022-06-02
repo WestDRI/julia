@@ -68,8 +68,4 @@ abssum(2, 4.0)
 What could you do if you wanted the last expression to work?
 {{</exo>}}
 
-## Examples
-
-
-
 ## Comments & questions

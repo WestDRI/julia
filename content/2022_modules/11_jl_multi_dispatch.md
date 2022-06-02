@@ -54,7 +54,7 @@ Try to understand the following example:
 abssum(x::Int64, y::Int64) = abs(x + y)
 ```
 
-    abssum (generic function with 2 methods)
+    abssum (generic function with 1 method)
 
 ``` julia
 abssum(x::Float64, y::Float64) = abs(x + y)
@@ -80,13 +80,11 @@ abssum(2, 4.0)
 
     LoadError: MethodError: no method matching abssum(::Int64, ::Float64)
     [0mClosest candidates are:
-    [0m  abssum(::Int64, [91m::Int64[39m) at In[9]:1
-    [0m  abssum([91m::Float64[39m, ::Float64) at In[10]:1
+    [0m  abssum(::Int64, [91m::Int64[39m) at In[2]:1
+    [0m  abssum([91m::Float64[39m, ::Float64) at In[3]:1
 
 {{<exo>}}
 What could you do if you wanted the last expression to work?
 {{</exo>}}
-
-## Examples
 
 ## Comments & questions
