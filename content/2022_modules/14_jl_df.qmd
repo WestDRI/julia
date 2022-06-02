@@ -39,7 +39,7 @@ I uploaded it to our training cluster, so you can find it at: \
 `~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv`.
 
 ```{.julia}
-deaths_global = CSV.read("~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv", DataFrame)
+deaths_global = CSV.read("projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv", DataFrame)
 ```
 
 ```{julia}
