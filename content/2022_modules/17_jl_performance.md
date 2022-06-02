@@ -1,0 +1,79 @@
+---
+title: Performance
+description: Zoom
+colordes: "#e86e0a"
+slug: 17_jl_performance
+weight: 17
+execute:
+  error: true
+format: hugo
+jupyter: julia-1.7
+---
+
+
+
+{{<def>}}
+{{<br size="1">}}
+The one thing you need to remember: {{<emph_inline_big>}}avoid global variables.{{</emph_inline_big>}}
+{{<br size="1">}}
+{{</def>}}
+
+This means: avoid variables defined in the global environment.
+
+## Definitions
+
+*Scope of variables*:   Environment within which a variables exist
+
+*Global scope*:    Global environment of a module
+
+*Local scope*:     Environment within a function, a loop, a struct, a macro...
+
+## Why avoid global variables?
+
+The Julia compiler is not good at optimizing code using global variables.
+
+Part of the reason is that their type can change.
+
+### Example
+
+We will use the `@time` macro to time a loop ...
+
+... in the global environment:
+
+``` julia
+total = 0
+n = 1e6
+
+@time for i in 1:n
+    global total += i
+end
+```
+
+      0.121428 seconds (4.00 M allocations: 76.286 MiB, 2.79% gc time)
+
+... in a local environment (a function):
+
+``` julia
+function local_loop(total, n)
+    total = total
+    @time for i in 1:n
+        global total += i
+    end
+end
+
+local_loop(0, 1e6)
+```
+
+      0.024386 seconds (2.00 M allocations: 30.518 MiB, 5.47% gc time)
+
+For more accurate performance measurements, you should use the `@btime` macro from the {{<a "https://github.com/JuliaCI/BenchmarkTools.jl" "BenchmarkTools package">}} which excludes compilation time from the timing, averages metrics over multiple runs, and is highly customizable.
+
+{{<br size="4">}}
+
+{{<def>}}
+{{<br size="1">}}
+To learn more on performance tips, you should attend {{<a "https://rcmodules22.netlify.app/parallel_julia/" "our course on parallel computing in Julia">}} later in this summer school!
+{{<br size="1">}}
+{{</def>}}
+
+## Comments & questions
