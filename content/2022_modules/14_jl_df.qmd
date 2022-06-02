@@ -80,11 +80,16 @@ then turn these values into strings, and finally into dates =#
 deaths_global_long.date = Date.(replace.(string.(deaths_global_long[!, 5]),
                                          r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy")
 ```
+
+This is what our new DataFrame looks like:
+
 ```{julia}
 deaths_global_long
 ```
 
 ### Get totals by country and by date
+
+To do this, we use a classic split-apply-combine workflow:
 
 ```{julia}
 deaths_countries_grouped = groupby(deaths_global_long, [:country, :date])
@@ -109,7 +114,7 @@ select!(deaths_canada, Not(1))
 
 Let's save our DataFrame `deaths_canada` into a file to plot it in the next chapter.
 
-For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON package">}} which 
+For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON package">}} which saves a {{<a "https://en.wikipedia.org/wiki/BSON" "BSON">}} file.
 
 ```{.julia}
 @save "deaths_canada.bson" deaths_canada
@@ -120,6 +125,9 @@ For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON packag
 ```
 
 ## DataFrame cheatsheet
+
+This example was far from exhaustive. The cheatsheet below will give you an idea of other operations possible on DataFrames:
+{{<br size="3">}}
 
 {{<imgmshadow src="/img/dataframes-0.png" title="" width="%" line-height="1.0rem">}}
 {{</imgmshadow>}}
