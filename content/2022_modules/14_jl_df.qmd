@@ -44,6 +44,13 @@ using BSON
 ```
 
 ### Load the data
+### Reduce printed output size of DataFrames
+
+By default, the Jupyter Julia kernel prints the first 30 rows of DataFrames. Let's reduce this to 5 by changing the appropriate environment variable:
+
+```{julia}
+ENV["LINES"] = 5;
+```
 
 We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository.
 
