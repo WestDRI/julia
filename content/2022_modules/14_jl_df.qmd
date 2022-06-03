@@ -92,14 +92,27 @@ deaths_global_long = stack(deaths_global, Not(collect(1:4)),
                            value_name = Symbol("number_deaths"))
 ```
 
-### Turn the date into a proper format and type
+### Turn the date into the Date type
+
+For this, we need to do multiple things:
+
+&emsp;1. &ensp;Index the date column <br>
+&emsp;2. &ensp;Add `20` in front of the year through regular expression to make it 4 digits <br>
+&emsp;3. &ensp;Convert into the Date type <br>
+&emsp;4. &ensp;Reassign this to the date column of our DataFrame
+{{<br size="3">}}
+
+{{<notes>}}
+Step 2. and 3. need to be applied to all elements, so we use broadcasting with the dot notation.
+{{</notes>}}
+{{<br size="3">}}
 
 ```{julia}
-#= Turn the year from 2 digits to 4 digits using regular expression
-(in a vectorised fashion by braodcasting with the dot notation);
-then turn these values into strings, and finally into dates =#
-deaths_global_long.date = Date.(replace.(string.(deaths_global_long[!, 5]),
-                                         r"(.*)(..)$" => s"\g<1>20\2"), "m/dd/yy")
+deaths_global_long.date = Date.(
+    replace.(
+        deaths_global_long[!, 5],       # (`!` does not make a copy while indexing)
+        r"(.*)(..)$" => s"\g<1>20\2"),
+    "m/dd/yyyy");
 ```
 
 This is what our new DataFrame looks like:
