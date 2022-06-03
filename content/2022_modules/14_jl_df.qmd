@@ -40,7 +40,7 @@ Then, you have to load them to make them accessible in the current session:
 using CSV
 using DataFrames
 using Dates          # from the standard Julia library
-using BSON: @save
+using BSON
 ```
 
 ### Load the data
@@ -129,11 +129,11 @@ Let's save our DataFrame `deaths_canada` into a file to plot it in the next chap
 For this, we will use the {{<a "https://github.com/JuliaIO/BSON.jl" "BSON package">}} which saves a {{<a "https://en.wikipedia.org/wiki/BSON" "BSON">}} file.
 
 ```{.julia}
-@save "deaths_canada.bson" deaths_canada
+BSON.@save "deaths_canada.bson" deaths_canada
 ```
 ```{julia}
 #| echo: false
-@save "../../static/data/deaths_canada.bson" deaths_canada
+BSON.@save "../../static/data/deaths_canada.bson" deaths_canada
 ```
 
 ## DataFrame cheatsheet
