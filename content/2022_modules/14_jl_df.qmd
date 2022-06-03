@@ -43,7 +43,6 @@ using Dates          # from the standard Julia library
 using BSON
 ```
 
-### Load the data
 ### Reduce printed output size of DataFrames
 
 By default, the Jupyter Julia kernel prints the first 30 rows of DataFrames. Let's reduce this to 5 by changing the appropriate environment variable:
@@ -51,6 +50,8 @@ By default, the Jupyter Julia kernel prints the first 30 rows of DataFrames. Let
 ```{julia}
 ENV["LINES"] = 5;
 ```
+
+### Read the data in
 
 We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository.
 
@@ -80,8 +81,8 @@ describe(deaths_global)
 ### Rename some variables to easier names
 
 ```{julia}
-DataFrames.rename!(deaths_global, Dict.(1 => Symbol("province"),
-                                        2 => Symbol("country")))
+DataFrames.rename!(deaths_global, Dict(1 => Symbol("province"),
+                                       2 => Symbol("country")))
 ```
 
 ### Transform the data into long format
