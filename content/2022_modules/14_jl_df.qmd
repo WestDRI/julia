@@ -53,7 +53,7 @@ ENV["LINES"] = 5;
 
 ### Read the data in
 
-We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository.
+We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository. This file contains the daily cumulative number of reported Covid-19 deaths for all countries. Some countries have their data broken down by province/state.
 
 I uploaded it to our training cluster, so you can find it at: \
 `~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv`.
@@ -122,7 +122,7 @@ This is what our new DataFrame looks like:
 deaths_global_long
 ```
 
-### Get totals by country and by date
+### Get cumulative totals by country and by date
 
 To do this, we use a classic split-apply-combine workflow:
 
@@ -133,7 +133,7 @@ deaths_countries_grouped = groupby(deaths_global_long, [:country, :date])
 deaths_countries = combine(deaths_countries_grouped, :number_deaths => sum)
 ```
 
-### Index totals by date for Canada
+### Index cumulative totals by date for Canada
 
 ```{julia}
 deaths_canada = filter(:country => isequal("Canada"), deaths_countries)

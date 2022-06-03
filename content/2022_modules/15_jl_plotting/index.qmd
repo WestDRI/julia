@@ -63,7 +63,7 @@ plot(deaths_canada)
 Of course, some amount of tweaking is needed to make a plot nicer. Here, let's simply add a title and remove the unnecessary legend:
 
 ```{julia}
-plot(deaths_canada, title="Daily number of Covid-19 deaths in Canada", legend=false)
+plot(deaths_canada, title="Cumulative number of Covid-19 deaths in Canada", legend=false)
 ```
 
 ## Comments & questions
