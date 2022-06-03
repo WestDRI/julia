@@ -28,7 +28,7 @@ We will need a number of external packages for this. Remember that external pack
 ] add CSV DataFrames StatsPlots TimeSeries BSON
 ```
 
-There is a conflict version between the latest CSV package version and the version of Julia running in our JupyterHub. For this reason, we have to downgrade the version to v0.8.5:
+There is a conflict version between the latest CSV package version and the version of Julia running in our JupyterHub. For this reason, we have to downgrade the version to v0.8.5 (for those running Julia on their computer, this is not necessary):
 
 ```{.julia}
 ] pin CSV@0.8.5
@@ -49,6 +49,8 @@ We will use the file `time_series_covid19_deaths_global.csv` from the JHU reposi
 
 I uploaded it to our training cluster, so you can find it at: \
 `~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv`.
+
+For those running Julia on their computer, you can clone {{<a "https://github.com/CSSEGISandData/COVID-19" "the GitHub repo">}} (or download and unzip it), then find the file `time_series_covid19_deaths_global.csv` in the `csse_covid_19_data/csse_covid_19_time_series/` directory.
 
 ```{.julia}
 deaths_global = CSV.read("projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv", DataFrame)
