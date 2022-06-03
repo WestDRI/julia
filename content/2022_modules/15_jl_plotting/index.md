@@ -38,10 +38,6 @@ We can now load our BSON file and recreate our DataFrame:
 @load "deaths_canada.bson" deaths_canada
 ```
 
-``` julia
-@load "../../static/data/deaths_canada.bson" deaths_canada
-```
-
 ## Time series
 
 Our data is a time series and needs to be transformed into a TimeArray thanks to the `TimeArray` function from the TimeSeries package before it can be plotted:
@@ -86,10 +82,7 @@ Creating a plot is very simple:
 plot(deaths_canada)
 ```
 
-![](15_jl_plotting_files/figure-gfm/cell-5-output-1.svg)
-
-{{<imgmshadow src="/15_jl_plotting_files/figure-gfm/cell-6-output-1.svg" title="" width="%" line-height="2.5rem">}}
-{{</imgmshadow>}}
+![](index_files/figure-gfm/cell-5-output-1.svg)
 
 ## Customization
 
@@ -99,9 +92,6 @@ Of course, some amount of tweaking is needed to make a plot nicer. Here, let's s
 plot(deaths_canada, title="Daily number of Covid-19 deaths in Canada", legend=false)
 ```
 
-![](15_jl_plotting_files/figure-gfm/cell-6-output-1.svg)
-
-{{<imgmshadow src="/15_jl_plotting_files/figure-gfm/cell-7-output-1.svg" title="" width="%" line-height="2.5rem">}}
-{{</imgmshadow>}}
+![](index_files/figure-gfm/cell-6-output-1.svg)
 
 ## Comments & questions
