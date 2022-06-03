@@ -21,7 +21,7 @@ To successfully load the BSON file and recreate our DataFrame, we need to load i
 In addition, we will load the {{<a "https://github.com/JuliaPlots/StatsPlots.jl" "StatsPlots package">}} which is a version of the {{<a "https://github.com/JuliaPlots/Plots.jl" "Plots package">}} with some additional statistical functionality:
 
 ``` julia
-using BSON: @load
+using BSON
 using DataFrames
 using Dates          # from the standard Julia library
 using TimeSeries
@@ -35,7 +35,7 @@ We can now load our BSON file and recreate our DataFrame:
 {{</ex>}}
 
 ``` julia
-@load "deaths_canada.bson" deaths_canada
+BSON.@load "deaths_canada.bson" deaths_canada
 ```
 
 ## Time series
@@ -89,7 +89,7 @@ plot(deaths_canada)
 Of course, some amount of tweaking is needed to make a plot nicer. Here, let's simply add a title and remove the unnecessary legend:
 
 ``` julia
-plot(deaths_canada, title="Daily number of Covid-19 deaths in Canada", legend=false)
+plot(deaths_canada, title="Cumulative number of Covid-19 deaths in Canada", legend=false)
 ```
 
 ![](index_files/figure-gfm/cell-6-output-1.svg)

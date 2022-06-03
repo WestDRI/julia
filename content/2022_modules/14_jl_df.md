@@ -60,7 +60,7 @@ ENV["LINES"] = 5;
 
 ### Read the data in
 
-We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository.
+We will use the file `time_series_covid19_deaths_global.csv` from the JHU repository. This file contains the daily cumulative number of reported Covid-19 deaths for all countries. Some countries have their data broken down by province/state.
 
 I uploaded it to our training cluster, so you can find it at:  
 `~/projects/def-sponsor00/shared/data/time_series_covid19_deaths_global.csv`.
@@ -137,7 +137,7 @@ deaths_global_long
 
 <div class="data-frame"><p>245,385 rows × 6 columns</p><table class="data-frame"><thead><tr><th></th><th>province</th><th>country</th><th>Lat</th><th>Long</th><th>date</th><th>number_deaths</th></tr><tr><th></th><th title="Union{Missing, String}">String?</th><th title="String">String</th><th title="Union{Missing, Float64}">Float64?</th><th title="Union{Missing, Float64}">Float64?</th><th title="Date">Date</th><th title="Int64">Int64</th></tr></thead><tbody><tr><th>1</th><td><em>missing</em></td><td>Afghanistan</td><td>33.9391</td><td>67.71</td><td>2020-01-22</td><td>0</td></tr><tr><th>2</th><td><em>missing</em></td><td>Albania</td><td>41.1533</td><td>20.1683</td><td>2020-01-22</td><td>0</td></tr><tr><th>3</th><td><em>missing</em></td><td>Algeria</td><td>28.0339</td><td>1.6596</td><td>2020-01-22</td><td>0</td></tr><tr><th>4</th><td><em>missing</em></td><td>Andorra</td><td>42.5063</td><td>1.5218</td><td>2020-01-22</td><td>0</td></tr><tr><th>5</th><td><em>missing</em></td><td>Angola</td><td>-11.2027</td><td>17.8739</td><td>2020-01-22</td><td>0</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table></div>
 
-### Get totals by country and by date
+### Get cumulative totals by country and by date
 
 To do this, we use a classic split-apply-combine workflow:
 
@@ -153,7 +153,7 @@ deaths_countries = combine(deaths_countries_grouped, :number_deaths => sum)
 
 <div class="data-frame"><p>171,339 rows × 3 columns</p><table class="data-frame"><thead><tr><th></th><th>country</th><th>date</th><th>number_deaths_sum</th></tr><tr><th></th><th title="String">String</th><th title="Date">Date</th><th title="Int64">Int64</th></tr></thead><tbody><tr><th>1</th><td>Afghanistan</td><td>2020-01-22</td><td>0</td></tr><tr><th>2</th><td>Albania</td><td>2020-01-22</td><td>0</td></tr><tr><th>3</th><td>Algeria</td><td>2020-01-22</td><td>0</td></tr><tr><th>4</th><td>Andorra</td><td>2020-01-22</td><td>0</td></tr><tr><th>5</th><td>Angola</td><td>2020-01-22</td><td>0</td></tr><tr><th>&vellip;</th><td>&vellip;</td><td>&vellip;</td><td>&vellip;</td></tr></tbody></table></div>
 
-### Index totals by date for Canada
+### Index cumulative totals by date for Canada
 
 ``` julia
 deaths_canada = filter(:country => isequal("Canada"), deaths_countries)
