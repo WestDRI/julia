@@ -72,19 +72,19 @@ apropos("truncate")
 
     Base.IOBuffer
     Base.truncate
-    Base.dump
     Base.open_flags
-    Core.String
-    Base.open
     Base.IOContext
+    Base.open
+    Base.dump
+    Core.String
     Base.Broadcast.newindex
     ArgTools
     NetworkOptions
     LinearAlgebra.eigen
     Tar
-    Dates.Date
-    Dates.format
     Base.trunc
+    Dates.format
+    Dates.Date
     IJulia.watch_stream
     IJulia.set_max_stdio
 
@@ -123,12 +123,12 @@ versioninfo()    # outputs more info, including OS info
 ## Getting help
 
 {{<a "https://discourse.julialang.org/" "Julia Discourse forum">}}  
-[\[julia\] tag on Stack Overflow](https://stackoverflow.com/tags/julia)  
+<a href="https://stackoverflow.com/tags/julia" target="_blank">\[julia\] tag on Stack Overflow</a>  
 {{<a "https://julialang.org/slack/" "The Julia Language Slack">}}  
 {{<a "https://julialang.zulipchat.com/register/" "Zulip">}}  
-[\#julialang hashtag on Twitter](https://twitter.com/search?q=%23julialang)  
+<a href="https://twitter.com/search?q=%23julialang" target="_blank">\#julialang hashtag on Twitter</a>
 {{<a "https://www.reddit.com/r/Julia/" "Julia subreddit">}}  
 {{<a "https://gitter.im/JuliaLang/julia" "Julia Gitter channel">}}  
-[\#julia IRC channel on Freenode](https://webchat.freenode.net/#julia)
+<a href="https://webchat.freenode.net/#julia" target="_blank">\#julia IRC channel on Freenode</a>
 
 ## Comments & questions
