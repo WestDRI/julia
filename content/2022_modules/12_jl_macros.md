@@ -20,7 +20,7 @@ Julia code is itself data and can be manipulated by the language while it is run
 
 ## Metaprogramming
 
--   Large influence from [Lisp](https://en.wikipedia.org/wiki/Lisp_(programming_language))
+-   Large influence from <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)" target="_blank">Lisp</a>
 -   Since Julia is entirely written in Julia, it is particularly well suited for metaprogramming
 
 ## Parsing and evaluating
