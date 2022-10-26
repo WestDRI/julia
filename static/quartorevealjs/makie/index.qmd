@@ -53,3 +53,55 @@ Many options:
 
 	+ `WGLMakie.jl`: web version of `GLMakie` (plots rendered in a browser instead of a window)
 
+# Syntax
+
+## Figure
+
+Load the package\
+Here, we are using CairoMakie
+
+```{julia}
+using CairoMakie                        # no need to import Makie itself
+```
+
+:::: {.columns}
+::: {.column width="48%"}
+<br>
+Create a `Figure` (container object)
+
+```{julia}
+fig = Figure()
+```
+:::
+::: {.column width="4%"}
+
+:::
+::: {.column width="48%"}
+<br>
+<br>
+```{julia}
+typeof(fig)
+```
+:::
+::::
+
+---
+
+You can customize a `Figure`:
+
+```{julia}
+fig2 = Figure(backgroundcolor = :grey22, resolution=(300, 300))
+```
+
+Makie uses [Colors.jl](https://github.com/JuliaGraphics/Colors.jl){target="_blank"} as a dependency \
+You can find a list of all named colours [here](https://juliagraphics.github.io/Colors.jl/stable/namedcolors/){target="_blank"}
+
+---
+
+To use CSS specification (e.g. hex), you need to install Colors.jl explicitly and use [its color parsing capabilities](http://juliagraphics.github.io/Colors.jl/stable/constructionandconversion/#Color-Parsing){target="_blank"}
+
+```{julia}
+using Colors
+fig3 = Figure(backgroundcolor = colorant"#adc2eb")
+```
+
