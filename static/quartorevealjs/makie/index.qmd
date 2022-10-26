@@ -14,3 +14,42 @@ format:
     code-line-numbers: false
 jupyter: julia-1.8
 ---
+
+## Plotting in Julia {.smaller}
+<br>
+
+. . .
+
+Many options:
+
+- [Plots.jl](https://github.com/JuliaPlots/Plots.jl){target="_blank"}: high-level API for working with different back-ends (GR, Pyplot, Plotly...)
+- [PyPlot.jl](https://github.com/JuliaPy/PyPlot.jl){target="_blank"}: Julia interface to Matplotlib's `matplotlib.pyplot`
+- [PlotlyJS.jl](https://github.com/JuliaPlots/PlotlyJS.jl){target="_blank"}: Julia interface to plotly.js
+- [PlotlyLight.jl](https://github.com/JuliaComputing/PlotlyLight.jl){target="_blank"}: the fastest plotting option in Julia by far, but limited features
+- [Gadfly.jl](https://github.com/GiovineItalia/Gadfly.jl){target="_blank"}: following the grammar of graphics popularized by Hadley Wickham in R
+- [VegaLite.jl](https://github.com/queryverse/VegaLite.jl){target="_blank"}: grammar of interactive graphics
+- [PGFPlotsX.jl](https://github.com/KristofferC/PGFPlotsX.jl){target="_blank"}: Julia interface to the PGFPlots LaTeX package
+- [UnicodePlots.jl](https://github.com/JuliaPlots/UnicodePlots.jl){target="_blank"}: plots in the terminal 🙂
+
+. . .
+
+- **[Makie.jl](https://github.com/MakieOrg/Makie.jl){target="_blank"}: powerful plotting ecosystem: animation, 3D, GPU optimization**
+
+## Makie ecosystem {.smaller}
+
+. . .
+
+- Main package:
+
+	+ `Makie.jl`: plots functionalities. Backend needed to render plots into images or vector graphics
+
+. . .
+
+- Backends:
+
+	+ `CairoMakie.jl`: vector graphics or high-quality 2D plots (no true 3D). Creates, but does not display plots
+
+	+ `GLMakie.jl`: true 3D rendering and interactivity in [GLFW](https://www.glfw.org/){target="_blank"} window (no vector graphics)
+
+	+ `WGLMakie.jl`: web version of `GLMakie` (plots rendered in a browser instead of a window)
+
