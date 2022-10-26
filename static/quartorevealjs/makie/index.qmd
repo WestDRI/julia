@@ -105,3 +105,59 @@ using Colors
 fig3 = Figure(backgroundcolor = colorant"#adc2eb")
 ```
 
+## Axis
+
+:::: {.columns}
+::: {.column width="48%"}
+<br>
+Then, you can create an `Axis`
+
+```{julia}
+ax = Axis(Figure()[1, 1])
+```
+:::
+::: {.column width="4%"}
+
+:::
+::: {.column width="48%"}
+<br>
+<br>
+```{julia}
+typeof(ax)
+```
+:::
+::::
+
+---
+
+```{julia}
+Axis(fig3[1, 1])  # fig3[1, 1] sets the subplot layout: fig[row, col]
+fig3
+```
+
+---
+
+```{julia}
+Axis(fig[2, 3])  # This is what happens if we change the layout
+fig
+```
+
+---
+
+```{julia}
+Axis(fig3[2, 3])  # We can add another axis on fig3
+fig3
+```
+
+---
+
+Axis are customizable
+
+```{julia}
+fig4 = Figure()
+Axis(fig4[1, 1],
+     xlabel="x label",
+     ylabel="y label",
+     title="Title of the plot")
+fig4
+```
