@@ -1,0 +1,16 @@
+---
+title: Makie
+subtitle: <b>A data visualization ecosystem for Julia</b>
+institute: <img src="beautifulmakie.png" width="50%">
+date: <em>Marie-Helene Burle</em> <br> Wednesday, October 26 <br><img src="sfudrac.png" width="45%">
+execute:
+  error: true
+  echo: true
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    logo: sfudrac_favicon_nobg.png
+    highlight-style: monokai
+    code-line-numbers: false
+jupyter: julia-1.8
+---
