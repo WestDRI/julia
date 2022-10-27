@@ -26,7 +26,7 @@ ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
     style = "manni"
 
 [params]
-  repourl = "https://github.com/WestGrid/julia"
+  repourl = "https://github.com/WestDRI/julia"
   sfuavatar = "/img/sfu.png"
   dracavatar = "/img/drac.png"
   siteavatar = "/img/julia.png"
@@ -42,7 +42,7 @@ ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
   rtl = false
   math = true
   [params.utteranc]
-    repo = "WestGrid/julia"
+    repo = "WestDRI/julia"
     issueTerm = "url"
 
 [taxonomies]
@@ -54,7 +54,7 @@ ignoreFiles = [ "\\.qmd$", "\\.ipynb$" ]
   name = "Github"
   icon = "fab fa-github fa-2x"
   weight = 3
-  url = "https://github.com/WestGrid"
+  url = "https://github.com/WestDRI"
 [[params.social]]
   name = "Twitter"
   icon = "fab fa-twitter fa-2x"
