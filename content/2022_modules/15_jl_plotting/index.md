@@ -82,7 +82,7 @@ Creating a plot is very simple:
 plot(deaths_canada)
 ```
 
-![](index_files/figure-gfm/cell-5-output-1.svg)
+![](fig1.svg)
 
 ## Customization
 
@@ -92,6 +92,6 @@ Of course, some amount of tweaking is needed to make a plot nicer. Here, let's s
 plot(deaths_canada, title="Cumulative number of Covid-19 deaths in Canada", legend=false)
 ```
 
-![](index_files/figure-gfm/cell-6-output-1.svg)
+![](fig2.svg)
 
 ## Comments & questions
