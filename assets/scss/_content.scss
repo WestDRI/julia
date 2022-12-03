@@ -745,3 +745,14 @@ img[alt=radius] {
   margin: 3rem 1rem 0rem 0rem;
   line-height: 25px;
 }
+
+// bootstrap SVG-Icons
+.bi {
+  display: inline-block;
+}
+.bi-link-45deg:hover {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--wk-accent-color-3);
+  fill: currentColor;
+}
