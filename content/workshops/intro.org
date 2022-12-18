@@ -601,7 +601,7 @@ To see how many threads we are using, as well as the ID of the current thread, y
 ** For loops on multiple threads
 
 {{<challenge>}}
-Launch Julia on 1 thread and run the function below. Then run Julia on the maximum nummber of threads you have on your machine and run the same function.
+Launch Julia on 1 thread and run the function below. Then run Julia on the maximum number of threads you have on your machine and run the same function.
 {{</challenge>}}
 
 
