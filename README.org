@@ -1,1 +1,5 @@
-This is the repo for [[https://www.westgrid.ca/][WestGrid]]'s portal on [[https://julialang.org/][Julia programming language]] training material. You can find this site [[https://westgrid-julia.netlify.com/][here]].
+This is the repo for Marie-Hélène Burle's old site on [[https://julialang.org/][Julia programming language]] training material for WestDRI.
+
+All worthwhile content has been moved to [[https://github.com/WestDRI/arc-training][the new repo]] for [[https://mint.westdri.ca/][Marie's new site on training material]].
+
+All new content will be added to that new site.
