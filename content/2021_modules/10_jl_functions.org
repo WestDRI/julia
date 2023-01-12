@@ -156,7 +156,7 @@ function addTwo(a)
 addTwo(3)
 
 # This can be written in a terse format with:
-addtwo = a -> a + 2
+addtwo(a) = a + 2
 
 # With default argument:
 function addSomethingOrTwo(a, b = 2)
